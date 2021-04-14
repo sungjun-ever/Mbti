@@ -18,13 +18,13 @@ class MbtiSortController extends Controller
     {
         $mbtiName = $this->mbtisName();
         $mbtis = Mbti::where('mbtiSort', $mbtiName)->orderBy('id', 'desc')->paginate(5);
-        return view('mbtis.'.$mbtiName.'.index', compact('mbtis'));
+        return view('mbtis.'.$mbtiName.'.index', compact(['mbtis', 'mbtiName']));
     }
 
     public function create()
     {
         $mbtiName = $this->mbtisName();
-        return view('mbtis.'.$mbtiName.'.create');
+        return view('mbtis.'.$mbtiName.'.create', compact('mbtiName'));
     }
 
     function store(Request $request)

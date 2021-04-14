@@ -9,7 +9,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <title>@yield('title', 'MBTI')</title>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 h-screen">
 <header class="flex bg-blue-300 h-16 align-items-center shadow-md">
     <div id="mySidenav"
          class="flex flex-column h-full w-2/12 position-fixed z-0 top-0 left-0
@@ -111,25 +111,15 @@
             </a>
         </div>
         <div class="ml-4 xl:text-md text-base pt-1 xl:block hidden">
-            <a href="{{route('mbtis.index')}}" >
-                <button class="hover:text-gray-50">성격유형</button>
-            </a>
-            <a href="{{route('frees.index')}}" >
-                <button class="hover:text-gray-50 ml-3">자유게시판</button>
-            </a>
-            <a href="{{route('suggests.index')}}" >
-                <button class="hover:text-gray-50 ml-3">건의게시판</button>
-            </a>
+            <a href="{{route('mbtis.index')}}"><button class="hover:text-gray-50">성격유형</button></a>
+            <a href="{{route('frees.index')}}"><button class="hover:text-gray-50 ml-3">자유게시판</button></a>
+            <a href="{{route('suggests.index')}}" ><button class="hover:text-gray-50 ml-3">건의게시판</button></a>
         </div>
     </div>
     <div class="w-2/12 text-right xl:text-lg text-md">
         @guest
-            <a href="{{route('loginPage')}}" class="mr-2">
-                <button class="hover:text-gray-50">로그인</button>
-            </a>
-            <a href="{{route('registerPage')}}">
-                <button class="hover:text-gray-50">회원가입</button>
-            </a>
+            <a href="{{route('loginPage')}}" class="mr-2"><button class="hover:text-gray-50">로그인</button></a>
+            <a href="{{route('registerPage')}}"><button class="hover:text-gray-50">회원가입</button></a>
         @endguest
         @auth()
             <a href="#" class="mr-2">
@@ -144,11 +134,11 @@
     <div class="w-3/12"></div>
 </header>
 
-<section class="bg-white min-h-80 w-full mx-auto shadow-md pb-16 xl:w-7/12">
+<section class="bg-white w-full min-h-full mx-auto shadow-md pb-16 xl:w-7/12">
     @section('container')
     @show
 </section>
-<footer class="min-h-full w-7/12 mx-auto pt-8">
+<footer class="w-7/12 min-h-30 mx-auto pt-8">
     Copyright<br>
 
 </footer>
