@@ -8,7 +8,7 @@
             </a>
             <div class="mt-3">
             @foreach($enfjs as $enfj)
-                <div class="text-lg w-9/12 border-b border-gray-200 pb-1 pl-1">
+                <div class="text-base w-9/12 border-b border-gray-200 pb-1 pl-1">
                     <a href="{{route('mbtis.enfj.show', $enfj->id)}}"><button>{{$enfj->title}}</button></a>
                 </div>
             @endforeach
@@ -21,7 +21,7 @@
             </a>
             <div class="mt-3">
                 @foreach($enfps as $enfp)
-                    <div class="text-lg w-9/12 border-b border-gray-200 pb-1 pl-1">
+                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
                         <a href="{{route('mbtis.enfp.show', $enfp->id)}}"><button>{{$enfp->title}}</button></a>
                     </div>
                 @endforeach
@@ -34,7 +34,7 @@
             </a>
             <div class="mt-3">
                 @foreach($entjs as $entj)
-                    <div class="text-lg w-9/12 border-b border-gray-200 pb-1 pl-1">
+                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
                         <a href="{{route('mbtis.entj.show', $entj->id)}}"><button>{{$entj->title}}</button></a>
                     </div>
                 @endforeach
@@ -47,7 +47,7 @@
             </a>
             <div class="mt-3">
                 @foreach($entps as $entp)
-                    <div class="text-lg w-9/12 border-b border-gray-200 pb-1 pl-1">
+                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
                         <a href="{{route('mbtis.entp.show', $entp->id)}}"><button>{{$entp->title}}</button></a>
                     </div>
                 @endforeach
@@ -60,7 +60,7 @@
             </a>
             <div class="mt-3">
                 @foreach($esfjs as $esfj)
-                    <div class="text-lg w-9/12 border-b border-gray-200 pb-1 pl-1">
+                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
                         <a href="{{route('mbtis.esfj.show', $esfj->id)}}"><button>{{$esfj->title}}</button></a>
                     </div>
                 @endforeach
@@ -73,7 +73,7 @@
             </a>
             <div class="mt-3">
                 @foreach($esfps as $esfp)
-                    <div class="text-lg w-9/12 border-b border-gray-200 pb-1 pl-1">
+                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
                         <a href="{{route('mbtis.esfp.show', $esfp->id)}}"><button>{{$esfp->title}}</button></a>
                     </div>
                 @endforeach
@@ -86,7 +86,7 @@
             </a>
             <div class="mt-3">
                 @foreach($estjs as $estj)
-                    <div class="text-lg w-9/12 border-b border-gray-200 pb-1 pl-1">
+                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
                         <a href="{{route('mbtis.estj.show', $estj->id)}}"><button>{{$estj->title}}</button></a>
                     </div>
                 @endforeach
@@ -99,7 +99,7 @@
             </a>
             <div class="mt-3">
                 @foreach($estps as $estp)
-                    <div class="text-lg w-9/12 border-b border-gray-200 pb-1 pl-1">
+                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
                         <a href="{{route('mbtis.estp.show', $estp->id)}}"><button>{{$estp->title}}</button></a>
                     </div>
                 @endforeach
@@ -112,7 +112,7 @@
             </a>
             <div class="mt-3">
                 @foreach($infjs as $infj)
-                    <div class="text-lg w-9/12 border-b border-gray-200 pb-1 pl-1">
+                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
                         <a href="{{route('mbtis.infj.show', $infj->id)}}"><button>{{$infj->title}}</button></a>
                     </div>
                 @endforeach
@@ -125,7 +125,7 @@
             </a>
             <div class="mt-3">
                 @foreach($infps as $infp)
-                    <div class="text-lg w-9/12 border-b border-gray-200 pb-1 pl-1">
+                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
                         <a href="{{route('mbtis.infp.show', $infp->id)}}"><button>{{$infp->title}}</button></a>
                     </div>
                 @endforeach
@@ -138,7 +138,7 @@
             </a>
             <div class="mt-3">
                 @foreach($intjs as $intj)
-                    <div class="text-lg w-9/12 border-b border-gray-200 pb-1 pl-1">
+                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
                         <a href="{{route('mbtis.intj.show', $intj->id)}}"><button>{{$intj->title}}</button></a>
                     </div>
                 @endforeach
@@ -151,7 +151,7 @@
             </a>
             <div class="mt-3">
                 @foreach($intps as $intp)
-                    <div class="text-lg w-9/12 border-b border-gray-200 pb-1 pl-1">
+                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
                         <a href="{{route('mbtis.intp.show', $intp->id)}}"><button>{{$intp->title}}</button></a>
                     </div>
                 @endforeach
@@ -164,7 +164,7 @@
             </a>
             <div class="mt-3">
                 @foreach($isfjs as $isfj)
-                    <div class="text-lg w-9/12 border-b border-gray-200 pb-1 pl-1">
+                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
                         <a href="{{route('mbtis.isfj.show', $isfj->id)}}"><button>{{$isfj->title}}</button></a>
                     </div>
                 @endforeach
@@ -177,7 +177,7 @@
             </a>
             <div class="mt-3">
                 @foreach($isfps as $isfp)
-                    <div class="text-lg w-9/12 border-b border-gray-200 pb-1 pl-1">
+                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
                         <a href="{{route('mbtis.isfp.show', $isfp->id)}}"><button>{{$isfp->title}}</button></a>
                     </div>
                 @endforeach
@@ -190,7 +190,7 @@
             </a>
             <div class="mt-3">
                 @foreach($istjs as $istj)
-                    <div class="text-lg w-9/12 border-b border-gray-200 pb-1 pl-1">
+                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
                         <a href="{{route('mbtis.istj.show', $istj->id)}}"><button>{{$istj->title}}</button></a>
                     </div>
                 @endforeach
@@ -203,7 +203,7 @@
             </a>
             <div class="mt-3">
                 @foreach($istps as $istp)
-                    <div class="text-lg w-9/12 border-b border-gray-200 pb-1 pl-1">
+                    <div class="w-9/12 border-b border-gray-200 pb-1 pl-1">
                         <a href="{{route('mbtis.istp.show', $istp->id)}}"><button>{{$istp->title}}</button></a>
                     </div>
                 @endforeach
