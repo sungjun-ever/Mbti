@@ -2,212 +2,22 @@
 
 @section('container')
     <div class="flex grid xl:grid-cols-2 grid-cols-1 gap-x-8 justify-center pl-4 pt-12 ">
-        <div class="mt-3">
-            <a href="{{route('mbtis.enfj.index')}}" class="text-2xl inline-block">
-                <button type="submit" class="hover:text-blue-400 px-1 border-b-2 border-blue-400">ENFJ</button>
-            </a>
-            <div class="mt-3">
-            @foreach($enfjs as $enfj)
-                <div class="text-base w-9/12 border-b border-gray-200 pb-1 pl-1">
-                    <a href="{{route('mbtis.enfj.show', $enfj->id)}}"><button>{{$enfj->title}}</button></a>
-                </div>
-            @endforeach
-            </div>
-        </div>
+        @include('recycles.mbti-main-index', ['mbtis' => $enfjs, 'mbtiName' => $mbtiName[0]])
+        @include('recycles.mbti-main-index', ['mbtis' => $enfps, 'mbtiName' => $mbtiName[1]])
+        @include('recycles.mbti-main-index', ['mbtis' => $entjs, 'mbtiName' => $mbtiName[2]])
+        @include('recycles.mbti-main-index', ['mbtis' => $entps, 'mbtiName' => $mbtiName[3]])
+        @include('recycles.mbti-main-index', ['mbtis' => $estjs, 'mbtiName' => $mbtiName[4]])
+        @include('recycles.mbti-main-index', ['mbtis' => $estps, 'mbtiName' => $mbtiName[5]])
+        @include('recycles.mbti-main-index', ['mbtis' => $esfjs, 'mbtiName' => $mbtiName[6]])
+        @include('recycles.mbti-main-index', ['mbtis' => $esfps, 'mbtiName' => $mbtiName[7]])
+        @include('recycles.mbti-main-index', ['mbtis' => $infjs, 'mbtiName' => $mbtiName[8]])
+        @include('recycles.mbti-main-index', ['mbtis' => $infps, 'mbtiName' => $mbtiName[9]])
+        @include('recycles.mbti-main-index', ['mbtis' => $intjs, 'mbtiName' => $mbtiName[10]])
+        @include('recycles.mbti-main-index', ['mbtis' => $intps, 'mbtiName' => $mbtiName[11]])
+        @include('recycles.mbti-main-index', ['mbtis' => $isfjs, 'mbtiName' => $mbtiName[12]])
+        @include('recycles.mbti-main-index', ['mbtis' => $isfps, 'mbtiName' => $mbtiName[13]])
+        @include('recycles.mbti-main-index', ['mbtis' => $istjs, 'mbtiName' => $mbtiName[14]])
+        @include('recycles.mbti-main-index', ['mbtis' => $istps, 'mbtiName' => $mbtiName[15]])
 
-        <div class="mt-3">
-            <a href="{{route('mbtis.enfp.index')}}" class="text-2xl">
-                <button class="hover:text-blue-400 px-1 border-b-2 border-blue-400">ENFP</button>
-            </a>
-            <div class="mt-3">
-                @foreach($enfps as $enfp)
-                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
-                        <a href="{{route('mbtis.enfp.show', $enfp->id)}}"><button>{{$enfp->title}}</button></a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="mt-3">
-            <a href="{{route('mbtis.entj.index')}}" class="text-2xl">
-                <button class="hover:text-blue-400 px-1 border-b-2 border-blue-400">ENTJ</button>
-            </a>
-            <div class="mt-3">
-                @foreach($entjs as $entj)
-                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
-                        <a href="{{route('mbtis.entj.show', $entj->id)}}"><button>{{$entj->title}}</button></a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="mt-3">
-            <a href="{{route('mbtis.entp.index')}}" class="text-2xl">
-                <button class="hover:text-blue-400 px-1 border-b-2 border-blue-400">ENTP</button>
-            </a>
-            <div class="mt-3">
-                @foreach($entps as $entp)
-                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
-                        <a href="{{route('mbtis.entp.show', $entp->id)}}"><button>{{$entp->title}}</button></a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="mt-3">
-            <a href="{{route('mbtis.esfj.index')}}" class="text-2xl">
-                <button class="hover:text-blue-400 px-1 border-b-2 border-blue-400">ESFJ</button>
-            </a>
-            <div class="mt-3">
-                @foreach($esfjs as $esfj)
-                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
-                        <a href="{{route('mbtis.esfj.show', $esfj->id)}}"><button>{{$esfj->title}}</button></a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="mt-3">
-            <a href="{{route('mbtis.esfp.index')}}" class="text-2xl">
-                <button class="hover:text-blue-400 px-1 border-b-2 border-blue-400">ESFP</button>
-            </a>
-            <div class="mt-3">
-                @foreach($esfps as $esfp)
-                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
-                        <a href="{{route('mbtis.esfp.show', $esfp->id)}}"><button>{{$esfp->title}}</button></a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="mt-3">
-            <a href="{{route('mbtis.estj.index')}}" class="text-2xl">
-                <button class="hover:text-blue-400 px-1 border-b-2 border-blue-400">ESTJ</button>
-            </a>
-            <div class="mt-3">
-                @foreach($estjs as $estj)
-                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
-                        <a href="{{route('mbtis.estj.show', $estj->id)}}"><button>{{$estj->title}}</button></a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="mt-3">
-            <a href="{{route('mbtis.estp.index')}}" class="text-2xl">
-                <button class="hover:text-blue-400 px-1 border-b-2 border-blue-400">ESTP</button>
-            </a>
-            <div class="mt-3">
-                @foreach($estps as $estp)
-                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
-                        <a href="{{route('mbtis.estp.show', $estp->id)}}"><button>{{$estp->title}}</button></a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="mt-3">
-            <a href="{{route('mbtis.infj.index')}}" class="text-2xl">
-                <button class="hover:text-blue-400 px-1 border-b-2 border-blue-400">INFJ</button>
-            </a>
-            <div class="mt-3">
-                @foreach($infjs as $infj)
-                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
-                        <a href="{{route('mbtis.infj.show', $infj->id)}}"><button>{{$infj->title}}</button></a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="mt-3">
-            <a href="{{route('mbtis.infp.index')}}" class="text-2xl">
-                <button class="hover:text-blue-400 px-1 border-b-2 border-blue-400">INFP</button>
-            </a>
-            <div class="mt-3">
-                @foreach($infps as $infp)
-                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
-                        <a href="{{route('mbtis.infp.show', $infp->id)}}"><button>{{$infp->title}}</button></a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="mt-3">
-            <a href="{{route('mbtis.intj.index')}}" class="text-2xl">
-                <button class="hover:text-blue-400 px-1 border-b-2 border-blue-400">INTJ</button>
-            </a>
-            <div class="mt-3">
-                @foreach($intjs as $intj)
-                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
-                        <a href="{{route('mbtis.intj.show', $intj->id)}}"><button>{{$intj->title}}</button></a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="mt-3">
-            <a href="{{route('mbtis.intp.index')}}" class="text-2xl">
-                <button class="hover:text-blue-400 px-1 border-b-2 border-blue-400">INTP</button>
-            </a>
-            <div class="mt-3">
-                @foreach($intps as $intp)
-                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
-                        <a href="{{route('mbtis.intp.show', $intp->id)}}"><button>{{$intp->title}}</button></a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="mt-3">
-            <a href="{{route('mbtis.isfj.index')}}" class="text-2xl">
-                <button class="hover:text-blue-400 px-1 border-b-2 border-blue-400">ISFJ</button>
-            </a>
-            <div class="mt-3">
-                @foreach($isfjs as $isfj)
-                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
-                        <a href="{{route('mbtis.isfj.show', $isfj->id)}}"><button>{{$isfj->title}}</button></a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="mt-3">
-            <a href="{{route('mbtis.isfp.index')}}" class="text-2xl">
-                <button class="hover:text-blue-400 px-1 border-b-2 border-blue-400">ISFP</button>
-            </a>
-            <div class="mt-3">
-                @foreach($isfps as $isfp)
-                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
-                        <a href="{{route('mbtis.isfp.show', $isfp->id)}}"><button>{{$isfp->title}}</button></a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="mt-3">
-            <a href="{{route('mbtis.istj.index')}}" class="text-2xl">
-                <button class="hover:text-blue-400 px-1 border-b-2 border-blue-400">ISTJ</button>
-            </a>
-            <div class="mt-3">
-                @foreach($istjs as $istj)
-                    <div class=" w-9/12 border-b border-gray-200 pb-1 pl-1">
-                        <a href="{{route('mbtis.istj.show', $istj->id)}}"><button>{{$istj->title}}</button></a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-
-        <div class="mt-3">
-            <a href="{{route('mbtis.istp.index')}}" class="text-2xl">
-                <button class="hover:text-blue-400 px-1 border-b-2 border-blue-400">ISTP</button>
-            </a>
-            <div class="mt-3">
-                @foreach($istps as $istp)
-                    <div class="w-9/12 border-b border-gray-200 pb-1 pl-1">
-                        <a href="{{route('mbtis.istp.show', $istp->id)}}"><button>{{$istp->title}}</button></a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
     </div>
 @stop

@@ -9,6 +9,9 @@ class MbtiController extends Controller
 {
     public function index(Request $request)
     {
+        $mbtiName = ['enfj', 'enfp', 'entj', 'entp', 'estj', 'estp', 'esfj', 'esfp',
+                     'infj', 'infp', 'intj', 'intp', 'isfj', 'isfp', 'istj', 'istp'];
+
         $enfjs = Mbti::where('mbtiSort', 'enfj')->orderBy('id', 'desc')->paginate(5);
         $enfps = Mbti::where('mbtiSort', 'enfp')->orderBy('id', 'desc')->paginate(5);
         $entjs = Mbti::where('mbtiSort', 'entj')->orderBy('id', 'desc')->paginate(5);
@@ -28,22 +31,11 @@ class MbtiController extends Controller
 
         return view('mbtis.index',
                 compact([
-                    'enfjs',
-                    'enfps',
-                    'entjs',
-                    'entps',
-                    'esfjs',
-                    'esfps',
-                    'estjs',
-                    'estps',
-                    'infjs',
-                    'infps',
-                    'intjs',
-                    'intps',
-                    'isfjs',
-                    'isfps',
-                    'istjs',
-                    'istps']));
+                    'enfjs', 'enfps', 'entjs', 'entps',
+                    'esfjs', 'esfps', 'estjs', 'estps',
+                    'infjs', 'infps', 'intjs', 'intps',
+                    'isfjs', 'isfps', 'istjs', 'istps',
+                    'mbtiName']));
     }
 
 }
