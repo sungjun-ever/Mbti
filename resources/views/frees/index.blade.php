@@ -14,7 +14,7 @@
                 </tr>
                 @foreach($frees as $free)
                     <tr class="border-b">
-                        <td class="text-lg pl-2 truncate"><a href="{{route('frees.show', $free->id)}}" class="text-sm ">{{$free->title}}</a></td>
+                        <td class="pl-2 truncate"><a href="{{route('frees.show', $free->id)}}" class="text-lg">{{$free->title}}</a></td>
                         <td class="text-center text-sm">{{$free->user_name}}</td>
                         <td class="text-sm">{{$free->created_at->format('Y-m-d')}}</td>
                     </tr>

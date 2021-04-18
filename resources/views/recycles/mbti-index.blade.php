@@ -13,7 +13,7 @@
             </tr>
             @foreach($mbtis as $mbti)
                 <tr class="border-b">
-                    <td class="text-lg pl-2 truncate"><a href="{{route('mbtis.'.$mbtiName.'.show', $mbti->id)}}">{{$mbti->title}}</a>
+                    <td class="pl-2 truncate"><a href="{{route('mbtis.'.$mbtiName.'.show', $mbti->id)}}" class="text-lg">{{$mbti->title}}</a>
                     </td>
                     <td class="text-center">{{$mbti->user_name}}</td>
                     <td class="">{{$mbti->created_at->format('Y-m-d')}}</td>
