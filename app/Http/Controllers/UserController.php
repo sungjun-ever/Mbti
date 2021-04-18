@@ -16,16 +16,17 @@ class UserController extends Controller
 
     public function register(Request $request)
     {
-        $valiadtion = $request->validate([
+        $validation = $request->validate(
+            [
             'email' => 'required',
             'name' => 'required|max:5',
-            'password' => 'required|digits_between:8,12|confirmed'
-        ]);
+            'password' => 'required|between:12,8|confirmed'
+            ]);
 
         $user = new User();
-        $user->email = $valiadtion['email'];
-        $user->name = $valiadtion['name'];
-        $user->password = Hash::make($valiadtion['password']);
+        $user->email = $validation['email'];
+        $user->name = $validation['name'];
+        $user->password = Hash::make($validation['password']);
         $user->save();
 
         return redirect()->route('home');

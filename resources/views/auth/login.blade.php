@@ -6,11 +6,14 @@
         <div class="pt-8 pb-4 px-1 shadow-md">
             <div>
                 <label for="email" class="text-lg">이메일</label>
-                <input id="email" type="email" name="email" class="w-full py-2 shadow-sm rounded-sm pl-2 text-lg">
+                <input id="email" type="email" name="email"
+                       value="{{old('email') ? old('email') : ''}}"
+                       class="w-full py-2 shadow-sm rounded-sm pl-2 text-lg @error('email') border-2 border-red-600 @enderror">
             </div>
             <div class="mt-4">
                 <label for="password" class="text-lg">비밀번호</label>
-                <input id="password" type="password" name="password" class="w-full py-2 shadow-sm rounded-sm pl-2 text-lg">
+                <input id="password" type="password" name="password"
+                       class="w-full py-2 shadow-sm rounded-sm pl-2 text-lg @error('password') border-2 border-red-600 @enderror">
             </div>
             <div class="mt-4">
                 <label for="remember"></label>
