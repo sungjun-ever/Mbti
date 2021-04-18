@@ -18,7 +18,7 @@
             <div class="mt-4">
                 <label for="remember"></label>
                 <input id="remember" type="checkbox" name="remember_me" class="w-5 h-5">
-                <span class="inline-block text-lg h-8">로그인 상태 유지</span>
+                <span class="inline-block text-lg h-8">로그인 유지</span>
             </div>
             <div class="mt-8 text-center">
                 <button type="submit"
