@@ -8,22 +8,20 @@
         <div class="mt-16 min-h-30">
             <table class="w-full table-fixed">
                 <tr>
-                    <td class="w-1/12"></td>
-                    <td class="w-5/12"></td>
+                    <td class="w-7/12"></td>
                     <td class="w-1/12"></td>
                     <td class="w-1/12"></td>
                 </tr>
                 @foreach($frees as $free)
                     <tr class="border-b">
-                        <td class="text-center text-sm">{{$free->id}}</td>
-                        <td class="text-lg truncate"><a href="{{route('frees.show', $free->id)}}" class="text-sm ">{{$free->title}}</a></td>
+                        <td class="text-lg pl-2 truncate"><a href="{{route('frees.show', $free->id)}}" class="text-sm ">{{$free->title}}</a></td>
                         <td class="text-center text-sm">{{$free->user_name}}</td>
                         <td class="text-sm">{{$free->created_at->format('Y-m-d')}}</td>
                     </tr>
                 @endforeach
             </table>
         </div>
-        <div>
+        <div class="mt-16">
             {{$frees->links()}}
         </div>
     </div>
