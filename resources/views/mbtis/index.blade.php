@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('container')
-    <div class="flex grid xl:grid-cols-2 grid-cols-1 justify-center pl-4 pt-12 mx-auto ">
+    <div class="flex grid xl:grid-cols-2 grid-cols-1 gap-x-8 justify-center pl-4 pt-12 ">
         <div class="mt-3">
             <a href="{{route('mbtis.enfj.index')}}" class="text-2xl inline-block">
                 <button type="submit" class="hover:text-blue-400 px-1 border-b-2 border-blue-400">ENFJ</button>
