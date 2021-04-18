@@ -7,6 +7,7 @@ use App\Http\Controllers\MbtiController;
 use App\Http\Controllers\MbtiSortController;
 use App\Http\Controllers\FreeController;
 use App\Http\Controllers\SuggestController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,9 +21,7 @@ use App\Http\Controllers\SuggestController;
 
 Auth::routes(['verify'=>true]);
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('/auth')->group(function(){
     Route::get('/register', [UserController::class, 'registerPage'])->name('registerPage');
@@ -195,25 +194,24 @@ Route::prefix('/mbti')->group(function(){
         Route::put('/{istp}', [MbtiSortController::class, 'update'])->name('mbtis.istp.update')->middleware('auth');
         Route::delete('/{istp}', [MbtiSortController::class, 'destroy'])->name('mbtis.istp.destroy')->middleware('auth');
     });
+});
 
-    Route::prefix('/frees')->group(function(){
-        Route::get('/', [FreeController::class, 'index'])->name('frees.index');
-        Route::get('/create', [FreeController::class, 'create'])->name('frees.create')->middleware('auth');
-        Route::post('/', [FreeController::class, 'store'])->name('frees.store')->middleware('auth');
-        Route::get('/{free}', [FreeController::class, 'show'])->name('frees.show');
-        Route::get('/{free}/edit', [FreeController::class, 'edit'])->name('frees.edit')->middleware('auth');
-        Route::put('/{free}', [FreeController::class, 'update'])->name('frees.update')->middleware('auth');
-        Route::delete('/{free}', [FreeController::class, 'destroy'])->name('frees.destroy')->middleware('auth');
-    });
+Route::prefix('/frees')->group(function(){
+    Route::get('/', [FreeController::class, 'index'])->name('frees.index');
+    Route::get('/create', [FreeController::class, 'create'])->name('frees.create')->middleware('auth');
+    Route::post('/', [FreeController::class, 'store'])->name('frees.store')->middleware('auth');
+    Route::get('/{free}', [FreeController::class, 'show'])->name('frees.show');
+    Route::get('/{free}/edit', [FreeController::class, 'edit'])->name('frees.edit')->middleware('auth');
+    Route::put('/{free}', [FreeController::class, 'update'])->name('frees.update')->middleware('auth');
+    Route::delete('/{free}', [FreeController::class, 'destroy'])->name('frees.destroy')->middleware('auth');
+});
 
-    Route::prefix('/suggests')->group(function(){
-        Route::get('/', [FreeController::class, 'index'])->name('suggests.index');
-        Route::get('/create', [FreeController::class, 'create'])->name('suggests.create')->middleware('auth');
-        Route::post('/', [FreeController::class, 'store'])->name('suggests.store')->middleware('auth');
-        Route::get('/{suggest}', [FreeController::class, 'show'])->name('suggests.show');
-        Route::get('/{suggest}/edit', [FreeController::class, 'edit'])->name('suggests.edit')->middleware('auth');
-        Route::put('/{suggest}', [FreeController::class, 'update'])->name('suggests.update')->middleware('auth');
-        Route::delete('/{suggest}', [FreeController::class, 'destroy'])->name('suggests.destroy')->middleware('auth');
-    });
-
+Route::prefix('/suggests')->group(function(){
+    Route::get('/', [FreeController::class, 'index'])->name('suggests.index');
+    Route::get('/create', [FreeController::class, 'create'])->name('suggests.create')->middleware('auth');
+    Route::post('/', [FreeController::class, 'store'])->name('suggests.store')->middleware('auth');
+    Route::get('/{suggest}', [FreeController::class, 'show'])->name('suggests.show');
+    Route::get('/{suggest}/edit', [FreeController::class, 'edit'])->name('suggests.edit')->middleware('auth');
+    Route::put('/{suggest}', [FreeController::class, 'update'])->name('suggests.update')->middleware('auth');
+    Route::delete('/{suggest}', [FreeController::class, 'destroy'])->name('suggests.destroy')->middleware('auth');
 });
