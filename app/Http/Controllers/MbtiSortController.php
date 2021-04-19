@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Mbti;
 use Illuminate\Http\Request;
 
@@ -49,7 +50,9 @@ class MbtiSortController extends Controller
     {
         $mbtiName = $this->mbtisName();
         $mbti = Mbti::where('id', $id)->first();
-        return view('mbtis.'.$mbtiName.'.show', compact('mbti'));
+        $cmts = Comment::where('mbti_id', $id)->orderBy('id', 'desc')->get();
+
+        return view('mbtis.'.$mbtiName.'.show', compact(['mbti', 'cmts', 'mbtiName']));
     }
 
     /**
@@ -103,5 +106,24 @@ class MbtiSortController extends Controller
         $mbti -> delete();
 
         return redirect()->route('mbtis.'.$mbtiName.'.destroy');
+    }
+
+    public function commentStore(Request $request, $id)
+    {
+
+        $mbtiName = $this->mbtisName();
+
+        $validation = $request->validate([
+            'story' => 'required'
+        ]);
+
+        $cmt = new Comment();
+        $cmt->user_id = auth()->user()->id;
+        $cmt->user_name = auth()->user()->name;
+        $cmt->mbti_id = $id;
+        $cmt->story = $validation['story'];
+        $cmt->save();
+
+        return redirect()->route('mbtis.'.$mbtiName.'.show', $id);
     }
 }

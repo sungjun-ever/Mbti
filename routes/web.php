@@ -43,6 +43,7 @@ Route::prefix('/mbti')->group(function(){
         Route::get('/{enfj}/edit', [MbtiSortController::class, 'edit'])->name('mbtis.enfj.edit')->middleware('auth');
         Route::put('/{enfj}', [MbtiSortController::class, 'update'])->name('mbtis.enfj.update')->middleware('auth');
         Route::delete('/{enfj}', [MbtiSortController::class, 'destroy'])->name('mbtis.enfj.destroy')->middleware('auth');
+        Route::post('/{enfj}/comments', [MbtiSortController::class, 'commentStore'])->name('mbtis.enfj.comments.store')->middleware('auth');
     });
 
     Route::prefix('/enfp')->group(function (){

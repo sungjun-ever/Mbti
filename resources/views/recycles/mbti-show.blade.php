@@ -1,17 +1,17 @@
 <div class="pt-16 min-h-screen">
     <div class="w-10/12 mx-auto border-b-2 border-blue-300">
-        <p class="truncate text-lg pb-1">
+        <p class="truncate text-xl font-bold pb-1">
             {{$mbti->title}}
         </p>
     </div>
-    <div class="w-10/12 mx-auto mt-4 h-screen">
+    <div class="w-10/12 mx-auto my-4 h-screen">
         <p class="text-lg">
             {{$mbti->story}}
         </p>
     </div>
     @auth()
         @if($mbti->user_id == auth()->user()->id)
-            <div class="w-10/12 mx-auto mt-4 text-lg">
+            <div class="w-10/12 mx-auto my-4 text-lg">
                 <span class="hover:text-blue-300"><a href="{{route('mbtis.enfj.edit', $mbti->id)}}"><i class="xi-pen-o pr-2"></i><button>수정</button></a></span>
                 <form action="{{route('mbtis.enfj.destroy', $mbti->id)}}" method="post" class="inline-block">
                     @csrf
