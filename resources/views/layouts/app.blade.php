@@ -136,7 +136,7 @@
     @section('container')
     @show
 </section>
-<footer class="w-7/12 min-h-30 mx-auto pt-8">
+<footer class="w-full xl:w-7/12 min-h-30 mx-auto pt-8">
     Copyright<br>
 
 </footer>
