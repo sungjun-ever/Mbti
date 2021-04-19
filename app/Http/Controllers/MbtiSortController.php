@@ -48,11 +48,10 @@ class MbtiSortController extends Controller
 
     public function show($id)
     {
-        $mbtiName = $this->mbtisName();
         $mbti = Mbti::where('id', $id)->first();
         $cmts = Comment::where('mbti_id', $id)->orderBy('id', 'desc')->get();
 
-        return view('mbtis.'.$mbtiName.'.show', compact(['mbti', 'cmts', 'mbtiName']));
+        return view('mbtis.'.$mbti->mbtiSort.'.show', compact(['mbti', 'cmts']));
     }
 
     /**

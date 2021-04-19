@@ -10,7 +10,7 @@
     </div>
     @auth()
         <div class="border-t-4 border-gray-300 pt-8">
-        <form action="{{route('mbtis.'.$mbtiName.'.comments.store', $mbti->id)}}" method="post">
+        <form action="{{route('mbtis.'.$mbti->mbtiSort.'.comments.store', $mbti->id)}}" method="post">
             @csrf
             <label for="story" class="hidden"></label>
             <textarea id="story" name="story" class="w-full border-2 border-blue-300 pl-2 pt-2 rounded-sm outline-none resize-none" rows="4"></textarea>
