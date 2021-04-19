@@ -208,11 +208,11 @@ Route::prefix('/frees')->group(function(){
 });
 
 Route::prefix('/suggests')->group(function(){
-    Route::get('/', [FreeController::class, 'index'])->name('suggests.index');
-    Route::get('/create', [FreeController::class, 'create'])->name('suggests.create')->middleware('auth');
-    Route::post('/', [FreeController::class, 'store'])->name('suggests.store')->middleware('auth');
-    Route::get('/{suggest}', [FreeController::class, 'show'])->name('suggests.show');
-    Route::get('/{suggest}/edit', [FreeController::class, 'edit'])->name('suggests.edit')->middleware('auth');
-    Route::put('/{suggest}', [FreeController::class, 'update'])->name('suggests.update')->middleware('auth');
-    Route::delete('/{suggest}', [FreeController::class, 'destroy'])->name('suggests.destroy')->middleware('auth');
+    Route::get('/', [SuggestController::class, 'index'])->name('suggests.index');
+    Route::get('/create', [SuggestController::class, 'create'])->name('suggests.create')->middleware('auth');
+    Route::post('/', [SuggestController::class, 'store'])->name('suggests.store')->middleware('auth');
+    Route::get('/{suggest}', [SuggestController::class, 'show'])->name('suggests.show');
+    Route::get('/{suggest}/edit', [SuggestController::class, 'edit'])->name('suggests.edit')->middleware('auth');
+    Route::put('/{suggest}', [SuggestController::class, 'update'])->name('suggests.update')->middleware('auth');
+    Route::delete('/{suggest}', [SuggestController::class, 'destroy'])->name('suggests.destroy')->middleware('auth');
 });

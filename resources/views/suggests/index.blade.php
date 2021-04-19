@@ -10,13 +10,13 @@
                 <tr>
                     <td class="w-7/12"></td>
                     <td class="w-1/12"></td>
-                    <td class="w-1/12"></td>
+                    <td class="w-1/12 xl:table-cell hidden"></td>
                 </tr>
                 @foreach($sugs as $sug)
                     <tr class="border-b">
-                        <td class="text-lg truncate pl-2"><a href="{{route('suggests.show', $sug->id)}}" class="text-sm">{{$sug->title}}</a></td>
-                        <td class="text-center text-sm">{{$sug->user_name}}</td>
-                        <td class="text-sm ">{{$sug->created_at->format('Y-m-d')}}</td>
+                        <td class="text-lg truncate pl-2"><a href="{{route('suggests.show', $sug->id)}}" class="text-lg">{{$sug->title}}</a></td>
+                        <td class="text-center xl:text-base text-xs">{{$sug->user_name}}</td>
+                        <td class="w-1/12 xl:table-cell hidden">{{$sug->created_at->format('Y-m-d')}}</td>
                     </tr>
                 @endforeach
             </table>
