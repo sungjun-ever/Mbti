@@ -8,6 +8,9 @@
             </div>
         @endforeach
     </div>
+    <div class="pb-4">
+        {{$cmts->links()}}
+    </div>
     @auth()
         <div class="border-t-4 border-gray-300 pt-8">
         <form action="{{route('mbtis.'.$mbti->mbtiSort.'.comments.store', $mbti->id)}}" method="post">
