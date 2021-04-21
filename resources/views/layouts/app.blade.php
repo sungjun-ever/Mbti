@@ -12,22 +12,22 @@
 <body class="bg-gray-100 h-screen">
 <header class="flex bg-blue-300 h-16 align-items-center shadow-md">
     @include('layouts.sidemenu')
-    <div class="w-3/12 text-2xl">
+    <div class="flex-1 text-2xl">
         <i class="xi-bars pl-4 cursor-pointer hover:text-gray-50" onclick="openNav()"></i>
     </div>
-    <div class="flex w-5/12">
-        <div>
+    <div class="flex-initial flex pr-4">
+        <div class="flex-initial">
             <a href="{{route('home')}}">
                 <button class="hover:text-gray-50 xl:text-xl text-lg">MBTI</button>
             </a>
         </div>
-        <div class="ml-4 xl:text-md text-base pt-1 xl:block hidden">
+        <div class="flex-initial ml-4 xl:text-md text-base pt-1 xl:block hidden">
             <a href="{{route('mbtis.index')}}"><button class="hover:text-gray-50">성격유형</button></a>
             <a href="{{route('frees.index')}}"><button class="hover:text-gray-50 ml-3">자유게시판</button></a>
             <a href="{{route('suggests.index')}}" ><button class="hover:text-gray-50 ml-3">건의게시판</button></a>
         </div>
     </div>
-    <div class="w-2/12 text-right xl:text-lg text-md">
+    <div class="flex-1 text-right xl:text-lg text-md hidden xl:block">
         @guest
             <a href="{{route('loginPage')}}" class="mr-2"><button class="hover:text-gray-50">로그인</button></a>
             <a href="{{route('registerPage')}}"><button class="hover:text-gray-50">회원가입</button></a>
@@ -40,7 +40,7 @@
             </form>
         @endauth
     </div>
-    <div class="w-3/12"></div>
+    <div class="flex-1 hidden xl:block"></div>
 </header>
 
 <section class="bg-white w-full min-h-full mx-auto shadow-md pb-16 xl:w-7/12">
