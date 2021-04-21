@@ -51,7 +51,6 @@ class MbtiSortController extends Controller
         $mbti = Mbti::where('id', $id)->first();
         $cmts = Comment::where('mbti_id', $id)->orderBy('id', 'desc')->paginate(20, ['*'], 'cmt');
 
-
         return view('mbtis.'.$mbti->mbtiSort.'.show', compact(['mbti', 'cmts']));
     }
 
