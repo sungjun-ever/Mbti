@@ -25,67 +25,67 @@
                 <button class="text-md text-center hover:text-blue-500">성격유형</button>
             </div>
             <div id="mbtiNav" class="py-2 hidden pl-2 bg-white shadow-md">
-                <a href="#" class="hover:text-blue-300 py-2 xl:inline-block block">
+                <a href="{{route('mbtis.enfj.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
                     ENFJ
                 </a>
 
-                <a href="#" class="hover:text-blue-300 py-2 xl:inline-block block">
+                <a href="{{route('mbtis.enfp.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
                     ENFP
                 </a>
 
-                <a href="#" class="hover:text-blue-300 py-2 xl:inline-block block">
+                <a href="{{route('mbtis.entj.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
                     ENTJ
                 </a>
 
-                <a href="#" class="hover:text-blue-300 py-2 xl:inline-block block">
+                <a href="{{route('mbtis.entp.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
                     ENTP
                 </a>
 
-                <a href="#" class="hover:text-blue-300 py-2 xl:inline-block block">
+                <a href="{{route('mbtis.esfj.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
                     ESFJ
                 </a>
 
-                <a href="#" class="hover:text-blue-300 py-2 xl:inline-block block">
+                <a href="{{route('mbtis.esfp.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
                     ESFP
                 </a>
 
-                <a href="#" class="hover:text-blue-300 py-2 xl:inline-block block">
+                <a href="{{route('mbtis.estj.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
                     ESTJ
                 </a>
 
-                <a href="#" class="hover:text-blue-300 py-2 xl:inline-block block">
+                <a href="{{route('mbtis.estp.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
                     ESTP
                 </a>
 
-                <a href="#" class="hover:text-blue-300 py-2 xl:inline-block block">
+                <a href="{{route('mbtis.infj.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
                     INFJ
                 </a>
 
-                <a href="#" class="hover:text-blue-300 py-2 xl:inline-block block">
+                <a href="{{route('mbtis.infp.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
                     INFP
                 </a>
 
-                <a href="#" class="hover:text-blue-300 py-2 xl:inline-block block">
+                <a href="{{route('mbtis.intj.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
                     INTJ
                 </a>
 
-                <a href="#" class="hover:text-blue-300 py-2 xl:inline-block block">
+                <a href="{{route('mbtis.intp.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
                     INTP
                 </a>
 
-                <a href="#" class="hover:text-blue-300 py-2 xl:inline-block block">
+                <a href="{{route('mbtis.isfj.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
                     ISFJ
                 </a>
 
-                <a href="#" class="hover:text-blue-300 py-2 xl:inline-block block">
+                <a href="{{route('mbtis.isfp.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
                     ISFP
                 </a>
 
-                <a href="#" class="hover:text-blue-300 py-2 xl:inline-block block">
+                <a href="{{route('mbtis.istj.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
                     ISTJ
                 </a>
 
-                <a href="#" class="hover:text-blue-300 py-2 xl:inline-block block">
+                <a href="{{route('mbtis.istp.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
                     ISTP
                 </a>
             </div>
