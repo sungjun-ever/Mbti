@@ -12,7 +12,7 @@
         {{$cmts->links()}}
     </div>
     @auth()
-        <div class="border-t-4 border-gray-300 pt-8">
+        <div class="border-t-4 border-b-4 border-gray-300 py-8">
         <form action="{{route('mbtis.'.$mbti->mbtiSort.'.comments.store', $mbti->id)}}" method="post">
             @csrf
             <label for="story" class="hidden"></label>
