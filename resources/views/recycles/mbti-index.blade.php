@@ -1,4 +1,7 @@
 <div class="w-11/12 pt-12 mx-auto">
+    <div class="pt-8">
+        <span class="xl:text-2xl text-xl border-b-2 border-blue-300">{{strtoupper($mbtiName)}}</span>
+    </div>
     <div class="text-right pt-8">
         <a href="{{route('mbtis.'.$mbtiName.'.create')}}">
             <i class="xi-pen pr-1"></i><button class="">글쓰기</button>
