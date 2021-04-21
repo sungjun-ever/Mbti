@@ -21,13 +21,13 @@
                 <button class="hover:text-gray-50 xl:text-xl text-lg">MBTI</button>
             </a>
         </div>
-        <div class="flex-initial ml-4 xl:text-md text-base pt-1 xl:block hidden">
+        <div class="flex-initial ml-4 xl:text-md text-base pt-1 md:block hidden">
             <a href="{{route('mbtis.index')}}"><button class="hover:text-gray-50">성격유형</button></a>
             <a href="{{route('frees.index')}}"><button class="hover:text-gray-50 ml-3">자유게시판</button></a>
             <a href="{{route('suggests.index')}}" ><button class="hover:text-gray-50 ml-3">건의게시판</button></a>
         </div>
     </div>
-    <div class="flex-1 text-right xl:text-lg text-md hidden xl:block">
+    <div class="flex-1 text-right xl:text-lg text-md hidden md:block">
         @guest
             <a href="{{route('loginPage')}}" class="mr-2"><button class="hover:text-gray-50">로그인</button></a>
             <a href="{{route('registerPage')}}"><button class="hover:text-gray-50">회원가입</button></a>
