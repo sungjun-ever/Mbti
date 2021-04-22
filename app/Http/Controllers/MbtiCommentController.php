@@ -62,7 +62,7 @@ class MbtiCommentController extends Controller
         $cmt->mbti_id = $id;
         $cmt->mbti_name = $mbtiName;
         $cmt->class = 1;
-        $cmt->commentGroup = $cmtId;
+        $cmt->postComment = $cmtId;
         $cmt->story = $validation['story'];
         $cmt->save();
 
