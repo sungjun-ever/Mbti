@@ -18,12 +18,10 @@
         @endauth
     </div>
     <div>
-        <div id="openSubBtn" class="bg-blue-300 py-2 pl-3 text-white rounded" onclick="openSubNav()">
-            <button class="text-md text-center hover:text-blue-500">성격유형</button>
+        <div class="bg-blue-300 py-2 pl-3 text-white rounded" onclick="subNavBtnClick()">
+            <button id="subNavBtn" class="text-md text-center hover:text-blue-500" value="hidden">성격유형</button>
         </div>
-        <div id="closeSubBtn" class="bg-blue-300 py-2 pl-3 text-white rounded hidden" onclick="closeSubNav()">
-            <button class="text-md text-center hover:text-blue-500">성격유형</button>
-        </div>
+        {{--  성격 유형 메뉴  --}}
         <div id="mbtiNav" class="py-2 hidden pl-2 bg-white shadow-md">
             <a href="{{route('mbtis.enfj.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
                 ENFJ
@@ -89,11 +87,14 @@
                 ISTP
             </a>
         </div>
+        {{--  자유게시판  --}}
         <div class="bg-blue-300 py-2 mt-1 text-white rounded">
             <a href="{{route('frees.index')}}" class="inline-block pl-3">
                 <button class="hover:text-blue-500">자유게시판</button>
             </a>
         </div>
+
+        {{--  건의게시판  --}}
         <div class="bg-blue-300 py-2 mt-1 text-white rounded">
             <a href="{{route('suggests.index')}}" class="inline-block pl-3">
                 <button class="hover:text-blue-500">건의게시판</button>

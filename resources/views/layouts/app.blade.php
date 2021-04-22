@@ -57,16 +57,17 @@
     function closeNav() {
         document.getElementById('mySidenav').style.display = "none";
     }
-    function openSubNav() {
-        document.getElementById('mbtiNav').style.display = 'block';
-        document.getElementById('openSubBtn').style.display = 'none';
-        document.getElementById('closeSubBtn').style.display = 'block';
+    function subNavBtnClick(){
+        let subNavBtn = document.querySelector('#subNavBtn');
+        if(subNavBtn.value === 'hidden'){
+            document.getElementById('mbtiNav').style.display = 'block';
+            subNavBtn.value = 'show';
+        } else {
+            document.getElementById('mbtiNav').style.display = 'none';
+            subNavBtn.value = 'hidden';
+        }
     }
-    function closeSubNav() {
-        document.getElementById('mbtiNav').style.display = 'none';
-        document.getElementById('closeSubBtn').style.display = 'none';
-        document.getElementById('openSubBtn').style.display = 'block';
-    }
+
 </script>
 </body>
 </html>
