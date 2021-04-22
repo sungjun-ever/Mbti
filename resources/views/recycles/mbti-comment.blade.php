@@ -8,7 +8,7 @@
                 @auth()
                 <div class="py-1 text-right text-base">
                     <div class="pr-2 inline-block">
-                        <button id="commentReplyBtn" class="hover:text-blue-300" onclick="commentReply()" value="hidden">답글</button>
+                        <button id="{{$cmt->id}}" class="hover:text-blue-300" onclick="commentReply(this)" value="hidden">답글</button>
                     </div>
                     @if($cmt->user_id == auth()->user()->id)
                         <div class="pr-2 inline-block">
@@ -19,8 +19,8 @@
                 @endauth
             </div>
         {{--  댓글 답글   --}}
-            <div id="commentReplyBox" class="pt-3 w-4/5 ml-auto hidden">
-                <form  action="{{route('mbtis.'.$mbti->mbtiSort.'.comments.store', $mbti->id)}}" method="post">
+            <div id="{{$cmt->id}}box" class="pt-3 w-4/5 ml-auto hidden">
+                <form action="{{route($mbti->mbtiSort.'.comments.reply.store', $mbti->id, $cmt->id)}}" method="post">
                     @csrf
                     <label for="story" class="hidden"></label>
                     <textarea id="story" name="story" class="w-full border-2 border-blue-300 pl-2 pt-2 rounded-sm outline-none resize-none" rows="4"></textarea>
@@ -40,7 +40,7 @@
 {{--  댓글 작성  --}}
     @auth()
         <div class="border-t-4 border-b-4 border-gray-300 py-8">
-        <form action="{{route('mbtis.'.$mbti->mbtiSort.'.comments.store', $mbti->id)}}" method="post">
+        <form action="{{route($mbti->mbtiSort.'.comments.store', $mbti->id)}}" method="post">
             @csrf
             <label for="story" class="hidden"></label>
             <textarea id="story" name="story" class="w-full border-2 border-blue-300 pl-2 pt-2 rounded-sm outline-none resize-none" rows="4"></textarea>
@@ -52,14 +52,14 @@
     @endauth
 </div>
 <script>
-    function commentReply() {
-        let btn = document.querySelector('#commentReplyBtn');
-        if(btn.value === "hidden") {
-            document.getElementById('commentReplyBox').style.display = 'block';
-            btn.value = "show";
+    function commentReply(e) {
+        let replyBoxId = e.id + 'box';
+        if(e.value === "hidden") {
+            document.getElementById(replyBoxId).style.display = 'block';
+            e.value = "show";
         } else {
-            document.getElementById('commentReplyBox').style.display = 'none';
-            btn.value = "hidden";
+            document.getElementById(replyBoxId).style.display = 'none';
+            e.value = "hidden";
         }
     }
 </script>

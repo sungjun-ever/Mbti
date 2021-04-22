@@ -121,9 +121,21 @@ class MbtiSortController extends Controller
         $cmt->user_id = auth()->user()->id;
         $cmt->user_name = auth()->user()->name;
         $cmt->mbti_id = $id;
+        $cmt->mbti_name = $mbtiName;
         $cmt->story = $validation['story'];
         $cmt->save();
 
         return redirect()->route('mbtis.'.$mbtiName.'.show', $id);
+    }
+
+    public function commentDestroy(Request $request, $id)
+    {
+        $mbtiName = $this->mbtisName();
+        return redirect()->route('mbtis.'.$mbtiName.'.show', $id);
+    }
+
+    public function commentReplyStore($id)
+    {
+        $cmt = Comment::where('mbti_id', $id);
     }
 }

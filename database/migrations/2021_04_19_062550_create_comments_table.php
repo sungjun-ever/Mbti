@@ -19,6 +19,8 @@ class CreateCommentsTable extends Migration
             $table->string('user_name');
             $table->foreignId('mbti_id')->constrained('mbtis');
             $table->string('mbti_name');
+            $table->integer('class')->default(0);
+            $table->integer('commentGroup')->nullable();
             $table->string('status')->default('exist');
             $table->string('reply')->default('none');
             $table->text('story');

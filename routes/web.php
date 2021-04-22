@@ -8,6 +8,7 @@ use App\Http\Controllers\MbtiSortController;
 use App\Http\Controllers\FreeController;
 use App\Http\Controllers\SuggestController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MbtiCommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,7 +34,6 @@ Route::prefix('/auth')->group(function(){
 
 Route::get('/mbti', [MbtiController::class, 'index'])->name('mbtis.index');
 
-
 Route::prefix('/mbti')->group(function(){
     Route::prefix('/enfj')->group(function (){
         Route::get('/', [MbtiSortController::class, 'index'])->name('mbtis.enfj.index');
@@ -43,7 +43,10 @@ Route::prefix('/mbti')->group(function(){
         Route::get('/{enfj}/edit', [MbtiSortController::class, 'edit'])->name('mbtis.enfj.edit')->middleware('auth');
         Route::put('/{enfj}', [MbtiSortController::class, 'update'])->name('mbtis.enfj.update')->middleware('auth');
         Route::delete('/{enfj}', [MbtiSortController::class, 'destroy'])->name('mbtis.enfj.destroy')->middleware('auth');
-        Route::post('/{enfj}/comments', [MbtiSortController::class, 'commentStore'])->name('mbtis.enfj.comments.store')->middleware('auth');
+        Route::prefix('/{enfj}/comments')->group(function(){
+            Route::post('/', [MbtiCommentController::class, 'commentStore'])->name('enfj.comments.store')->middleware('auth');
+            Route::post('/{comment}', [MbtiCommentController::class, 'commentReplyStore'])->name('enfj.comments.reply.store')->middleware('auth');
+        });
     });
 
     Route::prefix('/enfp')->group(function (){
