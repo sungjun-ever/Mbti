@@ -34,14 +34,38 @@ class MbtiCommentController extends Controller
         return redirect()->route('mbtis.'.$mbtiName.'.show', $id);
     }
 
-    public function commentDestroy(Request $request, $id)
+    public function commentDestroy($id, $cmtId)
     {
         $mbtiName = $this->mbtisName();
+        $cmt = Comment::where('id', $cmtId)->first();
+        $cmt->story = '[삭제된 댓글입니다.]';
+        $cmt->status = 'delete';
+        $cmt->save();
         return redirect()->route('mbtis.'.$mbtiName.'.show', $id);
     }
 
-    public function commentReplyStore($id)
+    public function commentReplyStore(Request $request, $id, $cmtId)
     {
-        $cmt = Comment::where('mbti_id', $id);
+        $mbtiName = $this->mbtisName();
+
+        $validation = $request->validate([
+            'story' => 'required'
+        ]);
+
+        $postCmt = Comment::where('id', $cmtId)->first();
+        $postCmt->reply = 'exist';
+        $postCmt->save();
+
+        $cmt = new Comment();
+        $cmt->user_id = auth()->user()->id;
+        $cmt->user_name = auth()->user()->name;
+        $cmt->mbti_id = $id;
+        $cmt->mbti_name = $mbtiName;
+        $cmt->class = 1;
+        $cmt->commentGroup = $cmtId;
+        $cmt->story = $validation['story'];
+        $cmt->save();
+
+        return redirect()->route('mbtis.'.$mbtiName.'.show', $id);
     }
 }

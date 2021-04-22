@@ -22,8 +22,8 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => 1,
-            'user_name' => '홍길동',
+            'user_id' => 2,
+            'user_name' => '가나다',
             'mbti_id' => 681,
             'mbti_name' =>'enfj',
             'story' => $this->faker->sentence,
