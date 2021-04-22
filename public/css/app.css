@@ -24945,18 +24945,6 @@ video {
   min-height: 0px;
 }
 
-.min-h-30 {
-  min-height: 30%;
-}
-
-.min-h-50 {
-  min-height: 50%;
-}
-
-.min-h-80 {
-  min-height: 80%;
-}
-
 .min-h-full {
   min-height: 100%;
 }
