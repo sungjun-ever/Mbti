@@ -9,4 +9,9 @@ class Free extends Model
 {
     use HasFactory;
     protected $fillable = ['title', 'story'];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

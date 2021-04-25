@@ -22,11 +22,9 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => 2,
-            'user_name' => '가나다',
+            'user_id' => 1,
             'mbti_id' => 681,
-            'mbti_name' =>'enfj',
-            'story' => $this->faker->sentence,
+            'story' => $this->faker->sentence(),
         ];
     }
 }

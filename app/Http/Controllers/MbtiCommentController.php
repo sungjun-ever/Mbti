@@ -52,17 +52,9 @@ class MbtiCommentController extends Controller
             'story' => 'required'
         ]);
 
-        $postCmt = Comment::where('id', $cmtId)->first();
-        $postCmt->reply = 'exist';
-        $postCmt->save();
-
         $cmt = new Comment();
         $cmt->user_id = auth()->user()->id;
-        $cmt->user_name = auth()->user()->name;
         $cmt->mbti_id = $id;
-        $cmt->mbti_name = $mbtiName;
-        $cmt->class = 1;
-        $cmt->postComment = $cmtId;
         $cmt->story = $validation['story'];
         $cmt->save();
 
