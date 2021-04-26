@@ -3,7 +3,7 @@
     <div class="pt-4 pb-16" >
         @foreach($cmts as $cmt)
             <div class="mt-4 shadow-md" style="min-height: 120px;">
-                <div class="bg-blue-300 text-md text-white py-1 pl-2 rounded-sm">{{$cmt->user_name}}</div>
+                <div class="bg-blue-300 text-md text-white py-1 pl-2 rounded-sm">{{$cmt->user->name}}</div>
                 @if($cmt->status == 'delete')
                     <div class="pt-2 pl-2 text-base rounded-sm text-gray-400 font-bold" style="min-height: 80px;">{{$cmt->story}}</div>
                 @else
@@ -25,18 +25,37 @@
                 </div>
                 @endauth
             </div>
-        {{--대댓글--}}
-            <div id="{{$cmt->id}}box" class="pt-3 w-10/12 ml-auto hidden">
-                <form action="#" method="post">
-                    @csrf
-                    <label for="story" class="hidden"></label>
-                    <textarea id="story" name="story" class="w-full border-2 border-blue-300 pl-2 pt-2 rounded-sm outline-none resize-none" rows="4"></textarea>
-                    <div class="mt-4 text-right">
-                        <button type="submit" class="px-3 py-2 bg-blue-400 hover:bg-blue-600 text-gray-50 rounded-sm">작성</button>
-                    </div>
-                </form>
-            </div>
+            {{--대댓글 작성--}}
+            @include('recycles.mbti-reply', ['id'=>$cmt->id])
 
+            @foreach($cmt->replys as $reply)
+                <div class="mt-4 shadow-md w-10/12 ml-auto" style="min-height: 120px;">
+                    <div class="bg-blue-300 text-md text-white py-1 pl-2 rounded-sm">{{$reply->user->name}}</div>
+                    @if($reply->status == 'delete')
+                        <div class="pt-2 pl-2 text-base rounded-sm text-gray-400 font-bold" style="min-height: 80px;">{{$reply->story}}</div>
+                    @else
+                        <div class="pt-2 pl-2 text-base rounded-sm" style="min-height: 80px;">{{$reply->story}}</div>
+                    @endif
+
+                    @auth()
+                        <div class="py-1 text-right text-base">
+                            <div class="pr-2 inline-block">
+                                <button id="{{$reply->id}}" class="hover:text-blue-300" onclick="commentReply(this)" value="hidden">답글</button>
+                            </div>
+                            @if($reply->user_id == auth()->user()->id)
+                                <div class="pr-2 inline-block">
+                                    <form action="{{route($mbti->mbtiSort.'.comments.destroy', [$mbti->id, $reply->id])}}" method="post" class="inline-block">
+                                        @csrf
+                                        <button type="submit" class="hover:text-blue-300">삭제</button>
+                                    </form>
+                                </div>
+                            @endif
+                        </div>
+                    @endauth
+                </div>
+                {{--대댓글 작성--}}
+                @include('recycles.mbti-reply', ['id'=>$reply->id])
+            @endforeach
         @endforeach
     </div>
 
