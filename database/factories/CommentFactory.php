@@ -24,6 +24,8 @@ class CommentFactory extends Factory
         return [
             'user_id' => 1,
             'mbti_id' => 681,
+            'comment_id'=> 11,
+            'class' => 1,
             'story' => $this->faker->sentence(),
         ];
     }

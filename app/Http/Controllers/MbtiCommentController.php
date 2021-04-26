@@ -25,9 +25,8 @@ class MbtiCommentController extends Controller
 
         $cmt = new Comment();
         $cmt->user_id = auth()->user()->id;
-        $cmt->user_name = auth()->user()->name;
         $cmt->mbti_id = $id;
-        $cmt->mbti_name = $mbtiName;
+        $cmt->comment_id = $cmt->id;
         $cmt->story = $validation['story'];
         $cmt->save();
 
@@ -55,6 +54,7 @@ class MbtiCommentController extends Controller
         $cmt = new Comment();
         $cmt->user_id = auth()->user()->id;
         $cmt->mbti_id = $id;
+        $cmt->comment_id = $cmtId;
         $cmt->story = $validation['story'];
         $cmt->save();
 

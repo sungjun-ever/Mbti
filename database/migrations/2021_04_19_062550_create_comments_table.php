@@ -18,6 +18,7 @@ class CreateCommentsTable extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('mbti_id')->constrained('mbtis');
             $table->integer('comment_id');
+            $table->integer('class')->default(0);
             $table->string('status')->default('exist');
             $table->text('story');
             $table->timestamps();
