@@ -51,17 +51,17 @@ class MbtiSortController extends Controller
     {
         $mbti = Mbti::where('id', $id)->first();
 
-        $comments = $mbti->comments()->where('class', 0)->orderBy('created_at', 'desc')->paginate(5);
-        foreach($comments as $comment){
-            $comment->replys;
+        $cmts = $mbti->comments()->where('class', 0)->orderBy('created_at', 'desc')->paginate(5);
+        foreach($cmts as $cmt){
+            $cmt->replys;
         }
 
 
 
         $mbtis = Mbti::where('mbtiSort', $mbti->mbtiSort)->orderBy('id', 'desc')->paginate(20);
 
-//        return view('mbtis.'.$mbti->mbtiSort.'.show', compact(['mbti', 'cmts', 'mbtis']));
-        return response()->json([$comments], 200);
+        return view('mbtis.'.$mbti->mbtiSort.'.show', compact(['mbti', 'cmts', 'mbtis']));
+//        return response()->json([$comments], 200);
     }
 
     /**

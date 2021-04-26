@@ -19,6 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/mbti/enfj/{enfj}', [MbtiSortController::class, 'show']);
+//Route::get('/mbti/enfj/{enfj}', [MbtiSortController::class, 'show']);
 
 
