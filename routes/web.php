@@ -46,6 +46,7 @@ Route::prefix('/mbti')->group(function(){
         Route::prefix('/{enfj}/comments')->group(function(){
             Route::post('/', [MbtiCommentController::class, 'commentStore'])->name('enfj.comments.store')->middleware('auth');
             Route::post('/{comment}', [MbtiCommentController::class, 'commentDestroy'])->name('enfj.comments.destroy')->middleware('auth');
+            Route::post('/{comment}/reply', [MbtiCommentController::class, 'commentReplyStore'])->name('enfj.comments.reply.store')->middleware('auth');
         });
     });
 

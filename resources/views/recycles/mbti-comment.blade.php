@@ -28,6 +28,7 @@
             {{--대댓글 작성--}}
             @include('recycles.mbti-reply', ['id'=>$cmt->id])
 
+            {{--  대댓글 목록  --}}
             @foreach($cmt->replys as $reply)
                 <div class="mt-4 shadow-md w-10/12 ml-auto" style="min-height: 120px;">
                     <div class="bg-blue-300 text-md text-white py-1 pl-2 rounded-sm">{{$reply->user->name}}</div>
@@ -54,7 +55,7 @@
                     @endauth
                 </div>
                 {{--대댓글 작성--}}
-                @include('recycles.mbti-reply', ['id'=>$reply->id])
+                @include('recycles.mbti-reply', ['mbti'=>$cmt->mbti_id, 'id'=>$cmt->id])
             @endforeach
         @endforeach
     </div>
