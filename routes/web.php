@@ -45,6 +45,7 @@ Route::prefix('/mbti')->group(function(){
         Route::delete('/{enfj}', [MbtiSortController::class, 'destroy'])->name('mbtis.enfj.destroy')->middleware('auth');
         Route::prefix('/{enfj}/comments')->group(function(){
             Route::post('/', [MbtiCommentController::class, 'commentStore'])->name('enfj.comments.store')->middleware('auth');
+            Route::put('/{comment}', [MbtiCommentController::class, 'commentUpdate'])->name('enfj.comments.update')->middleware('auth');
             Route::post('/{comment}', [MbtiCommentController::class, 'commentDestroy'])->name('enfj.comments.destroy')->middleware('auth');
             Route::post('/{comment}/reply', [MbtiCommentController::class, 'commentReplyStore'])->name('enfj.comments.reply.store')->middleware('auth');
         });

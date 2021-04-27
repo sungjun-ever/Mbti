@@ -32,6 +32,18 @@ class MbtiCommentController extends Controller
         return redirect()->route('mbtis.'.$mbtiName.'.show', $id);
     }
 
+    public function commentUpdate($cmtId)
+    {
+        $validation = request()->validate([
+           'story' => 'required'
+        ]);
+        $cmt = Comment::where('id', $cmtId)->first();
+        $cmt->story = $validation['required'];
+        $cmt->save();
+
+        return redirect()->route('mbtis.'.$cmt->mbti->mbtiSort.'.show', $cmt->mbti->id);
+    }
+
     public function commentDestroy($id, $cmtId)
     {
         $mbtiName = $this->mbtisName();

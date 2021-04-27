@@ -1,4 +1,4 @@
-<div id="{{$id}}box" class="pt-3 w-10/12 ml-auto hidden">
+<div id="{{$id}}replyBox" class="pt-3 w-10/12 ml-auto hidden">
     <form action="{{route('enfj.comments.reply.store', [$mbti, $id])}}" method="post">
         @csrf
         <label for="story" class="hidden"></label>

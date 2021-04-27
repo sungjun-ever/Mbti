@@ -7,7 +7,9 @@
                 @if($cmt->status == 'delete')
                     <div class="pt-2 pl-2 text-base rounded-sm text-gray-400 font-bold" style="min-height: 80px;">{{$cmt->story}}</div>
                 @else
-                    <div class="pt-2 pl-2 text-base rounded-sm" style="min-height: 80px;">{{$cmt->story}}</div>
+                    <div class="pt-2 pl-2 " style="min-height: 80px;">
+                        <div class="text-base rounded-sm">{{$cmt->story}}</div>
+                    </div>
                 @endif
                 @auth()
                 <div class="py-1 text-right text-base">
@@ -16,6 +18,7 @@
                     </div>
                     @if($cmt->user_id == auth()->user()->id)
                         <div class="pr-2 inline-block">
+                            <button class="hover:text-blue-300 pr-2">수정</button>
                             <form action="{{route($mbti->mbtiSort.'.comments.destroy', [$mbti->id, $cmt->id])}}" method="post" class="inline-block">
                                 @csrf
                                 <button type="submit" class="hover:text-blue-300">삭제</button>
@@ -81,7 +84,7 @@
 </div>
 <script>
     function commentReply(e) {
-        let replyBoxId = e.id + 'box';
+        let replyBoxId = e.id + 'replyBox';
         if(e.value === "hidden") {
             document.getElementById(replyBoxId).style.display = 'block';
             e.value = "show";
@@ -90,6 +93,7 @@
             e.value = "hidden";
         }
     }
+
 </script>
 
 
