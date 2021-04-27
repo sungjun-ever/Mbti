@@ -1,6 +1,6 @@
 <div class="w-10/12 mx-auto pt-8">
     <div class="pb-4">
-        <span class="xl:text-2xl text-xl text-blue-500 font-bold">목록</span>
+        <span class="xl:text-2xl text-xl text-blue-500 font-bold">{{strtoupper($mbti->mbtiSort)}}</span>
     </div>
     <table class="w-full table-fixed">
         <tr>
