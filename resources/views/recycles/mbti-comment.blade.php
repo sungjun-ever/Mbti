@@ -29,7 +29,7 @@
                     </div>
                     @endauth
                 </div>
-            @elseif($cmt->class == 1)
+            @else
                 <div class="w-10/12 mt-4 shadow-md ml-auto" style="min-height: 120px;">
                     <div class="bg-blue-300 text-md text-white py-1 pl-2 rounded-sm">{{$cmt->user->name}}</div>
                     @if($cmt->status == 'delete')
@@ -58,8 +58,7 @@
                 </div>
             @endif
             {{--대댓글 작성--}}
-            @include('recycles.mbti-reply', ['id'=>$cmt->id])
-
+            @include('recycles.mbti-reply', ['mbti'=>$cmt->mbti_id,'id'=>$cmt->id])
         @endforeach
     </div>
 

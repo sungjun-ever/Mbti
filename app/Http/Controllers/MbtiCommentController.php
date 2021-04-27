@@ -28,7 +28,8 @@ class MbtiCommentController extends Controller
         $cmt->mbti_id = $id;
         $cmt->story = $validation['story'];
         $cmt->save();
-
+        $cmt->comment_id = $cmt->id;
+        $cmt->save();
         return redirect()->route('mbtis.'.$mbtiName.'.show', $id);
     }
 
@@ -62,11 +63,13 @@ class MbtiCommentController extends Controller
             'story' => 'required'
         ]);
 
+        $parent = Comment::select('comment_id', 'class')->where('id', $cmtId)->first();
+
         $cmt = new Comment();
         $cmt->user_id = auth()->user()->id;
         $cmt->mbti_id = $id;
-        $cmt->comment_id = $cmtId;
-        $cmt->class = 1;
+        $cmt->comment_id = $parent->comment_id;
+        $cmt->class = $parent->class + 1;
         $cmt->story = $validation['story'];
         $cmt->save();
 
