@@ -2,8 +2,7 @@
 <div class="w-10/12 border-t-4 border-blue-300 mx-auto">
     <div class="pt-4 pb-16" >
         @foreach($cmts as $cmt)
-            @if($cmt->class == 0)
-                <div class="mt-4 shadow-md" style="min-height: 120px;">
+                <div class="mt-4 shadow-md @if($cmt->class != 0) w-10/12 ml-auto @endif" style="min-height: 120px;">
                     <div class="bg-blue-300 text-md text-white py-1 pl-2 rounded-sm">{{$cmt->user->name}}</div>
                     @if($cmt->status == 'delete')
                         <div class="pt-2 pl-2 text-base rounded-sm text-gray-400 font-bold" style="min-height: 80px;">{{$cmt->story}}</div>
@@ -19,7 +18,7 @@
                         </div>
                         @if($cmt->user_id == auth()->user()->id)
                             <div class="pr-2 inline-block">
-                                <button class="hover:text-blue-300 pr-2">수정</button>
+                                <button class="hover:text-blue-300 pr-2" onclick="editComment(this)">수정</button>
                                 <form action="{{route($mbti->mbtiSort.'.comments.destroy', [$mbti->id, $cmt->id])}}" method="post" class="inline-block">
                                     @csrf
                                     <button type="submit" class="hover:text-blue-300">삭제</button>
@@ -29,34 +28,6 @@
                     </div>
                     @endauth
                 </div>
-            @else
-                <div class="w-10/12 mt-4 shadow-md ml-auto" style="min-height: 120px;">
-                    <div class="bg-blue-300 text-md text-white py-1 pl-2 rounded-sm">{{$cmt->user->name}}</div>
-                    @if($cmt->status == 'delete')
-                        <div class="pt-2 pl-2 text-base rounded-sm text-gray-400 font-bold" style="min-height: 80px;">{{$cmt->story}}</div>
-                    @else
-                        <div class="pt-2 pl-2 " style="min-height: 80px;">
-                            <div class="text-base rounded-sm">{{$cmt->story}}</div>
-                        </div>
-                    @endif
-                    @auth()
-                        <div class="py-1 text-right text-base">
-                            <div class="pr-2 inline-block">
-                                <button id="{{$cmt->id}}" class="hover:text-blue-300" onclick="commentReply(this)" value="hidden">답글</button>
-                            </div>
-                            @if($cmt->user_id == auth()->user()->id)
-                                <div class="pr-2 inline-block">
-                                    <button class="hover:text-blue-300 pr-2">수정</button>
-                                    <form action="{{route($mbti->mbtiSort.'.comments.destroy', [$mbti->id, $cmt->id])}}" method="post" class="inline-block">
-                                        @csrf
-                                        <button type="submit" class="hover:text-blue-300">삭제</button>
-                                    </form>
-                                </div>
-                            @endif
-                        </div>
-                    @endauth
-                </div>
-            @endif
             {{--대댓글 작성--}}
             @include('recycles.mbti-reply', ['cmt'=>$cmt,'id'=>$cmt->id])
         @endforeach
@@ -91,6 +62,10 @@
             document.getElementById(replyBoxId).style.display = 'none';
             e.value = "hidden";
         }
+    }
+
+    function editComment(e){
+
     }
 
 </script>
