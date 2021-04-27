@@ -58,7 +58,7 @@
                 </div>
             @endif
             {{--대댓글 작성--}}
-            @include('recycles.mbti-reply', ['mbti'=>$cmt->mbti_id,'id'=>$cmt->id])
+            @include('recycles.mbti-reply', ['cmt'=>$cmt,'id'=>$cmt->id])
         @endforeach
     </div>
 
