@@ -49,7 +49,6 @@ class MbtiCommentController extends Controller
     {
         $mbtiName = $this->mbtisName();
         $cmt = Comment::where('id', $cmtId)->first();
-        $cmt->story = '[삭제된 댓글입니다.]';
         $cmt->status = 'delete';
         $cmt->save();
         return redirect()->route('mbtis.'.$mbtiName.'.show', $id);
