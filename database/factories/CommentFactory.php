@@ -23,8 +23,8 @@ class CommentFactory extends Factory
     {
         return [
             'user_id' => 1,
-            'mbti_id' => 681,
-            'comment_id'=> 1,
+            'mbti_id' => 680,
+            'comment_id'=> 3,
             'class' => 1,
             'story' => $this->faker->sentence(),
         ];

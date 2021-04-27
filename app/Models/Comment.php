@@ -20,9 +20,4 @@ class Comment extends Model
     {
         return $this->belongsTo('App\Models\Mbti');
     }
-
-    public function replys()
-    {
-        return $this->hasMany('App\Models\Comment', 'comment_id', );
-    }
 }

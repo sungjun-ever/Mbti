@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Mbti;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -51,9 +52,14 @@ class MbtiSortController extends Controller
     {
         $mbti = Mbti::where('id', $id)->first();
 
-        $cmts = $mbti->comments()->where('class', 0)->orderBy('created_at', 'desc')->paginate(5);
-        foreach($cmts as $cmt){
-            $cmt->replys;
+        $cmts = Comment::selectRaw('comments.*, r.*')
+                ->join('comments as r', 'r.comment_id', '=', 'comments.id')
+                ->where('comments.mbti_id', $id)
+                ->orderByDesc('comments.comment_id')
+                ->orderBy('r.class')
+                ->orderByDesc('r.created_at')->paginate(5);
+
+        foreach ($cmts as $cmt){
             $cmt->user;
         }
 
