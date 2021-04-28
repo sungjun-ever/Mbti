@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('container')
-    <div class="pt-16">
+    <div class="pt-16 min-h-screen">
         <div class="w-10/12 mx-auto border-b-2 border-blue-300">
-            <p class="truncate text-lg pb-1">
+            <p class="truncate text-xl font-bold pb-1">
                 {{$free->title}}
             </p>
         </div>
-        <div class="w-10/12 mx-auto mt-4 min-h-50">
+        <div class="w-10/12 mx-auto mt-4 h-screen">
             <p class="text-lg">
                 {{$free->story}}
             </p>
