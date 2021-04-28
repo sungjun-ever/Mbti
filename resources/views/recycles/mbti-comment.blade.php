@@ -7,7 +7,7 @@
                         <div class="bg-blue-300 text-md text-white py-1 pl-2 rounded-sm">{{$cmt->user->name}}</div>
                             <div class="pt-2 pl-2 " style="min-height: 80px;">
                                 @if($cmt->status == 'delete')
-                                    <div class="text-base rounded-sm text-gray-400 font-bold" style="min-height: 50px;">[삭제된 댓글입니다.]</div>
+                                    <div class="text-base rounded-sm text-gray-400 font-semibold" style="min-height: 50px;">[삭제된 댓글입니다.]</div>
                                 @else
                                     <div class="text-base rounded-sm" style="min-height: 50px;">{{$cmt->story}}</div>
                                 @endif
