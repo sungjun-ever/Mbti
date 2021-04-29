@@ -33,7 +33,8 @@ Route::prefix('/auth')->group(function(){
     Route::post('/login', [UserController::class, 'login'])->name('login');
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
     Route::get('/info', [UserController::class, 'userInfo'])->name('info')->middleware('auth');
-    Route::get('/edit', [UserController::class])->name('editUserInfo');
+    Route::get('/userPosts', [UserController::class, 'userPost'])->name('userPost')->middleware('auth');
+    Route::get('/userComments', [UserController::class, 'userComment'])->name('userComment')->middleware('auth');
 });
 
 Route::get('/mbti', [MbtiController::class, 'index'])->name('mbtis.index');

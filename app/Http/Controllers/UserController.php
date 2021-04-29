@@ -62,4 +62,14 @@ class UserController extends Controller
 
         return view('auth.userInfo');
     }
+
+    public function userPost()
+    {
+
+    }
+
+    public function userComment()
+    {
+
+    }
 }
