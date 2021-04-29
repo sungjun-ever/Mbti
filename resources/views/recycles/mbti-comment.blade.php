@@ -41,7 +41,7 @@
                             <div class="mt-4 text-right">
                                 <button type="submit" class="px-3 py-2 bg-blue-400 hover:bg-blue-600 text-gray-50 rounded-sm">수정</button>
                                 <button id="{{$cmt->id}}" type="button"
-                                        class="px-3 py-2 bg-red-400 hover:bg-red-600 text-gray-50 rounded-sm" onclick="editCancle(this)">취소</button>
+                                        class="px-3 py-2 bg-red-400 hover:bg-red-600 text-gray-50 rounded-sm" onclick="editCancel(this)">취소</button>
                             </div>
                         </form>
                     </div>
@@ -89,7 +89,7 @@
         document.getElementById(editBox).style.display = 'block';
     }
 
-    function editCancle(e){
+    function editCancel(e){
         let cmtBox = e.id + 'cmtBox';
         let editBox = e.id + 'editBox';
         document.getElementById(cmtBox).style.display = 'block';
