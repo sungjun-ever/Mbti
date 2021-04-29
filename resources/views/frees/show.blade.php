@@ -52,7 +52,7 @@
                                         <button id="{{$cmt->id}}" class="hover:text-blue-300 pr-2" onclick="editComment(this)" value="hidden">수정</button>
                                         <form action="{{route('frees.comments.destroy', [$free->id, $cmt->id])}}" method="post" class="inline-block">
                                             @csrf
-                                            @method('put')
+                                            @method('delete')
                                             <button type="submit" class="hover:text-blue-300">삭제</button>
                                         </form>
                                     </div>
@@ -62,7 +62,7 @@
                     </div>
                     {{--  댓글 수정   --}}
                     <div id="{{$cmt->id}}editBox" class="py-8 hidden">
-                        <form action="#" method="post">
+                        <form action="{{route('frees.comments.update', [$free->id, $cmt->id])}}" method="post">
                             @csrf
                             @method('put')
                             <label for="story" class="hidden"></label>

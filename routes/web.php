@@ -305,7 +305,7 @@ Route::prefix('/frees')->group(function(){
     Route::prefix('/{free}/comments')->group(function(){
         Route::post('/', [FreeCommentController::class , 'store'])->name('frees.comments.store')->middleware('auth');
         Route::put('/{comment}', [FreeCommentController::class , 'update'])->name('frees.comments.update')->middleware('auth');
-        Route::put('/{comment}', [FreeCommentController::class , 'destroy'])->name('frees.comments.destroy')->middleware('auth');
+        Route::delete('/{comment}', [FreeCommentController::class , 'destroy'])->name('frees.comments.destroy')->middleware('auth');
         Route::post('/{comment}/reply', [FreeCommentController::class, 'replyStore'])->name('frees.comments.reply.store')->middleware('auth');
     });
 });
