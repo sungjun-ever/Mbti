@@ -2,7 +2,7 @@
 
 
 @section('container')
-    <div class="pt-16 xl:w-10/12 mx-auto min-h-full">
+    <div class="pt-16 mx-auto min-h-full">
         <div class="flex w-full">
             <div class="flex-initial flex flex-column text-base pt-8 px-8 border" style="min-height: 300px">
                 <div class="">
@@ -16,13 +16,14 @@
                 </div>
             </div>
             <div class="flex-1 border">
-                <div class="pt-8 w-2/3 mx-auto">
-                    <div class="text-lg font-bold">회원정보</div>
-                    <div class="mt-4 text-base">
-                        <div>이름 : {{auth()->user()->name}}</div>
-                        <div class="pt-2">이메일 : {{auth()->user()->email}}</div>
-                        <div class="pt-2">가입날짜 : {{auth()->user()->created_at->format('Y-m-d')}}</div>
+                <div class="pt-8 w-11/12 ml-auto">
+                    <div class="text-lg font-bold">작성 게시글</div>
+                    <div class="mt-4 p-2 xl:w-8/12 w-full">
+                        @foreach($posts as $post)
+                            <div class="border-b border-gray-200 py-1"><a href="">{{$post->title}}</a></div>
+                        @endforeach
                     </div>
+                    <div class="py-4">{{$posts->onEachSide(1)->links()}}</div>
                 </div>
             </div>
         </div>

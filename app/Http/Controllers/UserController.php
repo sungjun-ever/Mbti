@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mbti;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -63,9 +65,12 @@ class UserController extends Controller
         return view('auth.userInfo');
     }
 
-    public function userPost()
+    public function userPost($id)
     {
-
+        $mbtis = DB::table('mbtis')->select('user_id', 'title', 'created_at')->where('user_id', $id);
+        $posts = DB::table('frees')->select('user_id', 'title', 'created_at')->where('user_id', $id)
+                ->unionAll($mbtis)->orderByDesc('created_at')->paginate(5);
+        return view('auth.userPost', compact('posts'));
     }
 
     public function userComment()
