@@ -14,7 +14,7 @@ class MbtiCommentController extends Controller
         return $name;
     }
 
-    public function commentStore(Request $request, $id)
+    public function store(Request $request, $id)
     {
 
         $mbtiName = $this->mbtisName();
@@ -33,7 +33,7 @@ class MbtiCommentController extends Controller
         return redirect()->route('mbtis.'.$mbtiName.'.show', $id);
     }
 
-    public function commentUpdate($id, $cmtId)
+    public function update($id, $cmtId)
     {
         $validation = request()->validate([
            'story' => 'required'
@@ -45,7 +45,7 @@ class MbtiCommentController extends Controller
         return redirect()->route('mbtis.'.$cmt->mbti->mbtiSort.'.show', $cmt->mbti->id);
     }
 
-    public function commentDestroy($id, $cmtId)
+    public function destroy($id, $cmtId)
     {
         $mbtiName = $this->mbtisName();
         $cmt = MbtiComment::where('id', $cmtId)->first();
@@ -54,7 +54,7 @@ class MbtiCommentController extends Controller
         return redirect()->route('mbtis.'.$mbtiName.'.show', $id);
     }
 
-    public function commentReplyStore(Request $request, $id, $cmtId)
+    public function replyStore(Request $request, $id, $cmtId)
     {
         $mbtiName = $this->mbtisName();
 
