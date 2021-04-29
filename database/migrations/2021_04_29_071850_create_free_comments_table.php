@@ -19,6 +19,7 @@ class CreateFreeCommentsTable extends Migration
             $table->foreignId('free_id')->constrained('frees');
             $table->integer('comment_id');
             $table->integer('class')->default(0);
+            $table->string('status')->default('exist');
             $table->text('story');
             $table->timestamps();
         });
