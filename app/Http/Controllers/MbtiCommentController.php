@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
+use App\Models\MbtiComment;
 use Illuminate\Http\Request;
 
 class MbtiCommentController extends Controller
@@ -23,7 +23,7 @@ class MbtiCommentController extends Controller
             'story' => 'required'
         ]);
 
-        $cmt = new Comment();
+        $cmt = new MbtiComment();
         $cmt->user_id = auth()->user()->id;
         $cmt->mbti_id = $id;
         $cmt->story = $validation['story'];
@@ -38,7 +38,7 @@ class MbtiCommentController extends Controller
         $validation = request()->validate([
            'story' => 'required'
         ]);
-        $cmt = Comment::where('id', $cmtId)->first();
+        $cmt = MbtiComment::where('id', $cmtId)->first();
         $cmt->story = $validation['story'];
         $cmt->save();
 
@@ -48,7 +48,7 @@ class MbtiCommentController extends Controller
     public function commentDestroy($id, $cmtId)
     {
         $mbtiName = $this->mbtisName();
-        $cmt = Comment::where('id', $cmtId)->first();
+        $cmt = MbtiComment::where('id', $cmtId)->first();
         $cmt->status = 'delete';
         $cmt->save();
         return redirect()->route('mbtis.'.$mbtiName.'.show', $id);
@@ -62,9 +62,9 @@ class MbtiCommentController extends Controller
             'story' => 'required'
         ]);
 
-        $parent = Comment::select('comment_id', 'class')->where('id', $cmtId)->first();
+        $parent = MbtiComment::select('comment_id', 'class')->where('id', $cmtId)->first();
 
-        $cmt = new Comment();
+        $cmt = new MbtiComment();
         $cmt->user_id = auth()->user()->id;
         $cmt->mbti_id = $id;
         $cmt->comment_id = $parent->comment_id;

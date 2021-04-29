@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
+use App\Models\MbtiComment;
 use App\Models\Mbti;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -52,7 +52,7 @@ class MbtiSortController extends Controller
     {
         $mbti = Mbti::where('id', $id)->first();
 
-        $cmts = Comment::where('mbti_id', $id)
+        $cmts = MbtiComment::where('mbti_id', $id)
             ->orderByDesc('comment_id')
             ->orderBy('class')
             ->orderByDesc('created_at')
@@ -130,7 +130,7 @@ class MbtiSortController extends Controller
             'story' => 'required'
         ]);
 
-        $cmt = new Comment();
+        $cmt = new MbtiComment();
         $cmt->user_id = auth()->user()->id;
         $cmt->user_name = auth()->user()->name;
         $cmt->mbti_id = $id;
@@ -149,6 +149,6 @@ class MbtiSortController extends Controller
 
     public function commentReplyStore($id)
     {
-        $cmt = Comment::where('mbti_id', $id);
+        $cmt = MbtiComment::where('mbti_id', $id);
     }
 }

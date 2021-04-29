@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Comment;
+use App\Models\MbtiComment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CommentFactory extends Factory
@@ -12,7 +12,7 @@ class CommentFactory extends Factory
      *
      * @var string
      */
-    protected $model = Comment::class;
+    protected $model = MbtiComment::class;
 
     /**
      * Define the model's default state.
