@@ -56,4 +56,10 @@ class UserController extends Controller
         Auth::logout();
         return redirect()->route('home');
     }
+
+    public function userInfo()
+    {
+
+        return view('auth.userInfo');
+    }
 }

@@ -32,6 +32,8 @@ Route::prefix('/auth')->group(function(){
     Route::get('/login', [UserController::class, 'loginPage'])->name('loginPage');
     Route::post('/login', [UserController::class, 'login'])->name('login');
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+    Route::get('/info', [UserController::class, 'userInfo'])->name('info')->middleware('auth');
+    Route::get('/edit', [UserController::class])->name('editUserInfo');
 });
 
 Route::get('/mbti', [MbtiController::class, 'index'])->name('mbtis.index');
