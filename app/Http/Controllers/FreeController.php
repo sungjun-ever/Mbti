@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Free;
+use App\Models\FreeComment;
 use Illuminate\Http\Request;
 
 class FreeController extends Controller
@@ -38,7 +39,17 @@ class FreeController extends Controller
     public function show($id)
     {
         $free = Free::where('id', $id)->first();
-        return view('frees.show', compact('free'));
+
+        $cmts = FreeComment::where('free_id', $id)
+            ->orderByDesc('comment_id')
+            ->orderBy('class')
+            ->orderByDesc('created_at')
+            ->paginate(5);
+
+        foreach ($cmts as $cmt){
+            $cmt->user;
+        }
+        return view('frees.show', compact(['free', 'cmts']));
     }
 
     public function edit($id)

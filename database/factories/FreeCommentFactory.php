@@ -22,7 +22,11 @@ class FreeCommentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id' => 1,
+            'free_id' => 40,
+            'comment_id' => 1,
+            'class' => 1,
+            'story' => $this->faker->sentence()
         ];
     }
 }
