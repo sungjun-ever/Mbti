@@ -13,7 +13,7 @@ class CreateMbtiCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('mbti_comments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('mbti_id')->constrained('mbtis');
