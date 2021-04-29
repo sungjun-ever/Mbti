@@ -9,6 +9,8 @@ use App\Http\Controllers\FreeController;
 use App\Http\Controllers\SuggestController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MbtiCommentController;
+use \App\Http\Controllers\FreeCommentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -300,6 +302,12 @@ Route::prefix('/frees')->group(function(){
     Route::get('/{free}/edit', [FreeController::class, 'edit'])->name('frees.edit')->middleware('auth');
     Route::put('/{free}', [FreeController::class, 'update'])->name('frees.update')->middleware('auth');
     Route::delete('/{free}', [FreeController::class, 'destroy'])->name('frees.destroy')->middleware('auth');
+    Route::prefix('/{free}/comments')->group(function(){
+        Route::post('/', [FreeCommentController::class , 'store'])->name('frees.comments.store')->middleware('auth');
+        Route::put('/{comment}', [FreeCommentController::class , 'update'])->name('frees.comments.update')->middleware('auth');
+        Route::put('/{comment}', [FreeCommentController::class , 'destroy'])->name('frees.comments.destroy')->middleware('auth');
+        Route::post('/{comment}/reply', [FreeCommentController::class, 'replyStore'])->name('frees.comments.reply.store')->middleware('auth');
+    });
 });
 
 Route::prefix('/suggests')->group(function(){
