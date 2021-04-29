@@ -39,6 +39,10 @@ class FreeCommentController extends Controller
 
     public function destroy($id, $cmtId)
     {
+        $cmt = FreeComment::where('id', $cmtId)->first();
+        $cmt->status = 'delete';
+        $cmt->save();
 
+        return redirect()->route('frees.show', $id);
     }
 }
