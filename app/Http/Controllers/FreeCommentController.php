@@ -52,8 +52,6 @@ class FreeCommentController extends Controller
            'story' => 'required'
         ]);
 
-
-
         $cmt = new FreeComment();
         $cmt->user_id = auth()->user()->id;
         $cmt->free_id = $id;

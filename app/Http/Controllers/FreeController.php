@@ -44,7 +44,7 @@ class FreeController extends Controller
             ->orderByDesc('comment_id')
             ->orderBy('class')
             ->orderByDesc('created_at')
-            ->paginate(5);
+            ->paginate(20);
 
         foreach ($cmts as $cmt){
             $cmt->user;
