@@ -15,7 +15,7 @@
                         @auth()
                         <div class="py-1 text-right text-base">
                             <div class="pr-2 inline-block">
-                                <button id="{{$cmt->id}}" class="hover:text-blue-300" onclick="commentReply(this)">답글</button>
+                                <button id="{{$cmt->id}}" class="hover:text-blue-300" onclick="commentReply(this)" value="hidden">답글</button>
                             </div>
                             @if($cmt->user_id == auth()->user()->id)
                                 <div class="pr-2 inline-block">

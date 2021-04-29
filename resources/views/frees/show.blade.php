@@ -45,7 +45,7 @@
                         @auth()
                             <div class="py-1 text-right text-base">
                                 <div class="pr-2 inline-block">
-                                    <button id="{{$cmt->id}}" class="hover:text-blue-300" onclick="commentReply(this)">답글</button>
+                                    <button id="{{$cmt->id}}" class="hover:text-blue-300" onclick="commentReply(this)" value="hidden">답글</button>
                                 </div>
                                 @if($cmt->user_id == auth()->user()->id)
                                     <div class="pr-2 inline-block">
@@ -81,6 +81,8 @@
                 <div id="{{$cmt->id}}replyBox" class="pt-3 w-10/12 ml-auto hidden">
                     <form action="{{route('frees.comments.reply.store', [$cmt->free_id, $cmt->id])}}" method="post">
                         @csrf
+                        <input type="hidden" name="comment_id" value="{{$cmt->comment_id}}">
+                        <input type="hidden" name="class" value="{{$cmt->class}}">
                         <label for="story" class="hidden"></label>
                         <textarea id="story" name="story" class="w-full border-2 border-blue-300 pl-2 pt-2 rounded-sm outline-none resize-none" rows="4"></textarea>
                         <div class="mt-4 text-right">
