@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\MbtiComment;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CommentFactory extends Factory
+class MbtiCommentFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
