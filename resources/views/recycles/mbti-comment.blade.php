@@ -20,7 +20,7 @@
                             @if($cmt->user_id == auth()->user()->id)
                                 <div class="pr-2 inline-block">
                                     <button id="{{$cmt->id}}" class="hover:text-blue-300 pr-2" onclick="editComment(this)" value="hidden">수정</button>
-                                    <form action="{{route($mbti->mbtiSort.'.comments.destroy', [$mbti->id, $cmt->id])}}" method="post" class="inline-block">
+                                    <form action="{{route($post->mbtiSort.'.comments.destroy', [$post->id, $cmt->id])}}" method="post" class="inline-block">
                                         @csrf
                                         <button type="submit" class="hover:text-blue-300">삭제</button>
                                     </form>
@@ -31,7 +31,7 @@
                     </div>
                     {{--  댓글 수정   --}}
                     <div id="{{$cmt->id}}editBox" class="py-8 hidden">
-                        <form action="{{route($mbti->mbtiSort.'.comments.update', [$mbti->id, $cmt->id])}}" method="post">
+                        <form action="{{route($post->mbtiSort.'.comments.update', [$post->id, $cmt->id])}}" method="post">
                             @csrf
                             @method('put')
                             <label for="story" class="hidden"></label>
@@ -59,7 +59,7 @@
 {{--  댓글 작성  --}}
     @auth()
         <div class="border-t-4 border-b-4 border-gray-300 py-8">
-        <form action="{{route($mbti->mbtiSort.'.comments.store', $mbti->id)}}" method="post">
+        <form action="{{route($post->mbtiSort.'.comments.store', $post->id)}}" method="post">
             @csrf
             <label for="story" class="hidden"></label>
             <textarea id="story" name="story" class="w-full border-2 border-blue-300 pl-2 pt-2 rounded-sm outline-none resize-none" rows="4"></textarea>
