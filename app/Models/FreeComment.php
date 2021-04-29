@@ -11,11 +11,11 @@ class FreeComment extends Model
     protected $fillable = ['story'];
 
     public function user(){
-        return $this->belongsTo('App\Model\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     public function free()
     {
-        return $this->belongsTo('App\Model\Free');
+        return $this->belongsTo('App\Models\Free');
     }
 }

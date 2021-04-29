@@ -56,8 +56,13 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Suggest');
     }
 
-    public function comments()
+    public function mbtiComments()
     {
         return $this->hasMany('App\Models\MbtiComment');
+    }
+
+    public function freeComments()
+    {
+        return $this->hasMany('App\Models\FreeComment');
     }
 }
