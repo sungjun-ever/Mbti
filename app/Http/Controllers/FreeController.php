@@ -48,7 +48,7 @@ class FreeController extends Controller
     {
         $free = Free::where('id', $id)->first();
 
-        $cmts = FreeComment::where('free_id', $id)
+        $cmts = FreeComment::where('board_id', $id)
             ->orderByDesc('comment_id')
             ->orderBy('class')
             ->orderByDesc('created_at')

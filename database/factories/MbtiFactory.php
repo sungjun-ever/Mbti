@@ -22,13 +22,10 @@ class MbtiFactory extends Factory
     public function definition()
     {
         return [
-            'mbtiSort' => 'istp',
             'user_id' => '1',
-            'user_name' =>'홍길동',
-            'title' => $this->faker->word,
-            'story' => $this->faker->paragraph,
-            'created_at' => '2021-04-13 16:45:00',
-            'updated_at' => '2021-04-13 16:45:00',
+            'board_name' => 'enfj',
+            'title' => $this->faker->word(),
+            'story' => $this->faker->sentence(),
         ];
     }
 }

@@ -54,7 +54,7 @@ class MbtiSortController extends Controller
     {
         $mbti = Mbti::where('id', $id)->first();
 
-        $cmts = MbtiComment::where('mbti_id', $id)
+        $cmts = MbtiComment::where('board_id', $id)
             ->orderByDesc('comment_id')
             ->orderBy('class')
             ->orderByDesc('created_at')
