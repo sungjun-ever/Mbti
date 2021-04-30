@@ -8,10 +8,17 @@ use Illuminate\Http\Request;
 
 class FreeController extends Controller
 {
+    public function getBoardName()
+    {
+        $getBoard= explode('/', $_SERVER['REQUEST_URI']);
+        $name = preg_replace('/\?[a-z=&A-Z0-9]*/', '', $getBoard[1]);
+        return $name;
+    }
     public function index()
     {
+        $boardName = $this->getBoardName();
         $frees = Free::orderBy('id', 'desc')->paginate(5);
-        return view('frees.index', compact('frees'));
+        return view('frees.index', compact(['frees', 'boardName']));
     }
 
     public function create()

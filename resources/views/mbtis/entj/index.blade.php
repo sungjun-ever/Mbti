@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
 @section('container')
-    @include('recycles.index', ['mbtiName'=>$mbtiName, 'mbtis'=>$mbtis])
+    @include('recycles.index', ['boardName'=>$mbtiName, 'posts'=>$mbtis])
 @stop
 
