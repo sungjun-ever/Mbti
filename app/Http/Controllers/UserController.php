@@ -103,16 +103,16 @@ class UserController extends Controller
 
     public function userPost($id)
     {
-        $mbtis = DB::table('mbtis')->select('user_id', 'title', 'created_at')->where('user_id', $id);
-        $posts = DB::table('frees')->select('user_id', 'title', 'created_at')->where('user_id', $id)
+        $mbtis = DB::table('mbtis')->select('id', 'user_id', 'board_name', 'title', 'created_at')->where('user_id', $id);
+        $posts = DB::table('frees')->select('id', 'user_id', 'board_name', 'title', 'created_at')->where('user_id', $id)
                 ->unionAll($mbtis)->orderByDesc('created_at')->paginate(5);
         return view('auth.userPost', compact('posts'));
     }
 
     public function userComment($id)
     {
-        $mbtis = DB::table('mbti_comments')->select('user_id', 'story', 'created_at')->where('user_id', $id);
-        $cmts = DB::table('free_comments')->select('user_id', 'story', 'created_at')->where('user_id', $id)
+        $mbtis = DB::table('mbti_comments')->select('user_id', 'board_id', 'board_name', 'story', 'created_at')->where('user_id', $id);
+        $cmts = DB::table('free_comments')->select('user_id', 'board_id', 'board_name', 'story', 'created_at')->where('user_id', $id)
             ->unionAll($mbtis)->orderByDesc('created_at')->paginate(5);
 
         return view('auth.userComment', compact('cmts'));
