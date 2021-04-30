@@ -65,6 +65,42 @@ class UserController extends Controller
         return view('auth.userInfo');
     }
 
+    public function userConfirmPage()
+    {
+        return view('auth.userConfirm');
+    }
+
+    public function userConfirm(Request $request, $id)
+    {
+        $validation = $request->validate([
+           'password'=>'required'
+        ]);
+
+        $value = $request->input('password');
+
+        if(Hash::check($value, auth()->user()->password)) {
+            return redirect()->route('changePasswordPage', $id);
+        } else {
+            return redirect()->back()->with('fail', '비밀번호가 일치하지 않습니다.');
+        }
+    }
+
+    public function changePasswordPage()
+    {
+        return view('auth.changePassword');
+    }
+
+    public function changePassword(Request $request, $id)
+    {
+        $validation = $request->validate([
+            'password'=> 'required|confirmed'
+        ]);
+        User::find($id)->update(['password'=>Hash::make($validation['password'])]);
+        Auth::logout();
+
+        return redirect()->route('home');
+    }
+
     public function userPost($id)
     {
         $mbtis = DB::table('mbtis')->select('user_id', 'title', 'created_at')->where('user_id', $id);

@@ -33,8 +33,12 @@ Route::prefix('/auth')->group(function(){
     Route::post('/login', [UserController::class, 'login'])->name('login');
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
     Route::get('/{user}/info', [UserController::class, 'userInfo'])->name('info')->middleware('auth');
+    Route::get('/{user}/confirm', [UserController::class, 'userConfirmPage'])->name('confirmPage')->middleware('auth');
+    Route::post('/{user}/confirm', [UserController::class, 'userConfirm'])->name('confirm')->middleware('auth');
     Route::get('/{user}/userPosts', [UserController::class, 'userPost'])->name('userPost')->middleware('auth');
     Route::get('/{user}/userComments', [UserController::class, 'userComment'])->name('userComment')->middleware('auth');
+    Route::get('/{user}/changePassword', [UserController::class, 'changePasswordPage'])->name('changePasswordPage')->middleware('auth');
+    Route::post('/{user}/changePassword', [UserController::class, 'changePassword'])->name('changePassword')->middleware('auth');
 });
 
 Route::get('/mbti', [MbtiController::class, 'index'])->name('mbtis.index');
