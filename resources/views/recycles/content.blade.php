@@ -12,8 +12,8 @@
     @auth()
         @if($post->user_id == auth()->user()->id)
             <div class="w-10/12 mx-auto my-4 text-lg">
-                <span class="hover:text-blue-300"><a href="{{route('mbtis.'.$post->mbtiSort.'.edit', $post->id)}}"><i class="xi-pen-o pr-2"></i><button>수정</button></a></span>
-                <form action="{{route('mbtis.'.$post->mbtiSort.'.destroy', $post->id)}}" method="post" class="inline-block">
+                <span class="hover:text-blue-300"><a href="{{route($post->mbtiSort.'.edit', $post->id)}}"><i class="xi-pen-o pr-2"></i><button>수정</button></a></span>
+                <form action="{{route($post->mbtiSort.'.destroy', $post->id)}}" method="post" class="inline-block">
                     @csrf
                     @method('delete')
                     <span class="hover:text-red-300"><i class="xi-cut pr-2 pl-4"></i>

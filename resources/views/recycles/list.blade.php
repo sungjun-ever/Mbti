@@ -10,7 +10,7 @@
         </tr>
         @foreach($mbtis as $mbti)
             <tr class="border-b">
-                <td class="pl-2 truncate"><a href="{{route('mbtis.'.$mbti->mbtiSort.'.show', $mbti->id)}}" class="text-lg">{{$mbti->title}}</a>
+                <td class="pl-2 truncate"><a href="{{route($mbti->mbtiSort.'.show', $mbti->id)}}" class="text-lg">{{$mbti->title}}</a>
                 </td>
                 <td class="text-center xl:text-base text-xs">{{$mbti->user_name}}</td>
                 <td class="w-1/12 xl:table-cell hidden">{{$mbti->created_at->format('Y-m-d')}}</td>
