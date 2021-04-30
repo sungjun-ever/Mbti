@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('container')
-    @include('recycles.mbti-edit', ['mbti'=>$mbti])
+    @include('recycles.edit', ['mbti'=>$mbti])
 @stop
