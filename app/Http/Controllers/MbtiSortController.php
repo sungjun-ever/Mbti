@@ -40,7 +40,6 @@ class MbtiSortController extends Controller
         $mbti = new Mbti();
         $mbti->mbti_board = $request->mid;
         $mbti->user_id = auth()->user()->id;
-        $mbti->user_name = auth()->user()->name;
         $mbti->title = $validation['title'];
         $mbti->story = $validation['story'];
         $mbti->save();
@@ -76,9 +75,8 @@ class MbtiSortController extends Controller
      */
     public function edit($id)
     {
-        $mbtiName = $this->mbtisName();
         $mbti = Mbti::where('id', $id)->first();
-        return view('mbtis.'.$mbtiName.'.edit', compact('mbti'));
+        return view('mbtis.'.$mbti->mbti_board.'.edit', compact('mbti'));
     }
 
     /**
@@ -90,8 +88,6 @@ class MbtiSortController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $mbtiName = $this->mbtisName();
-
         $validation = $request->validate([
            'title' => 'required',
            'story' => 'required'
@@ -102,7 +98,7 @@ class MbtiSortController extends Controller
         $mbti->story = $validation['story'];
         $mbti->save();
 
-        return redirect()->route('mbtis.'.$mbtiName.'.update', $id);
+        return redirect()->route('mbtis.'.$mbti->mbti_board.'.update', $id);
 
     }
 
@@ -114,11 +110,10 @@ class MbtiSortController extends Controller
      */
     public function destroy($id)
     {
-        $mbtiName = $this->mbtisName();
         $mbti = Mbti::where('id', $id)->first();
         $mbti -> delete();
 
-        return redirect()->route('mbtis.'.$mbtiName.'.destroy');
+        return redirect()->route('mbtis.'.$mbti->mbti_board.'.destroy');
     }
 
     public function commentStore(Request $request, $id)

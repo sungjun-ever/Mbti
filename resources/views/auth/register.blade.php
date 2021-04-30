@@ -24,7 +24,7 @@
         <div class="mt-4">
             <label for="name" class="text-lg">이름</label>
             <input id="name" type="text" name="name"
-                   value="{{old('name') ? old('email') : ''}}"
+                   value="{{old('name') ? old('name') : ''}}"
                    class="w-full py-2 shadow-sm rounded-sm pl-2 text-lg @error('name') border-2 border-red-600 @enderror">
         </div>
         <div class="mt-8 text-center">
