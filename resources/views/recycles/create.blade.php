@@ -1,6 +1,6 @@
 <div class="w-11/12 pt-6 mx-auto">
     <div>
-        <form action="{{route($mbtiName.'.store')}}" method="post">
+        <form action="{{route($boardName.'.store')}}" method="post">
             @csrf
             <input type="hidden" name="mid" value="enfj">
             <label for="title"></label>

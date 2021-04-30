@@ -23,7 +23,8 @@ class FreeController extends Controller
 
     public function create()
     {
-        return view('frees.create');
+        $boardName = $this->getBoardName();
+        return view('frees.create', compact('boardName'));
     }
 
     public function store(Request $request)

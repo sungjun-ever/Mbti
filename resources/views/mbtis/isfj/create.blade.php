@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('container')
-    @include('recycles.create', ['mbtiName'=>$mbtiName])
+    @include('recycles.create', ['boardName'=>$mbtiName])
 @stop

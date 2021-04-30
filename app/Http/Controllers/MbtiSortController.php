@@ -20,7 +20,7 @@ class MbtiSortController extends Controller
     public function index()
     {
         $mbtiName = $this->mbtisName();
-        $mbtis = Mbti::where('mbti_board', $mbtiName)->orderBy('id', 'desc')->paginate(5);
+        $mbtis = Mbti::where('board_name', $mbtiName)->orderBy('id', 'desc')->paginate(5);
         foreach($mbtis as $mbti){
             $mbti->user->name;
         }
@@ -41,7 +41,7 @@ class MbtiSortController extends Controller
         ]);
 
         $mbti = new Mbti();
-        $mbti->mbti_board = $request->mid;
+        $mbti->board_name = $request->mid;
         $mbti->user_id = auth()->user()->id;
         $mbti->title = $validation['title'];
         $mbti->story = $validation['story'];
@@ -64,9 +64,9 @@ class MbtiSortController extends Controller
             $cmt->user;
         }
 
-        $mbtis = Mbti::where('mbti_board', $mbti->mbti_board)->orderBy('id', 'desc')->paginate(20);
+        $mbtis = Mbti::where('board_name', $mbti->board_name)->orderBy('id', 'desc')->paginate(20);
 
-        return view('mbtis.'.$mbti->mbti_board.'.show', compact(['mbti', 'cmts', 'mbtis']));
+        return view('mbtis.'.$mbti->board_name.'.show', compact(['mbti', 'cmts', 'mbtis']));
 
     }
 
@@ -79,7 +79,7 @@ class MbtiSortController extends Controller
     public function edit($id)
     {
         $mbti = Mbti::where('id', $id)->first();
-        return view('mbtis.'.$mbti->mbti_board.'.edit', compact('mbti'));
+        return view('mbtis.'.$mbti->board_name.'.edit', compact('mbti'));
     }
 
     /**
@@ -101,7 +101,7 @@ class MbtiSortController extends Controller
         $mbti->story = $validation['story'];
         $mbti->save();
 
-        return redirect()->route($mbti->mbti_board.'.update', $id);
+        return redirect()->route($mbti->board_name.'.update', $id);
 
     }
 
@@ -116,7 +116,7 @@ class MbtiSortController extends Controller
         $mbti = Mbti::where('id', $id)->first();
         $mbti -> delete();
 
-        return redirect()->route($mbti->mbti_board.'.destroy');
+        return redirect()->route($mbti->board_name.'.destroy');
     }
 
     public function commentStore(Request $request, $id)
