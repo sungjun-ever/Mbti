@@ -10,7 +10,7 @@
             <div class="mt-3 pl-4">
                 @foreach($mbtis as $mbti)
                     <div class="text-base w-9/12 border-b border-gray-200 pb-1">
-                        <a href="{{route('mbtis.'.$mbti->mbtiSort.'.show', $mbti->id)}}"><button>{{$mbti->title}}</button></a>
+                        <a href="{{route($mbti->board_name.'.show', $mbti->id)}}"><button>{{$mbti->title}}</button></a>
                     </div>
                 @endforeach
             </div>
