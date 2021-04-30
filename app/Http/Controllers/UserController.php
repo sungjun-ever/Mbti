@@ -22,7 +22,7 @@ class UserController extends Controller
             [
             'email' => 'required',
             'name' => 'required|max:5',
-            'password' => 'required|between:12,8|confirmed'
+            'password' => 'required|confirmed'
             ]);
 
         $user = new User();

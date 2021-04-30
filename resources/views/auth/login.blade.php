@@ -22,7 +22,7 @@
             </div>
             <div class="mt-8 text-center">
                 <button type="submit"
-                        class="px-3 py-1 mr-4 bg-blue-500 hover:bg-blue-800 text-gray-50 text-lg rounded-lg ">가입</button>
+                        class="px-3 py-1 mr-4 bg-blue-500 hover:bg-blue-800 text-gray-50 text-lg rounded-lg ">로그인</button>
                 <button class="px-3 py-1 bg-red-500 hover:bg-red-800 text-gray-50 text-lg rounded-lg">취소</button>
             </div>
         </div>
