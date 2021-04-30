@@ -22,7 +22,7 @@ class UserController extends Controller
             [
             'email' => 'required',
             'name' => 'required|max:5',
-            'password' => 'required|confirmed'
+            'password' => 'required|confirmed|between:8, 12'
             ]);
 
         $user = new User();
@@ -76,7 +76,7 @@ class UserController extends Controller
            'password'=>'required'
         ]);
 
-        $value = $request->input('password');
+        $value = $validation['password'];
 
         if(Hash::check($value, auth()->user()->password)) {
             return redirect()->route('changePasswordPage', $id);
