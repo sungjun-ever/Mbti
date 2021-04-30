@@ -23,7 +23,7 @@ class MbtiFactory extends Factory
     {
         return [
             'user_id' => '1',
-            'board_name' => 'enfj',
+            'board_name' => 'istp',
             'title' => $this->faker->word(),
             'story' => $this->faker->sentence(),
         ];

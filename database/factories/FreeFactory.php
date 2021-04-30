@@ -22,7 +22,7 @@ class FreeFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'=>1,
+            'user_id'=>2,
             'title' => $this->faker->word(),
             'story' => $this->faker->sentence(),
         ];
