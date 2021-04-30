@@ -54,10 +54,9 @@ class FreeController extends Controller
             ->orderByDesc('created_at')
             ->paginate(20);
 
-        foreach ($cmts as $cmt){
-            $cmt->user;
-        }
-        return view('frees.show', compact(['free', 'cmts']));
+        $frees = Free::where('board_name', $free->board_name)->orderBy('id', 'desc')->paginate(20);
+
+        return view('frees.show', compact(['free', 'cmts', 'frees']));
     }
 
     public function edit($id)

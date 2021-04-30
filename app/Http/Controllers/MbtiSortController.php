@@ -60,10 +60,6 @@ class MbtiSortController extends Controller
             ->orderByDesc('created_at')
             ->paginate(20);
 
-        foreach ($cmts as $cmt){
-            $cmt->user;
-        }
-
         $mbtis = Mbti::where('board_name', $mbti->board_name)->orderBy('id', 'desc')->paginate(20);
 
         return view('mbtis.'.$mbti->board_name.'.show', compact(['mbti', 'cmts', 'mbtis']));
@@ -119,34 +115,4 @@ class MbtiSortController extends Controller
         return redirect()->route($mbti->board_name.'.destroy');
     }
 
-    public function commentStore(Request $request, $id)
-    {
-
-        $mbtiName = $this->mbtisName();
-
-        $validation = $request->validate([
-            'story' => 'required'
-        ]);
-
-        $cmt = new MbtiComment();
-        $cmt->user_id = auth()->user()->id;
-        $cmt->user_name = auth()->user()->name;
-        $cmt->mbti_id = $id;
-        $cmt->mbti_name = $mbtiName;
-        $cmt->story = $validation['story'];
-        $cmt->save();
-
-        return redirect()->route('mbtis.'.$mbtiName.'.show', $id);
-    }
-
-    public function commentDestroy(Request $request, $id)
-    {
-        $mbtiName = $this->mbtisName();
-        return redirect()->route('mbtis.'.$mbtiName.'.show', $id);
-    }
-
-    public function commentReplyStore($id)
-    {
-        $cmt = MbtiComment::where('mbti_id', $id);
-    }
 }

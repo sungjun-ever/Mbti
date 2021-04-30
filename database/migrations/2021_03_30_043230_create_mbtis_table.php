@@ -15,8 +15,8 @@ class CreateMbtisTable extends Migration
     {
         Schema::create('mbtis', function (Blueprint $table) {
             $table->id();
-            $table->string('mbti_board');
             $table->foreignId('user_id')->constrained('users');
+            $table->string('board_name');
             $table->string('title');
             $table->longText('story');
             $table->timestamps();

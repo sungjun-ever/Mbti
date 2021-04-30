@@ -16,7 +16,8 @@ class CreateFreeCommentsTable extends Migration
         Schema::create('free_comments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('free_id')->constrained('frees');
+            $table->foreignId('board_id')->constrained('frees');
+            $table->string('board_name');
             $table->integer('comment_id');
             $table->integer('class')->default(0);
             $table->string('status')->default('exist');

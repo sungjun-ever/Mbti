@@ -7,15 +7,24 @@ use Illuminate\Http\Request;
 
 class FreeCommentController extends Controller
 {
+    public function getBoardName()
+    {
+        $getBoard= explode('/', $_SERVER['REQUEST_URI']);
+        $name = preg_replace('/\?[a-z=&A-Z0-9]*/', '', $getBoard[1]);
+        return $name;
+    }
+
     public function store(Request $request, $id)
     {
+        $boardName = $this->getBoardName();
         $validation = $request->validate([
            'story' => 'required'
         ]);
 
         $cmt = new FreeComment();
         $cmt->user_id = auth()->user()->id;
-        $cmt->free_id = $id;
+        $cmt->board_id = $id;
+        $cmt->board_name = $boardName;
         $cmt->story = $validation['story'];
         $cmt->save();
         $cmt->comment_id = $cmt->id;
@@ -48,15 +57,18 @@ class FreeCommentController extends Controller
 
     public function replyStore($id, $cmtId)
     {
+        $boardName = $this->getBoardName();
+
         $validation = request()->validate([
            'story' => 'required'
         ]);
 
         $cmt = new FreeComment();
         $cmt->user_id = auth()->user()->id;
-        $cmt->free_id = $id;
+        $cmt->board_id = $id;
+        $cmt->board_name = $boardName;
         $cmt->comment_id = request()->input('comment_id');
-        $cmt->class = request()->input('class') + 1;
+        $cmt->class = 1;
         $cmt->story = $validation['story'];
         $cmt->save();
 
