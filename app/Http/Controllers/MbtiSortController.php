@@ -21,6 +21,9 @@ class MbtiSortController extends Controller
     {
         $mbtiName = $this->mbtisName();
         $mbtis = Mbti::where('mbti_board', $mbtiName)->orderBy('id', 'desc')->paginate(5);
+        foreach($mbtis as $mbti){
+            $mbti->user->name;
+        }
         return view('mbtis.'.$mbtiName.'.index', compact(['mbtis', 'mbtiName']));
     }
 
@@ -44,7 +47,7 @@ class MbtiSortController extends Controller
         $mbti->story = $validation['story'];
         $mbti->save();
 
-        return redirect()->route('mbtis.'.$request->mid.'.show', $mbti->id);
+        return redirect()->route($request->mid.'.show', $mbti->id);
     }
 
     public function show($id)
@@ -98,7 +101,7 @@ class MbtiSortController extends Controller
         $mbti->story = $validation['story'];
         $mbti->save();
 
-        return redirect()->route('mbtis.'.$mbti->mbti_board.'.update', $id);
+        return redirect()->route($mbti->mbti_board.'.update', $id);
 
     }
 
@@ -113,7 +116,7 @@ class MbtiSortController extends Controller
         $mbti = Mbti::where('id', $id)->first();
         $mbti -> delete();
 
-        return redirect()->route('mbtis.'.$mbti->mbti_board.'.destroy');
+        return redirect()->route($mbti->mbti_board.'.destroy');
     }
 
     public function commentStore(Request $request, $id)
