@@ -12,22 +12,22 @@ class MbtiController extends Controller
         $mbtiName = ['enfj', 'enfp', 'entj', 'entp', 'estj', 'estp', 'esfj', 'esfp',
                      'infj', 'infp', 'intj', 'intp', 'isfj', 'isfp', 'istj', 'istp'];
 
-        $enfjs = Mbti::where('mbti_board', 'enfj')->orderBy('id', 'desc')->paginate(5);
-        $enfps = Mbti::where('mbti_board', 'enfp')->orderBy('id', 'desc')->paginate(5);
-        $entjs = Mbti::where('mbti_board', 'entj')->orderBy('id', 'desc')->paginate(5);
-        $entps = Mbti::where('mbti_board', 'entp')->orderBy('id', 'desc')->paginate(5);
-        $estjs = Mbti::where('mbti_board', 'estj')->orderBy('id', 'desc')->paginate(5);
-        $estps = Mbti::where('mbti_board', 'estp')->orderBy('id', 'desc')->paginate(5);
-        $esfjs = Mbti::where('mbti_board', 'esfj')->orderBy('id', 'desc')->paginate(5);
-        $esfps = Mbti::where('mbti_board', 'esfp')->orderBy('id', 'desc')->paginate(5);
-        $infjs = Mbti::where('mbti_board', 'infj')->orderBy('id', 'desc')->paginate(5);
-        $infps = Mbti::where('mbti_board', 'infp')->orderBy('id', 'desc')->paginate(5);
-        $intjs = Mbti::where('mbti_board', 'intj')->orderBy('id', 'desc')->paginate(5);
-        $intps = Mbti::where('mbti_board', 'intp')->orderBy('id', 'desc')->paginate(5);
-        $isfjs = Mbti::where('mbti_board', 'isfj')->orderBy('id', 'desc')->paginate(5);
-        $isfps = Mbti::where('mbti_board', 'isfp')->orderBy('id', 'desc')->paginate(5);
-        $istjs = Mbti::where('mbti_board', 'istj')->orderBy('id', 'desc')->paginate(5);
-        $istps = Mbti::where('mbti_board', 'istp')->orderBy('id', 'desc')->paginate(5);
+        $enfjs = Mbti::where('board_name', 'enfj')->orderBy('id', 'desc')->paginate(5);
+        $enfps = Mbti::where('board_name', 'enfp')->orderBy('id', 'desc')->paginate(5);
+        $entjs = Mbti::where('board_name', 'entj')->orderBy('id', 'desc')->paginate(5);
+        $entps = Mbti::where('board_name', 'entp')->orderBy('id', 'desc')->paginate(5);
+        $estjs = Mbti::where('board_name', 'estj')->orderBy('id', 'desc')->paginate(5);
+        $estps = Mbti::where('board_name', 'estp')->orderBy('id', 'desc')->paginate(5);
+        $esfjs = Mbti::where('board_name', 'esfj')->orderBy('id', 'desc')->paginate(5);
+        $esfps = Mbti::where('board_name', 'esfp')->orderBy('id', 'desc')->paginate(5);
+        $infjs = Mbti::where('board_name', 'infj')->orderBy('id', 'desc')->paginate(5);
+        $infps = Mbti::where('board_name', 'infp')->orderBy('id', 'desc')->paginate(5);
+        $intjs = Mbti::where('board_name', 'intj')->orderBy('id', 'desc')->paginate(5);
+        $intps = Mbti::where('board_name', 'intp')->orderBy('id', 'desc')->paginate(5);
+        $isfjs = Mbti::where('board_name', 'isfj')->orderBy('id', 'desc')->paginate(5);
+        $isfps = Mbti::where('board_name', 'isfp')->orderBy('id', 'desc')->paginate(5);
+        $istjs = Mbti::where('board_name', 'istj')->orderBy('id', 'desc')->paginate(5);
+        $istps = Mbti::where('board_name', 'istp')->orderBy('id', 'desc')->paginate(5);
 
         return view('mbtis.index',
                 compact([
