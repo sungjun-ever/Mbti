@@ -31,7 +31,7 @@ class MbtiCommentController extends Controller
         $cmt->save();
         $cmt->comment_id = $cmt->id;
         $cmt->save();
-        return redirect()->route('mbtis.'.$mbtiName.'.show', $id);
+        return redirect()->route($mbtiName.'.show', $id);
     }
 
     public function update($id, $cmtId)
@@ -43,7 +43,7 @@ class MbtiCommentController extends Controller
         $cmt->story = $validation['story'];
         $cmt->save();
 
-        return redirect()->route('mbtis.'.$cmt->mbti->mbtiSort.'.show', $cmt->mbti->id);
+        return redirect()->route($cmt->mbti->mbtiSort.'.show', $cmt->mbti->id);
     }
 
     public function destroy($id, $cmtId)
@@ -52,7 +52,7 @@ class MbtiCommentController extends Controller
         $cmt = MbtiComment::where('id', $cmtId)->first();
         $cmt->status = 'delete';
         $cmt->save();
-        return redirect()->route('mbtis.'.$mbtiName.'.show', $id);
+        return redirect()->route($mbtiName.'.show', $id);
     }
 
     public function replyStore(Request $request, $id, $cmtId)
@@ -74,6 +74,6 @@ class MbtiCommentController extends Controller
         $cmt->story = $validation['story'];
         $cmt->save();
 
-        return redirect()->route('mbtis.'.$mbtiName.'.show', $id);
+        return redirect()->route($mbtiName.'.show', $id);
     }
 }
