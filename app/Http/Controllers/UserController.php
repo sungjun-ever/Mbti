@@ -109,8 +109,12 @@ class UserController extends Controller
         return view('auth.userPost', compact('posts'));
     }
 
-    public function userComment()
+    public function userComment($id)
     {
+        $mbtis = DB::table('mbti_comments')->select('user_id', 'story', 'created_at')->where('user_id', $id);
+        $cmts = DB::table('free_comments')->select('user_id', 'story', 'created_at')->where('user_id', $id)
+            ->unionAll($mbtis)->orderByDesc('created_at')->paginate(5);
 
+        return view('auth.userComment', compact('cmts'));
     }
 }
