@@ -1,6 +1,6 @@
 <div class="w-11/12 pt-6 mx-auto">
     <div>
-        <form action="{{route($mbti->mbtiSort.'.update', $mbti->id)}}" method="post">
+        <form action="{{route($mbti->mbti_board.'.update', $mbti->id)}}" method="post">
             @method('PUT')
             @csrf
             <label for="title"></label>

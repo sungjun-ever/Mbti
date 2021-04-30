@@ -17,7 +17,6 @@ class CreateMbtisTable extends Migration
             $table->id();
             $table->string('mbti_board');
             $table->foreignId('user_id')->constrained('users');
-            $table->string('user_name');
             $table->string('title');
             $table->longText('story');
             $table->timestamps();

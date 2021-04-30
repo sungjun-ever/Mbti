@@ -20,7 +20,7 @@ class MbtiSortController extends Controller
     public function index()
     {
         $mbtiName = $this->mbtisName();
-        $mbtis = Mbti::where('mbtiSort', $mbtiName)->orderBy('id', 'desc')->paginate(5);
+        $mbtis = Mbti::where('mbti_board', $mbtiName)->orderBy('id', 'desc')->paginate(5);
         return view('mbtis.'.$mbtiName.'.index', compact(['mbtis', 'mbtiName']));
     }
 
@@ -38,7 +38,7 @@ class MbtiSortController extends Controller
         ]);
 
         $mbti = new Mbti();
-        $mbti->mbtiSort = $request->mid;
+        $mbti->mbti_board = $request->mid;
         $mbti->user_id = auth()->user()->id;
         $mbti->user_name = auth()->user()->name;
         $mbti->title = $validation['title'];
@@ -62,9 +62,9 @@ class MbtiSortController extends Controller
             $cmt->user;
         }
 
-        $mbtis = Mbti::where('mbtiSort', $mbti->mbtiSort)->orderBy('id', 'desc')->paginate(20);
+        $mbtis = Mbti::where('mbti_board', $mbti->mbti_board)->orderBy('id', 'desc')->paginate(20);
 
-        return view('mbtis.'.$mbti->mbtiSort.'.show', compact(['mbti', 'cmts', 'mbtis']));
+        return view('mbtis.'.$mbti->mbti_board.'.show', compact(['mbti', 'cmts', 'mbtis']));
 
     }
 
