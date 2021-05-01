@@ -10,7 +10,7 @@
             <a href="{{route('registerPage')}}"><button class="hover:text-blue-500">회원가입</button></a>
         @endguest
         @auth()
-            <a href="#" class="mr-2"><button class="hover:hover:text-blue-500">{{auth()->user()->name}}</button></a>
+            <a href="{{route('info', auth()->user()->id)}}" class="mr-2"><button class="hover:hover:text-blue-500">{{auth()->user()->name}}</button></a>
             <form action="{{route('logout')}}" method="post" class="inline-block">
                 @csrf
                 <button class="hover:text-blue-500">로그아웃</button>
