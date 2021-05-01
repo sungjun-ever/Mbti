@@ -6,7 +6,7 @@
         <div class="pt-8 pb-4 px-1 shadow-md">
             <div>
                 <label for="email" class="text-lg">이메일</label>
-                <input id="email" type="email" name="email"
+                <input id="email" type="email" name="email" autofocus
                        value="{{old('email') ? old('email') : ''}}"
                        class="w-full py-2 shadow-sm rounded-sm pl-2 text-lg @error('email') border-2 border-red-600 @enderror">
             </div>

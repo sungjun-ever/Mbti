@@ -20,8 +20,8 @@ class UserController extends Controller
     {
         $validation = $request->validate(
             [
-            'email' => 'required',
-            'name' => 'required|max:5',
+            'email' => 'required|email:rfc,dns',
+            'name' => 'required|between:3,5',
             'password' => 'required|confirmed|between:8, 12'
             ]);
 
