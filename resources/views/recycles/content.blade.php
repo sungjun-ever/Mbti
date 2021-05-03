@@ -17,10 +17,11 @@
                     @csrf
                     @method('delete')
                     <span class="hover:text-red-300"><i class="xi-cut pr-2 pl-4"></i>
-                            <button type="submit">삭제</button>
+                            <button id="delete" type="submit" onclick="if(!confirm('삭제하시겠습니까?')) return false">삭제</button>
                     </span>
                 </form>
             </div>
         @endif
     @endauth
 </div>
+
