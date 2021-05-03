@@ -109,10 +109,11 @@ class MbtiSortController extends Controller
      */
     public function destroy($id)
     {
+        $mbtiName = $this->mbtisName();
         $mbti = Mbti::where('id', $id)->first();
         $mbti -> delete();
 
-        return redirect()->route($mbti->board_name.'.destroy');
+        return redirect()->route($mbtiName.'.index');
     }
 
 }

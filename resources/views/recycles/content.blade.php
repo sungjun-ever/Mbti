@@ -18,7 +18,7 @@
                     @method('delete')
                     <span class="hover:text-red-300"><i class="xi-cut pr-2 pl-4"></i>
                             <button type="submit">삭제</button>
-                        </span>
+                    </span>
                 </form>
             </div>
         @endif
