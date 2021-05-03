@@ -24,7 +24,7 @@ class FreeFactory extends Factory
         return [
             'user_id'=>2,
             'title' => $this->faker->word(),
-            'story' => $this->faker->sentence(),
+            'story' => $this->faker->realText(),
         ];
     }
 }
