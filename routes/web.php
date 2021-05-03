@@ -39,6 +39,8 @@ Route::prefix('/auth')->group(function(){
     Route::get('/{user}/userComments', [UserController::class, 'userComment'])->name('userComment')->middleware('auth');
     Route::get('/{user}/changePassword', [UserController::class, 'changePasswordPage'])->name('changePasswordPage')->middleware('auth');
     Route::post('/{user}/changePassword', [UserController::class, 'changePassword'])->name('changePassword')->middleware('auth');
+    Route::get('/{user}/destroy', [UserController::class, 'destroyPage'])->name('destroyPage')->middleware('auth');
+    Route::delete('/{user}/destroy', [UserController::class, 'destroy'])->name('destroy')->middleware('auth');
 });
 
 Route::get('/mbti', [MbtiController::class, 'index'])->name('mbtis.index');

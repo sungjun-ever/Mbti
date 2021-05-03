@@ -59,6 +59,18 @@ class UserController extends Controller
         return redirect()->route('home');
     }
 
+    public function destroyPage(){
+
+        return view('auth.destroyPage');
+    }
+
+    public function destroy($id){
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect()->route('home');
+    }
+
     public function userInfo()
     {
 
@@ -79,7 +91,11 @@ class UserController extends Controller
         $value = $validation['password'];
 
         if(Hash::check($value, auth()->user()->password)) {
-            return redirect()->route('changePasswordPage', $id);
+            if($_REQUEST['mid'] == 'change'){
+                return redirect()->route('changePasswordPage', $id);
+            } elseif($_REQUEST['mid'] == 'delete'){
+                return redirect()->route('destroyPage', $id);
+            }
         } else {
             return redirect()->back()->with('fail', '비밀번호가 일치하지 않습니다.');
         }

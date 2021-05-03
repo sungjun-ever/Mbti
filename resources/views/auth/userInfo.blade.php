@@ -26,9 +26,16 @@
                         <div class="pt-2">가입날짜 : {{auth()->user()->created_at->format('Y-m-d')}}</div>
                     </div>
                     <div class="mt-4">
-                        <a href="{{route('confirmPage', auth()->user()->id)}}">
-                            <button class="bg-green-500 hover:bg-green-800 px-1 py-1 text-gray-50 rounded-lg">비밀번호 변경</button>
-                        </a>
+                        <form action="{{route('confirmPage', auth()->user()->id)}}" method="get" class="inline-block">
+                            @csrf
+                            <input type="hidden" name="mid" value="change">
+                            <button type="submit" class="bg-green-500 hover:bg-green-800 px-1 py-1 text-gray-50 rounded-lg">비밀번호 변경</button>
+                        </form>
+                        <form action="{{route('confirmPage', auth()->user()->id)}}" method="get" class="inline-block">
+                            @csrf
+                            <input type="hidden" name="mid" value="delete">
+                            <button type="submit" class="bg-red-500 hover:bg-red-800 px-1 py-1 text-gray-50 rounded-lg">계정 삭제</button>
+                        </form>
                     </div>
                 </div>
             </div>
