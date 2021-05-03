@@ -59,6 +59,22 @@ class UserController extends Controller
         return redirect()->route('home');
     }
 
+    public function changePasswordPage()
+    {
+        return view('auth.changePassword');
+    }
+
+    public function changePassword(Request $request, $id)
+    {
+        $validation = $request->validate([
+            'password'=> 'required|confirmed'
+        ]);
+        User::find($id)->update(['password'=>Hash::make($validation['password'])]);
+        Auth::logout();
+
+        return redirect()->route('home');
+    }
+
     public function destroyPage(){
 
         return view('auth.destroyPage');
@@ -99,22 +115,6 @@ class UserController extends Controller
         } else {
             return redirect()->back()->with('fail', '비밀번호가 일치하지 않습니다.');
         }
-    }
-
-    public function changePasswordPage()
-    {
-        return view('auth.changePassword');
-    }
-
-    public function changePassword(Request $request, $id)
-    {
-        $validation = $request->validate([
-            'password'=> 'required|confirmed'
-        ]);
-        User::find($id)->update(['password'=>Hash::make($validation['password'])]);
-        Auth::logout();
-
-        return redirect()->route('home');
     }
 
     public function userPost($id)
