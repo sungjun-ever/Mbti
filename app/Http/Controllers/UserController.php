@@ -89,6 +89,11 @@ class UserController extends Controller
         return redirect()->route('home');
     }
 
+    public function findPwPage()
+    {
+        return view('auth.find-user-password');
+    }
+
     public function userInfo()
     {
 

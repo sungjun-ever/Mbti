@@ -30,6 +30,7 @@ Route::prefix('/auth')->group(function(){
     Route::get('/login', [UserController::class, 'loginPage'])->name('loginPage');
     Route::post('/login', [UserController::class, 'login'])->name('login');
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+    Route::get('/findPw', [UserController::class, 'findPwPage'])->name('findPwPage');
     Route::get('/{user}/info', [UserController::class, 'userInfo'])->name('info')->middleware('auth');
     Route::get('/{user}/confirm', [UserController::class, 'userConfirmPage'])->name('confirmPage')->middleware('auth');
     Route::post('/{user}/confirm', [UserController::class, 'userConfirm'])->name('confirm')->middleware('auth');
