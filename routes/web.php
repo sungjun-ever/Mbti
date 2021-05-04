@@ -22,8 +22,6 @@ use \App\Http\Controllers\FreeCommentController;
 |
 */
 
-Auth::routes(['verify'=>true]);
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('/auth')->group(function(){
