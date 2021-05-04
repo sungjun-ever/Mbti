@@ -79,7 +79,7 @@ class UserController extends Controller
 
     public function destroyPage(){
 
-        return view('auth.destroyPage');
+        return view('auth.destroy-page');
     }
 
     public function destroy($id){
@@ -92,12 +92,12 @@ class UserController extends Controller
     public function userInfo()
     {
 
-        return view('auth.userInfo');
+        return view('auth.user-info');
     }
 
     public function userConfirmPage()
     {
-        return view('auth.userConfirm');
+        return view('auth.user-confirm');
     }
 
     public function userConfirm(Request $request, $id)
@@ -124,7 +124,7 @@ class UserController extends Controller
         $mbtis = DB::table('mbtis')->select('id', 'user_id', 'board_name', 'title', 'created_at')->where('user_id', $id);
         $posts = DB::table('frees')->select('id', 'user_id', 'board_name', 'title', 'created_at')->where('user_id', $id)
                 ->unionAll($mbtis)->orderByDesc('created_at')->paginate(5);
-        return view('auth.userPost', compact('posts'));
+        return view('auth.user-post', compact('posts'));
     }
 
     public function userComment($id)
@@ -133,6 +133,6 @@ class UserController extends Controller
         $cmts = DB::table('free_comments')->select('user_id', 'board_id', 'board_name', 'story', 'created_at')->where('user_id', $id)
             ->unionAll($mbtis)->orderByDesc('created_at')->paginate(5);
 
-        return view('auth.userComment', compact('cmts'));
+        return view('auth.user-comment', compact('cmts'));
     }
 }
