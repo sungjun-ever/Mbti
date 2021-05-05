@@ -22,7 +22,7 @@ class UserController extends Controller
     {
         $validation = $request->validate(
             [
-            'email' => 'required|email:rfc,dns',
+            'email' => 'required|email:rfc,dns|unique:users',
             'name' => 'required|between:3,5',
             'password' => 'required|confirmed|between:8, 12'
             ]);
