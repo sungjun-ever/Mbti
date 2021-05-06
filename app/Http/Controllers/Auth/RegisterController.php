@@ -71,22 +71,4 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
-
-//    public function register(Request $request)
-//    {
-//        $validation = $request->validate(
-//            [
-//                'email' => 'required|email:rfc,dns|unique:users',
-//                'name' => 'required|between:3,5',
-//                'password' => 'required|confirmed|between:8, 12'
-//            ]);
-//
-//        $user = new User();
-//        $user->email = $validation['email'];
-//        $user->name = $validation['name'];
-//        $user->password = Hash::make($validation['password']);
-//        $user->save();
-//
-//        return redirect()->route('home');
-//    }
 }
