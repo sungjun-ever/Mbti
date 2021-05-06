@@ -31,11 +31,6 @@ Auth::routes(['verify'=>true]);
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('/auth')->group(function(){
-    Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('registerPage');
-    Route::post('/register', [RegisterController::class, 'register'])->name('register');
-    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('loginPage');
-    Route::post('/login', [LoginController::class, 'login'])->name('login')->middleware('verified');
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/findPw', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('findPwPage');
     Route::get('/{user}/info', [UserController::class, 'userInfo'])->name('info')->middleware('auth');
     Route::get('/{user}/confirm', [UserController::class, 'userConfirmPage'])->name('confirmPage')->middleware('auth');

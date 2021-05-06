@@ -6,8 +6,8 @@
     </div>
     <div class="my-4 py-3 bg-blue-300 text-base text-white text-center flex justify-around rounded">
         @guest
-            <a href="{{route('loginPage')}}" class="mr-2"><button class="hover:text-blue-500">로그인</button></a>
-            <a href="{{route('registerPage')}}"><button class="hover:text-blue-500">회원가입</button></a>
+            <a href="{{route('login')}}" class="mr-2"><button class="hover:text-blue-500">로그인</button></a>
+            <a href="{{route('register')}}"><button class="hover:text-blue-500">회원가입</button></a>
         @endguest
         @auth()
             <a href="{{route('info', auth()->user()->id)}}" class="mr-2"><button class="hover:hover:text-blue-500">{{auth()->user()->name}}</button></a>

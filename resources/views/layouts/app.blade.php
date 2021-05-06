@@ -29,8 +29,8 @@
     </div>
     <div class="flex-1 text-right xl:text-lg text-md hidden md:block">
         @guest
-            <a href="{{route('loginPage')}}" class="mr-2"><button class="hover:text-gray-50">로그인</button></a>
-            <a href="{{route('registerPage')}}"><button class="hover:text-gray-50">회원가입</button></a>
+            <a href="{{route('login')}}" class="mr-2"><button class="hover:text-gray-50">로그인</button></a>
+            <a href="{{route('register')}}"><button class="hover:text-gray-50">회원가입</button></a>
         @endguest
         @auth()
             <a href="{{route('info', auth()->user()->id)}}" class="mr-2"><button class="hover:text-gray-50">{{auth()->user()->name}}</button></a>
