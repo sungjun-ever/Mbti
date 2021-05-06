@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -22,22 +26,24 @@ use \App\Http\Controllers\FreeCommentController;
 |
 */
 
+Auth::routes(['verify'=>true]);
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('/auth')->group(function(){
-    Route::get('/register', [UserController::class, 'registerPage'])->name('registerPage');
-    Route::post('/register', [UserController::class, 'register'])->name('register');
-    Route::get('/login', [UserController::class, 'loginPage'])->name('loginPage');
-    Route::post('/login', [UserController::class, 'login'])->name('login');
-    Route::post('/logout', [UserController::class, 'logout'])->name('logout');
-    Route::get('/findPw', [UserController::class, 'findPwPage'])->name('findPwPage');
+    Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('registerPage');
+    Route::post('/register', [RegisterController::class, 'register'])->name('register');
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('loginPage');
+    Route::post('/login', [LoginController::class, 'login'])->name('login')->middleware('verified');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/findPw', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('findPwPage');
     Route::get('/{user}/info', [UserController::class, 'userInfo'])->name('info')->middleware('auth');
     Route::get('/{user}/confirm', [UserController::class, 'userConfirmPage'])->name('confirmPage')->middleware('auth');
     Route::post('/{user}/confirm', [UserController::class, 'userConfirm'])->name('confirm')->middleware('auth');
     Route::get('/{user}/userPosts', [UserController::class, 'userPost'])->name('userPost')->middleware('auth');
     Route::get('/{user}/userComments', [UserController::class, 'userComment'])->name('userComment')->middleware('auth');
-    Route::get('/{user}/changePassword', [UserController::class, 'changePasswordPage'])->name('changePasswordPage')->middleware('auth');
-    Route::post('/{user}/changePassword', [UserController::class, 'changePassword'])->name('changePassword')->middleware('auth');
+    Route::get('/{user}/changePassword', [ResetPasswordController::class, 'showResetForm'])->name('changePasswordPage')->middleware('auth');
+    Route::post('/{user}/changePassword', [ResetPasswordController::class, 'reset'])->name('changePassword')->middleware('auth');
     Route::get('/{user}/destroy', [UserController::class, 'destroyPage'])->name('destroyPage')->middleware('auth');
     Route::delete('/{user}/destroy', [UserController::class, 'destroy'])->name('destroy')->middleware('auth');
 });
@@ -327,3 +333,7 @@ Route::prefix('/suggests')->group(function(){
     Route::put('/{suggest}', [SuggestController::class, 'update'])->name('suggests.update')->middleware('auth');
     Route::delete('/{suggest}', [SuggestController::class, 'destroy'])->name('suggests.destroy')->middleware('auth');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
