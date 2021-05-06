@@ -28,7 +28,7 @@ use \App\Http\Controllers\FreeCommentController;
 
 Auth::routes(['verify'=>true]);
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('verified');
 
 Route::prefix('/auth')->group(function(){
     Route::get('/findPw', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('findPwPage');
@@ -329,6 +329,3 @@ Route::prefix('/suggests')->group(function(){
     Route::delete('/{suggest}', [SuggestController::class, 'destroy'])->name('suggests.destroy')->middleware('auth');
 });
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

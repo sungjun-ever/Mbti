@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('container')
-    <form action="{{route('login')}}" method="post" class="w-1/2 mx-auto pt-24">
+    <form action="/login" method="post" class="w-1/2 mx-auto pt-24">
         @csrf
         <div class="pt-8 pb-4 px-1 shadow-md">
             <div>
