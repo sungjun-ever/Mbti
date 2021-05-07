@@ -35,13 +35,13 @@ class SuggestController extends Controller
 
     public function show($id)
     {
-        $sug = Suggest::where('id', $id)->first();
-        return view('suggests.show', compact('sug'));
+        $sug = Suggest::findOrFail($id)->first();
+        return view('suggests.show', compact(['sug']));
     }
 
     public function edit($id)
     {
-        $sug = Suggest::where('id', $id)->first();
+        $sug = Suggest::findOrFail($id)->first();
         return view('suggests.edit', compact('sug'));
     }
 
@@ -52,7 +52,7 @@ class SuggestController extends Controller
            'story'=>'required'
         ]);
 
-        $sug = Suggest::where('id', $id)->first();
+        $sug = Suggest::findOrFail($id)->first();
         $sug->title = $validation['title'];
         $sug->story = $validation['story'];
         $sug->save();
@@ -61,7 +61,7 @@ class SuggestController extends Controller
 
     public function destroy($id)
     {
-        $sug = Suggest::where('id', $id)->first();
+        $sug = Suggest::findOrFail($id)->first();
         $sug->delete();
         return redirect()->route('suggests.index');
     }

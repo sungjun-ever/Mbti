@@ -23,9 +23,9 @@ class SuggestFactory extends Factory
     {
         return [
             'title' => $this->faker->word,
-            'story' => $this->faker->sentence,
+            'story' => $this->faker->realText(),
             'user_id' => 1,
-            'user_name' => '홍길동'
+            'board_name' => 'suggests'
         ];
     }
 }

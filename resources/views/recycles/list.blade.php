@@ -1,8 +1,10 @@
 <div class="w-10/12 mx-auto pt-8">
     <div class="pb-4">
         <span class="xl:text-2xl text-xl text-blue-500 font-bold">
-            @if($post->board_name == 'free')
+            @if($post->board_name == 'frees')
                 자유게시판
+            @elseif($post->board_name == 'suggests')
+                건의게시판
             @else
                 {{strtoupper($post->board_name)}}
             @endif
