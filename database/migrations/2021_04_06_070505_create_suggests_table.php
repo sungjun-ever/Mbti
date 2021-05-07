@@ -17,6 +17,7 @@ class CreateSuggestsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->string('board_name')->default('suggests');
+            $table->boolean('secret')->default(false);
             $table->string('title');
             $table->longText('story');
             $table->timestamps();

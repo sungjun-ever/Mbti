@@ -95,7 +95,6 @@
         document.getElementById(cmtBox).style.display = 'block';
         document.getElementById(editBox).style.display = 'none';
     }
-
 </script>
 
 
