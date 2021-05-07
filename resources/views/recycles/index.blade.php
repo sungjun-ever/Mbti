@@ -24,7 +24,7 @@
             </tr>
             @foreach($posts as $post)
                 <tr class="border-b">
-                    <td class="pl-2 truncate"><a href="{{route($post->board_name.'.show', $post->id)}}" class="text-lg">{{$post->title}}</a>
+                    <td class="pl-2 truncate"><a href="{{route($post->board_name.'.show', $post->id)}}" class="text-lg hover:no-underline">{{$post->title}}</a>
                     </td>
                     <td class="text-center xl:text-base text-xs">{{$post->user->name}}</td>
                     <td class="w-1/12 xl:table-cell hidden">{{$post->created_at->format('Y-m-d')}}</td>

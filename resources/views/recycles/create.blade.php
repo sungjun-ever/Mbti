@@ -2,7 +2,10 @@
     <div>
         <form action="{{route($boardName.'.store')}}" method="post">
             @csrf
-            <input type="hidden" name="mid" value="enfj">
+            @if($boardName == 'suggests')
+                <label for="secret_checkbox" class="text-base">비밀글</label>
+                <input type="checkbox" id="secret_checkbox" name="secret_checkbox" class="w-4 h-4 align-middle">
+            @endif
             <label for="title"></label>
             <input id="title" type="text" name="title"
                    class="w-full py-3 pl-2 text-lg rounded-md outline-none border-2 focus:border-blue-300
