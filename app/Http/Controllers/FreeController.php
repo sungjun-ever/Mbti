@@ -14,6 +14,7 @@ class FreeController extends Controller
         $name = preg_replace('/\?[a-z=&A-Z0-9]*/', '', $getBoard[1]);
         return $name;
     }
+
     public function index()
     {
         $boardName = $this->getBoardName();

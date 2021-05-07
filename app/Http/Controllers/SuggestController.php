@@ -7,15 +7,24 @@ use Illuminate\Http\Request;
 
 class SuggestController extends Controller
 {
+    public function getBoardName()
+    {
+        $getBoard= explode('/', $_SERVER['REQUEST_URI']);
+        $name = preg_replace('/\?[a-z=&A-Z0-9]*/', '', $getBoard[1]);
+        return $name;
+    }
+
     public function index()
     {
+        $boardName = $this->getBoardName();
         $sugs = Suggest::orderBy('id', 'desc')->paginate(5);
-        return view('suggests.index', compact('sugs'));
+        return view('suggests.index', compact(['boardName', 'sugs']));
     }
 
     public function create()
     {
-        return view('suggests.create');
+        $boardName = $this->getBoardName();
+        return view('suggests.create', compact('boardName'));
     }
 
     public function store(Request $request)
