@@ -3,8 +3,6 @@
         <span class="xl:text-2xl text-xl border-b-2 border-blue-300">
             @if($boardName == 'frees')
                 자유게시판
-            @elseif($boardName == 'suggests')
-                건의게시판
             @else
                 {{strtoupper($boardName)}}
             @endif
