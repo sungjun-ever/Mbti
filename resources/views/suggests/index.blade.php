@@ -21,7 +21,8 @@
                     <tr class="border-b">
                         <td class="pl-2 truncate">
                             @if($sug->secret === 1)
-                                <a href="{{route($sug->board_name.'.show', $sug->id)}}" class="text-lg hover:no-underline">
+                                <a href="{{route($sug->board_name.'.show', $sug->id)}}"
+                                   class="text-lg hover:no-underline">
                                     <i class="xi-lock"></i>{{$sug->title}}
                                 </a>
                             @else

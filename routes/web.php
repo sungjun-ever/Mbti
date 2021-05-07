@@ -324,7 +324,7 @@ Route::prefix('/suggests')->group(function(){
     Route::get('/', [SuggestController::class, 'index'])->name('suggests.index');
     Route::get('/create', [SuggestController::class, 'create'])->name('suggests.create')->middleware('auth');
     Route::post('/', [SuggestController::class, 'store'])->name('suggests.store')->middleware('auth');
-    Route::get('/{suggest}', [SuggestController::class, 'show'])->name('suggests.show');
+    Route::get('/{suggest}', [SuggestController::class, 'show'])->name('suggests.show')->middleware('auth');
     Route::get('/{suggest}/edit', [SuggestController::class, 'edit'])->name('suggests.edit')->middleware('auth');
     Route::put('/{suggest}', [SuggestController::class, 'update'])->name('suggests.update')->middleware('auth');
     Route::delete('/{suggest}', [SuggestController::class, 'destroy'])->name('suggests.destroy')->middleware('auth');
