@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Suggest;
+use App\Models\SuggestComment;
 use Illuminate\Http\Request;
 
 class SuggestController extends Controller
@@ -44,7 +45,8 @@ class SuggestController extends Controller
     public function show($id)
     {
         $sug = Suggest::findOrFail($id)->first();
-        return view('suggests.show', compact(['sug']));
+        $cmts = SuggestComment::where('board_id', $id)->get();
+        return view('suggests.show', compact(['sug', 'cmts']));
     }
 
     public function edit($id)

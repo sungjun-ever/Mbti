@@ -14,4 +14,9 @@ class Suggest extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Models\SuggestComment');
+    }
 }

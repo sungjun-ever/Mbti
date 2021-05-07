@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\SuggestCommentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -327,5 +328,11 @@ Route::prefix('/suggests')->group(function(){
     Route::get('/{suggest}/edit', [SuggestController::class, 'edit'])->name('suggests.edit')->middleware('auth');
     Route::put('/{suggest}', [SuggestController::class, 'update'])->name('suggests.update')->middleware('auth');
     Route::delete('/{suggest}', [SuggestController::class, 'destroy'])->name('suggests.destroy')->middleware('auth');
+    Route::prefix('/{suggest}/comments')->group(function(){
+        Route::post('/', [SuggestCommentController::class , 'store'])->name('suggests.comments.store')->middleware('auth');
+        Route::put('/{comment}', [SuggestCommentController::class , 'update'])->name('suggests.comments.update')->middleware('auth');
+        Route::delete('/{comment}', [SuggestCommentController::class , 'destroy'])->name('suggests.comments.destroy')->middleware('auth');
+        Route::post('/{comment}/reply', [SuggestCommentController::class, 'replyStore'])->name('suggests.comments.reply.store')->middleware('auth');
+    });
 });
 
