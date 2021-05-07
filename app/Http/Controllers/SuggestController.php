@@ -35,7 +35,6 @@ class SuggestController extends Controller
         ]);
         $sug = new Suggest();
         $sug->user_id = auth()->user()->id;
-        $sug->user_name = auth()->user()->name;
         $sug->title = $validation['title'];
         $sug->story = $validation['story'];
         $sug->save();
@@ -73,5 +72,11 @@ class SuggestController extends Controller
         $sug = Suggest::findOrFail($id)->first();
         $sug->delete();
         return redirect()->route('suggests.index');
+    }
+
+    public function reply($id)
+    {
+        $parentPost = Suggest::findOrFail($id)->first();
+
     }
 }

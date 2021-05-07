@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSuggestsTable extends Migration
+class CreateSuggestCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateSuggestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('suggests', function (Blueprint $table) {
+        Schema::create('suggest_comments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('board_id')->constrained('suggests');
             $table->string('board_name')->default('suggests');
-            $table->string('title');
-            $table->longText('story');
+            $table->text('story');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateSuggestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('suggests');
+        Schema::dropIfExists('suggest_comments');
     }
 }
