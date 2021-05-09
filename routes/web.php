@@ -35,15 +35,10 @@ Auth::routes(['verify'=>true]);
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('verified');
 
 Route::prefix('/auth')->group(function(){
-    Route::get('/password/find', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('findPwPage');
     Route::get('/{user}/info', [UserController::class, 'userInfo'])->name('info')->middleware('auth');
-    Route::get('/{user}/confirm', [UserController::class, 'userConfirmPage'])->name('confirmPage')->middleware('auth');
-    Route::post('/{user}/confirm', [UserController::class, 'userConfirm'])->name('confirm')->middleware('auth');
     Route::get('/{user}/posts', [UserController::class, 'userPost'])->name('userPost')->middleware('auth');
     Route::get('/{user}/comments', [UserController::class, 'userComment'])->name('userComment')->middleware('auth');
-    Route::get('/{user}/password/change', [ResetPasswordController::class, 'showResetForm'])->name('changePasswordPage')->middleware('auth');
-    Route::post('/{user}/password/change', [ResetPasswordController::class, 'reset'])->name('changePassword')->middleware('auth');
-    Route::get('/{user}/destroy', [UserController::class, 'destroyPage'])->name('destroyPage')->middleware('auth');
+    Route::get('/{user}/destroy', [UserController::class, 'destroyPage'])->name('destroyPage')->middleware(['auth', 'password.confirm']);
     Route::delete('/{user}/destroy', [UserController::class, 'destroy'])->name('destroy')->middleware('auth');
 });
 

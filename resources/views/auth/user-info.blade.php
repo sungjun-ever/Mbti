@@ -31,7 +31,7 @@
                             <input type="hidden" name="mid" value="change">
                             <button type="submit" class="bg-green-500 hover:bg-green-800 px-1 py-1 text-gray-50 rounded-lg">비밀번호 변경</button>
                         </form>
-                        <form action="{{route('password.confirm', auth()->user()->id)}}" method="get" class="inline-block">
+                        <form action="{{route('destroyPage', auth()->user()->id)}}" method="get" class="inline-block">
                             @csrf
                             <input type="hidden" name="mid" value="delete">
                             <button type="submit" class="bg-red-500 hover:bg-red-800 px-1 py-1 text-gray-50 rounded-lg">계정 삭제</button>

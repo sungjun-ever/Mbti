@@ -12,24 +12,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-
-
-    public function changePasswordPage()
-    {
-        return view('auth.change-password');
-    }
-
-    public function changePassword(Request $request, $id)
-    {
-        $validation = $request->validate([
-            'password'=> 'required|confirmed'
-        ]);
-        User::find($id)->update(['password'=>Hash::make($validation['password'])]);
-        Auth::logout();
-
-        return redirect()->route('home');
-    }
-
     public function destroyPage(){
         return view('auth.destroy-page');
     }
@@ -41,39 +23,10 @@ class UserController extends Controller
         return redirect()->route('home');
     }
 
-    public function findPwPage()
-    {
-        return view('auth.find-user-password');
-    }
-
     public function userInfo()
     {
 
         return view('auth.user-info');
-    }
-
-    public function userConfirmPage()
-    {
-        return view('auth.user-confirm');
-    }
-
-    public function userConfirm(Request $request, $id)
-    {
-        $validation = $request->validate([
-           'password'=>'required'
-        ]);
-
-        $value = $validation['password'];
-
-        if(Hash::check($value, auth()->user()->password)) {
-            if($_REQUEST['mid'] == 'change'){
-                return redirect()->route('changePasswordPage', $id);
-            } elseif($_REQUEST['mid'] == 'delete'){
-                return redirect()->route('destroyPage', $id);
-            }
-        } else {
-            return redirect()->back()->with('fail', '비밀번호가 일치하지 않습니다.');
-        }
     }
 
     public function userPost($id)
