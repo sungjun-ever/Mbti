@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\SuggestCommentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +28,7 @@ use \App\Http\Controllers\FreeCommentController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Auth::routes(['verify'=>true]);
 
