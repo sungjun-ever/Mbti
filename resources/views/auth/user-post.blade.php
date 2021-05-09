@@ -8,10 +8,10 @@
                     <a href="{{route('info', auth()->user()->id)}}"><button class="hover:text-blue-300">회원정보</button></a>
                 </div>
                 <div class="mt-4">
-                    <a href="{{route('userPost', auth()->user()->id)}}"><button class="hover:text-blue-300">작성 게시글</button></a>
+                    <a href="{{route('user.post', auth()->user()->id)}}"><button class="hover:text-blue-300">작성 게시글</button></a>
                 </div>
                 <div class="mt-4">
-                    <a href="{{route('userComment', auth()->user()->id)}}"><button class="hover:text-blue-300">작성 댓글</button></a>
+                    <a href="{{route('user.comment', auth()->user()->id)}}"><button class="hover:text-blue-300">작성 댓글</button></a>
                 </div>
             </div>
             <div class="flex-1 border">

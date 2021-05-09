@@ -29,17 +29,16 @@ use \App\Http\Controllers\FreeCommentController;
 |
 */
 
-
 Auth::routes(['verify'=>true]);
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('verified');
 
-Route::prefix('/auth')->group(function(){
-    Route::get('/{user}/info', [UserController::class, 'userInfo'])->name('info')->middleware('auth');
-    Route::get('/{user}/posts', [UserController::class, 'userPost'])->name('userPost')->middleware('auth');
-    Route::get('/{user}/comments', [UserController::class, 'userComment'])->name('userComment')->middleware('auth');
-    Route::get('/{user}/destroy', [UserController::class, 'destroyPage'])->name('destroyPage')->middleware(['auth', 'password.confirm']);
-    Route::delete('/{user}/destroy', [UserController::class, 'destroy'])->name('destroy')->middleware('auth');
+Route::prefix('/auth',)->group(function(){
+    Route::get('/{user}/info', [UserController::class, 'userInfo'])->name('info');
+    Route::get('/{user}/posts', [UserController::class, 'userPost'])->name('user.post');
+    Route::get('/{user}/comments', [UserController::class, 'userComment'])->name('user.comment');
+    Route::get('/{user}/destroy', [UserController::class, 'destroyPage'])->name('user.destroy')->middleware('password.confirm');
+    Route::delete('/{user}/destroy', [UserController::class, 'destroy'])->name('destroy');
 });
 
 Route::get('/mbti', [MbtiController::class, 'index'])->name('mbtis.index');

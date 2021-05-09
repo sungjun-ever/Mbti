@@ -10,10 +10,10 @@
                     <a href="{{route('info', auth()->user()->id)}}"><button class="hover:text-blue-300">회원정보</button></a>
                 </div>
                 <div class="mt-4">
-                    <a href="{{route('userPost', auth()->user()->id)}}"><button class="hover:text-blue-300">작성 게시글</button></a>
+                    <a href="{{route('user.post', auth()->user()->id)}}"><button class="hover:text-blue-300">작성 게시글</button></a>
                 </div>
                 <div class="mt-4">
-                    <a href="{{route('userComment', auth()->user()->id)}}"><button class="hover:text-blue-300">작성 댓글</button></a>
+                    <a href="{{route('user.comment', auth()->user()->id)}}"><button class="hover:text-blue-300">작성 댓글</button></a>
                 </div>
             </div>
 
@@ -31,7 +31,7 @@
                             <input type="hidden" name="mid" value="change">
                             <button type="submit" class="bg-green-500 hover:bg-green-800 px-1 py-1 text-gray-50 rounded-lg">비밀번호 변경</button>
                         </form>
-                        <form action="{{route('destroyPage', auth()->user()->id)}}" method="get" class="inline-block">
+                        <form action="{{route('user.destroy', auth()->user()->id)}}" method="get" class="inline-block">
                             @csrf
                             <input type="hidden" name="mid" value="delete">
                             <button type="submit" class="bg-red-500 hover:bg-red-800 px-1 py-1 text-gray-50 rounded-lg">계정 삭제</button>
