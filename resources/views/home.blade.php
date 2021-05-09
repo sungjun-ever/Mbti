@@ -28,18 +28,5 @@
                 @endforeach
             </div>
         </div>
-
-        <div class="pt-8 w-2/3">
-            <a href="{{route('suggests.index')}}" class="text-2xl inline-block pl-8">
-                <button type="submit" class="hover:text-blue-400 px-1 border-b-2 border-blue-400">건의게시판</button>
-            </a>
-            <div class="mt-3 pl-4">
-                @foreach($sugs as $sug)
-                    <div class="text-base w-9/12 border-b border-gray-200 pb-1">
-                        <a href="{{route('suggests.show', $sug->id)}}"><button>{{$sug->title}}</button></a>
-                    </div>
-                @endforeach
-            </div>
-        </div>
     </div>
 @stop

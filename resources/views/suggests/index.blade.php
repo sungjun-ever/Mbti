@@ -22,8 +22,8 @@
                         <td class="pl-2 truncate">
                             @if($sug->secret === 1)
                                 <a href="{{route($sug->board_name.'.show', $sug->id)}}"
-                                   class="text-lg hover:no-underline">
-                                    <i class="xi-lock"></i>{{$sug->title}}
+                                   class="text-lg hover:no-underline text-gray-400">
+                                    비밀글 입니다.
                                 </a>
                             @else
                                 <a href="{{route($sug->board_name.'.show', $sug->id)}}" class="text-lg hover:no-underline">

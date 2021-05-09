@@ -13,7 +13,6 @@ class HomeController extends Controller
     {
         $mbtis = Mbti::orderBy('id', 'desc')->paginate(5);
         $frees = Free::orderBy('id', 'desc')->paginate(5);
-        $sugs = Suggest::orderBy('id', 'desc')->paginate(5);
         return view('home', compact(['mbtis', 'frees', 'sugs']));
     }
 }
