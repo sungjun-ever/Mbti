@@ -37,8 +37,8 @@ Route::prefix('/auth',)->group(function(){
     Route::get('/{user}/info', [UserController::class, 'userInfo'])->name('info');
     Route::get('/{user}/posts', [UserController::class, 'userPost'])->name('user.post');
     Route::get('/{user}/comments', [UserController::class, 'userComment'])->name('user.comment');
-    Route::get('/{user}/destroy', [UserController::class, 'destroyPage'])->name('user.destroy')->middleware('password.confirm');
-    Route::delete('/{user}/destroy', [UserController::class, 'destroy'])->name('destroy');
+    Route::get('/{user}/delete', [UserController::class, 'destroyPage'])->name('user.destroy')->middleware('password.confirm');
+    Route::delete('/{user}/delete', [UserController::class, 'destroy'])->name('destroy');
 });
 
 Route::get('/mbti', [MbtiController::class, 'index'])->name('mbtis.index');
