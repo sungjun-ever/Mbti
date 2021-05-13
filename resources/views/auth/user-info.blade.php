@@ -1,24 +1,19 @@
 @extends('layouts.app')
 
-
 @section('container')
-    <div class="pt-16 xl:w-10/12 mx-auto min-h-full">
-        <div class="flex w-full">
-
-            <div class="flex-initial flex flex-column text-base pt-8 px-8 border" style="min-height: 300px">
-                <div class="">
-                    <a href="{{route('info', auth()->user()->id)}}"><button class="hover:text-blue-300">회원정보</button></a>
-                </div>
-                <div class="mt-4">
-                    <a href="{{route('user.post', auth()->user()->id)}}"><button class="hover:text-blue-300">작성 게시글</button></a>
-                </div>
-                <div class="mt-4">
-                    <a href="{{route('user.comment', auth()->user()->id)}}"><button class="hover:text-blue-300">작성 댓글</button></a>
-                </div>
+    <div class="flex pt-8 mx-auto min-h-full">
+        <div class="w-full">
+            <div class="flex flex-row text-base pt-8 px-8 pb-4">
+                <a href="{{route('info', auth()->user()->id)}}" class="mr-2"><button class="hover:text-blue-300
+                bg-blue-200 px-1 py-1 rounded-md">회원정보</button></a>
+                <a href="{{route('user.post', auth()->user()->id)}}" class="mr-2"><button class="hover:text-blue-300
+                bg-blue-200 px-1 py-1 rounded-md">작성 게시글</button></a>
+                <a href="{{route('user.comment', auth()->user()->id)}}"><button class="hover:text-blue-300
+                bg-blue-200 px-1 py-1 rounded-md">작성 댓글</button></a>
             </div>
 
-            <div class="flex-1 border">
-                <div class="pt-8 w-2/3 mx-auto">
+            <div class="border">
+                <div class="py-4 pl-8">
                     <div class="text-lg font-bold">회원정보</div>
                     <div class="mt-4 text-base">
                         <div>이름 : {{auth()->user()->name}}</div>
