@@ -2,7 +2,7 @@
 
 
 @section('container')
-    <div class="grid grid-cols-1">
+    <div class="grid grid-cols-2">
         <div class="pt-8 w-2/3">
             <a href="{{route('mbtis.index')}}" class="text-2xl inline-block pl-8">
                 <button type="submit" class="hover:text-blue-400 px-1 border-b-2 border-blue-400">MBTI</button>
@@ -15,7 +15,6 @@
                 @endforeach
             </div>
         </div>
-
         <div class="pt-8 w-2/3">
             <a href="{{route('frees.index')}}" class="text-2xl inline-block pl-8">
                 <button type="submit" class="hover:text-blue-400 px-1 border-b-2 border-blue-400">자유게시판</button>
