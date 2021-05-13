@@ -19,74 +19,9 @@
     </div>
     <div>
         <div class="bg-blue-300 py-2 pl-3 text-white rounded" onclick="subNavBtnClick()">
-            <button id="subNavBtn" class="text-md text-center hover:text-blue-500" value="hidden">성격유형</button>
+            <a href="{{route('mbtis.index')}}"><button id="subNavBtn" class="text-md text-center hover:text-blue-500" value="hidden">성격유형</button></a>
         </div>
-        {{--  성격 유형 메뉴  --}}
-        <div id="mbtiNav" class="py-2 hidden pl-2 bg-white shadow-md">
-            <a href="{{route('enfj.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
-                ENFJ
-            </a>
 
-            <a href="{{route('enfp.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
-                ENFP
-            </a>
-
-            <a href="{{route('entj.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
-                ENTJ
-            </a>
-
-            <a href="{{route('entp.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
-                ENTP
-            </a>
-
-            <a href="{{route('esfj.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
-                ESFJ
-            </a>
-
-            <a href="{{route('esfp.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
-                ESFP
-            </a>
-
-            <a href="{{route('estj.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
-                ESTJ
-            </a>
-
-            <a href="{{route('estp.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
-                ESTP
-            </a>
-
-            <a href="{{route('infj.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
-                INFJ
-            </a>
-
-            <a href="{{route('infp.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
-                INFP
-            </a>
-
-            <a href="{{route('intj.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
-                INTJ
-            </a>
-
-            <a href="{{route('intp.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
-                INTP
-            </a>
-
-            <a href="{{route('isfj.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
-                ISFJ
-            </a>
-
-            <a href="{{route('isfp.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
-                ISFP
-            </a>
-
-            <a href="{{route('istj.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
-                ISTJ
-            </a>
-
-            <a href="{{route('istp.index')}}" class="hover:text-blue-300 py-2 xl:inline-block block">
-                ISTP
-            </a>
-        </div>
         {{--  자유게시판  --}}
         <div class="bg-blue-300 py-2 mt-1 text-white rounded">
             <a href="{{route('frees.index')}}" class="inline-block pl-3">
