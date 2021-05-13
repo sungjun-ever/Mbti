@@ -1,5 +1,5 @@
 <div id="mySidenav"
-     class="flex flex-column h-full w-5/12 xl:w-2/12 position-fixed z-0 top-0 left-0
+     class="flex flex-column h-full w-5/12 xl:w-2/12 position-fixed z-10 top-0 left-0
              overflow-x-hidden bg-gray-50 hidden shadow-lg px-1">
     <div class="h-16 text-right py-3 pr-3">
         <button class="hover:text-blue-300 text-xl" onclick="closeNav()">X</button>
