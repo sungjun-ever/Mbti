@@ -12,7 +12,7 @@
 <body class="bg-gray-100 h-screen">
 <header class="relative bg-blue-300 shadow-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+        <div class="flex justify-between items-center py-3 md:justify-start md:space-x-10">
             @include('layouts.sidemenu')
             <div class="md:w-2/12 md:flex-initial w-0 flex-1 text-2xl">
                 <i class="xi-bars cursor-pointer hover:text-gray-50" onclick="openNav()"></i>
@@ -67,7 +67,6 @@
             subNavBtn.value = 'hidden';
         }
     }
-
 </script>
 </body>
 </html>
