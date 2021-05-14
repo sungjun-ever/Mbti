@@ -30,9 +30,9 @@
                        class="w-full py-2 shadow-sm rounded-sm pl-2 text-lg
                         @error('name') border-2 border-red-600 focus:outline-none @enderror">
             </div>
-            <div class="mt-8 text-center">
+            <div class="mt-8 text-center space-x-4">
                 <button type="submit"
-                        class="px-3 py-1 mr-4 bg-blue-500 hover:bg-blue-800 text-gray-50 text-lg rounded-lg ">가입</button>
+                        class="px-3 py-1 bg-blue-500 hover:bg-blue-800 text-gray-50 text-lg rounded-lg ">가입</button>
                 <button class="px-3 py-1 bg-red-500 hover:bg-red-800 text-gray-50 text-lg rounded-lg">취소</button>
             </div>
         </div>
