@@ -8,12 +8,14 @@
                 <label for="email" class="text-lg">이메일</label>
                 <input id="email" type="email" name="email" autofocus
                        value="{{old('email') ? old('email') : ''}}"
-                       class="w-full py-2 shadow-sm rounded-sm pl-2 text-lg @error('email') border-2 border-red-600 @enderror">
+                       class="w-full py-2 shadow-sm rounded-sm pl-2 text-lg border border-gray-100
+                                @error('email') border-2 border-red-600 @enderror">
             </div>
             <div class="mt-4">
                 <label for="password" class="text-lg">비밀번호</label>
                 <input id="password" type="password" name="password"
-                       class="w-full py-2 shadow-sm rounded-sm pl-2 text-lg @error('password') border-2 border-red-600 @enderror">
+                       class="w-full py-2 shadow-sm rounded-sm pl-2 text-lg border border-gray-100
+                                @error('password') border-2 border-red-600 @enderror">
             </div>
             <div class="mt-4">
                 <label for="remember"></label>
@@ -27,7 +29,7 @@
                     </a>
                 </div>
             </div>
-            <div class="mt-8 text-center space-x-4">
+            <div class="mt-8 text-center space-x-10">
                 <button type="submit"
                         class="px-3 py-1 bg-blue-500 hover:bg-blue-800 text-gray-50 text-lg rounded-lg ">로그인
                 </button>
