@@ -1,9 +1,6 @@
 <div id="mySidenav"
      class="flex flex-column h-full w-5/12 xl:w-2/12 position-fixed z-10 top-0 left-0
              overflow-x-hidden bg-gray-50 hidden shadow-lg px-1">
-    <div class="h-16 text-right py-3 pr-3">
-        <button class="hover:text-blue-300 text-xl" onclick="closeNav()">X</button>
-    </div>
     <div class="my-4 py-3 bg-blue-300 text-base text-white text-center flex justify-around rounded">
         @guest
             <a href="{{route('login')}}" class="mr-2"><button class="hover:text-blue-500">로그인</button></a>

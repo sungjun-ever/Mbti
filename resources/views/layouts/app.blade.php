@@ -32,11 +32,17 @@
                     <a href="{{route('login')}}"><i class="xi-profile-o text-3xl pt-1"></i></a>
                 @endguest
                 @auth()
-                    <a href="{{route('info', auth()->user()->id)}}"><i class="xi-profile text-3xl pt-1"></i></a>
-{{--                    <form action="{{route('logout')}}" method="post" class="inline-block">--}}
-{{--                        @csrf--}}
-{{--                        <button class="hover:text-gray-50">로그아웃</button>--}}
-{{--                    </form>--}}
+                    <div class="relative inline-block">
+                        <button class="hover:text-gray-100" onclick="openDropdown()"><i class="xi-profile text-4xl pt-1"></i></button>
+                        <div id="dropdownMenu" class="w-48 right-2 top-12 hidden absolute bg-white shadow-md rounded-md">
+                            <a href="{{route('info', auth()->user()->id)}}" class="hover:no-underline">
+                                <button class="block w-full py-1 border-b border-gray-200">마이페이지</button></a>
+                            <a href="{{route('user.post', auth()->user()->id)}}" class="hover:no-underline">
+                                <button class="block w-full py-1 border-b border-gray-200">작성 게시글</button></a>
+                            <a href="{{route('user.comment', auth()->user()->id)}}" class="hover:no-underline">
+                                <button class="block w-full py-1 border-b border-gray-200">작성 댓글</button></a>
+                        </div>
+                    </div>
                 @endauth
             </div>
         </div>
@@ -54,9 +60,6 @@
     function openNav() {
         document.getElementById("mySidenav").style.display = "block";
     }
-    function closeNav() {
-        document.getElementById('mySidenav').style.display = "none";
-    }
     function subNavBtnClick(){
         let subNavBtn = document.querySelector('#subNavBtn');
         if(subNavBtn.value === 'hidden'){
@@ -67,6 +70,21 @@
             subNavBtn.value = 'hidden';
         }
     }
+
+    function openDropdown(){
+        document.getElementById('dropdownMenu').style.display = 'block';
+    }
+
+    document.addEventListener('mouseup', function(e) {
+        let dropdown = document.getElementById('dropdownMenu');
+        let sideMenu = document.getElementById('mySidenav');
+        if (!dropdown.contains(e.target)) {
+            dropdown.style.display = 'none';
+        }
+        if(!sideMenu.contains(e.target)){
+            sideMenu.style.display = 'none';
+        }
+    });
 </script>
 </body>
 </html>
