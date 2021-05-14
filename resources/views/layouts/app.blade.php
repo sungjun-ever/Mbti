@@ -34,7 +34,7 @@
                 @auth()
                     <div class="relative inline-block">
                         <button class="hover:text-gray-100" onclick="openDropdown()"><i class="xi-profile text-4xl pt-1"></i></button>
-                        <div id="dropdownMenu" class="w-48 right-2 top-12 hidden absolute bg-white shadow-md rounded-md">
+                        <div id="dropdownMenu" class="w-48 right-2 top-12 hidden absolute bg-white shadow-md rounded-md px-2">
                             <a href="{{route('info', auth()->user()->id)}}" class="hover:no-underline">
                                 <button class="block w-full py-1 border-b border-gray-200">마이페이지</button></a>
                             <a href="{{route('user.post', auth()->user()->id)}}" class="hover:no-underline">
