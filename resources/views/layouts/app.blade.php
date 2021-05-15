@@ -41,6 +41,9 @@
                                 <button class="block w-full py-1 border-b border-gray-200">작성 게시글</button></a>
                             <a href="{{route('user.comment', auth()->user()->id)}}" class="hover:no-underline">
                                 <button class="block w-full py-1 border-b border-gray-200">작성 댓글</button></a>
+                            <form action="{{route('logout')}}" method="post" class="inline-block w-full text-center">
+                                @csrf
+                                <button type="submit" class="block w-full py-1 border-b border-gray-200">로그아웃</button></form>
                         </div>
                     </div>
                 @endauth
