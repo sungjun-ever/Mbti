@@ -5,8 +5,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+{{--    <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>--}}
+    <script src="{{asset('js/ckeditor.js')}}"></script>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .ck-editor__editable{min-height: 700px}
+    </style>
     <title>@yield('title', 'MBTI')</title>
 </head>
 <body class="bg-gray-100 h-screen">
