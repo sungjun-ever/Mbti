@@ -57,7 +57,7 @@
     </div>
 </header>
 
-<section class="bg-white w-full min-h-full mx-auto shadow-md pb-16 xl:w-7/12">
+<section class="bg-white w-full min-h-full mx-auto shadow-md pb-16 xl:w-8/12">
     @section('container')
     @show
 </section>
