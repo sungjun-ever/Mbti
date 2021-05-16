@@ -27,7 +27,7 @@
                     <button class="hover:text-gray-50 text-2xl">MBTI</button>
                 </a>
             </div>
-            <nav class="hidden md:block md:flex-1 space-x-3 text-base">
+            <nav class="hidden md:block md:flex-1 space-x-6 text-base">
                 <a href="{{route('mbtis.index')}}"><button class="hover:text-gray-50">성격유형</button></a>
                 <a href="{{route('frees.index')}}"><button class="hover:text-gray-50">자유게시판</button></a>
                 <a href="{{route('suggests.index')}}" ><button class="hover:text-gray-50">건의게시판</button></a>
