@@ -14,7 +14,7 @@
             <table class="w-full table-fixed">
                 <tr>
                     <td class="w-7/12"></td>
-                    <td class="w-1/12"></td>
+                    <td class="md:w-1/12"></td>
                     <td class="w-1/12 xl:table-cell hidden"></td>
                 </tr>
                 @foreach($sugs as $sug)
