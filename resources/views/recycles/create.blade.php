@@ -13,7 +13,7 @@
                    value="{{old('title') ? old('title') : ''}}"
                    placeholder="제목을 입력해주세요.">
             <label for="editor"></label>
-            <textarea name="story" id="editor"></textarea>
+            <textarea name="story" id="editor">{{old('story') ? old('story') : ''}}</textarea>
 {{--            <textarea id="story" name="story"--}}
 {{--                      class="px-2 pt-2 border-2 focus:border-blue-300 rounded-md outline-none w-full resize-none text-lg--}}
 {{--                             @error('story') border-2 border-red-600 @enderror"--}}
