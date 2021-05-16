@@ -34,7 +34,7 @@
             </nav>
             <div class="flex-initial space-x-4 text-base text-right">
                 @guest
-                    <a href="{{route('login')}}"><i class="xi-profile-o text-3xl pt-1"></i></a>
+                    <a href="{{route('login')}}"><button class="bg-gray-50 hover:bg-indigo-200 hover:text-gray-50 py-2 px-3 rounded-xl">로그인</button></a>
                 @endguest
                 @auth()
                     <div class="relative inline-block">
@@ -84,13 +84,16 @@
     }
 
     document.addEventListener('mouseup', function(e) {
-        let dropdown = document.getElementById('dropdownMenu');
         let sideMenu = document.getElementById('mySidenav');
-        if (!dropdown.contains(e.target)) {
-            dropdown.style.display = 'none';
-        }
         if(!sideMenu.contains(e.target)){
             sideMenu.style.display = 'none';
+        }
+    });
+
+    document.addEventListener('mouseup', function(e) {
+        let dropdown = document.getElementById('dropdownMenu');
+        if (!dropdown.contains(e.target)) {
+            dropdown.style.display = 'none';
         }
     });
 </script>
