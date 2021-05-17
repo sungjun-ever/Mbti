@@ -6,7 +6,7 @@
     </div>
     <div class="w-10/12 mx-auto my-4 h-screen">
         <p class="text-lg">
-            {{$post->story}}
+            {!! $post->story !!}
         </p>
     </div>
     @auth()

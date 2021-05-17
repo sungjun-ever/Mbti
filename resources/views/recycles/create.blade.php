@@ -2,10 +2,6 @@
     <div>
         <form action="{{route($boardName.'.store')}}" method="post">
             @csrf
-            @if($boardName == 'suggests')
-                <label for="secret_checkbox" class="text-base">비밀글</label>
-                <input type="checkbox" id="secret_checkbox" name="secret_checkbox" class="w-4 h-4 align-middle">
-            @endif
             <label for="title"></label>
             <input id="title" type="text" name="title"
                    class="w-full py-2 pl-2 text-lg rounded-md outline-none border-2 focus:border-blue-300
@@ -14,10 +10,13 @@
                    placeholder="제목을 입력해주세요.">
             <label for="editor"></label>
             <textarea name="story" id="editor">{{old('story') ? old('story') : ''}}</textarea>
-{{--            <textarea id="story" name="story"--}}
-{{--                      class="px-2 pt-2 border-2 focus:border-blue-300 rounded-md outline-none w-full resize-none text-lg--}}
-{{--                             @error('story') border-2 border-red-600 @enderror"--}}
-{{--                      rows="24" placeholder="내용을 입력해주세요.">{{old('story') ? old('story') : ''}}</textarea>--}}
+            @if($boardName == 'suggests')
+                <div class="mt-4">
+                    <label for="post_password" class="text-base">비밀번호</label>
+                    <input type="password" id="post_password" name="post_password" placeholder="비밀번호는 필수입니다."
+                            class="border-2 border-blue-300 py-1 w-4/12 pl-1" required>
+                </div>
+            @endif
             <div class="mt-4 text-center">
                 <button type="submit" class="px-4 py-2 mr-4 text-lg rounded-lg text-gray-50 bg-blue-400 hover:bg-blue-800">작성</button>
                 <button class="px-4 py-2 text-lg rounded-lg text-gray-50 bg-red-400 hover:bg-red-800">취소</button>
@@ -39,11 +38,8 @@
                     'fontFamily',
                     'horizontalLine',
                     'underline',
-                    'bulletedList',
-                    'numberedList',
                     '|',
                     'imageUpload',
-                    'insertTable',
                     'undo',
                     'redo'
                 ]
@@ -76,5 +72,6 @@
 
                 }
             }
-        } )
+        })
+
 </script>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Suggest;
 use App\Models\SuggestComment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class SuggestController extends Controller
 {
@@ -32,16 +33,15 @@ class SuggestController extends Controller
     {
         $validation = $request->validate([
            'title' => 'required|max:30',
-           'story' => 'required'
+           'story' => 'required',
+            'post_password' => 'required',
         ]);
 
         $sug = new Suggest();
         $sug->user_id = auth()->user()->id;
         $sug->title = $validation['title'];
         $sug->story = $validation['story'];
-        if($request->input('secret_checkbox')){
-            $sug->secret = true;
-        }
+        $sug->post_password = Hash::make($validation['post_password']);
         $sug->save();
         return redirect()->route('suggests.show', $sug->id);
     }
@@ -50,13 +50,6 @@ class SuggestController extends Controller
     {
         $sug = Suggest::where('id', $id)->first();
         $cmts = SuggestComment::where('board_id', $id)->paginate(20);
-        if($sug->secret === 1){
-            if(auth()->user()->id === $sug->user_id || auth()->user()->is_admin === 1){
-                return view('suggests.show', compact(['sug', 'cmts']));
-            } else {
-                return redirect()->back();
-            }
-        }
         return view('suggests.show', compact(['sug', 'cmts']));
     }
 
