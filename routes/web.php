@@ -30,6 +30,8 @@ use \App\Http\Controllers\FreeCommentController;
 */
 
 Auth::routes(['verify'=>true]);
+Route::get('/login/google', [LoginController::class, 'redirectToProvider'])->name('google.login');
+Route::get('/login/google/callback', [LoginController::class, 'handleProviderCallback']);
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('verified');
 

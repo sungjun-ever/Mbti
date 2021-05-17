@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('container')
-    <form action="{{route('login')}}" method="post" class="lg:w-2/3 w-full mx-auto pt-24">
+    <form action="{{route('login')}}" method="post" class="md:w-5/12 w-full mx-auto pt-24">
         @csrf
         <div class="py-4 lg:px-2 shadow-md">
             <div>
@@ -16,6 +16,9 @@
                 <input id="password" type="password" name="password"
                        class="w-full py-2 shadow-sm rounded-sm pl-2 text-lg border border-gray-100
                                 @error('password') border-2 border-red-600 @enderror">
+            </div>
+            <div class="mt-4">
+                <a href="http://127.0.0.1:8000/login/google"><img src="{{asset('image/btn_google_signin_dark_normal_web.png')}}" alt="구글 로그인"></a>
             </div>
             <div class="mt-4">
                 <label for="remember"></label>
