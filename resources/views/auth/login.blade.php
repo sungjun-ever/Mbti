@@ -18,7 +18,8 @@
                                 @error('password') border-2 border-red-600 @enderror">
             </div>
             <div class="mt-4">
-                <a href="http://127.0.0.1:8000/login/google"><img src="{{asset('image/btn_google_signin_dark_normal_web.png')}}" alt="구글 로그인"></a>
+                <a href="http://127.0.0.1:8000/login/google">
+                    <img src="{{asset('image/btn_google_signin_dark_normal_web.png')}}" alt="구글 로그인" class="w-40"></a>
             </div>
             <div class="mt-4">
                 <label for="remember"></label>
