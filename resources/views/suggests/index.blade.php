@@ -20,16 +20,10 @@
                 @foreach($sugs as $sug)
                     <tr class="border-b">
                         <td class="pl-2 truncate py-1 text-base">
-                            @if($sug->secret === 1)
-                                <a href="{{route($sug->board_name.'.show', $sug->id)}}"
-                                   class="hover:no-underline">
-                                    <i class="xi-lock"></i><span class="text-gray-400 pl-1">비밀글입니다.</span>
-                                </a>
-                            @else
-                                <a href="{{route($sug->board_name.'.show', $sug->id)}}" class="hover:no-underline">
-                                    {{$sug->title}}
-                                </a>
-                            @endif
+                            <a href="{{route($sug->board_name.'.show', $sug->id)}}"
+                               class="hover:no-underline">
+                                <i class="xi-lock"></i><span class="text-gray-400 pl-1">{{$sug->title}}</span>
+                            </a>
                         </td>
                         <td class="text-center xl:text-base text-xs">{{$sug->user->name}}</td>
                         <td class="w-1/12 xl:table-cell hidden">{{$sug->created_at->format('Y-m-d')}}</td>
