@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Free;
 
 use App\Models\Free;
 use App\Models\FreeComment;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class FreeController extends Controller
 {

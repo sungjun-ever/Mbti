@@ -1,22 +1,17 @@
 <?php
 
-use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Auth\VerificationController;
-use App\Http\Controllers\SuggestCommentController;
+use App\Http\Controllers\Suggest\SuggestCommentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\MbtiController;
-use App\Http\Controllers\MbtiSortController;
-use App\Http\Controllers\FreeController;
-use App\Http\Controllers\SuggestController;
+use App\Http\Controllers\Mbti\MbtiController;
+use App\Http\Controllers\Mbti\MbtiSortController;
+use App\Http\Controllers\Free\FreeController;
+use App\Http\Controllers\Suggest\SuggestController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MbtiCommentController;
-use \App\Http\Controllers\FreeCommentController;
+use App\Http\Controllers\Mbti\MbtiCommentController;
+use \App\Http\Controllers\Free\FreeCommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -323,10 +318,13 @@ Route::prefix('/suggests')->group(function(){
     Route::get('/', [SuggestController::class, 'index'])->name('suggests.index');
     Route::get('/create', [SuggestController::class, 'create'])->name('suggests.create')->middleware('auth');
     Route::post('/', [SuggestController::class, 'store'])->name('suggests.store')->middleware('auth');
-    Route::get('/{suggest}', [SuggestController::class, 'show'])->name('suggests.show')->middleware('auth');
+    Route::get('/{suggest}', [SuggestController::class, 'show'])->name('suggests.show')->middleware(['auth', 'suggest.confirm']);
     Route::get('/{suggest}/edit', [SuggestController::class, 'edit'])->name('suggests.edit')->middleware('auth');
     Route::put('/{suggest}', [SuggestController::class, 'update'])->name('suggests.update')->middleware('auth');
     Route::delete('/{suggest}', [SuggestController::class, 'destroy'])->name('suggests.destroy')->middleware('auth');
+    Route::get('/suggests/confirm', function (){
+       return view('suggests.confirm');
+    })->name('suggest.confirm');
     Route::prefix('/{suggest}/comments')->group(function(){
         Route::post('/', [SuggestCommentController::class , 'store'])->name('suggests.comments.store')->middleware('auth');
         Route::put('/{comment}', [SuggestCommentController::class , 'update'])->name('suggests.comments.update')->middleware('auth');

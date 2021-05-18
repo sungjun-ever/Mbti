@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Mbti;
 
 use App\Models\MbtiComment;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class MbtiCommentController extends Controller
 {
