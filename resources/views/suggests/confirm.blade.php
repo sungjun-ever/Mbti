@@ -10,9 +10,8 @@
                     <div class="card-body">
                         {{ __('계속하려면 비밀번호를 입력해주세요.') }}
 
-                        <form method="POST" action="{{ route('suggest.confirm') }}">
+                        <form method="POST" action="{{route('suggests.confirm')}}">
                             @csrf
-
                             <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('비밀번호') }}</label>
 

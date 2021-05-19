@@ -12,6 +12,7 @@ use App\Http\Controllers\Suggest\SuggestController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Mbti\MbtiCommentController;
 use \App\Http\Controllers\Free\FreeCommentController;
+use \App\Http\Controllers\Suggest\ConfirmPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -322,9 +323,8 @@ Route::prefix('/suggests')->group(function(){
     Route::get('/{suggest}/edit', [SuggestController::class, 'edit'])->name('suggests.edit')->middleware('auth');
     Route::put('/{suggest}', [SuggestController::class, 'update'])->name('suggests.update')->middleware('auth');
     Route::delete('/{suggest}', [SuggestController::class, 'destroy'])->name('suggests.destroy')->middleware('auth');
-    Route::get('/suggests/confirm', function (){
-       return view('suggests.confirm');
-    })->name('suggest.confirm');
+    Route::get('password/confirm', [ConfirmPasswordController::class, 'confirmPage'])->name('suggests.confirm');
+    Route::post('password/confirm', [ConfirmPasswordController::class, 'confirm']);
     Route::prefix('/{suggest}/comments')->group(function(){
         Route::post('/', [SuggestCommentController::class , 'store'])->name('suggests.comments.store')->middleware('auth');
         Route::put('/{comment}', [SuggestCommentController::class , 'update'])->name('suggests.comments.update')->middleware('auth');
