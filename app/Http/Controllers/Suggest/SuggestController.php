@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Suggest;
 
 use App\Models\Suggest;
 use App\Models\SuggestComment;
+use App\Rules\IsValidPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
@@ -33,9 +34,9 @@ class SuggestController extends Controller
     public function store(Request $request)
     {
         $validation = $request->validate([
-           'title' => 'required|max:30',
-           'story' => 'required',
-            'post_password' => 'required',
+            'title' => ['required', 'max:30'],
+            'story' => 'required',
+            'post_password' => ['required', 'min:8', new IsValidPassword()],
         ]);
 
         $sug = new Suggest();
