@@ -23,8 +23,8 @@
 
     @auth()
     <div class="bg-blue-300 flex text-center">
-        <a href="{{route('info', auth()->user()->id)}}" class="flex-1"><button class="py-3 hover:text-gray-50">마이페이지</button></a>
-        <a href="{{route('user.post', auth()->user()->id)}}" class="flex-1 sm:w-0"><button class="py-3 hover:text-gray-50">작성 글</button></a>
+        <a href="{{route('info', auth()->user()->id)}}" class="flex-1 hover:text-gray-50"><button class="py-3">마이페이지</button></a>
+        <a href="{{route('user.post', auth()->user()->id)}}" class="flex-1 sm:w-0 hover:text-gray-50"><button class="py-3">작성 글</button></a>
         <form action="{{route('logout')}}" method="post" class="flex-1 py-3">
             @csrf
             <button class="hover:text-gray-50">로그아웃</button>
