@@ -37,7 +37,8 @@
                 <button type="submit"
                         class="px-3 py-1 bg-blue-500 hover:bg-blue-800 text-gray-50 text-lg rounded-lg ">로그인
                 </button>
-                <button class="px-3 py-1 bg-red-500 hover:bg-red-800 text-gray-50 text-lg rounded-lg">취소</button>
+                <button type="button" onclick="history.back()"
+                        class="px-3 py-1 bg-red-500 hover:bg-red-800 text-gray-50 text-lg rounded-lg">취소</button>
             </div>
         </div>
     </form>

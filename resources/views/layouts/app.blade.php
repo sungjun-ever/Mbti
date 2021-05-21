@@ -34,7 +34,7 @@
             </nav>
             <div class="flex-initial space-x-4 text-base text-right">
                 @guest
-                    <a href="{{route('login')}}"><button class="bg-gray-50 hover:bg-indigo-200 hover:text-gray-50 py-2 px-3 rounded-xl">로그인</button></a>
+                    <a href="{{route('login')}}"><button class="bg-gray-50 hover:bg-blue-500 hover:text-gray-50 py-2 px-3 rounded-xl">로그인</button></a>
                 @endguest
                 @auth()
                     <div class="relative inline-block">
