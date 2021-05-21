@@ -22,6 +22,7 @@
         @endauth
 
     @auth()
+    {{--  유저 메뉴    --}}
     <div class="bg-blue-300 flex text-center">
         <a href="{{route('info', auth()->user()->id)}}" class="flex-1 hover:text-gray-50"><button class="py-3">마이페이지</button></a>
         <a href="{{route('user.post', auth()->user()->id)}}" class="flex-1 sm:w-0 hover:text-gray-50"><button class="py-3">작성 글</button></a>
