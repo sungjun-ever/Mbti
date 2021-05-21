@@ -43,7 +43,7 @@ class SuggestPassword
     {
         $this->responseFactory = $responseFactory;
         $this->urlGenerator = $urlGenerator;
-        $this->passwordTimeout = $passwordTimeout ?: 0;
+        $this->passwordTimeout = $passwordTimeout ?: 11800;
     }
     /**
      * Handle an incoming request.
@@ -55,13 +55,15 @@ class SuggestPassword
      */
     public function handle(Request $request, Closure $next, $redirectToRoute = null)
     {
+        $uri = explode('/', $_SERVER['REQUEST_URI']);
+        $id = $uri[2];
         if ($this->shouldConfirmPassword($request)) {
             if ($request->expectsJson()) {
                 return $this->responseFactory->json([
-                    'message' => 'Password confirmation required.',
+                    'message' => '비밀번호를 입력해야합니다.',
                 ], 423);
             }
-
+            $request->session()->put('post_id', $id);
             return $this->responseFactory->redirectGuest(
                 $this->urlGenerator->route($redirectToRoute ?? 'suggests.confirm')
             );

@@ -23,13 +23,14 @@ class ConfirmPasswordController extends Controller
      */
     public function confirm(Request $request)
     {
-        $request->validate($this->rules(), $this->validationErrorMessages());
-
+        $id = $request->session()->get('post_id');
+        $post = Suggest::where('id', $id)->first();
         $this->resetPasswordConfirmationTimeout($request);
-
-        return $request->wantsJson()
-            ? new JsonResponse([], 204)
-            : redirect()->intended(Session::get('url.intended'));
+        if(password_verify($request->password, $post->post_password)){
+            $request->session()->pull('post_id');
+            return redirect()->intended(Session::get('url.intended'));
+        }
+        return redirect()->back();
     }
 
     /**
@@ -43,25 +44,4 @@ class ConfirmPasswordController extends Controller
         $request->session()->put('suggest.password_confirmed_at', time());
     }
 
-    /**
-     * Get the password confirmation validation rules.
-     *
-     * @return array
-     */
-    protected function rules()
-    {
-        return [
-            'password' => 'required|password',
-        ];
-    }
-
-    /**
-     * Get the password confirmation validation error messages.
-     *
-     * @return array
-     */
-    protected function validationErrorMessages()
-    {
-        return [];
-    }
 }
