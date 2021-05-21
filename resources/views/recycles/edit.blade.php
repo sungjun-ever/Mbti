@@ -15,7 +15,8 @@
                       rows="24">{{old('story') ? old('story') : $post->story}}</textarea>
             <div class="mt-4 text-center">
                 <button type="submit" class="px-4 py-2 mr-4 text-lg rounded-lg text-gray-50 bg-blue-400 hover:bg-blue-800">수정</button>
-                <button class="px-4 py-2 text-lg rounded-lg text-gray-50 bg-red-400 hover:bg-red-800">취소</button>
+                <button type="button" onclick="history.back()"
+                        class="px-4 py-2 text-lg rounded-lg text-gray-50 bg-red-400 hover:bg-red-800">취소</button>
             </div>
         </form>
     </div>
