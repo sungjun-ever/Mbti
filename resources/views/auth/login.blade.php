@@ -10,6 +10,7 @@
                        value="{{old('email') ? old('email') : ''}}"
                        class="w-full py-2 shadow-sm rounded-sm pl-2 text-lg border border-gray-100
                                 @error('email') border-2 border-red-600 @enderror">
+                @error('email')<span class="text-red-500">{{$message}}</span>@enderror
             </div>
             <div class="mt-4">
                 <label for="password" class="text-lg">비밀번호</label>
