@@ -10,12 +10,14 @@
                        value="{{old('email') ? old('email') : ''}}" autofocus
                        class="w-full py-2 shadow-sm rounded-sm pl-2 text-lg border border-gray-100
                         @error('email') border-2 border-red-600 focus:outline-none @enderror">
+                @error('email')<span class="text-red-500">{{$message}}</span>@enderror
             </div>
             <div class="mt-4">
                 <label for="password" class="text-lg">비밀번호</label>
-                <input id="password" type="password" name="password" placeholder="비밀번호는 8~12글자"
+                <input id="password" type="password" name="password" placeholder="비밀번호는 10~15글자, 최소 하나 이상의 특수문자, 숫자, 대문자"
                        class="w-full py-2 shadow-sm rounded-sm pl-2 text-lg border border-gray-100
                          @error('password') border-2 border-red-600 focus:outline-none @enderror">
+                @error('password')<span class="text-red-500">{{$message}}</span>@enderror
             </div>
             <div class="mt-4">
                 <label for="password_confirm" class="text-lg">비밀번호 확인</label>
@@ -29,6 +31,7 @@
                        value="{{old('name') ? old('name') : ''}}"
                        class="w-full py-2 shadow-sm rounded-sm pl-2 text-lg border border-gray-100
                         @error('name') border-2 border-red-600 focus:outline-none @enderror">
+                @error('name')<span class="text-red-500">{{$message}}</span>@enderror
             </div>
             <div class="mt-8 text-center space-x-10">
                 <button type="submit"

@@ -63,35 +63,35 @@ class IsValidPassword implements Rule
             case ! $this->uppercasePasses
                 && $this->numericPasses
                 && $this->specialCharacterPasses:
-                return 'The :attribute must be at least 10 characters and contain at least one uppercase character.';
+                return '비밀번호는 최소 10글자 이상, 최소 한 개 이상의 대문자를 포함해야합니다.';
 
             case ! $this->numericPasses
                 && $this->uppercasePasses
                 && $this->specialCharacterPasses:
-                return 'The :attribute must be at least 10 characters and contain at least one number.';
+                return '비밀번호는 최소 10글자 이상, 최소 한 개 이상의 숫자를 포함해야합니다.';
 
             case ! $this->specialCharacterPasses
                 && $this->uppercasePasses
                 && $this->numericPasses:
-                return 'The :attribute must be at least 10 characters and contain at least one special character.';
+                return '비밀번호는 최소 10글자 이상, 최소 한 개 이상의 특수문자를 포함해야합니다.';
 
             case ! $this->uppercasePasses
                 && ! $this->numericPasses
                 && $this->specialCharacterPasses:
-                return 'The :attribute must be at least 10 characters and contain at least one uppercase character and one number.';
+                return '비밀번호는 최소 10글자 이상, 최소 한 개 이상의 대문자 및 숫자를 포함해야합니다.';
 
             case ! $this->uppercasePasses
                 && ! $this->specialCharacterPasses
                 && $this->numericPasses:
-                return 'The :attribute must be at least 10 characters and contain at least one uppercase character and one special character.';
+                return '비밀번호는 최소 10글자 이상, 최소 한 개 이상의 대문자 및 특수문자를 포함해야합니다.';
 
             case ! $this->uppercasePasses
                 && ! $this->numericPasses
                 && ! $this->specialCharacterPasses:
-                return 'The :attribute must be at least 10 characters and contain at least one uppercase character, one number, and one special character.';
+                return '비밀번호는 최소 10글자 이상, 최소 한 개 이상의 대문자, 숫자, 특수문자를 포함해야합니다.';
 
             default:
-                return 'The :attribute must be at least 10 characters.';
+                return '비밀번호는 최소 10글자 이상입니다.';
         }
     }
 }
