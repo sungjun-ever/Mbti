@@ -68,16 +68,6 @@
     function openNav() {
         document.getElementById("mySidenav").style.display = "block";
     }
-    function subNavBtnClick(){
-        let subNavBtn = document.querySelector('#subNavBtn');
-        if(subNavBtn.value === 'hidden'){
-            document.getElementById('mbtiNav').style.display = 'block';
-            subNavBtn.value = 'show';
-        } else {
-            document.getElementById('mbtiNav').style.display = 'none';
-            subNavBtn.value = 'hidden';
-        }
-    }
 
     function openDropdown(){
         document.getElementById('dropdownMenu').style.display = 'block';

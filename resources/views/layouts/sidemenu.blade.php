@@ -33,8 +33,8 @@
     </div>
     @endauth
     <div class="pt-8">
-        <div class="border-b border-gray-200 py-2 pl-3 text-black text-base font-bold" onclick="subNavBtnClick()">
-            <a href="{{route('mbtis.index')}}"><button id="subNavBtn" class="text-md text-center hover:text-blue-500" value="hidden">성격유형</button></a>
+        <div class="border-b border-gray-200 py-2 pl-3 text-black text-base font-bold">
+            <a href="{{route('mbtis.index')}}"><button class="text-md text-center hover:text-blue-500" value="hidden">성격유형</button></a>
         </div>
 
         {{--  자유게시판  --}}
