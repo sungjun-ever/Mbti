@@ -6,11 +6,10 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="{{asset('js/ckeditor.js')}}"></script>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+    <script src="{{asset('js/main.js')}}"></script>
+    <link href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
-        .ck-editor__editable{min-height: 700px}
-    </style>
+    <link href="{{asset('css/ck_editor.css')}}" rel="stylesheet">
     <title>@yield('title', 'MBTI')</title>
 </head>
 <body class="bg-gray-100 h-screen">
@@ -33,7 +32,7 @@
             </nav>
             <div class="flex-initial space-x-4 text-base text-right">
                 @guest
-                    <a href="{{route('login')}}"><button class="bg-gray-50 hover:bg-blue-500 hover:text-gray-50 py-2 px-3 rounded-xl">로그인</button></a>
+                    <a href="{{route('login')}}"><button class="bg-gray-50 hover:bg-blue-500 hover:text-gray-50 py-1 px-3 rounded-xl">로그인</button></a>
                 @endguest
                 @auth()
                     <div class="relative inline-block">
@@ -60,31 +59,11 @@
     @section('container')
     @show
 </section>
-<footer class="w-full xl:w-7/12 min-h-30 mx-auto pt-8">
-    Copyright
+<footer class="w-full bg-blue-300 h-32 shadow-md">
+    <div class="xl:max-w-7xl mx-auto pt-6 text-base">
+        copyright
+    </div>
 </footer>
-<script>
-    function openNav() {
-        document.getElementById("mySidenav").style.display = "block";
-    }
 
-    function openDropdown(){
-        document.getElementById('dropdownMenu').style.display = 'block';
-    }
-
-    document.addEventListener('mouseup', function(e) {
-        let sideMenu = document.getElementById('mySidenav');
-        if(!sideMenu.contains(e.target)){
-            sideMenu.style.display = 'none';
-        }
-    });
-
-    document.addEventListener('mouseup', function(e) {
-        let dropdown = document.getElementById('dropdownMenu');
-        if (!dropdown.contains(e.target)) {
-            dropdown.style.display = 'none';
-        }
-    });
-</script>
 </body>
 </html>
