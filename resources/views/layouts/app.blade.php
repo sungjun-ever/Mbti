@@ -7,10 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="{{asset('js/ckeditor.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
+    <link rel="shortcut icon" href="{{asset('image/favicon.ico')}}" type="image/x-icon">
     <link href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{asset('css/ck_editor.css')}}" rel="stylesheet">
-    <title>@yield('title', 'MBTI')</title>
+    <title>@yield('title', 'Charters')</title>
 </head>
 <body class="bg-gray-100 h-screen">
 <header class="relative bg-blue-300 shadow-md">
@@ -21,9 +22,7 @@
                 <i class="xi-bars cursor-pointer hover:text-gray-50" onclick="openNav()"></i>
             </div>
             <div class="md:pr-0 pr-4">
-                <a href="{{route('home')}}">
-                    <button class="hover:text-gray-50 text-2xl">MBTI</button>
-                </a>
+                <a href="{{route('home')}}"><img src="{{asset('image/logo.png')}}" alt="charters"></a>
             </div>
             <nav class="hidden md:block md:flex-1 space-x-6 text-base">
                 <a href="{{route('mbtis.index')}}"><button class="hover:text-gray-50">성격유형</button></a>
