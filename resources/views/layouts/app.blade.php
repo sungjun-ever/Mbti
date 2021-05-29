@@ -7,50 +7,56 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="{{asset('js/ckeditor.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
-    <link rel="shortcut icon" href="{{asset('image/favicon.ico')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
     <link href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{asset('css/ck_editor.css')}}" rel="stylesheet">
     <title>@yield('title', 'Charters')</title>
 </head>
 <body class="bg-gray-100 h-screen">
-<header class="relative bg-blue-300 shadow-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="flex justify-between items-center py-3 md:justify-start md:space-x-10">
-            @include('layouts.sidemenu')
-            <div class="md:w-2/12 md:flex-initial w-0 flex-1 text-2xl">
-                <i class="xi-bars cursor-pointer hover:text-gray-50" onclick="openNav()"></i>
+<header class="flex relative bg-green-my shadow-md items-center text-gray-100">
+    <div class="flex-1 flex lg:justify-center justify-start lg:pl-0 pl-2 md:py-2 items-center md:space-x-6 space-x-4">
+        @include('layouts.sidemenu')
+        <i class="xi-bars cursor-pointer hover:text-black md:text-2xl text-xl" onclick="openNav()"></i>
+        <a href="{{route('home')}}" class="object-contain"><img src="{{asset('image/logo.png')}}" alt="charters"></a>
+    </div>
+    <nav class="flex-initial lg:flex space-x-10 text-base pl-2 hidden">
+        <a href="{{route('mbtis.index')}}">
+            <button class="hover:text-black">성격유형</button>
+        </a>
+        <a href="{{route('frees.index')}}">
+            <button class="hover:text-black">자유게시판</button>
+        </a>
+        <a href="{{route('suggests.index')}}">
+            <button class="hover:text-black">건의게시판</button>
+        </a>
+    </nav>
+    <div class="flex-1 flex text-base text-right lg:justify-center justify-end md:pr-0 pr-4">
+        @guest
+            <a href="{{route('login')}}" class="text-gray-100 hover:no-underline hover:text-black">로그인</a>
+        @endguest
+        @auth()
+            <div class="relative inline-block">
+                <button class="hover:text-black" onclick="openDropdown()"><i
+                        class="xi-profile lg:text-4xl text-3xl pt-1"></i></button>
+                <div id="dropdownMenu"
+                     class="w-48 right-2 top-12 hidden absolute bg-white text-black  shadow-md rounded-md px-2">
+                    <a href="{{route('info', auth()->user()->id)}}" class="hover:no-underline hover:text-green-600">
+                        <button class="block w-full py-1 border-b border-gray-200">마이페이지</button>
+                    </a>
+                    <a href="{{route('user.post', auth()->user()->id)}}" class="hover:no-underline hover:text-green-600">
+                        <button class="block w-full py-1 border-b border-gray-200">작성 게시글</button>
+                    </a>
+                    <a href="{{route('user.comment', auth()->user()->id)}}" class="hover:no-underline hover:text-green-600">
+                        <button class="block w-full py-1 border-b border-gray-200">작성 댓글</button>
+                    </a>
+                    <form action="{{route('logout')}}" method="post" class="inline-block w-full text-center hover:text-green-600">
+                        @csrf
+                        <button type="submit" class="block w-full py-1 border-b border-gray-200">로그아웃</button>
+                    </form>
+                </div>
             </div>
-            <div class="md:pr-0 pr-4">
-                <a href="{{route('home')}}"><img src="{{asset('image/logo.png')}}" alt="charters"></a>
-            </div>
-            <nav class="hidden md:block md:flex-1 space-x-6 text-base">
-                <a href="{{route('mbtis.index')}}"><button class="hover:text-gray-50">성격유형</button></a>
-                <a href="{{route('frees.index')}}"><button class="hover:text-gray-50">자유게시판</button></a>
-                <a href="{{route('suggests.index')}}" ><button class="hover:text-gray-50">건의게시판</button></a>
-            </nav>
-            <div class="flex-initial space-x-4 text-base text-right">
-                @guest
-                    <a href="{{route('login')}}"><button class="bg-gray-50 hover:bg-blue-500 hover:text-gray-50 py-1 px-3 rounded-xl">로그인</button></a>
-                @endguest
-                @auth()
-                    <div class="relative inline-block">
-                        <button class="hover:text-gray-100" onclick="openDropdown()"><i class="xi-profile text-4xl pt-1"></i></button>
-                        <div id="dropdownMenu" class="w-48 right-2 top-12 hidden absolute bg-white shadow-md rounded-md px-2">
-                            <a href="{{route('info', auth()->user()->id)}}" class="hover:no-underline">
-                                <button class="block w-full py-1 border-b border-gray-200">마이페이지</button></a>
-                            <a href="{{route('user.post', auth()->user()->id)}}" class="hover:no-underline">
-                                <button class="block w-full py-1 border-b border-gray-200">작성 게시글</button></a>
-                            <a href="{{route('user.comment', auth()->user()->id)}}" class="hover:no-underline">
-                                <button class="block w-full py-1 border-b border-gray-200">작성 댓글</button></a>
-                            <form action="{{route('logout')}}" method="post" class="inline-block w-full text-center">
-                                @csrf
-                                <button type="submit" class="block w-full py-1 border-b border-gray-200">로그아웃</button></form>
-                        </div>
-                    </div>
-                @endauth
-            </div>
-        </div>
+        @endauth
     </div>
 </header>
 
@@ -58,7 +64,7 @@
     @section('container')
     @show
 </section>
-<footer class="w-full bg-blue-300 h-32 shadow-md">
+<footer class="w-full bg-green-my h-32 shadow-md">
     <div class="xl:max-w-7xl mx-auto pt-6 text-base">
         copyright
     </div>

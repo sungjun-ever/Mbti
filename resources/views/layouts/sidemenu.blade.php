@@ -2,7 +2,7 @@
      class="flex flex-column h-full w-2/3 md:w-4/12 xl:w-2/12 position-fixed z-10 top-0 left-0
              overflow-x-hidden bg-gray-50 hidden shadow-lg">
         @guest
-        <div class="bg-blue-400 py-4 items-center">
+        <div class="bg-green-800 py-4 items-center">
             <div class="text-center text-base text-gray-50 hover:text-gray-50">
                 <a href="{{route('login')}}">
                     <button>로그인 및 회원가입</button></a>
@@ -10,7 +10,7 @@
         </div>
         @endguest
         @auth()
-        <div class="flex bg-blue-400 py-4 items-center text-base space-x-4">
+        <div class="flex bg-green-800 py-4 items-center text-base space-x-4">
             <div class="flex-initial pl-2 md:pl-4 text-center">
                 <a href="{{route('info', auth()->user()->id)}}"><i class="xi-profile-o md:text-5xl text-4xl hover:text-blue-500"></i></a>
             </div>
@@ -23,7 +23,7 @@
 
     @auth()
     {{--  유저 메뉴    --}}
-    <div class="bg-blue-300 flex text-center">
+    <div class="bg-green-my flex text-center">
         <a href="{{route('info', auth()->user()->id)}}" class="flex-1 hover:text-gray-50"><button class="py-3">마이페이지</button></a>
         <a href="{{route('user.post', auth()->user()->id)}}" class="flex-1 sm:w-0 hover:text-gray-50"><button class="py-3">작성 글</button></a>
         <form action="{{route('logout')}}" method="post" class="flex-1 py-3">
