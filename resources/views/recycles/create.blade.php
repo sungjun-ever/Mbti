@@ -4,10 +4,10 @@
             @csrf
             <label for="title"></label>
             <input id="title" type="text" name="title"
-                   class="w-full py-2 pl-2 text-lg rounded-md outline-none border-2 focus:border-blue-300
+                   class="w-full py-2 pl-2 text-lg rounded-md outline-none border-2 focus:border-green-700
                             @error('title') border-2 border-red-600 @enderror"
                    value="{{old('title') ? old('title') : ''}}"
-                   placeholder="제목을 입력해주세요.">
+                   placeholder="제목을 입력해주세요." autofocus>
             <label for="editor"></label>
             <textarea name="story" id="editor">{{old('story') ? old('story') : ''}}</textarea>
             @if($boardName == 'suggests')
@@ -18,7 +18,7 @@
                 </div>
             @endif
             <div class="mt-4 text-center">
-                <button type="submit" class="px-4 py-2 mr-4 text-lg rounded-lg text-gray-50 bg-blue-400 hover:bg-blue-800">작성</button>
+                <button type="submit" class="px-4 py-2 mr-4 text-lg rounded-lg text-gray-50 bg-green-my hover:bg-green-800">작성</button>
                 <button type="button" onclick="history.back()"
                         class="px-4 py-2 text-lg rounded-lg text-gray-50 bg-red-400 hover:bg-red-800">취소</button>
             </div>

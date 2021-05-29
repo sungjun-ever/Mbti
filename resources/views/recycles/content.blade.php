@@ -1,5 +1,5 @@
 <div class="pt-16 min-h-screen">
-    <div class="w-10/12 mx-auto border-b-2 border-blue-300">
+    <div class="w-10/12 mx-auto border-b-2 border-green-my">
         <p class="truncate text-xl font-bold pb-1">
             {{$post->title}}
         </p>

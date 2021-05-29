@@ -33,19 +33,19 @@
     </div>
     @endauth
     <div class="pt-8">
-        <div class="border-b border-gray-200 py-2 pl-3 text-black text-base font-bold">
+        <div class="border-b border-gray-200 py-2 pl-3 text-black text-base">
             <a href="{{route('mbtis.index')}}"><button class="text-md text-center hover:text-blue-500" value="hidden">성격유형</button></a>
         </div>
 
         {{--  자유게시판  --}}
-        <div class="border-b border-gray-200 py-2 pl-3 text-black text-base font-bold">
+        <div class="border-b border-gray-200 py-2 pl-3 text-black text-base">
             <a href="{{route('frees.index')}}">
                 <button class="hover:text-blue-500">자유게시판</button>
             </a>
         </div>
 
         {{--  건의게시판  --}}
-        <div class="border-b border-gray-200 py-2 pl-3 text-black text-base font-bold">
+        <div class="border-b border-gray-200 py-2 pl-3 text-black text-base">
             <a href="{{route('suggests.index')}}">
                 <button class="hover:text-blue-500">건의게시판</button>
             </a>

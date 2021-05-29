@@ -9,11 +9,13 @@
     <script src="{{asset('js/main.js')}}"></script>
     <link rel="shortcut icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
     <link href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{asset('css/ck_editor.css')}}" rel="stylesheet">
     <title>@yield('title', 'Charters')</title>
 </head>
-<body class="bg-gray-100 h-screen">
+<body class="bg-gray-100 h-screen" style="font-family: 'Noto Sans KR', sans-serif;">
 <header class="flex relative bg-green-my shadow-md items-center text-gray-100">
     <div class="flex-1 flex lg:justify-center justify-start lg:pl-0 pl-2 md:py-2 items-center md:space-x-6 space-x-4">
         @include('layouts.sidemenu')

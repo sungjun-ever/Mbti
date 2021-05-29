@@ -1,6 +1,6 @@
 <div class="w-11/12 pt-12 mx-auto">
     <div class="pt-8">
-        <span class="xl:text-2xl text-xl border-b-2 border-blue-300">
+        <span class="xl:text-2xl text-xl border-b-2 border-black">
             @if($boardName == 'frees')
                 자유게시판
             @else
@@ -8,9 +8,9 @@
             @endif
         </span>
     </div>
-    <div class="text-right pt-8">
-        <a href="{{route($boardName.'.create')}}">
-            <i class="xi-pen pr-1"></i><button class="">글쓰기</button>
+    <div class="text-right pt-8 ">
+        <a href="{{route($boardName.'.create')}}" class="hover:text-green-800">
+            <i class="xi-pen pr-1 "></i><button>글쓰기</button>
         </a>
     </div>
     <div class="mt-16 min-h-30">
@@ -22,7 +22,9 @@
             </tr>
             @foreach($posts as $post)
                 <tr class="border-b">
-                    <td class="pl-2 py-1 text-base truncate"><a href="{{route($post->board_name.'.show', $post->id)}}" class="hover:no-underline">{{$post->title}}</a>
+                    <td class="pl-2 py-1 text-base truncate">
+                        <a href="{{route($post->board_name.'.show', $post->id)}}"
+                           class="hover:no-underline hover:text-green-800" >{{$post->title}}</a>
                     </td>
                     <td class="text-center xl:text-base text-xs">{{$post->user->name}}</td>
                     <td class="w-1/12 xl:table-cell hidden">{{$post->created_at->format('Y-m-d')}}</td>
