@@ -1,0 +1,33 @@
+a:visited{
+    color: darkgray;
+}
+
+.bg-green-my{
+    --tw-bg-opacity: 1;
+    background-color: rgba(60, 146, 148, var(--tw-bg-opacity));
+}
+
+.hover\:bg-green-my:hover{
+    --tw-bg-opacity: 1;
+    background-color: rgba(60, 146, 148, var(--tw-bg-opacity));
+}
+
+.border-green-my{
+    --tw-border-opacity: 1;
+    border-color: rgba(60, 146, 148, var(--tw-border-opacity));
+}
+
+.hover\:border-green-my:hover{
+    --tw-border-opacity: 1;
+    border-color: rgba(60, 146, 148, var(--tw-border-opacity));
+}
+
+.text-green-my{
+    --tw-text-opacity: 1;
+    color: rgba(60, 146, 148, var(--tw-text-opacity));
+}
+
+.hover\:text-green-my:hover{
+    --tw-text-opacity: 1;
+    color: rgba(60, 146, 148, var(--tw-text-opacity));
+}

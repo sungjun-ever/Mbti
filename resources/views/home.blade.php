@@ -10,7 +10,7 @@
             <div class="mt-3 pl-4">
                 @foreach($mbtis as $mbti)
                     <div class="text-base w-9/12 border-b border-gray-200 pb-1">
-                        <a href="{{route($mbti->board_name.'.show', $mbti->id)}}" class="hover:text-green-700"><button>{{$mbti->title}}</button></a>
+                        <a href="{{route($mbti->board_name.'.show', $mbti->id)}}" class="hover:text-green-my hover:no-underline">{{$mbti->title}}</a>
                     </div>
                 @endforeach
             </div>
@@ -22,7 +22,7 @@
             <div class="mt-3 pl-4">
                 @foreach($frees as $free)
                     <div class="text-base w-9/12 border-b border-gray-200 pb-1">
-                        <a href="{{route('frees.show', $free->id)}}" class="hover:text-green-700"><button>{{$free->title}}</button></a>
+                        <a href="{{route('frees.show', $free->id)}}" class="hover:text-green-my hover:no-underline">{{$free->title}}</a>
                     </div>
                 @endforeach
             </div>
