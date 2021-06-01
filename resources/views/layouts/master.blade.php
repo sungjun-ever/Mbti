@@ -19,7 +19,7 @@
     <div class="flex-1 flex lg:justify-center justify-start lg:pl-0 pl-2 py-2 items-center">
         <a href="{{route('home')}}" class="object-contain"><img src="{{asset('image/logo.png')}}" alt="charters"></a>
     </div>
-    <div class="flex-1 flex text-base text-right lg:justify-center justify-end md:pr-0 pr-4">
+    <div class="flex-1 flex text-base text-right lg:justify-center justify-end">
         @guest
             <a href="{{route('login')}}" class="text-gray-100 hover:no-underline hover:text-black">
                 <button>로그인</button></a>
@@ -35,9 +35,9 @@
         @endauth
     </div>
 </header>
-<section class="lg:w-9/12 w-full bg-white h-screen mx-auto shadow-md">
+<section class="lg:w-7/12 w-full bg-white h-screen mx-auto shadow-md">
     <nav class="flex h-12 items-center border-b border-green-my">
-        <a href="#" class="inline-grid h-full hover:no-underline hover:text-gray-50 px-3 border-r border-gray-200 hover:bg-green-my">
+        <a href="{{route('admin.index')}}" class="inline-grid h-full hover:no-underline hover:text-gray-50 px-3 border-r border-gray-200 hover:bg-green-my">
             <button>사용자 정보</button></a>
         <a href="#" class="inline-grid h-full hover:no-underline hover:text-gray-50 px-3 border-r border-gray-200 hover:bg-green-my">
             <button>게시물</button></a>

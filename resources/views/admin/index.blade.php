@@ -5,7 +5,7 @@
         <div class="flex pb-6 pl-2 items-center space-x-4">
             <div class="text-lg">사용자 정보</div>
             <form action="#" method="post" class="inline-block">
-                <select name="content" class="border-2 border-blue-300 focus:outline-none">
+                <select name="content" class="border-2 border-green-my focus:outline-none">
                     <option value="name">이름</option>
                     <option value="email">이메일</option>
                 </select>
