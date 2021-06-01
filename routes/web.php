@@ -13,6 +13,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Mbti\MbtiCommentController;
 use \App\Http\Controllers\Free\FreeCommentController;
 use \App\Http\Controllers\Suggest\ConfirmPasswordController;
+use \App\Http\Controllers\Admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,10 @@ Route::get('/login/google', [LoginController::class, 'redirectToProvider'])->nam
 Route::get('/login/google/callback', [LoginController::class, 'handleProviderCallback']);
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('verified');
+
+Route::prefix('/admin')->group(function(){
+    Route::get('/', AdminController::class)->name('admin.index');
+});
 
 Route::prefix('/auth',)->group(function(){
     Route::get('/{user}/info', [UserController::class, 'userInfo'])->name('info');
