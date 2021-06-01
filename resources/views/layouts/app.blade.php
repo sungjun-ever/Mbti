@@ -40,7 +40,7 @@
                 <button>로그인</button></a>
         @endguest
         @auth()
-            <div class="relative inline-block">
+            <div class="relative">
                 <button class="hover:text-black" onclick="openDropdown()"><i
                         class="xi-profile lg:text-4xl text-3xl pt-1"></i></button>
                 <div id="dropdownMenu"
