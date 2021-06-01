@@ -29,9 +29,9 @@
             </div>
             <div class="h-8 mt-2 text-right space-x-4">
                 <a href="{{route('register')}}">
-                    <button type="button" class="text-base text-blue-300 hover:text-blue-500">회원가입</button></a>
+                    <button type="button" class="text-base text-black hover:text-green-800">회원가입</button></a>
                 <a href="{{route('password.request')}}">
-                    <button type="button" class="text-base text-blue-300 hover:text-blue-500">비밀번호 찾기</button>
+                    <button type="button" class="text-base text-black hover:text-green-800">비밀번호 찾기</button>
                 </a>
             </div>
             <div class="mt-8 text-center space-x-10">
