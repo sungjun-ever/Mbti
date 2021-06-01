@@ -1,7 +1,3 @@
-a:visited{
-    color: darkgray;
-}
-
 .bg-green-my{
     --tw-bg-opacity: 1;
     background-color: rgba(60, 146, 148, var(--tw-bg-opacity));

@@ -35,11 +35,14 @@
         @endauth
     </div>
 </header>
-<section class="w-9/12 bg-white h-screen mx-auto shadow-md">
+<section class="lg:w-9/12 w-full bg-white h-screen mx-auto shadow-md">
     <nav class="flex h-12 items-center border-b border-green-my">
-        <a href="#" class="inline-grid h-full hover:no-underline hover:text-green-my px-3 border-r border-gray-200"><button>사용자 정보</button></a>
-        <a href="#" class="inline-grid h-full hover:no-underline hover:text-green-my px-3 border-r border-gray-200"><button>게시물</button></a>
-        <a href="#" class="inline-grid h-full hover:no-underline hover:text-green-my px-3 border-r border-gray-200"><button>댓글</button></a>
+        <a href="#" class="inline-grid h-full hover:no-underline hover:text-gray-50 px-3 border-r border-gray-200 hover:bg-green-my">
+            <button>사용자 정보</button></a>
+        <a href="#" class="inline-grid h-full hover:no-underline hover:text-gray-50 px-3 border-r border-gray-200 hover:bg-green-my">
+            <button>게시물</button></a>
+        <a href="#" class="inline-grid h-full hover:no-underline hover:text-gray-50 px-3 border-r border-gray-200 hover:bg-green-my">
+            <button>댓글</button></a>
     </nav>
     @section('container')
     @show
