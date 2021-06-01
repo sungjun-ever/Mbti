@@ -3,15 +3,7 @@
 @section('container')
     <div class="flex pt-8 mx-auto min-h-full">
         <div class="w-full">
-            <div class="flex flex-row text-base pt-8 px-8 pb-4">
-                <a href="{{route('info', auth()->user()->id)}}" class="mr-2"><button class="hover:text-blue-300
-                bg-blue-200 px-1 py-1 rounded-md">회원정보</button></a>
-                <a href="{{route('user.post', auth()->user()->id)}}" class="mr-2"><button class="hover:text-blue-300
-                bg-blue-200 px-1 py-1 rounded-md">작성 게시글</button></a>
-                <a href="{{route('user.comment', auth()->user()->id)}}"><button class="hover:text-blue-300
-                bg-blue-200 px-1 py-1 rounded-md">작성 댓글</button></a>
-            </div>
-
+            @include('recycles.user-navi')
             <div class="border">
                 <div class="py-4 w-11/12 ml-auto">
                     <div class="text-lg font-bold">작성 게시글</div>
