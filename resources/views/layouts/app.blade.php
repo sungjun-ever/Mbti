@@ -18,7 +18,7 @@
 </head>
 <body class="bg-gray-100 h-screen" style="font-family: 'Noto Sans KR', sans-serif;">
 <header class="flex relative bg-green-my shadow-md items-center text-gray-100">
-    <div class="flex-1 flex lg:justify-center justify-start lg:pl-0 pl-2 md:py-2 items-center md:space-x-6 space-x-4">
+    <div class="flex-1 flex lg:justify-center justify-start lg:pl-0 pl-2 py-2 items-center md:space-x-6 space-x-4">
         @include('layouts.sidemenu')
         <i class="xi-bars cursor-pointer hover:text-black md:text-2xl text-xl" onclick="openNav()"></i>
         <a href="{{route('home')}}" class="object-contain"><img src="{{asset('image/logo.png')}}" alt="charters"></a>
@@ -36,7 +36,8 @@
     </nav>
     <div class="flex-1 flex text-base text-right lg:justify-center justify-end md:pr-0 pr-4">
         @guest
-            <a href="{{route('login')}}" class="text-gray-100 hover:no-underline hover:text-black">로그인</a>
+            <a href="{{route('login')}}" class="text-gray-100 hover:no-underline hover:text-black">
+                <button>로그인</button></a>
         @endguest
         @auth()
             <div class="relative inline-block">
