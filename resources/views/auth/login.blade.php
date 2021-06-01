@@ -22,21 +22,21 @@
                 <a href="http://127.0.0.1:8000/login/google">
                     <img src="{{asset('image/btn_google_signin_dark_normal_web.png')}}" alt="구글 로그인" class="w-40"></a>
             </div>
-            <div class="mt-4">
+            <div class="flex mt-4 items-center space-x-2">
                 <label for="remember"></label>
                 <input id="remember" type="checkbox" name="remember_me" class="w-5 h-5">
                 <span class="inline-block text-lg h-8">로그인 유지</span>
-                <div class="h-8 mt-2 text-right space-x-4">
-                    <a href="{{route('register')}}">
-                        <button type="button" class="text-base text-blue-300 hover:text-blue-500">회원가입</button></a>
-                    <a href="{{route('password.request')}}">
-                        <button type="button" class="text-base text-blue-300 hover:text-blue-500">비밀번호 찾기</button>
-                    </a>
-                </div>
+            </div>
+            <div class="h-8 mt-2 text-right space-x-4">
+                <a href="{{route('register')}}">
+                    <button type="button" class="text-base text-blue-300 hover:text-blue-500">회원가입</button></a>
+                <a href="{{route('password.request')}}">
+                    <button type="button" class="text-base text-blue-300 hover:text-blue-500">비밀번호 찾기</button>
+                </a>
             </div>
             <div class="mt-8 text-center space-x-10">
                 <button type="submit"
-                        class="px-3 py-1 bg-green-my hover:bg-green-800 text-gray-50 text-lg rounded-lg ">로그인
+                        class="px-3 py-1 bg-green-my hover:bg-green-800 text-gray-50 text-lg rounded-lg">로그인
                 </button>
                 <button type="button" onclick="history.back()"
                         class="px-3 py-1 bg-red-500 hover:bg-red-800 text-gray-50 text-lg rounded-lg">취소</button>
