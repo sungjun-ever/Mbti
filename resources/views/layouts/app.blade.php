@@ -44,7 +44,7 @@
                 <button class="hover:text-black" onclick="openDropdown()"><i
                         class="xi-profile lg:text-4xl text-3xl pt-1"></i></button>
                 <div id="dropdownMenu"
-                     class="w-48 right-2 top-12 hidden absolute bg-white text-black  shadow-md rounded-md px-2">
+                     class="w-48 right-2 top-12 hidden absolute bg-white text-black  shadow-md rounded-md px-2 z-10">
                     <a href="{{route('info', auth()->user()->id)}}" class="hover:no-underline hover:text-green-600">
                         <button class="block w-full py-1 border-b border-gray-200">마이페이지</button>
                     </a>

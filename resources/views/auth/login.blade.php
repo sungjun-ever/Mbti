@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('container')
-    <form action="{{route('login')}}" method="post" class="md:w-5/12 w-full mx-auto pt-24">
+    <form action="{{route('login')}}" method="post" class="md:w-7/12 w-full mx-auto pt-24">
         @csrf
         <div class="py-4 lg:px-2 shadow-md">
             <div>
@@ -36,7 +36,7 @@
             </div>
             <div class="mt-8 text-center space-x-10">
                 <button type="submit"
-                        class="px-3 py-1 bg-blue-500 hover:bg-blue-800 text-gray-50 text-lg rounded-lg ">로그인
+                        class="px-3 py-1 bg-green-my hover:bg-green-800 text-gray-50 text-lg rounded-lg ">로그인
                 </button>
                 <button type="button" onclick="history.back()"
                         class="px-3 py-1 bg-red-500 hover:bg-red-800 text-gray-50 text-lg rounded-lg">취소</button>
