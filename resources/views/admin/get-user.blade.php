@@ -31,8 +31,9 @@
                         <a href="#"><i class="xi-comment"></i></a>
                     </td>
                     <td>
-                        <form action="#" method="post" class="inline-block">
+                        <form action="{{route('admin.user.block')}}" method="post" class="inline-block">
                             @csrf
+                            <input type="hidden" name="email" value="{{$user->email}}">
                             <select name="days" class="border-2 border-green-my w-16">
                                 <option value="seven">7일</option>
                                 <option value="thirty">30일</option>

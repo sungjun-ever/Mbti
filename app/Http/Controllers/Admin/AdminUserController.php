@@ -16,12 +16,13 @@ class AdminUserController extends Controller
     public function getUser()
     {
         $users = User::where('is_admin', 0)->orderByDesc('created_at')->paginate(5, ['*'], 'userPage');
-        return view('admin.index', compact('users'));
+        return view('admin.get-user', compact('users'));
     }
 
-    public function block()
+    public function block(Request $request)
     {
-
+        $days = $request->input('days');
+        $user = User::where('email', $request->input('email'))->first();
     }
 
 }

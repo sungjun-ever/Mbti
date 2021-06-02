@@ -33,7 +33,8 @@ Route::get('/login/google/callback', [LoginController::class, 'handleProviderCal
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('verified');
 
 Route::prefix('/admin')->group(function(){
-    Route::get('/', [AdminUserController::class, 'getUser'])->name('admin.getUser');
+    Route::get('/user', [AdminUserController::class, 'getUser'])->name('admin.getUser');
+    Route::post('/user/block', [AdminUserController::class, 'block'])->name('admin.user.block');
 });
 
 Route::prefix('/auth',)->group(function(){
