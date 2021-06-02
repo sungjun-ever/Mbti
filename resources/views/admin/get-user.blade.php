@@ -35,11 +35,11 @@
                             @csrf
                             <input type="hidden" name="email" value="{{$user->email}}">
                             <select name="days" class="border-2 border-green-my w-16">
-                                <option value="seven">7일</option>
-                                <option value="thirty">30일</option>
-                                <option value="ninety">90일</option>
-                                <option value="half">180일</option>
-                                <option value="year">365일</option>
+                                <option value=7>7일</option>
+                                <option value=30>30일</option>
+                                <option value=90>90일</option>
+                                <option value=180>180일</option>
+                                <option value=365>365일</option>
                                 <option value="ever">영구</option>
                             </select>
                             <button type="submit" class="text-red-500 hover:text-red-800 pl-2">차단</button>
