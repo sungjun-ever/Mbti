@@ -4,7 +4,7 @@
     <div class="pt-6">
         <div class="flex pb-6 pl-2 items-center space-x-4">
             <div class="text-lg">댓글</div>
-            <form action="{{route('admin.user.search')}}" method="get" class="inline-block">
+            <form action="#" method="get" class="inline-block">
                 @csrf
                 <select name="content" class="border-2 border-green-my focus:outline-none">
                     <option value="name">이름</option>
