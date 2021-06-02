@@ -35,7 +35,7 @@
         @endauth
     </div>
 </header>
-<section class="lg:w-7/12 w-full bg-white h-screen mx-auto shadow-md">
+<section class="lg:w-7/12 w-full bg-white min-h-screen mx-auto shadow-md pb-10">
     <nav class="flex h-12 items-center border-b border-green-my">
         <a href="{{route('admin.getUser')}}" class="inline-grid h-full hover:no-underline hover:text-gray-50
         px-3 border-r border-gray-200 hover:shadow-lg transition duration-300 ease-in-out transform hover:bg-green-my">
@@ -50,5 +50,6 @@
     @section('container')
     @show
 </section>
+<footer class="w-full h-16 bg-green-my"></footer>
 </body>
 </html>

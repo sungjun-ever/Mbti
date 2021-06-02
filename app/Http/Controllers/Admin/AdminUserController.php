@@ -15,7 +15,7 @@ class AdminUserController extends Controller
 
     public function getUser()
     {
-        $users = User::where('is_admin', 0)->orderByDesc('created_at')->paginate(5, ['*'], 'userPage');
+        $users = User::where('is_admin', 0)->orderByDesc('created_at')->paginate(20, ['*'], 'userPage');
         return view('admin.get-user', compact('users'));
     }
 
