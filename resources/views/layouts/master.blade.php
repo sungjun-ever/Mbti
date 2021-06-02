@@ -37,7 +37,7 @@
 </header>
 <section class="lg:w-7/12 w-full bg-white h-screen mx-auto shadow-md">
     <nav class="flex h-12 items-center border-b border-green-my">
-        <a href="{{route('admin.index')}}" class="inline-grid h-full hover:no-underline hover:text-gray-50
+        <a href="{{route('admin.getUser')}}" class="inline-grid h-full hover:no-underline hover:text-gray-50
         px-3 border-r border-gray-200 hover:shadow-lg transition duration-300 ease-in-out transform hover:bg-green-my">
             <button>사용자 정보</button></a>
         <a href="#" class="inline-grid h-full hover:no-underline hover:text-gray-50

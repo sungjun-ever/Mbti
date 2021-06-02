@@ -13,10 +13,15 @@ class AdminUserController extends Controller
         $this->middleware('admin');
     }
 
-    public function index()
+    public function getUser()
     {
         $users = User::where('is_admin', 0)->orderByDesc('created_at')->paginate(5, ['*'], 'userPage');
         return view('admin.index', compact('users'));
+    }
+
+    public function block()
+    {
+
     }
 
 }

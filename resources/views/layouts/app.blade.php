@@ -45,7 +45,7 @@
                     <button class="hover:text-black" onclick="openDropdown()"><i
                             class="xi-profile lg:text-4xl text-3xl pt-1"></i></button>
                     @if(auth()->user()->is_admin == 1)
-                        <a href="{{route('admin.index')}}"><i class="xi-cog lg:text-3xl text-2xl pt-1 hover:text-black"></i></a>
+                        <a href="{{route('admin.getUser')}}"><i class="xi-cog lg:text-3xl text-2xl pt-1 hover:text-black"></i></a>
                     @endif
                 </div>
                 <div id="dropdownMenu"
