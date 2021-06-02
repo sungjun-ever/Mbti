@@ -40,10 +40,10 @@
         <a href="{{route('admin.getUser')}}" class="inline-grid h-full hover:no-underline hover:text-gray-50
         px-3 border-r border-gray-200 hover:shadow-lg transition duration-300 ease-in-out transform hover:bg-green-my">
             <button>사용자 정보</button></a>
-        <a href="#" class="inline-grid h-full hover:no-underline hover:text-gray-50
+        <a href="{{route('admin.get.post')}}" class="inline-grid h-full hover:no-underline hover:text-gray-50
         px-3 border-r border-gray-200 hover:shadow-lg transition duration-300 ease-in-out transform hover:bg-green-my">
             <button>게시물</button></a>
-        <a href="#" class="inline-grid h-full hover:no-underline hover:text-gray-50
+        <a href="{{route('admin.get.comment')}}" class="inline-grid h-full hover:no-underline hover:text-gray-50
         px-3 border-r border-gray-200 hover:shadow-lg transition duration-300 ease-in-out transform hover:bg-green-my">
             <button>댓글</button></a>
     </nav>
