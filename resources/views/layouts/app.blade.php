@@ -41,8 +41,13 @@
         @endguest
         @auth()
             <div class="relative">
-                <button class="hover:text-black" onclick="openDropdown()"><i
-                        class="xi-profile lg:text-4xl text-3xl pt-1"></i></button>
+                <div class="flex space-x-4">
+                    <button class="hover:text-black" onclick="openDropdown()"><i
+                            class="xi-profile lg:text-4xl text-3xl pt-1"></i></button>
+                    @if(auth()->user()->is_admin == 1)
+                        <a href="{{route('admin.index')}}"><i class="xi-cog lg:text-3xl text-2xl pt-1 hover:text-black"></i></a>
+                    @endif
+                </div>
                 <div id="dropdownMenu"
                      class="w-48 right-2 top-12 hidden absolute bg-white text-black  shadow-md rounded-md px-2 z-10">
                     <a href="{{route('info', auth()->user()->id)}}" class="hover:no-underline hover:text-green-600">
