@@ -75,4 +75,13 @@ class AdminUserController extends Controller
         return redirect()->route('admin.getUser');
     }
 
+    public function search(Request $request)
+    {
+        $content = $request->input('content');
+        $search = $request->input('search');
+        $users = User::where($content, 'LIKE', "%{$search}%")->paginate(20, ['*'], 'search');
+
+        return view('admin.user-search', compact('users'));
+    }
+
 }
