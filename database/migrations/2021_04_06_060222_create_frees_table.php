@@ -16,7 +16,7 @@ class CreateFreesTable extends Migration
         Schema::create('frees', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->string('board_name')->default('free');
+            $table->string('board_name')->default('frees');
             $table->string('title');
             $table->longText('story');
             $table->timestamps();

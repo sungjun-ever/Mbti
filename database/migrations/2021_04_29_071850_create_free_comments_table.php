@@ -17,8 +17,8 @@ class CreateFreeCommentsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('board_id')->constrained('frees');
-            $table->string('board_name');
-            $table->integer('comment_id');
+            $table->string('board_name')->default('frees');
+            $table->integer('comment_id')->nullable();
             $table->integer('class')->default(0);
             $table->string('status')->default('exist');
             $table->text('story');
