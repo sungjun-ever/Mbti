@@ -3,7 +3,7 @@
 @section('container')
     <form action="{{route('login')}}" method="post" class="md:w-7/12 w-full mx-auto pt-24">
         @csrf
-        <div class="py-4 lg:px-2 shadow-md">
+        <div class="py-4 px-2 shadow-md">
             <div>
                 <label for="email" class="text-lg">이메일</label>
                 <input id="email" type="email" name="email" autofocus
