@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class AdminUserController extends Controller
 {
     public function __construct()
     {
@@ -15,7 +15,8 @@ class AdminController extends Controller
 
     public function index()
     {
-        $users = User::paginate(3, ['*'], 'userPage');
+        $users = User::where('is_admin', 0)->orderByDesc('created_at')->paginate(5, ['*'], 'userPage');
         return view('admin.index', compact('users'));
     }
+
 }

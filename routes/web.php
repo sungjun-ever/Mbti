@@ -13,7 +13,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Mbti\MbtiCommentController;
 use \App\Http\Controllers\Free\FreeCommentController;
 use \App\Http\Controllers\Suggest\ConfirmPasswordController;
-use \App\Http\Controllers\Admin\AdminController;
+use \App\Http\Controllers\Admin\AdminUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +33,7 @@ Route::get('/login/google/callback', [LoginController::class, 'handleProviderCal
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('verified');
 
 Route::prefix('/admin')->group(function(){
-    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/', [AdminUserController::class, 'index'])->name('admin.index');
 });
 
 Route::prefix('/auth',)->group(function(){
