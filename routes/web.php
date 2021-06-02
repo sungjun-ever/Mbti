@@ -35,6 +35,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('ver
 Route::prefix('/admin')->group(function(){
     Route::get('/user', [AdminUserController::class, 'getUser'])->name('admin.getUser');
     Route::post('/user/block', [AdminUserController::class, 'block'])->name('admin.user.block');
+    Route::post('/user/remove/block', [AdminUserController::class, 'removeBlock'])->name('admin.user.remove.block');
 });
 
 Route::prefix('/auth',)->group(function(){

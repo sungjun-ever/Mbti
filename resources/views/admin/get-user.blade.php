@@ -20,6 +20,7 @@
                 <td class="w-2/12">가입날짜</td>
                 <td class="w-2/12">작성 글</td>
                 <td class="w-2/12">차단</td>
+                <td class="w-1/12">해제</td>
             </tr>
             @foreach($users as $user)
                 <tr class="text-center h-10">
@@ -44,6 +45,17 @@
                             </select>
                             <button type="submit" class="text-red-500 hover:text-red-800 pl-2">차단</button>
                         </form>
+                    </td>
+                    <td>
+                        @if($user->banned_at > \Carbon\Carbon::now())
+                            <form action="{{route('admin.user.remove.block')}}" method="post">
+                                @csrf
+                                <input type="hidden" name="email" value="{{$user->email}}">
+                                <button type="submit" onclick="if(!confirm('해제하시겠습니까?')) return false">
+                                    <i class="xi-check text-green-400 hover:text-red-500 text-xl"></i>
+                                </button>
+                            </form>
+                        @endif
                     </td>
                 </tr>
             @endforeach

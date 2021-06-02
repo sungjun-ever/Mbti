@@ -56,12 +56,22 @@ class AdminUserController extends Controller
                 break;
 
             case "ever":
-                $bannedAt = Carbon::now()->addYears(9999);
+                $bannedAt = Carbon::now()->addYears(999);
                 $user->banned_at = $bannedAt;
                 $user->save();
                 break;
         }
 
+        return redirect()->route('admin.getUser');
+    }
+
+    public function removeBlock(Request $request)
+    {
+        $user = User::where('email', $request->input('email'))->first();
+        if($user->banned_at >= Carbon::now()){
+            $user->banned_at = null;
+            $user->save();
+        }
         return redirect()->route('admin.getUser');
     }
 
