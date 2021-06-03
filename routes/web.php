@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Suggest\SuggestCommentController;
+use App\Http\Controllers\TempController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -39,9 +40,13 @@ Route::prefix('/admin')->group(function(){
     Route::get('/user/search', [AdminUserController::class, 'search'])->name('admin.user.search');
     Route::post('/user/block', [AdminUserController::class, 'block'])->name('admin.user.block');
     Route::post('/user/remove/block', [AdminUserController::class, 'removeBlock'])->name('admin.user.remove.block');
-    Route::get('posts', [AllPostController::class, 'index'])->name('admin.get.post');
-    Route::get('comments', [AllCommentController::class, 'index'])->name('admin.get.comment');
+    Route::get('/posts', [AllPostController::class, 'index'])->name('admin.get.post');
+    Route::post('/{post}/{id}/move', [AllPostController::class, 'moveToTemp'])->name('admin.post.move');
+    Route::get('/comments', [AllCommentController::class, 'index'])->name('admin.get.comment');
 });
+
+Route::get('/temps', [TempController::class, 'index'])->name('temp.index');
+Route::post('/temps/{temp}', [TempController::class, 'show'])->name('temp.show');
 
 Route::prefix('/auth',)->group(function(){
     Route::get('/{user}/info', [UserController::class, 'userInfo'])->name('info');
