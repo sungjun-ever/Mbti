@@ -26,7 +26,7 @@
                         <a href="{{route($post->board_name.'.show', $post->id)}}"
                            class="hover:no-underline hover:text-green-800" >{{$post->title}}</a>
                     </td>
-                    <td class="text-center xl:text-base text-xs">{{$post->user->name}}</td>
+                    <td class="text-center xl:text-base text-xs truncate">{{$post->user->name}}</td>
                     <td class="w-1/12 xl:table-cell hidden">{{$post->created_at->format('Y-m-d')}}</td>
                 </tr>
             @endforeach
