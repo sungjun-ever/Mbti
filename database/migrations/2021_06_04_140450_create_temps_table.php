@@ -16,6 +16,7 @@ class CreateTempsTable extends Migration
         Schema::create('temps', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
+            $table->string('board_id');
             $table->string('board_name');
             $table->string('title');
             $table->longText('story');

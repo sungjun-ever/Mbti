@@ -16,8 +16,8 @@ class AllPostController extends Controller
     {
         $mbtiGroup = ['enfj', 'enfp', 'entj', 'entp', 'estj', 'estp', 'esfj', 'esfp',
             'infj', 'infp', 'intj', 'intp', 'isfj', 'isfp', 'istj', 'istp'];
-        $mbtis = Mbti::whereNull('moved');
-        $all = Free::whereNull('moved')->unionAll($mbtis)->orderByDesc('created_at')->paginate(20, ['*'], 'posts');
+        $mbtis = Mbti::where('moved', '!=', 'move');
+        $all = Free::where('moved', '!=', 'move')->unionAll($mbtis)->orderByDesc('created_at')->paginate(20, ['*'], 'posts');
 
         return view('admin.all-post', compact(['all', 'mbtiGroup']));
     }
@@ -29,6 +29,7 @@ class AllPostController extends Controller
 
         $temp = new Temp();
         $temp->board_name = $boardName;
+        $temp->board_id = $id;
         $temp->user_id = request()->input('user_id');
         $temp->title = request()->input('title');
         $temp->story = request()->input('story');
