@@ -37,8 +37,11 @@
                     </td>
                     <td>{{(new \Carbon\Carbon($post->created_at))->format('Y-m-d')}}</td>
                     <td>
-                        <form action="{{route('admin.post.move', [$post->board_name,$post->id])}}" method="post">
+                        <form action="{{route('admin.post.move', [$post->board_name, $post->id])}}" method="post">
                             @csrf
+                            <input type="hidden" name="user_id" value="{{$post->user_id}}">
+                            <input type="hidden" name="title" value="{{$post->title}}">
+                            <input type="hidden" name="story" value="{{$post->story}}">
                             <button type="submit" onclick="if(!confirm('임시게시판으로 이동시키겠습니까?')) return false">
                                 <i class="xi-check text-green-400 hover:text-red-500 text-xl"></i>
                             </button>
