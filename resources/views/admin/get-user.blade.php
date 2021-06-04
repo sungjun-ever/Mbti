@@ -24,7 +24,7 @@
                 <td class="w-1/12">해제</td>
             </tr>
             @foreach($users as $user)
-                <tr class="text-center h-10">
+                <tr class="text-center h-10 border-b">
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->created_at->format('Y-m-d')}}</td>

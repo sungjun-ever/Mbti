@@ -24,7 +24,7 @@
                 <td class="w-1/12">이동</td>
             </tr>
             @foreach($all as $post)
-                <tr class="text-center h-10">
+                <tr class="text-center h-10 border-b">
                     <td>{{$post->id}}</td>
                     <td>{{$post->board_name}}</td>
                     <td>{{$post->user->name}}</td>
