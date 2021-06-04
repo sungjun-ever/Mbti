@@ -14,7 +14,7 @@ class TempController extends Controller
         return $name;
     }
 
-    public function index(Request $request)
+    public function index()
     {
         $boardName = $this->getBoardName();
         $temps = Temp::orderByDesc('id')->paginate(5);
