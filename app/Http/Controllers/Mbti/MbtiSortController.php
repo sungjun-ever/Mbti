@@ -19,7 +19,7 @@ class MbtiSortController extends Controller
     public function index()
     {
         $mbtiName = $this->mbtisName();
-        $mbtis = Mbti::where('board_name', $mbtiName)->orderBy('id', 'desc')->paginate(5);
+        $mbtis = Mbti::where('board_name', $mbtiName)->where('moved', '!=', 'move')->orderBy('id', 'desc')->paginate(5);
         foreach($mbtis as $mbti){
             $mbti->user->name;
         }

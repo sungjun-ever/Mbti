@@ -19,7 +19,7 @@ class FreeController extends Controller
     public function index()
     {
         $boardName = $this->getBoardName();
-        $frees = Free::orderBy('id', 'desc')->paginate(5);
+        $frees = Free::orderBy('id', 'desc')->where('moved', '!=', 'move')->paginate(5);
         return view('frees.index', compact(['frees', 'boardName']));
     }
 

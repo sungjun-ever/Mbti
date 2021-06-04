@@ -11,8 +11,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $mbtis = Mbti::orderBy('id', 'desc')->paginate(5);
-        $frees = Free::orderBy('id', 'desc')->paginate(5);
+        $mbtis = Mbti::orderBy('id', 'desc')->where('moved', '!=', 'move')->paginate(5);
+        $frees = Free::orderBy('id', 'desc')->where('moved', '!=', 'move')->paginate(5);
         return view('home', compact(['mbtis', 'frees']));
     }
 }
