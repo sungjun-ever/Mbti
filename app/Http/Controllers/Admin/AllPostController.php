@@ -39,12 +39,37 @@ class AllPostController extends Controller
             $post = Mbti::where('id', $id)->first();
             $post->moved = 'move';
             $post->save();
-        } elseif($boardName == 'frees'){
+        }
+
+        if($boardName == 'frees'){
             $post = Free::where('id', $id)->first();
             $post->moved = 'move';
             $post->save();
         }
 
         return redirect()->route('temp.show', $temp->id);
+    }
+
+    public function restore($boardName, $id)
+    {
+        $mbtiGroup = ['enfj', 'enfp', 'entj', 'entp', 'estj', 'estp', 'esfj', 'esfp',
+            'infj', 'infp', 'intj', 'intp', 'isfj', 'isfp', 'istj', 'istp'];
+
+        $temp = Temp::where('board_name', $boardName)->where('board_id', $id)->first();
+        $temp->delete();
+
+        if(in_array($boardName, $mbtiGroup)){
+            $post = Mbti::where('id', $id)->first();
+            $post->moved = 'not';
+            $post->save();
+        }
+
+        if($boardName == 'frees'){
+            $post = Free::where('id', $id)->first();
+            $post->moved = 'not';
+            $post->save();
+        }
+
+        return redirect()->back();
     }
 }

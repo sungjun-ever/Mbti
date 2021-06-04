@@ -55,8 +55,9 @@
                         </form>
                     </td>
                     <td>
-                        <form action="{{route('admin.post.move', [$post->board_name, $post->id])}}" method="post">
+                        <form action="{{route('admin.post.restore', [$post->board_name, $post->id])}}" method="post">
                             @csrf
+                            @method('PUT')
                             <input type="hidden" name="user_id" value="{{$post->user_id}}">
                             <input type="hidden" name="title" value="{{$post->title}}">
                             <input type="hidden" name="story" value="{{$post->story}}">
