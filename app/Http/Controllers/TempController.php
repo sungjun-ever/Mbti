@@ -21,8 +21,9 @@ class TempController extends Controller
         return view('temp.index', compact(['temps', 'boardName']));
     }
 
-    public function show()
+    public function show($id)
     {
-        return view('temp.show');
+        $temp = Temp::where('id', $id)->first();
+        return view('temp.show', compact('temp'));
     }
 }

@@ -17,7 +17,7 @@
                 @foreach($temps as $temp)
                     <tr class="border-b">
                         <td class="pl-2 py-1 text-base truncate">
-                            <a href="{{route($temp->board_name.'.show', $temp->id)}}"
+                            <a href="{{route('temp.show', $temp->id)}}"
                                class="hover:no-underline hover:text-green-800" >{{$temp->title}}</a>
                         </td>
                         <td class="text-center xl:text-base text-xs truncate">{{$temp->user->name}}</td>
