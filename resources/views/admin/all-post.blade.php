@@ -22,6 +22,7 @@
                 <td class="w-3/12">제목</td>
                 <td class="w-2/12">작성 날짜</td>
                 <td class="w-1/12">이동</td>
+                <td class="w-1/12">복구</td>
             </tr>
             @foreach($all as $post)
                 <tr class="text-center h-10 border-b">
@@ -42,9 +43,32 @@
                             <input type="hidden" name="user_id" value="{{$post->user_id}}">
                             <input type="hidden" name="title" value="{{$post->title}}">
                             <input type="hidden" name="story" value="{{$post->story}}">
-                            <button type="submit" onclick="if(!confirm('임시게시판으로 이동시키겠습니까?')) return false">
-                                <i class="xi-check text-green-400 hover:text-red-500 text-xl"></i>
-                            </button>
+                            @if($post->moved == 'move')
+                                <span>
+                                    <i class="xi-check text-black text-xl"></i>
+                                </span>
+                            @else
+                                <button type="submit" onclick="if(!confirm('임시게시판으로 이동시키겠습니까?')) return false">
+                                    <i class="xi-check text-green-400 hover:text-red-500 text-xl"></i>
+                                </button>
+                            @endif
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{route('admin.post.move', [$post->board_name, $post->id])}}" method="post">
+                            @csrf
+                            <input type="hidden" name="user_id" value="{{$post->user_id}}">
+                            <input type="hidden" name="title" value="{{$post->title}}">
+                            <input type="hidden" name="story" value="{{$post->story}}">
+                            @if($post->moved == 'move')
+                                <button type="submit" onclick="if(!confirm('복구하시겠습니까?')) return false">
+                                    <i class="xi-check text-green-400 hover:text-red-500 text-xl"></i>
+                                </button>
+                            @else
+                                <span>
+                                    <i class="xi-check text-black text-xl"></i>
+                                </span>
+                            @endif
                         </form>
                     </td>
                 </tr>
