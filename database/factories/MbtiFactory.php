@@ -22,8 +22,8 @@ class MbtiFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => '1',
-            'board_name' => 'istp',
+            'user_id' => '2',
+            'board_name' => 'infp',
             'title' => $this->faker->word(),
             'story' => $this->faker->sentence(),
         ];
