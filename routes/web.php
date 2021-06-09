@@ -38,6 +38,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('ver
 Route::prefix('/admin')->group(function(){
     Route::get('/user', [AdminUserController::class, 'getUser'])->name('admin.getUser');
     Route::get('/user/search', [AdminUserController::class, 'search'])->name('admin.user.search');
+    Route::get('/user/{id}/posts', [AdminUserController::class, 'userPost'])->name('admin.user.post');
     Route::post('/user/block', [AdminUserController::class, 'block'])->name('admin.user.block');
     Route::post('/user/remove/block', [AdminUserController::class, 'removeBlock'])->name('admin.user.remove.block');
     Route::get('/posts', [AllPostController::class, 'index'])->name('admin.get.post');

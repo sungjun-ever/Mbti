@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Free;
+use App\Models\Mbti;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminUserController extends Controller
 {
@@ -82,6 +85,17 @@ class AdminUserController extends Controller
         $users = User::where($content, 'LIKE', "%{$search}%")->paginate(20, ['*'], 'search');
 
         return view('admin.user-search', compact('users'));
+    }
+
+    public function userPost($id)
+    {
+        $mbtiGroup = ['enfj', 'enfp', 'entj', 'entp', 'estj', 'estp', 'esfj', 'esfp',
+            'infj', 'infp', 'intj', 'intp', 'isfj', 'isfp', 'istj', 'istp'];
+
+        $mbtis = Mbti::where('user_id', $id);
+        $all = Free::where('user_id', $id)->unionAll($mbtis)->orderByDesc('created_at')->paginate(5);
+
+        return view('admin.user-post', compact(['all', 'mbtiGroup']));
     }
 
 }

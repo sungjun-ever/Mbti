@@ -29,7 +29,10 @@
                     <td>{{$user->email}}</td>
                     <td>{{$user->created_at->format('y-m-d')}}</td>
                     <td class=text-base">
-                        <a href="#" class="pr-2"><i class="xi-bars"></i></a>
+                        <form action="{{route('admin.user.post', $user->id)}}" method="get" class="pr-2 inline-block">
+                            @csrf
+                            <button type="submit"><i class="xi-bars"></i></button>
+                        </form>
                         <a href="#"><i class="xi-comment"></i></a>
                     </td>
                     <td>
