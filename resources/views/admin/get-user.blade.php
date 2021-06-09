@@ -27,7 +27,7 @@
                 <tr class="text-center h-10 border-b">
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
-                    <td>{{$user->created_at->format('Y-m-d')}}</td>
+                    <td>{{$user->created_at->format('y-m-d')}}</td>
                     <td class=text-base">
                         <a href="#" class="pr-2"><i class="xi-bars"></i></a>
                         <a href="#"><i class="xi-comment"></i></a>
