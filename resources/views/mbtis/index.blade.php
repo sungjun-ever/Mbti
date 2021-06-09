@@ -1,7 +1,15 @@
 @extends('layouts.app')
 
 @section('container')
-    <div class="pt-8 w-11/12 mx-auto text-right">
+    <nav class="grid grid-cols-4 lg:grid-cols-8">
+        @foreach($mbtiName as $mbti)
+            <a href="{{route($mbti.'.index')}}">
+                <button class="border-b border-green-my py-2 w-full hover:shadow-md hover:bg-green-my hover:text-white">
+                {{strtoupper($mbti)}}
+            </button></a>
+        @endforeach
+    </nav>
+    <div class="py-4 text-right pr-2">
         <form action="{{route('mbtis.search')}}" method="get">
             @csrf
             <select name="content" class="border-2 border-green-my focus:outline-none rounded-md mr-2">
@@ -10,11 +18,11 @@
                 <option value="board_name">게시판</option>
             </select>
             <input type="search" name="search"
-                   class="border-2 border-green-my focus:outline-none rounded-md pl-1 h-7">
+                   class="border-2 border-green-my focus:outline-none rounded-md pl-1 h-7 lg:w-3/12">
             <button><i class="xi-search text-lg hover:text-green-800"></i></button>
         </form>
     </div>
-    <div class="flex grid xl:grid-cols-2 grid-cols-1 gap-x-8 justify-center pl-4 pt-12 ">
+    <div class="flex grid xl:grid-cols-2 grid-cols-1 gap-x-8 justify-center pl-4">
         @include('recycles.mbti-main-index', ['mbtis' => $enfjs, 'mbtiName' => $mbtiName[0]])
         @include('recycles.mbti-main-index', ['mbtis' => $enfps, 'mbtiName' => $mbtiName[1]])
         @include('recycles.mbti-main-index', ['mbtis' => $entjs, 'mbtiName' => $mbtiName[2]])
