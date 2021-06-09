@@ -9,7 +9,8 @@
                 <option value="story">내용</option>
                 <option value="board_name">게시판</option>
             </select>
-            <input type="search" name="search" class="border-2 border-green-my focus:outline-none rounded-md pl-1">
+            <input type="search" name="search"
+                   class="border-2 border-green-my focus:outline-none rounded-md pl-1 transition-width">
             <button><i class="xi-search text-lg hover:text-green-800"></i></button>
         </form>
     </div>
