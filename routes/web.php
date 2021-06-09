@@ -47,6 +47,7 @@ Route::prefix('/admin')->group(function(){
 });
 
 Route::get('/temps', [TempController::class, 'index'])->name('temp.index');
+Route::get('/temps/message', [TempController::class, 'showTempMessage'])->name('temp.message');
 Route::get('/temps/{temp}', [TempController::class, 'show'])->name('temp.show');
 
 Route::prefix('/auth',)->group(function(){

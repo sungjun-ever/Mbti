@@ -26,4 +26,9 @@ class TempController extends Controller
         $temp = Temp::where('id', $id)->first();
         return view('temp.show', compact('temp'));
     }
+
+    public function showTempMessage()
+    {
+        return view('temp.show-temp-message');
+    }
 }

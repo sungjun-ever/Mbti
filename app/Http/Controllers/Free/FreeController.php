@@ -50,6 +50,10 @@ class FreeController extends Controller
     {
         $free = Free::where('id', $id)->first();
 
+        if($free->moved == 'move'){
+            return redirect()->route('temp.message');
+        }
+
         $cmts = FreeComment::where('board_id', $id)
             ->orderByDesc('comment_id')
             ->orderBy('class')

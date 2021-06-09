@@ -53,6 +53,10 @@ class MbtiSortController extends Controller
     {
         $mbti = Mbti::where('id', $id)->first();
 
+        if($mbti->moved == 'move') {
+            return redirect()->route('temp.message');
+        }
+
         $cmts = MbtiComment::where('board_id', $id)
             ->orderByDesc('comment_id')
             ->orderBy('class')
