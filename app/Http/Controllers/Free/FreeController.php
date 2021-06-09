@@ -94,4 +94,14 @@ class FreeController extends Controller
 
         return redirect()->route('frees.index');
     }
+
+    public function search(Request $request)
+    {
+        $content = $request->input('content');
+        $search = $request->input('search');
+
+        $posts = Free::where($content, 'LIKE', "%{$search}%")->paginate(5);
+
+        return view('frees.search', compact(['posts', 'content', 'search']));
+    }
 }

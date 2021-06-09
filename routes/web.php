@@ -339,6 +339,7 @@ Route::prefix('/mbti')->group(function(){
 
 Route::prefix('/frees')->group(function(){
     Route::get('/', [FreeController::class, 'index'])->name('frees.index');
+    Route::get('/search', [FreeController::class, 'search'])->name('frees.search');
     Route::get('/create', [FreeController::class, 'create'])->name('frees.create')->middleware('auth');
     Route::post('/', [FreeController::class, 'store'])->name('frees.store')->middleware('auth');
     Route::get('/{free}', [FreeController::class, 'show'])->name('frees.show');
