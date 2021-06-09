@@ -7,15 +7,13 @@
         </div>
         <table class="w-full table-fixed">
             <tr>
-                <td class="w-1/12"></td>
                 <td class="w-5/12"></td>
                 <td class="md:w-2/12"></td>
                 <td class="w-1/12 xl:table-cell hidden"></td>
             </tr>
             @foreach($posts as $post)
                 <tr class="border-b">
-                    <td class="pl-2 text-center">{{$post->board_name}}</td>
-                    <td class="py-1 text-base truncate">
+                    <td class="py-1 text-base pl-2 truncate">
                         <a href="{{route($post->board_name.'.show', $post->id)}}"
                            class="hover:no-underline hover:text-green-800" >{{$post->title}}</a>
                     </td>
