@@ -17,9 +17,9 @@
                     <td>{{$post->user->name}}</td>
                     <td class="truncate">
                         @if(in_array($post->board_name, $mbtiGroup))
-                            <a href={{'../mbti/'.$post->board_name.'/'.$post->id}}>{{$post->title}}</a>
+                            <a href={{route('mbtis.'.$post->board_name, $post->id)}}>{{$post->title}}</a>
                         @else
-                            <a href={{'../'.$post->board_name.'/'.$post->id}}>{{$post->title}}</a>
+                            <a href={{route('frees.show', $post->id)}}>{{$post->title}}</a>
                         @endif
                     </td>
                     <td>{{(new \Carbon\Carbon($post->created_at))->format('y-m-d')}}</td>
