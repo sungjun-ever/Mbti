@@ -4,13 +4,13 @@
     <div class="pt-8 w-11/12 mx-auto text-right">
         <form action="{{route('mbtis.search')}}" method="get">
             @csrf
-            <select name="content" class="border-2 border-green-my focus:outline-none rounded-md">
+            <select name="content" class="border-2 border-green-my focus:outline-none rounded-md mr-2">
                 <option value="title">제목</option>
                 <option value="story">내용</option>
                 <option value="board_name">게시판</option>
             </select>
             <input type="search" name="search"
-                   class="border-2 border-green-my focus:outline-none rounded-md pl-1 transition-width">
+                   class="border-2 border-green-my focus:outline-none rounded-md pl-1 h-7">
             <button><i class="xi-search text-lg hover:text-green-800"></i></button>
         </form>
     </div>
