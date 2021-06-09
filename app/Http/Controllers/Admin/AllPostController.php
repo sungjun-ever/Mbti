@@ -72,4 +72,18 @@ class AllPostController extends Controller
 
         return redirect()->back();
     }
+
+    public function search(Request $request)
+    {
+        $mbtiGroup = ['enfj', 'enfp', 'entj', 'entp', 'estj', 'estp', 'esfj', 'esfp',
+            'infj', 'infp', 'intj', 'intp', 'isfj', 'isfp', 'istj', 'istp'];
+
+        $content = $request->input('content');
+        $search = $request->input('search');
+
+        $mbtis = Mbti::where($content, 'LIKE', "%{$search}%");
+        $all = Free::where($content, 'LIKE', "%{$search}%")->unionAll($mbtis)->orderByDesc('created_at')->paginate(20, ['*'], 'search');
+
+        return view('admin.post-search', compact(['all', 'mbtiGroup']));
+    }
 }
