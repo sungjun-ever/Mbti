@@ -26,6 +26,6 @@
         </table>
     </div>
     <div class="mt-16">
-        {{$posts->links()}}
+        {{$posts->appends(['content'=>$content, 'search'=>$search])->links()}}
     </div>
 @stop

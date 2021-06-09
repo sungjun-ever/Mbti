@@ -75,6 +75,6 @@
                 </tr>
             @endforeach
         </table>
-        <div class="mt-8">{{$all->links()}}</div>
+        <div class="mt-8">{{$all->appends(['content'=>$content, 'search'=>$search])->links()}}</div>
     </div>
 @stop

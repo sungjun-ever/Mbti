@@ -46,7 +46,7 @@ class MbtiController extends Controller
 
         $posts = Mbti::where($content, 'LIKE', "%{$search}%")->orderByDesc('created_at')->paginate(20);
 
-        return view('mbtis.mbti-search', compact(['posts', 'search']));
+        return view('mbtis.mbti-search', compact(['posts', 'search', 'content']));
     }
 
 }

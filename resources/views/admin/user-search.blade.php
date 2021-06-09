@@ -61,6 +61,6 @@
                 </tr>
             @endforeach
         </table>
-        <div class="mt-8">{{$users->links()}}</div>
+        <div class="mt-8">{{$users->appends(['content'=>$content, 'search'=>$search])->links()}}</div>
     </div>
 @stop

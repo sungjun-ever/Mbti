@@ -82,8 +82,8 @@ class AllPostController extends Controller
         $search = $request->input('search');
 
         $mbtis = Mbti::where($content, 'LIKE', "%{$search}%");
-        $all = Free::where($content, 'LIKE', "%{$search}%")->unionAll($mbtis)->orderByDesc('created_at')->paginate(20, ['*'], 'search');
+        $all = Free::where($content, 'LIKE', "%{$search}%")->unionAll($mbtis)->orderByDesc('created_at')->paginate(20);
 
-        return view('admin.post-search', compact(['all', 'mbtiGroup']));
+        return view('admin.post-search', compact(['all', 'mbtiGroup', 'content', 'search']));
     }
 }

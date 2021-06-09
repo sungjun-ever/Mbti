@@ -66,6 +66,7 @@ Route::prefix('/mbti')->group(function(){
     Route::get('/search', [MbtiController::class, 'search'])->name('mbtis.search');
     Route::prefix('/enfj')->group(function (){
         Route::get('/', [MbtiSortController::class, 'index'])->name('enfj.index');
+        Route::get('/search', [MbtiSortController::class, 'search'])->name('enfj.search');
         Route::get('/create', [MbtiSortController::class, 'create'])->name('enfj.create')->middleware('auth');
         Route::post('/', [MbtiSortController::class, 'store'])->name('enfj.store')->middleware('auth');
         Route::get('/{enfj}', [MbtiSortController::class, 'show'])->name('enfj.show');
@@ -82,6 +83,7 @@ Route::prefix('/mbti')->group(function(){
 
     Route::prefix('/enfp')->group(function (){
         Route::get('/', [MbtiSortController::class, 'index'])->name('enfp.index');
+        Route::get('/search', [MbtiSortController::class, 'search'])->name('enfp.search');
         Route::get('/create', [MbtiSortController::class, 'create'])->name('enfp.create')->middleware('auth');
         Route::post('/', [MbtiSortController::class, 'store'])->name('enfp.store')->middleware('auth');
         Route::get('/{enfp}', [MbtiSortController::class, 'show'])->name('enfp.show');
@@ -98,6 +100,7 @@ Route::prefix('/mbti')->group(function(){
 
     Route::prefix('/entj')->group(function (){
         Route::get('/', [MbtiSortController::class, 'index'])->name('entj.index');
+        Route::get('/search', [MbtiSortController::class, 'search'])->name('entj.search');
         Route::get('/create', [MbtiSortController::class, 'create'])->name('entj.create')->middleware('auth');
         Route::post('/', [MbtiSortController::class, 'store'])->name('entj.store')->middleware('auth');
         Route::get('/{entj}', [MbtiSortController::class, 'show'])->name('entj.show');
@@ -114,6 +117,7 @@ Route::prefix('/mbti')->group(function(){
 
     Route::prefix('/entp')->group(function (){
         Route::get('/', [MbtiSortController::class, 'index'])->name('entp.index');
+        Route::get('/search', [MbtiSortController::class, 'search'])->name('entp.search');
         Route::get('/create', [MbtiSortController::class, 'create'])->name('entp.create')->middleware('auth');
         Route::post('/', [MbtiSortController::class, 'store'])->name('entp.store')->middleware('auth');
         Route::get('/{entp}', [MbtiSortController::class, 'show'])->name('entp.show');
@@ -130,6 +134,7 @@ Route::prefix('/mbti')->group(function(){
 
     Route::prefix('/esfj')->group(function (){
         Route::get('/', [MbtiSortController::class, 'index'])->name('esfj.index');
+        Route::get('/search', [MbtiSortController::class, 'search'])->name('esfj.search');
         Route::get('/create', [MbtiSortController::class, 'create'])->name('esfj.create')->middleware('auth');
         Route::post('/', [MbtiSortController::class, 'store'])->name('esfj.store')->middleware('auth');
         Route::get('/{esfj}', [MbtiSortController::class, 'show'])->name('esfj.show');
@@ -146,6 +151,7 @@ Route::prefix('/mbti')->group(function(){
 
     Route::prefix('/esfp')->group(function (){
         Route::get('/', [MbtiSortController::class, 'index'])->name('esfp.index');
+        Route::get('/search', [MbtiSortController::class, 'search'])->name('esfp.search');
         Route::get('/create', [MbtiSortController::class, 'create'])->name('esfp.create')->middleware('auth');
         Route::post('/', [MbtiSortController::class, 'store'])->name('esfp.store')->middleware('auth');
         Route::get('/{esfp}', [MbtiSortController::class, 'show'])->name('esfp.show');
@@ -162,6 +168,7 @@ Route::prefix('/mbti')->group(function(){
 
     Route::prefix('/estj')->group(function (){
         Route::get('/', [MbtiSortController::class, 'index'])->name('estj.index');
+        Route::get('/search', [MbtiSortController::class, 'search'])->name('estj.search');
         Route::get('/create', [MbtiSortController::class, 'create'])->name('estj.create')->middleware('auth');
         Route::post('/', [MbtiSortController::class, 'store'])->name('estj.store')->middleware('auth');
         Route::get('/{estj}', [MbtiSortController::class, 'show'])->name('estj.show');
@@ -178,6 +185,7 @@ Route::prefix('/mbti')->group(function(){
 
     Route::prefix('/estp')->group(function (){
         Route::get('/', [MbtiSortController::class, 'index'])->name('estp.index');
+        Route::get('/search', [MbtiSortController::class, 'search'])->name('estp.search');
         Route::get('/create', [MbtiSortController::class, 'create'])->name('estp.create');
         Route::post('/', [MbtiSortController::class, 'store'])->name('estp.store');
         Route::get('/{estp}', [MbtiSortController::class, 'show'])->name('estp.show');
@@ -194,6 +202,7 @@ Route::prefix('/mbti')->group(function(){
 
     Route::prefix('/infj')->group(function (){
         Route::get('/', [MbtiSortController::class, 'index'])->name('infj.index');
+        Route::get('/search', [MbtiSortController::class, 'search'])->name('infj.search');
         Route::get('/create', [MbtiSortController::class, 'create'])->name('infj.create')->middleware('auth');
         Route::post('/', [MbtiSortController::class, 'store'])->name('infj.store')->middleware('auth');
         Route::get('/{infj}', [MbtiSortController::class, 'show'])->name('infj.show');
@@ -210,6 +219,7 @@ Route::prefix('/mbti')->group(function(){
 
     Route::prefix('/infp')->group(function (){
         Route::get('/', [MbtiSortController::class, 'index'])->name('infp.index');
+        Route::get('/search', [MbtiSortController::class, 'search'])->name('infp.search');
         Route::get('/create', [MbtiSortController::class, 'create'])->name('infp.create')->middleware('auth');
         Route::post('/', [MbtiSortController::class, 'store'])->name('infp.store')->middleware('auth');
         Route::get('/{infp}', [MbtiSortController::class, 'show'])->name('infp.show');
@@ -226,6 +236,7 @@ Route::prefix('/mbti')->group(function(){
 
     Route::prefix('/intj')->group(function (){
         Route::get('/', [MbtiSortController::class, 'index'])->name('intj.index');
+        Route::get('/search', [MbtiSortController::class, 'search'])->name('intj.search');
         Route::get('/create', [MbtiSortController::class, 'create'])->name('intj.create')->middleware('auth');
         Route::post('/', [MbtiSortController::class, 'store'])->name('intj.store')->middleware('auth');
         Route::get('/{intj}', [MbtiSortController::class, 'show'])->name('intj.show');
@@ -242,6 +253,7 @@ Route::prefix('/mbti')->group(function(){
 
     Route::prefix('/intp')->group(function (){
         Route::get('/', [MbtiSortController::class, 'index'])->name('intp.index');
+        Route::get('/search', [MbtiSortController::class, 'search'])->name('intp.search');
         Route::get('/create', [MbtiSortController::class, 'create'])->name('intp.create')->middleware('auth');
         Route::post('/', [MbtiSortController::class, 'store'])->name('intp.store')->middleware('auth');
         Route::get('/{intp}', [MbtiSortController::class, 'show'])->name('intp.show');
@@ -258,6 +270,7 @@ Route::prefix('/mbti')->group(function(){
 
     Route::prefix('/isfj')->group(function (){
         Route::get('/', [MbtiSortController::class, 'index'])->name('isfj.index');
+        Route::get('/search', [MbtiSortController::class, 'search'])->name('isfj.search');
         Route::get('/create', [MbtiSortController::class, 'create'])->name('isfj.create')->middleware('auth');
         Route::post('/', [MbtiSortController::class, 'store'])->name('isfj.store')->middleware('auth');
         Route::get('/{isfj}', [MbtiSortController::class, 'show'])->name('isfj.show');
@@ -274,6 +287,7 @@ Route::prefix('/mbti')->group(function(){
 
     Route::prefix('/isfp')->group(function (){
         Route::get('/', [MbtiSortController::class, 'index'])->name('isfp.index');
+        Route::get('/search', [MbtiSortController::class, 'search'])->name('isfp.search');
         Route::get('/create', [MbtiSortController::class, 'create'])->name('isfp.create')->middleware('auth');
         Route::post('/', [MbtiSortController::class, 'store'])->name('isfp.store')->middleware('auth');
         Route::get('/{isfp}', [MbtiSortController::class, 'show'])->name('isfp.show');
@@ -290,6 +304,7 @@ Route::prefix('/mbti')->group(function(){
 
     Route::prefix('/istj')->group(function (){
         Route::get('/', [MbtiSortController::class, 'index'])->name('istj.index');
+        Route::get('/search', [MbtiSortController::class, 'search'])->name('istj.search');
         Route::get('/create', [MbtiSortController::class, 'create'])->name('istj.create')->middleware('auth');
         Route::post('/', [MbtiSortController::class, 'store'])->name('istj.store')->middleware('auth');
         Route::get('/{istj}', [MbtiSortController::class, 'show'])->name('istj.show');
@@ -306,6 +321,7 @@ Route::prefix('/mbti')->group(function(){
 
     Route::prefix('/istp')->group(function (){
         Route::get('/', [MbtiSortController::class, 'index'])->name('istp.index');
+        Route::get('/search', [MbtiSortController::class, 'search'])->name('istp.search');
         Route::get('/create', [MbtiSortController::class, 'create'])->name('istp.create')->middleware('auth');
         Route::post('/', [MbtiSortController::class, 'store'])->name('istp.store')->middleware('auth');
         Route::get('/{istp}', [MbtiSortController::class, 'show'])->name('istp.show');

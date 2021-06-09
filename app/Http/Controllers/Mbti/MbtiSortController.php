@@ -119,4 +119,16 @@ class MbtiSortController extends Controller
         return redirect()->route($mbtiName.'.index');
     }
 
+    public function search(Request $request)
+    {
+        $mbtiName = $this->mbtisName();
+
+        $content = $request->input('content');
+        $search = $request->input('search');
+
+        $posts = Mbti::where('board_name', $mbtiName)->where($content, 'LIKE', "%{$search}%")->orderByDesc('created_at')->paginate(5);
+
+        return view('mbtis.mbti-search', compact(['posts', 'search', 'content']));
+    }
+
 }

@@ -82,9 +82,9 @@ class AdminUserController extends Controller
     {
         $content = $request->input('content');
         $search = $request->input('search');
-        $users = User::where($content, 'LIKE', "%{$search}%")->paginate(20, ['*'], 'search');
+        $users = User::where($content, 'LIKE', "%{$search}%")->paginate(20);
 
-        return view('admin.user-search', compact('users'));
+        return view('admin.user-search', compact(['users', 'content', 'search']));
     }
 
     public function userPost($id)
