@@ -39,4 +39,14 @@ class MbtiController extends Controller
                     'mbtiName']));
     }
 
+    public function search(Request $request)
+    {
+        $content = $request->input('content');
+        $search = $request->input('search');
+
+        $posts = Mbti::where($content, 'LIKE', "%{$search}%")->orderByDesc('created_at')->paginate(20);
+
+        return view('mbtis.mbti-search', compact(['posts', 'search']));
+    }
+
 }

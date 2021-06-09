@@ -60,9 +60,10 @@ Route::prefix('/auth',)->group(function(){
     Route::delete('/{user}/delete', [UserController::class, 'destroy'])->name('destroy');
 });
 
-Route::get('/mbti', [MbtiController::class, 'index'])->name('mbtis.index');
 
 Route::prefix('/mbti')->group(function(){
+    Route::get('/', [MbtiController::class, 'index'])->name('mbtis.index');
+    Route::get('/search', [MbtiController::class, 'search'])->name('mbtis.search');
     Route::prefix('/enfj')->group(function (){
         Route::get('/', [MbtiSortController::class, 'index'])->name('enfj.index');
         Route::get('/create', [MbtiSortController::class, 'create'])->name('enfj.create')->middleware('auth');
