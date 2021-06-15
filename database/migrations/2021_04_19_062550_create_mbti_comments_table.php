@@ -17,6 +17,7 @@ class CreateMbtiCommentsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('board_id')->constrained('mbtis');
+            $table->string('user_name');
             $table->string('board_name');
             $table->integer('comment_id')->nullable();
             $table->integer('class')->default(0);

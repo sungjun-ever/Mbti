@@ -17,6 +17,7 @@ class CreateSuggestCommentsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('board_id')->constrained('suggests');
+            $table->string('user_name');
             $table->string('board_name')->default('suggests');
             $table->text('story');
             $table->timestamps();

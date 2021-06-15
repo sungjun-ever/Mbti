@@ -16,6 +16,7 @@ class CreateSuggestsTable extends Migration
         Schema::create('suggests', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
+            $table->string('user_name');
             $table->string('board_name')->default('suggests');
             $table->string('post_password');
             $table->string('title');
