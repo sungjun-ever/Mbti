@@ -5,6 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @section('script')
+    @show
     <script src="{{asset('js/main.js')}}"></script>
     <link rel="shortcut icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
     <link href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css" rel="stylesheet">
@@ -15,6 +17,7 @@
     <title>@yield('title', 'Admin Page')</title>
 </head>
 <body class="bg-gray-50">
+
 <header class="flex relative bg-green-my shadow-sm items-center text-gray-100">
     <div class="flex-1 flex lg:justify-center justify-start lg:pl-0 pl-2 py-2 items-center">
         <a href="{{route('home')}}" class="object-contain"><img src="{{asset('image/logo.png')}}" alt="charters"></a>

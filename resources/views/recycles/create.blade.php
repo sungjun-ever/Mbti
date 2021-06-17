@@ -1,3 +1,16 @@
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
+<script>
+    $(function (){
+        $('#uploadFiles').change(function(){
+           let fileList = $('#uploadFiles')[0].files;
+           let fileListTag = '';
+           for(let i=0; i<fileList.length; i++){
+               fileListTag += "<div>" + fileList[i].name + "</div>"
+           }
+           $('#fileList').html(fileListTag);
+        });
+    });
+</script>
 <div class="w-11/12 pt-6 mx-auto">
     <div>
         <form action="{{route($boardName.'.store')}}" method="post">
@@ -10,6 +23,8 @@
                    placeholder="제목을 입력해주세요." autofocus>
             <label for="editor"></label>
             <textarea name="story" id="editor">{{old('story') ? old('story') : ''}}</textarea>
+            <input id="uploadFiles" type="file" multiple="multiple" name="image" class="mt-4">
+            <div id="fileList" class="grid lg:grid-cols-5 grid-cols-2 mt-2 lg:w-1/2"></div>
             @if($boardName == 'suggests')
                 <div class="mt-4">
                     <label for="post_password" class="text-base">비밀번호</label>
@@ -26,14 +41,8 @@
     </div>
 </div>
 <script>
-    function MyCustomUploadAdapterPlugin(editor) {
-        editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-            return new UploadAdapter(loader)
-        }
-    }
     ClassicEditor
         .create( document.querySelector( '#editor' ), {
-            extraPlugins: [MyCustomUploadAdapterPlugin],
             toolbar: {
                 items: [
                     'heading',
@@ -46,25 +55,24 @@
                     'horizontalLine',
                     'underline',
                     '|',
-                    'imageUpload',
+                    // 'imageUpload',
                     'undo',
                     'redo'
                 ]
             },
             language: 'ko',
 
-            simpleUpload: {
-                // The URL that the images are uploaded to.
-                uploadUrl: 'http://127.0.0.1:8000/api/image/upload',
-
-                // Enable the XMLHttpRequest.withCredentials property.
-                withCredentials: true,
-
-                // Headers sent along with the XMLHttpRequest to the upload server.
-                headers: {
-                    'X-CSRF-TOKEN': 'CSRF-Token',
-                }
-            }
-        })
-
+            // simpleUpload: {
+            //     // The URL that the images are uploaded to.
+            //     uploadUrl: 'http://127.0.0.1:8000/api/image/upload',
+            //
+            //     // Enable the XMLHttpRequest.withCredentials property.
+            //     withCredentials: true,
+            //
+            //     // Headers sent along with the XMLHttpRequest to the upload server.
+            //     headers: {
+            //         'X-CSRF-TOKEN': 'CSRF-Token',
+            //     }
+            // }
+        });
 </script>

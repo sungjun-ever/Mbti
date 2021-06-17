@@ -35,7 +35,7 @@ Route::get('/login/google', [LoginController::class, 'redirectToProvider'])->nam
 Route::get('/login/google/callback', [LoginController::class, 'handleProviderCallback']);
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('verified');
-Route::post('/image/upload');
+
 Route::prefix('/admin')->group(function(){
     Route::get('/user', [AdminUserController::class, 'getUser'])->name('admin.getUser');
     Route::get('/user/search', [AdminUserController::class, 'search'])->name('admin.user.search');
