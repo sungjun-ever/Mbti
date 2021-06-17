@@ -30,11 +30,12 @@ use \App\Http\Controllers\Admin\AllCommentController;
 */
 
 Auth::routes(['verify'=>true]);
+
 Route::get('/login/google', [LoginController::class, 'redirectToProvider'])->name('google.login');
 Route::get('/login/google/callback', [LoginController::class, 'handleProviderCallback']);
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('verified');
-
+Route::post('/image/upload');
 Route::prefix('/admin')->group(function(){
     Route::get('/user', [AdminUserController::class, 'getUser'])->name('admin.getUser');
     Route::get('/user/search', [AdminUserController::class, 'search'])->name('admin.user.search');
@@ -340,7 +341,7 @@ Route::prefix('/mbti')->group(function(){
 Route::prefix('/frees')->group(function(){
     Route::get('/', [FreeController::class, 'index'])->name('frees.index');
     Route::get('/search', [FreeController::class, 'search'])->name('frees.search');
-    Route::get('/create', [FreeController::class, 'create'])->name('frees.create')->middleware('auth');
+    Route::get('/create', [FreeController::class, 'create'])->name('frees.create')->middleware(['auth']);
     Route::post('/', [FreeController::class, 'store'])->name('frees.store')->middleware('auth');
     Route::get('/{free}', [FreeController::class, 'show'])->name('frees.show');
     Route::get('/{free}/edit', [FreeController::class, 'edit'])->name('frees.edit')->middleware('auth');

@@ -26,8 +26,14 @@
     </div>
 </div>
 <script>
+    function MyCustomUploadAdapterPlugin(editor) {
+        editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+            return new UploadAdapter(loader)
+        }
+    }
     ClassicEditor
         .create( document.querySelector( '#editor' ), {
+            extraPlugins: [MyCustomUploadAdapterPlugin],
             toolbar: {
                 items: [
                     'heading',
@@ -46,23 +52,10 @@
                 ]
             },
             language: 'ko',
-            image: {
-                toolbar: [
-                    'imageTextAlternative',
-                    'imageStyle:full',
-                    'imageStyle:side'
-                ]
-            },
-            table: {
-                contentToolbar: [
-                    'tableColumn',
-                    'tableRow',
-                    'mergeTableCells'
-                ]
-            },
+
             simpleUpload: {
                 // The URL that the images are uploaded to.
-                uploadUrl: '/uploadFile',
+                uploadUrl: 'http://127.0.0.1:8000/api/image/upload',
 
                 // Enable the XMLHttpRequest.withCredentials property.
                 withCredentials: true,
@@ -70,7 +63,6 @@
                 // Headers sent along with the XMLHttpRequest to the upload server.
                 headers: {
                     'X-CSRF-TOKEN': 'CSRF-Token',
-
                 }
             }
         })
