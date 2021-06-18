@@ -33,7 +33,7 @@
             <textarea name="story" id="editor">{{old('story') ? old('story') : ''}}</textarea>
             {{--  이미지 첨부 --}}
             <input id="uploadFiles" type="file" multiple="multiple" name="image[]" class="mt-4">
-            <span>jpeg, jpg, bmp, png 형식만 가능합니다.</span>
+            <div class="mt-2">jpeg, jpg, bmp, png 형식만 가능합니다.</div>
             {{--  이미지 목록 --}}
             <ul id="fileList" class="mt-2"></ul>
             @if($boardName == 'suggests')

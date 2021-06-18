@@ -7,6 +7,7 @@ use App\Models\FreeComment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
 class FreeController extends Controller
 {
     public function getBoardName()
@@ -34,17 +35,24 @@ class FreeController extends Controller
         $validation = $request->validate([
            'title' => 'required|max:50',
            'story' => 'required',
-            'image' => 'image|mimes:jpeg,jpg,bmp,png'
+            'image[]' => 'image',
         ]);
 
-        $free = new Free();
-        $free->user_id = auth()->user()->id;
-        $free->user_name = auth()->user()->name;
-        $free->title = $validation['title'];
-        $free->story = $validation['story'];
-        $free->save();
+        if($request->hasFile('image')){
+            foreach ($request->file('image') as $image){
+                $img = Image::make($image)->resize(150, null);
+                dd($img);
+            }
+        }
 
-        return redirect()->route('frees.show', $free->id);
+//        $free = new Free();
+//        $free->user_id = auth()->user()->id;
+//        $free->user_name = auth()->user()->name;
+//        $free->title = $validation['title'];
+//        $free->story = $validation['story'];
+//        $free->save();
+//
+//        return redirect()->route('frees.show', $free->id);
     }
 
     public function show($id)
