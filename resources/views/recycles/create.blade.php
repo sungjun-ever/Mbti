@@ -4,16 +4,24 @@
         $('#uploadFiles').change(function(){
            let fileList = $('#uploadFiles')[0].files;
            let fileListTag = '';
+           let extensions = ['jpeg', 'jpg', 'bmp', 'png'];
            for(let i=0; i<fileList.length; i++){
-               fileListTag += "<div>" + fileList[i].name + "</div>"
+               if(!extensions.includes(fileList[i].name.split('.')[1].toLowerCase())){
+                   alert(`${fileList[i].name.split('.')[1]}는 첨부할 수 없는 이미지 형식입니다.`)
+                   $('#uploadFiles').val(null);
+                   $('#fileList').empty();
+                   break
+               } else {
+                   fileListTag += "<li>" + fileList[i].name.split('.')[0] + '.' + fileList[i].name.split('.')[1].toLowerCase() + "</li>"
+               }
+               $('#fileList').html(fileListTag);
            }
-           $('#fileList').html(fileListTag);
         });
     });
 </script>
 <div class="w-11/12 pt-6 mx-auto">
     <div>
-        <form action="{{route($boardName.'.store')}}" method="post">
+        <form action="{{route($boardName.'.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <label for="title"></label>
             <input id="title" type="text" name="title"
@@ -23,8 +31,11 @@
                    placeholder="제목을 입력해주세요." autofocus>
             <label for="editor"></label>
             <textarea name="story" id="editor">{{old('story') ? old('story') : ''}}</textarea>
-            <input id="uploadFiles" type="file" multiple="multiple" name="image" class="mt-4">
-            <div id="fileList" class="grid lg:grid-cols-5 grid-cols-2 mt-2 lg:w-1/2"></div>
+            {{--  이미지 첨부 --}}
+            <input id="uploadFiles" type="file" multiple="multiple" name="image[]" class="mt-4">
+            <span>jpeg, jpg, bmp, png 형식만 가능합니다.</span>
+            {{--  이미지 목록 --}}
+            <ul id="fileList" class="mt-2"></ul>
             @if($boardName == 'suggests')
                 <div class="mt-4">
                     <label for="post_password" class="text-base">비밀번호</label>

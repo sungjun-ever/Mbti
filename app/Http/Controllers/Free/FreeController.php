@@ -32,8 +32,9 @@ class FreeController extends Controller
     public function store(Request $request)
     {
         $validation = $request->validate([
-           'title' => 'required|max:30',
-           'story' => 'required'
+           'title' => 'required|max:50',
+           'story' => 'required',
+            'image' => 'image|mimes:jpeg,jpg,bmp,png'
         ]);
 
         $free = new Free();
