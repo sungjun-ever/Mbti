@@ -6,6 +6,8 @@ use App\Models\Free;
 use App\Models\FreeComment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 
 class FreeController extends Controller
@@ -33,26 +35,32 @@ class FreeController extends Controller
     public function store(Request $request)
     {
         $validation = $request->validate([
-           'title' => 'required|max:50',
-           'story' => 'required',
+            'title' => 'required|max:50',
+            'story' => 'required',
             'image[]' => 'image',
         ]);
 
+
+
+        $free = new Free();
+        $free->user_id = auth()->user()->id;
+        $free->user_name = auth()->user()->name;
+        $free->title = $validation['title'];
+        $free->story = $validation['story'];
+        $free->save();
+
         if($request->hasFile('image')){
             foreach ($request->file('image') as $image){
-                $img = Image::make($image)->resize(150, null);
-                dd($img);
+                $imageName = $image->getClientOriginalName();
+                $path = $image->storeAs('public/img/free', $imageName);
+                $img = Image::make(storage_path('app/public/img/free'. $imageName))->resize(150, null)
+                    ->save(storage_path('app/public/img/free'. $imageName));
+                $free->image_url = $path;
             }
         }
+        $free->save();
 
-//        $free = new Free();
-//        $free->user_id = auth()->user()->id;
-//        $free->user_name = auth()->user()->name;
-//        $free->title = $validation['title'];
-//        $free->story = $validation['story'];
-//        $free->save();
-//
-//        return redirect()->route('frees.show', $free->id);
+        return redirect()->route('frees.show', $free->id);
     }
 
     public function show($id)
