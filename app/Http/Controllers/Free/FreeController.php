@@ -52,9 +52,9 @@ class FreeController extends Controller
         if($request->hasFile('image')){
             foreach ($request->file('image') as $image){
                 $imageName = $image->getClientOriginalName();
-                $path = $image->storeAs('public/img/free', $imageName);
-                $img = Image::make(storage_path('app/public/img/free'. $imageName))->resize(150, null)
-                    ->save(storage_path('app/public/img/free'. $imageName));
+                $path = $image->storeAs('public/img/free/', $imageName);
+                $img = Image::make(storage_path('app/public/img/free/'. $imageName))->resize(150, null)
+                    ->save(storage_path('app/public/img/free/'. $imageName));
                 $free->image_url = $path;
             }
         }
