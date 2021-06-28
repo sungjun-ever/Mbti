@@ -12,7 +12,7 @@ class MbtiSortController extends Controller
     public function mbtisName()
     {
         $mbtiSort = explode('/', $_SERVER['REQUEST_URI']);
-        $name = preg_replace('/\?[a-z=&A-Z0-9]*/', '', $mbtiSort[2]);
+        $name = preg_replace('/\?[a-z=&A-Z0-9]*/', '', $mbtiSort[1]);
         return $name;
     }
 

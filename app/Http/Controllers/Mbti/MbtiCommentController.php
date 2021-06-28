@@ -11,7 +11,7 @@ class MbtiCommentController extends Controller
     public function mbtisName()
     {
         $mbtiSort = explode('/', $_SERVER['REQUEST_URI']);
-        $name = preg_replace('/\?[a-z!@#$%^&*=_A-Z0-9]*/', '', $mbtiSort[2]);
+        $name = preg_replace('/\?[a-z!@#$%^&*=_A-Z0-9]*/', '', $mbtiSort[1]);
         return $name;
     }
 
