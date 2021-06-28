@@ -70,6 +70,10 @@ class FreeController extends Controller
     {
         $free = Free::where('id', $id)->first();
 
+        if($free == null){
+            return redirect()->route('deleted');
+        }
+
         if($free->moved == 'move'){
             return redirect()->route('temp.message');
         }

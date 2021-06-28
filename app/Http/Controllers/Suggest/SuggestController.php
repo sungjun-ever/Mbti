@@ -51,6 +51,9 @@ class SuggestController extends Controller
     public function show($id)
     {
         $sug = Suggest::where('id', $id)->first();
+        if($sug === null) {
+            return redirect()->route('deleted');
+        }
         $cmts = SuggestComment::where('board_id', $id)->paginate(20);
         return view('suggests.show', compact(['sug', 'cmts']));
     }

@@ -53,6 +53,10 @@ class MbtiSortController extends Controller
     {
         $mbti = Mbti::where('id', $id)->first();
 
+        if($mbti === null) {
+            return redirect()->route('deleted');
+        }
+
         if($mbti->moved == 'move') {
             return redirect()->route('temp.message');
         }

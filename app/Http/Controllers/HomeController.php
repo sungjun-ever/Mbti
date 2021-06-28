@@ -15,4 +15,8 @@ class HomeController extends Controller
         $frees = Free::orderBy('id', 'desc')->where('moved', '!=', 'move')->paginate(5);
         return view('home', compact(['mbtis', 'frees']));
     }
+
+    public function deleted(){
+        return view('deleted-post');
+    }
 }

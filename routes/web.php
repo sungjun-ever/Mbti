@@ -36,6 +36,8 @@ Route::get('/login/google/callback', [LoginController::class, 'handleProviderCal
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('verified');
 
+Route::get('/deleted', [HomeController::class, 'deleted'])->name('deleted');
+
 Route::prefix('/admin')->group(function () {
     Route::get('/user', [AdminUserController::class, 'getUser'])->name('admin.getUser');
     Route::get('/user/search', [AdminUserController::class, 'search'])->name('admin.user.search');
