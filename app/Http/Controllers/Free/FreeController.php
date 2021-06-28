@@ -40,8 +40,6 @@ class FreeController extends Controller
             'image[]' => 'image',
         ]);
 
-
-
         $free = new Free();
         $free->user_id = auth()->user()->id;
         $free->user_name = auth()->user()->name;
@@ -50,14 +48,19 @@ class FreeController extends Controller
         $free->save();
 
         if($request->hasFile('image')){
+            mkdir('storage/img/free/'.$free->id, 0777, true);
             foreach ($request->file('image') as $image){
                 $imageName = $image->getClientOriginalName();
-                $path = $image->storeAs('public/img/free/', $imageName);
-                $img = Image::make(storage_path('app/public/img/free/'. $imageName))->resize(150, null)
-                    ->save(storage_path('app/public/img/free/'. $imageName));
-                $free->image_url = $path;
+                $image->storeAs('public/img/free/'.$free->id, $imageName);
+                if(Image::make(storage_path('app/public/img/free/'.$free->id.'/'.$imageName))->width() > 900){
+                    Image::make(storage_path('app/public/img/free/'.$free->id.'/'.$imageName))->resize(800, null)
+                        ->save(storage_path('app/public/img/free/'.$free->id.'/'.$imageName));
+                }
+                $name[] = $imageName;
             }
         }
+        $free->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
+        $free->image_url = 'storage/img/free/'.$free->id;
         $free->save();
 
         return redirect()->route('frees.show', $free->id);
