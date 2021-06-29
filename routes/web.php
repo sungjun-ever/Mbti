@@ -56,7 +56,7 @@ Route::prefix('/temps')->group(function(){
     Route::get('/{temp}', [TempController::class, 'show'])->name('temp.show');
 });
 
-Route::prefix('/auth',)->group(function () {
+Route::prefix('/user',)->group(function () {
     Route::get('/{user}/info', [UserController::class, 'userInfo'])->name('info');
     Route::get('/{user}/posts', [UserController::class, 'userPost'])->name('user.post');
     Route::get('/{user}/comments', [UserController::class, 'userComment'])->name('user.comment');
