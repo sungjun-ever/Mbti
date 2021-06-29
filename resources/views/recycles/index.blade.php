@@ -3,6 +3,8 @@
         <span class="xl:text-2xl text-xl border-b-2 border-black">
             @if($boardName == 'frees')
                 자유게시판
+            @elseif($boardName == 'anonymous')
+                익명게시판
             @else
                 {{strtoupper($boardName)}}
             @endif

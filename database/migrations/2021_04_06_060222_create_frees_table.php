@@ -20,6 +20,8 @@ class CreateFreesTable extends Migration
             $table->string('board_name')->default('frees');
             $table->string('title');
             $table->longText('story');
+            $table->string('image_url')->nullable();
+            $table->string('image_name')->nullable();
             $table->string('moved')->default('not');
             $table->timestamps();
         });

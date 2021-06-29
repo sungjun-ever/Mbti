@@ -17,6 +17,7 @@ use \App\Http\Controllers\Suggest\ConfirmPasswordController;
 use \App\Http\Controllers\Admin\AdminUserController;
 use \App\Http\Controllers\Admin\AllPostController;
 use \App\Http\Controllers\Admin\AllCommentController;
+use \App\Http\Controllers\Anonymous\AnonymousController;
 
 /*
 |--------------------------------------------------------------------------
@@ -375,5 +376,12 @@ Route::prefix('/suggests')->group(function () {
         Route::delete('/{comment}', [SuggestCommentController::class, 'destroy'])->name('suggests.comments.destroy')->middleware('auth');
         Route::post('/{comment}/reply', [SuggestCommentController::class, 'replyStore'])->name('suggests.comments.reply.store')->middleware('auth');
     });
+});
+
+Route::prefix('/anonymous')->group(function (){
+    Route::get('', [AnonymousController::class, 'index'])->name('anonymous.index');
+    Route::get('/create', [AnonymousController::class, 'create'])->name('anonymous.create');
+    Route::post('/', [AnonymousController::class, 'store'])->name('anonymous.store');
+    Route::get('/search', [AnonymousController::class, 'search'])->name('anonymous.search');
 });
 

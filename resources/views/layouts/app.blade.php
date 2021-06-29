@@ -31,6 +31,9 @@
         <a href="{{route('frees.index')}}">
             <button class="hover:text-black">자유게시판</button>
         </a>
+        <a href="{{route('anonymous.index')}}">
+            <button class="hover:text-black">익명게시판</button>
+        </a>
         <a href="{{route('suggests.index')}}">
             <button class="hover:text-black">건의게시판</button>
         </a>
