@@ -51,9 +51,11 @@ Route::prefix('/admin')->group(function () {
     Route::get('/comments', [AllCommentController::class, 'index'])->name('admin.get.comment');
 });
 
-Route::get('/temps', [TempController::class, 'index'])->name('temp.index');
-Route::get('/temps/message', [TempController::class, 'showTempMessage'])->name('temp.message');
-Route::get('/temps/{temp}', [TempController::class, 'show'])->name('temp.show');
+Route::prefix('/temps')->group(function(){
+    Route::get('/', [TempController::class, 'index'])->name('temp.index');
+    Route::get('/message', [TempController::class, 'showTempMessage'])->name('temp.message');
+    Route::get('/{temp}', [TempController::class, 'show'])->name('temp.show');
+});
 
 Route::prefix('/auth',)->group(function () {
     Route::get('/{user}/info', [UserController::class, 'userInfo'])->name('info');
