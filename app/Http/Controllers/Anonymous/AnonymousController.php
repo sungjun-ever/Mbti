@@ -11,8 +11,7 @@ class AnonymousController extends Controller
     public function getBoardName()
     {
         $getBoard= explode('/', $_SERVER['REQUEST_URI']);
-        $name = preg_replace('/\?[a-z=&A-Z0-9]*/', '', $getBoard[1]);
-        return $name;
+        return preg_replace('/\?[a-z=&A-Z0-9]*/', '', $getBoard[1]);
     }
 
     public function index(){

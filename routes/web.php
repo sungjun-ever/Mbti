@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AnonymousNameController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Suggest\SuggestCommentController;
 use App\Http\Controllers\TempController;
@@ -385,3 +386,4 @@ Route::prefix('/anonymous')->group(function (){
     Route::get('/search', [AnonymousController::class, 'search'])->name('anonymous.search');
 });
 
+Route::get('/test', [AnonymousNameController::class, 'make']);
