@@ -13,7 +13,7 @@
             <i class="xi-pen pr-1 "></i><button>글쓰기</button>
         </a>
     </div>
-    <div class="mt-16 min-h-30">
+    <div class="mt-16" style="min-height: 300px">
         <table class="w-full table-fixed">
             <tr>
                 <td class="w-7/12"></td>
