@@ -1,21 +1,20 @@
-<script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
 <script>
-    $(function (){
+    $(document).ready(function(){
         $('#uploadFiles').change(function(){
-           let fileList = $('#uploadFiles')[0].files;
-           let fileListTag = '';
-           let extensions = ['jpeg', 'jpg', 'bmp', 'png'];
-           for(let i=0; i<fileList.length; i++){
-               if(!extensions.includes(fileList[i].name.split('.')[1].toLowerCase())){
-                   alert(`${fileList[i].name.split('.')[1]}는 첨부할 수 없는 이미지 형식입니다.`)
-                   $('#uploadFiles').val(null);
-                   $('#fileList').empty();
-                   break
-               } else {
-                   fileListTag += "<li>" + fileList[i].name.split('.')[0] + '.' + fileList[i].name.split('.')[1].toLowerCase() + "</li>"
-               }
-               $('#fileList').html(fileListTag);
-           }
+            let fileList = $('#uploadFiles')[0].files;
+            let fileListTag = '';
+            let extensions = ['jpeg', 'jpg', 'bmp', 'png'];
+            for(let i=0; i<fileList.length; i++){
+                if(!extensions.includes(fileList[i].name.split('.')[1].toLowerCase())){
+                    alert(`${fileList[i].name.split('.')[1]}는 첨부할 수 없는 이미지 형식입니다.`)
+                    $('#uploadFiles').val(null);
+                    $('#fileList').empty();
+                    break
+                } else {
+                    fileListTag += "<li>" + fileList[i].name.split('.')[0] + '.' + fileList[i].name.split('.')[1].toLowerCase() + "</li>"
+                }
+                $('#fileList').html(fileListTag);
+            }
         });
     });
 </script>
@@ -66,24 +65,10 @@
                     'horizontalLine',
                     'underline',
                     '|',
-                    // 'imageUpload',
                     'undo',
                     'redo'
                 ]
             },
             language: 'ko',
-
-            // simpleUpload: {
-            //     // The URL that the images are uploaded to.
-            //     uploadUrl: 'http://127.0.0.1:8000/api/image/upload',
-            //
-            //     // Enable the XMLHttpRequest.withCredentials property.
-            //     withCredentials: true,
-            //
-            //     // Headers sent along with the XMLHttpRequest to the upload server.
-            //     headers: {
-            //         'X-CSRF-TOKEN': 'CSRF-Token',
-            //     }
-            // }
         });
 </script>

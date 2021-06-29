@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="{{asset('js/ckeditor.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
     <link rel="shortcut icon" href="{{asset('favicon.ico')}}" type="image/x-icon">
     <link href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
