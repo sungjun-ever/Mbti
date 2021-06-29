@@ -6,7 +6,7 @@
     </div>
     <div class="w-10/12 mx-auto my-4 min-h-screen">
         <p class="text-lg">
-            @if(public_path('storage/img/free/'.$post->id))
+            @if($post->image_url)
                 @foreach($files = array_diff(scandir(public_path($post->image_url)), array('.', '..')) as $file)
                     <img src="{{asset($post->image_url).'/'.$file}}" alt="{{$file}}">
                 @endforeach

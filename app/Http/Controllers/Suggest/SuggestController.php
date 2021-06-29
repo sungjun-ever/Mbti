@@ -36,11 +36,12 @@ class SuggestController extends Controller
         $validation = $request->validate([
             'title' => ['required', 'max:30'],
             'story' => 'required',
-            'post_password' => ['required', 'min:8', new IsValidPassword()],
+            'post_password' => ['required', 'min:8'],
         ]);
 
         $sug = new Suggest();
         $sug->user_id = auth()->user()->id;
+        $sug->user_name = auth()->user()->name;
         $sug->title = $validation['title'];
         $sug->story = $validation['story'];
         $sug->post_password = Hash::make($validation['post_password']);
