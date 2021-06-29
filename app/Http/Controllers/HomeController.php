@@ -17,6 +17,6 @@ class HomeController extends Controller
     }
 
     public function deleted(){
-        return view('deleted-post');
+        return view('recycles.deleted-post');
     }
 }
