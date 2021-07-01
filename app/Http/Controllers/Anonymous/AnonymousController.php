@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Anonymous;
 
 use App\Http\Controllers\Controller;
 use App\Models\Anonymous;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class AnonymousController extends Controller
 {
@@ -22,11 +26,24 @@ class AnonymousController extends Controller
 
     public function create(){
         $boardName = $this->getBoardName();
+
         return view('anonymous.create', compact('boardName'));
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $validation = $request->validate([
+            'title' => 'required|max:30',
+            'story' => 'required',
+        ]);
 
+        $user = User::where('id', auth()->user()->id)->first();
+
+        if($user->anony_name === null || $user->annoy_created != Carbon::now()->day){
+            $user->annoy_created = Carbon::now()->day;
+            $user->annony_name = Str::random(6);
+        }
+
+        return redirect()->route('anonymous.show');
     }
 }
