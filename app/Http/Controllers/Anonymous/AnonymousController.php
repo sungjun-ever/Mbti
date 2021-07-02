@@ -39,11 +39,18 @@ class AnonymousController extends Controller
 
         $user = User::where('id', auth()->user()->id)->first();
 
-        if($user->anony_name === null || $user->annoy_created != Carbon::now()->day){
-            $user->annoy_created = Carbon::now()->day;
-            $user->annony_name = Str::random(8);
+        if($user->anony_name === null || $user->anony_created != Carbon::now()->day){
+            $user->anony_created = Carbon::now()->day;
+            $user->anony_name = Str::random(8);
             $user->save();
         }
+
+        $post = new Anonymous();
+        $post->user_id = auth()->user()->id;
+        $post->anony_name = $user->anony_name;
+        $post->title = $validation['title'];
+        $post->story = $validation['story'];
+        $post->save();
 
         return redirect()->route('anonymous.show');
     }
