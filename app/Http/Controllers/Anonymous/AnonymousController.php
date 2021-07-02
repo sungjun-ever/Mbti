@@ -54,4 +54,28 @@ class AnonymousController extends Controller
 
         return redirect()->route('anonymous.show');
     }
+
+    public function show($id)
+    {
+        $post = Anonymous::where('id', $id)->first();
+
+        return view('anonymous.show', compact('post'));
+    }
+
+    public function edit($id)
+    {
+        $post = Anonymous::where('id', $id)->first();
+
+        return view('anonymous.edit', compact('post'));
+    }
+
+    public function update($id)
+    {
+
+    }
+
+    public function destroy($id)
+    {
+
+    }
 }
