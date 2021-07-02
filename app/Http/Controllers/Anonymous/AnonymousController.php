@@ -69,13 +69,27 @@ class AnonymousController extends Controller
         return view('anonymous.edit', compact('post'));
     }
 
-    public function update($id)
+    public function update(Request $request, $id)
     {
+        $validation = $request->validate([
+            'title' => 'required|max:30',
+            'story' => 'required',
+        ]);
 
+        $post = Anonymous::where('id', $id)->first();
+
+        $post->title = $validation['title'];
+        $post->story = $validation['story'];
+        $post->save();
+
+        return redirect()->route('anonymous.show');
     }
 
     public function destroy($id)
     {
+        $post = Anonymous::where('id', $id)->first();
+        $post->delete();
 
+        return redirect()->route('anonymous.index');
     }
 }
