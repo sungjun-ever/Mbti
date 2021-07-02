@@ -41,7 +41,7 @@ class AnonymousController extends Controller
 
         if($user->anony_name === null || $user->annoy_created != Carbon::now()->day){
             $user->annoy_created = Carbon::now()->day;
-            $user->annony_name = Str::random(6);
+            $user->annony_name = Str::random(8);
             $user->save();
         }
 
