@@ -11,7 +11,7 @@
                     $('#fileList').empty();
                     break
                 } else {
-                    fileListTag += "<li>" + fileList[i].name.split('.')[0] + '.' + fileList[i].name.split('.')[1].toLowerCase() + "</li>"
+                    fileListTag += "<div>" + fileList[i].name.split('.')[0] + '.' + fileList[i].name.split('.')[1].toLowerCase() + "</div>"
                 }
                 $('#fileList').html(fileListTag);
             }
@@ -35,14 +35,17 @@
             <input id="uploadFiles" type="file" multiple="multiple" name="image[]" class="mt-4">
             <div class="mt-2">jpeg, jpg, bmp, png 형식만 가능합니다.</div>
             {{--  이미지 목록 --}}
-            <ul id="fileList" class="mt-2">
+            <div class="pt-4 text-lg border-b-2">사진 목록</div>
+            <div id="fileList" class="mt-2 grid grid-cols-4 mb-16">
                 @if($post->image_name)
-                    @foreach($imgArr as $img)
-                        <li class="inline-block">{{$img}}</li>
-                        <button class="pr-2"><i class="xi-trash text-lg hover:text-red-700"></i></button>
+                    @foreach($files = array_diff(scandir(public_path($post->image_url)), array('.', '..')) as $file)
+                        <div class="relative float-left w-2/3 h-2/3" >
+                            <img src="{{asset($post->image_url).'/'.$file}}" alt="{{$file}}">
+                            <input type="checkbox" class="absolute -bottom-3 right-1" value="{{$file}}">
+                        </div>
                     @endforeach
                 @endif
-            </ul>
+            </div>
             @if($post->board_name == 'suggests')
                 <div class="mt-4">
                     <label for="post_password" class="text-base">비밀번호</label>
