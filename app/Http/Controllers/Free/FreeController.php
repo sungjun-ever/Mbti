@@ -92,7 +92,8 @@ class FreeController extends Controller
     public function edit($id)
     {
         $free = Free::where('id', $id)->first();
-        return view('frees.edit', compact('free'));
+        $imgArr = preg_split('/[\[\]\"\s,]+/', $free->image_name, -1, PREG_SPLIT_NO_EMPTY);
+        return view('frees.edit', compact(['free', 'imgArr']));
     }
 
     public function update(Request $request, $id)
