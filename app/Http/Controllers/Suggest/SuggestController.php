@@ -50,19 +50,19 @@ class SuggestController extends Controller
         $sug->save();
 
         if($request->hasFile('image')){
-            mkdir('storage/img/free/'.$sug->id, 0777, true);
+            mkdir('storage/img/suggest/'.$sug->id, 0777, true);
             foreach ($request->file('image') as $image){
                 $imageName = $image->getClientOriginalName();
-                $image->storeAs('public/img/free/'.$sug->id, $imageName);
-                if(Image::make(storage_path('app/public/img/free/'.$sug->id.'/'.$imageName))->width() > 900){
-                    Image::make(storage_path('app/public/img/free/'.$sug->id.'/'.$imageName))->resize(800, null)
-                        ->save(storage_path('app/public/img/free/'.$sug->id.'/'.$imageName));
+                $image->storeAs('public/img/suggest/'.$sug->id, $imageName);
+                if(Image::make(storage_path('app/public/img/suggest/'.$sug->id.'/'.$imageName))->width() > 900){
+                    Image::make(storage_path('app/public/img/suggest/'.$sug->id.'/'.$imageName))->resize(800, null)
+                        ->save(storage_path('app/public/img/suggest/'.$sug->id.'/'.$imageName));
                 }
                 $name[] = $imageName;
             }
         }
         $sug->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
-        $sug->image_url = 'storage/img/free/'.$sug->id;
+        $sug->image_url = 'storage/img/suggest/'.$sug->id;
         $sug->save();
 
         return redirect()->route('suggests.show', $sug->id);

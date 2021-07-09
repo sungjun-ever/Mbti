@@ -55,19 +55,19 @@ class AnonymousController extends Controller
         $post->save();
 
         if($request->hasFile('image')){
-            mkdir('storage/img/free/'.$post->id, 0777, true);
+            mkdir('storage/img/anonymous/'.$post->id, 0777, true);
             foreach ($request->file('image') as $image){
                 $imageName = $image->getClientOriginalName();
-                $image->storeAs('public/img/free/'.$post->id, $imageName);
-                if(Image::make(storage_path('app/public/img/free/'.$post->id.'/'.$imageName))->width() > 900){
-                    Image::make(storage_path('app/public/img/free/'.$post->id.'/'.$imageName))->resize(800, null)
-                        ->save(storage_path('app/public/img/free/'.$post->id.'/'.$imageName));
+                $image->storeAs('public/img/anonymous/'.$post->id, $imageName);
+                if(Image::make(storage_path('app/public/img/anonymous/'.$post->id.'/'.$imageName))->width() > 900){
+                    Image::make(storage_path('app/public/img/anonymous/'.$post->id.'/'.$imageName))->resize(800, null)
+                        ->save(storage_path('app/public/img/anonymous/'.$post->id.'/'.$imageName));
                 }
                 $name[] = $imageName;
             }
         }
         $post->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
-        $post->image_url = 'storage/img/free/'.$post->id;
+        $post->image_url = 'storage/img/anonymous/'.$post->id;
         $post->save();
 
         return redirect()->route('anonymous.show');

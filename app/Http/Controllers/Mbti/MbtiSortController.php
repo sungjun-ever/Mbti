@@ -49,19 +49,19 @@ class MbtiSortController extends Controller
         $mbti->save();
 
         if($request->hasFile('image')){
-            mkdir('storage/img/free/'.$mbti->id, 0777, true);
+            mkdir('storage/img/mbti/'.$mbti->id, 0777, true);
             foreach ($request->file('image') as $image){
                 $imageName = $image->getClientOriginalName();
-                $image->storeAs('public/img/free/'.$mbti->id, $imageName);
-                if(Image::make(storage_path('app/public/img/free/'.$mbti->id.'/'.$imageName))->width() > 900){
-                    Image::make(storage_path('app/public/img/free/'.$mbti->id.'/'.$imageName))->resize(800, null)
-                        ->save(storage_path('app/public/img/free/'.$mbti->id.'/'.$imageName));
+                $image->storeAs('public/img/mbti/'.$mbti->id, $imageName);
+                if(Image::make(storage_path('app/public/img/mbti/'.$mbti->id.'/'.$imageName))->width() > 900){
+                    Image::make(storage_path('app/public/img/mbti/'.$mbti->id.'/'.$imageName))->resize(800, null)
+                        ->save(storage_path('app/public/img/mbti/'.$mbti->id.'/'.$imageName));
                 }
                 $name[] = $imageName;
             }
         }
         $mbti->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
-        $mbti->image_url = 'storage/img/free/'.$mbti->id;
+        $mbti->image_url = 'storage/img/mbti/'.$mbti->id;
         $mbti->save();
 
         return redirect()->route($request->mid.'.show', $mbti->id);
