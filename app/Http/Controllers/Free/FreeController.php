@@ -100,7 +100,7 @@ class FreeController extends Controller
     {
         $validation = $request->validate([
            'title' => 'required|max:30',
-           'story' => 'required'
+           'story' => 'required',
         ]);
 
         $free = Free::where('id', $id)->first();

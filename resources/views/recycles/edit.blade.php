@@ -46,6 +46,7 @@
             {{--  이미지 첨부 --}}
             <input id="uploadFiles" type="file" multiple="multiple" name="image[]" class="mt-4">
             <div class="mt-2">jpeg, jpg, bmp, png 형식만 가능합니다.</div>
+
             {{--  이미지 목록 --}}
             @if($post->image_name)
                 <div class="pt-4 text-lg border-b-2">사진 목록</div>
