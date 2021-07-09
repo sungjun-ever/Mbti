@@ -6,6 +6,7 @@ use App\Models\MbtiComment;
 use App\Models\Mbti;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 
 class MbtiSortController extends Controller
 {
@@ -36,7 +37,8 @@ class MbtiSortController extends Controller
     {
         $validation = $request->validate([
            'title' => 'required',
-           'story' => 'required'
+           'story' => 'required',
+            'image[]' => 'image',
         ]);
 
         $mbti = new Mbti();
@@ -44,6 +46,22 @@ class MbtiSortController extends Controller
         $mbti->user_id = auth()->user()->id;
         $mbti->title = $validation['title'];
         $mbti->story = $validation['story'];
+        $mbti->save();
+
+        if($request->hasFile('image')){
+            mkdir('storage/img/free/'.$mbti->id, 0777, true);
+            foreach ($request->file('image') as $image){
+                $imageName = $image->getClientOriginalName();
+                $image->storeAs('public/img/free/'.$mbti->id, $imageName);
+                if(Image::make(storage_path('app/public/img/free/'.$mbti->id.'/'.$imageName))->width() > 900){
+                    Image::make(storage_path('app/public/img/free/'.$mbti->id.'/'.$imageName))->resize(800, null)
+                        ->save(storage_path('app/public/img/free/'.$mbti->id.'/'.$imageName));
+                }
+                $name[] = $imageName;
+            }
+        }
+        $mbti->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
+        $mbti->image_url = 'storage/img/free/'.$mbti->id;
         $mbti->save();
 
         return redirect()->route($request->mid.'.show', $mbti->id);

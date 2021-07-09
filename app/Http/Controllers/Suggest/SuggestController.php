@@ -8,6 +8,7 @@ use App\Rules\IsValidPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 
 class SuggestController extends Controller
 {
@@ -37,6 +38,7 @@ class SuggestController extends Controller
             'title' => ['required', 'max:30'],
             'story' => 'required',
             'post_password' => ['required', 'min:8'],
+            'image[]'=>'image',
         ]);
 
         $sug = new Suggest();
@@ -46,6 +48,23 @@ class SuggestController extends Controller
         $sug->story = $validation['story'];
         $sug->post_password = Hash::make($validation['post_password']);
         $sug->save();
+
+        if($request->hasFile('image')){
+            mkdir('storage/img/free/'.$sug->id, 0777, true);
+            foreach ($request->file('image') as $image){
+                $imageName = $image->getClientOriginalName();
+                $image->storeAs('public/img/free/'.$sug->id, $imageName);
+                if(Image::make(storage_path('app/public/img/free/'.$sug->id.'/'.$imageName))->width() > 900){
+                    Image::make(storage_path('app/public/img/free/'.$sug->id.'/'.$imageName))->resize(800, null)
+                        ->save(storage_path('app/public/img/free/'.$sug->id.'/'.$imageName));
+                }
+                $name[] = $imageName;
+            }
+        }
+        $sug->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
+        $sug->image_url = 'storage/img/free/'.$sug->id;
+        $sug->save();
+
         return redirect()->route('suggests.show', $sug->id);
     }
 
