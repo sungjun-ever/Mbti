@@ -1,6 +1,6 @@
 <script>
     $(document).ready(function(){
-        $('#uploadFiles').change(function(){
+        $('#uploadFiles').change(function (){
             let fileList = $('#uploadFiles')[0].files;
             let fileListTag = '';
             let extensions = ['jpeg', 'jpg', 'bmp', 'png'];
@@ -15,6 +15,18 @@
                 }
                 $('#fileList').html(fileListTag);
             }
+        });
+
+        $('#deleteImgBtn').click(function (){
+            if(!confirm('사진을 삭제하시겠습니까?')){
+                return false
+            }
+            let value = [];
+            $.each($("input:checked"), function (){
+                let name = $(this).val().split('.')[0];
+                value.push($(this).val());
+                $('#'+name).remove();
+            });
         });
     });
 </script>
@@ -35,17 +47,26 @@
             <input id="uploadFiles" type="file" multiple="multiple" name="image[]" class="mt-4">
             <div class="mt-2">jpeg, jpg, bmp, png 형식만 가능합니다.</div>
             {{--  이미지 목록 --}}
-            <div class="pt-4 text-lg border-b-2">사진 목록</div>
-            <div id="fileList" class="mt-2 grid grid-cols-4 mb-16">
-                @if($post->image_name)
+            @if($post->image_name)
+                <div class="pt-4 text-lg border-b-2">사진 목록</div>
+                <div id="fileList" class="mt-2 grid grid-cols-4">
                     @foreach($files = array_diff(scandir(public_path($post->image_url)), array('.', '..')) as $file)
-                        <div class="relative float-left w-2/3 h-2/3" >
-                            <img src="{{asset($post->image_url).'/'.$file}}" alt="{{$file}}">
-                            <input type="checkbox" class="absolute -bottom-3 right-1" value="{{$file}}">
+                        @php
+                            $name = preg_split('/\./', $file, -1, PREG_SPLIT_NO_EMPTY);
+                        @endphp
+                        <div id="{{$name[0]}}" class="relative float-left w-2/3" style="min-height: 120px">
+                            <img src="{{asset($post->image_url).'/'.$file}}" alt="{{$file}}" >
+                            <input type="checkbox" class="absolute xl:bottom-8 bottom-5 right-1 w-5" value="{{$file}}">
                         </div>
                     @endforeach
-                @endif
-            </div>
+                </div>
+                <div class="mb-8">
+                    <button type="button" id="deleteImgBtn"
+                            class="px-3 py-1 bg-red-500 hover:bg-red-800 text-white rounded-md">
+                        체크 파일 삭제
+                    </button>
+                </div>
+            @endif
             @if($post->board_name == 'suggests')
                 <div class="mt-4">
                     <label for="post_password" class="text-base">비밀번호</label>
