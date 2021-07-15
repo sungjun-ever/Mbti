@@ -5,7 +5,7 @@
             let arr = Array.prototype.slice.call(fileList);
             $("#preview").empty(); //파일 선택 누를때마다 미리보기 초기화
             for(let i=0; i<fileList.length; i++){
-                if(!checkExtension(fileList[i].name,fileList[i].size)) { //확장자 체크
+                if(!checkExtension(fileList[i].name,fileList[i].size)) { //확장자, 사이즈 체크
                     return false
                 }
             }
@@ -48,14 +48,10 @@
                     let reader = new FileReader();
                     reader.onload = function (e) {
                         str += '<img src="'+e.target.result+'" title="'+f.name+'"/>';
-                        // str += '<input type="checkbox" class="absolute xl:bottom-8 bottom-5 right-1 w-5" value="'+f.name+'">';
                         str += '</div>';
                         $(str).appendTo('#preview');
                     }
                     reader.readAsDataURL(f);
-                }else{
-                    str += '<img src="/resources/img/fileImg.png" title="'+f.name+'" width=100 height=100 />';
-                    $(str).appendTo('#preview');
                 }
             });
         }

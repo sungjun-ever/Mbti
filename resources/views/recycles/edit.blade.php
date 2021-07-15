@@ -5,7 +5,7 @@
             let arr = Array.prototype.slice.call(fileList);
 
             for(let i=0; i<fileList.length; i++){
-                if(!checkExtension(fileList[i].name,fileList[i].size)) { //확장자 체크
+                if(!checkExtension(fileList[i].name,fileList[i].size)) { //확장자, 사이즈 체크
                     return false
                 }
             }
@@ -53,13 +53,11 @@
                         $(str).appendTo('#preview');
                     }
                     reader.readAsDataURL(f);
-                }else{
-                    str += '<img src="/resources/img/fileImg.png" title="'+f.name+'"/>';
-                    $(str).appendTo('#preview');
                 }
             });
         }
 
+        //체크 파일 삭제
         $('#deleteImgBtn').click(function (){
             if(!confirm('사진을 삭제하시겠습니까?')){
                 return false
