@@ -54,6 +54,7 @@
                         @if($user->banned_at > \Carbon\Carbon::now())
                             <form action="{{route('admin.user.remove.block')}}" method="post">
                                 @csrf
+                                @method('PUT')
                                 <input type="hidden" name="email" value="{{$user->email}}">
                                 <button type="submit" onclick="if(!confirm('해제하시겠습니까?')) return false">
                                     <i class="xi-check text-green-400 hover:text-red-500 text-xl"></i>

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Auth\AnonymousNameController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Suggest\SuggestCommentController;
 use App\Http\Controllers\TempController;
@@ -44,7 +43,7 @@ Route::prefix('/admin')->group(function () {
     Route::get('/user/search', [AdminUserController::class, 'search'])->name('admin.user.search');
     Route::get('/user/{id}/posts', [AdminUserController::class, 'userPost'])->name('admin.user.post');
     Route::post('/user/block', [AdminUserController::class, 'block'])->name('admin.user.block');
-    Route::post('/user/remove/block', [AdminUserController::class, 'removeBlock'])->name('admin.user.remove.block');
+    Route::put('/user/remove/block', [AdminUserController::class, 'removeBlock'])->name('admin.user.remove.block');
     Route::get('/posts', [AllPostController::class, 'index'])->name('admin.get.post');
     Route::get('/posts/search', [AllPostController::class, 'search'])->name('admin.post.search');
     Route::post('/{post}/{id}/move', [AllPostController::class, 'moveToTemp'])->name('admin.post.move');
@@ -58,12 +57,12 @@ Route::prefix('/temps')->group(function(){
     Route::get('/{temp}', [TempController::class, 'show'])->name('temp.show');
 });
 
-Route::prefix('/user',)->group(function () {
+Route::prefix('/users',)->group(function () {
     Route::get('/{user}/info', [UserController::class, 'userInfo'])->name('info');
     Route::get('/{user}/posts', [UserController::class, 'userPost'])->name('user.post');
     Route::get('/{user}/comments', [UserController::class, 'userComment'])->name('user.comment');
-    Route::get('/{user}/delete', [UserController::class, 'destroyPage'])->name('user.destroy')->middleware('password.confirm');
-    Route::delete('/{user}/delete', [UserController::class, 'destroy'])->name('destroy');
+    Route::get('/{user}', [UserController::class, 'destroyPage'])->name('user.destroy')->middleware('password.confirm');
+    Route::delete('/{user}', [UserController::class, 'destroy'])->name('destroy');
 });
 
 Route::prefix('/mbti')->group(function () {
