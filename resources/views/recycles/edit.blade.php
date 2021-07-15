@@ -111,6 +111,8 @@
                     </button>
                 </div>
             @endif
+
+            {{-- 비밀번호 입력 --}}
             @if($post->board_name == 'suggests')
                 <div class="mt-4">
                     <label for="post_password" class="text-base">비밀번호</label>
@@ -118,6 +120,7 @@
                            class="border-2 border-blue-300 py-1 w-4/12 pl-1" required>
                 </div>
             @endif
+
             <div class="mt-4 text-center">
                 <button type="submit" class="px-4 py-2 mr-4 text-lg rounded-lg text-gray-50 bg-blue-400 hover:bg-blue-800">수정</button>
                 <button type="button" onclick="history.back()"
@@ -141,39 +144,12 @@
                     'horizontalLine',
                     'underline',
                     '|',
-                    'imageUpload',
                     'undo',
                     'redo'
                 ]
             },
             language: 'ko',
-            image: {
-                toolbar: [
-                    'imageTextAlternative',
-                    'imageStyle:full',
-                    'imageStyle:side'
-                ]
-            },
-            table: {
-                contentToolbar: [
-                    'tableColumn',
-                    'tableRow',
-                    'mergeTableCells'
-                ]
-            },
-            simpleUpload: {
-                // The URL that the images are uploaded to.
-                uploadUrl: '/uploadFile',
 
-                // Enable the XMLHttpRequest.withCredentials property.
-                withCredentials: true,
-
-                // Headers sent along with the XMLHttpRequest to the upload server.
-                headers: {
-                    'X-CSRF-TOKEN': 'CSRF-Token',
-
-                }
-            }
         })
 
 </script>

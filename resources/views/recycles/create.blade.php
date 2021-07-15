@@ -88,6 +88,7 @@
                             class="border-2 border-blue-300 py-1 w-4/12 pl-1" required>
                 </div>
             @endif
+
             <div class="mt-4 text-center">
                 <button type="submit" class="px-4 py-2 mr-4 text-lg rounded-lg text-gray-50 bg-green-my hover:bg-green-800">작성</button>
                 <button type="button" onclick="history.back()"
