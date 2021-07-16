@@ -6,6 +6,7 @@ use App\Models\Suggest;
 use App\Models\SuggestComment;
 use App\Rules\IsValidPassword;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
@@ -92,6 +93,32 @@ class SuggestController extends Controller
         ]);
 
         $sug = Suggest::where('id', $id)->first();
+
+        if($request->input('deleteImgName')){
+            foreach ($request->input('deleteImgName') as $deleteImg){
+                File::delete(storage_path('app/public/img/free/'.$sug->id.'/'.$deleteImg));
+            }
+        }
+
+        if($request->hasFile('image')){
+            if(!is_dir('storage/img/free/'.$sug->id)){
+                mkdir('storage/img/free/'.$sug->id, 0777, true);
+            }
+
+            $name = array_diff(scandir(public_path($sug->image_url)), array('.', '..'));
+
+            foreach ($request->file('image') as $image){
+                $imageName = $image->getClientOriginalName();
+                $image->storeAs('public/img/free/'.$sug->id, $imageName);
+                if(Image::make(storage_path('app/public/img/free/'.$sug->id.'/'.$imageName))->width() > 900){
+                    Image::make(storage_path('app/public/img/free/'.$sug->id.'/'.$imageName))->resize(800, null)
+                        ->save(storage_path('app/public/img/free/'.$sug->id.'/'.$imageName));
+                }
+                $name[] = $imageName;
+            }
+            $sug->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
+        }
+
         $sug->title = $validation['title'];
         $sug->story = $validation['story'];
         $sug->save();

@@ -7,6 +7,7 @@ use App\Models\Anonymous;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
@@ -95,6 +96,31 @@ class AnonymousController extends Controller
         ]);
 
         $post = Anonymous::where('id', $id)->first();
+
+        if($request->input('deleteImgName')){
+            foreach ($request->input('deleteImgName') as $deleteImg){
+                File::delete(storage_path('app/public/img/free/'.$post->id.'/'.$deleteImg));
+            }
+        }
+
+        if($request->hasFile('image')){
+            if(!is_dir('storage/img/free/'.$post->id)){
+                mkdir('storage/img/free/'.$post->id, 0777, true);
+            }
+
+            $name = array_diff(scandir(public_path($post->image_url)), array('.', '..'));
+
+            foreach ($request->file('image') as $image){
+                $imageName = $image->getClientOriginalName();
+                $image->storeAs('public/img/free/'.$post->id, $imageName);
+                if(Image::make(storage_path('app/public/img/free/'.$post->id.'/'.$imageName))->width() > 900){
+                    Image::make(storage_path('app/public/img/free/'.$post->id.'/'.$imageName))->resize(800, null)
+                        ->save(storage_path('app/public/img/free/'.$post->id.'/'.$imageName));
+                }
+                $name[] = $imageName;
+            }
+            $post->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
+        }
 
         $post->title = $validation['title'];
         $post->story = $validation['story'];

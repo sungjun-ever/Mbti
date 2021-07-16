@@ -6,6 +6,7 @@ use App\Models\MbtiComment;
 use App\Models\Mbti;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 
 class MbtiSortController extends Controller
@@ -118,6 +119,32 @@ class MbtiSortController extends Controller
         ]);
 
         $mbti = Mbti::where('id', $id)->first();
+
+        if($request->input('deleteImgName')){
+            foreach ($request->input('deleteImgName') as $deleteImg){
+                File::delete(storage_path('app/public/img/free/'.$mbti->id.'/'.$deleteImg));
+            }
+        }
+
+        if($request->hasFile('image')){
+            if(!is_dir('storage/img/free/'.$mbti->id)){
+                mkdir('storage/img/free/'.$mbti->id, 0777, true);
+            }
+
+            $name = array_diff(scandir(public_path($mbti->image_url)), array('.', '..'));
+
+            foreach ($request->file('image') as $image){
+                $imageName = $image->getClientOriginalName();
+                $image->storeAs('public/img/free/'.$mbti->id, $imageName);
+                if(Image::make(storage_path('app/public/img/free/'.$mbti->id.'/'.$imageName))->width() > 900){
+                    Image::make(storage_path('app/public/img/free/'.$mbti->id.'/'.$imageName))->resize(800, null)
+                        ->save(storage_path('app/public/img/free/'.$mbti->id.'/'.$imageName));
+                }
+                $name[] = $imageName;
+            }
+            $mbti->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
+        }
+
         $mbti->title = $validation['title'];
         $mbti->story = $validation['story'];
         $mbti->save();
