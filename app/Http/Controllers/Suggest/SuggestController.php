@@ -128,6 +128,7 @@ class SuggestController extends Controller
     public function destroy($id)
     {
         $sug = Suggest::where('id', $id)->first();
+        File::deleteDirectory(storage_path('app/public/img/free/'.$post->id));
         $sug->delete();
         return redirect()->route('suggests.index');
     }

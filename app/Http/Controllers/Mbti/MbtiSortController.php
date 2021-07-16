@@ -163,6 +163,7 @@ class MbtiSortController extends Controller
     {
         $mbtiName = $this->mbtisName();
         $mbti = Mbti::where('id', $id)->first();
+        File::deleteDirectory(storage_path('app/public/img/free/'.$mbti->id));
         $mbti -> delete();
 
         return redirect()->route($mbtiName.'.index');

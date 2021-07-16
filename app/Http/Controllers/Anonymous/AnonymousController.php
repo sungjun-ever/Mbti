@@ -132,6 +132,7 @@ class AnonymousController extends Controller
     public function destroy($id)
     {
         $post = Anonymous::where('id', $id)->first();
+        File::deleteDirectory(storage_path('app/public/img/free/'.$post->id));
         $post->delete();
 
         return redirect()->route('anonymous.index');
