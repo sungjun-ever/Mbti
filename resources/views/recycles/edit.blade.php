@@ -13,7 +13,7 @@
             preview(arr);
         });
 
-        function checkExtension(fileName,fileSize){
+        function checkExtension(fileName, fileSize){
             let extensions = ['jpeg', 'jpg', 'bmp', 'png'];
             let maxSize = 20971520;  //20MB
 
@@ -62,19 +62,30 @@
             if(!confirm('사진을 삭제하시겠습니까?')){
                 return false
             }
+            let editForm = document.getElementById('editForm');
             let value = [];
+
             $.each($("input:checked"), function (){
                 let name = $(this).val().split('.')[0];
                 value.push($(this).val());
                 $('#'+name).remove();
             });
+
+            //hidden input 생성
+            for(let i=0; i<value.length; i++){
+                let makeInput = document.createElement('input');
+                makeInput.setAttribute('type', 'hidden');
+                makeInput.setAttribute('name', 'deleteImgName[]');
+                makeInput.setAttribute('value', value[i]);
+                editForm.appendChild(makeInput);
+            }
         });
     });
 </script>
 
 <div class="w-11/12 pt-6 mx-auto">
     <div>
-        <form action="{{route($post->board_name.'.update', $post->id)}}" method="post">
+        <form id="editForm" action="{{route($post->board_name.'.update', $post->id)}}" method="post">
             @method('PUT')
             @csrf
             <label for="title"></label>
@@ -102,7 +113,7 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="mb-8">
+                <div class="mb-8 mt-4">
                     <button type="button" id="deleteImgBtn"
                             class="px-3 py-1 bg-red-500 hover:bg-red-800 text-white rounded-md">
                         체크 파일 삭제

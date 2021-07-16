@@ -103,6 +103,8 @@ class FreeController extends Controller
            'story' => 'required',
         ]);
 
+        dd($request);
+
         $free = Free::where('id', $id)->first();
 
         $free->title = $validation['title'];
