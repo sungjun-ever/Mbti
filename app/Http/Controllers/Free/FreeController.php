@@ -6,7 +6,7 @@ use App\Models\Free;
 use App\Models\FreeComment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 
 
@@ -15,8 +15,7 @@ class FreeController extends Controller
     public function getBoardName()
     {
         $getBoard= explode('/', $_SERVER['REQUEST_URI']);
-        $name = preg_replace('/\?[a-z=&A-Z0-9]*/', '', $getBoard[1]);
-        return $name;
+        return preg_replace('/\?[a-z=&A-Z0-9]*/', '', $getBoard[1]);
     }
 
     public function index()
@@ -58,10 +57,10 @@ class FreeController extends Controller
                 }
                 $name[] = $imageName;
             }
+            $free->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
+            $free->image_url = 'storage/img/free/'.$free->id;
+            $free->save();
         }
-        $free->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
-        $free->image_url = 'storage/img/free/'.$free->id;
-        $free->save();
 
         return redirect()->route('frees.show', $free->id);
     }
@@ -99,13 +98,37 @@ class FreeController extends Controller
     public function update(Request $request, $id)
     {
         $validation = $request->validate([
-           'title' => 'required|max:30',
-           'story' => 'required',
+            'title' => 'required|max:30',
+            'story' => 'required',
+            'image[]' => 'image',
         ]);
 
-        dd($request);
-
         $free = Free::where('id', $id)->first();
+
+        if($request->input('deleteImgName')){
+            foreach ($request->input('deleteImgName') as $deleteImg){
+                File::delete(storage_path('app/public/img/free/'.$free->id.'/'.$deleteImg));
+            }
+        }
+
+        if($request->hasFile('image')){
+            if(!is_dir('storage/img/free/'.$free->id)){
+                mkdir('storage/img/free/'.$free->id, 0777, true);
+            }
+
+            $name = array_diff(scandir(public_path($free->image_url)), array('.', '..'));
+
+            foreach ($request->file('image') as $image){
+                $imageName = $image->getClientOriginalName();
+                $image->storeAs('public/img/free/'.$free->id, $imageName);
+                if(Image::make(storage_path('app/public/img/free/'.$free->id.'/'.$imageName))->width() > 900){
+                    Image::make(storage_path('app/public/img/free/'.$free->id.'/'.$imageName))->resize(800, null)
+                        ->save(storage_path('app/public/img/free/'.$free->id.'/'.$imageName));
+                }
+                $name[] = $imageName;
+            }
+            $free->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
+        }
 
         $free->title = $validation['title'];
         $free->story = $validation['story'];
@@ -117,6 +140,7 @@ class FreeController extends Controller
     public function destroy($id)
     {
         $free = Free::where('id', $id)->first();
+        File::deleteDirectory(storage_path('app/public/img/free/'.$free->id));
         $free->delete();
 
         return redirect()->route('frees.index');

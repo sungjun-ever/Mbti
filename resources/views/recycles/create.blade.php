@@ -71,7 +71,6 @@
             <textarea name="story" id="editor">{{old('story') ? old('story') : ''}}</textarea>
             {{--  이미지 첨부 --}}
             <input id="uploadFiles" type="file" multiple="multiple" name="image[]" class="mt-4">
-            <button id="btnUpload">첨부</button>
             <div class="mt-2">형식: jpeg, jpg, bmp, png | 크기: 20MB 이하</div>
             {{--  이미지 미리보기 --}}
             <div id="preview" class="mt-2 grid grid-cols-4"></div>

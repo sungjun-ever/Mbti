@@ -59,11 +59,12 @@
 
         //체크 파일 삭제
         $('#deleteImgBtn').click(function (){
+            let editForm = document.getElementById('editForm');
+            let value = [];
+
             if(!confirm('사진을 삭제하시겠습니까?')){
                 return false
             }
-            let editForm = document.getElementById('editForm');
-            let value = [];
 
             $.each($("input:checked"), function (){
                 let name = $(this).val().split('.')[0];
@@ -85,7 +86,7 @@
 
 <div class="w-11/12 pt-6 mx-auto">
     <div>
-        <form id="editForm" action="{{route($post->board_name.'.update', $post->id)}}" method="post">
+        <form id="editForm" action="{{route($post->board_name.'.update', $post->id)}}" method="post" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <label for="title"></label>
