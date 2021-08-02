@@ -26,8 +26,8 @@
                         @error('password') border-2 border-red-600 focus:outline-none @enderror">
             </div>
             <div class="mt-4">
-                <label for="name" class="text-lg">이름</label>
-                <input id="name" type="text" name="name" placeholder="이름은 3~5글자"
+                <label for="name" class="text-lg">닉네임</label>
+                <input id="name" type="text" name="name" placeholder="닉네임은 3~12글자"
                        value="{{old('name') ? old('name') : ''}}"
                        class="w-full py-2 shadow-sm rounded-sm pl-2 text-lg border border-gray-100
                         @error('name') border-2 border-red-600 focus:outline-none @enderror">
