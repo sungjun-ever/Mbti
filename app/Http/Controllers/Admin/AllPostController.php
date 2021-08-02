@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Anonymous;
 use App\Models\Free;
 use App\Models\Mbti;
+use App\Models\Suggest;
 use App\Models\Temp;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -67,6 +69,18 @@ class AllPostController extends Controller
 
         if($boardName == 'frees'){
             $post = Free::where('id', $id)->first();
+            $post->moved = 'not';
+            $post->save();
+        }
+
+        if($boardName == 'suggests'){
+            $post = Suggest::where('id', $id)->first();
+            $post->moved = 'not';
+            $post->save();
+        }
+
+        if($boardName == 'anonymous'){
+            $post = Anonymous::where('id', $id)->first();
             $post->moved = 'not';
             $post->save();
         }
