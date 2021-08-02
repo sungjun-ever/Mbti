@@ -32,8 +32,4 @@ class TempController extends Controller
         return view('temp.show', compact('temp'));
     }
 
-    public function showTempMessage()
-    {
-        return view('temp.show-temp-message');
-    }
 }
