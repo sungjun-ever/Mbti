@@ -102,23 +102,23 @@ class AnonymousController extends Controller
 
         if($request->input('deleteImgName')){
             foreach ($request->input('deleteImgName') as $deleteImg){
-                File::delete(storage_path('app/public/img/free/'.$post->id.'/'.$deleteImg));
+                File::delete(storage_path('app/public/img/anonymous/'.$post->id.'/'.$deleteImg));
             }
         }
 
         if($request->hasFile('image')){
-            if(!is_dir('storage/img/free/'.$post->id)){
-                mkdir('storage/img/free/'.$post->id, 0777, true);
+            if(!is_dir('storage/img/anonymous/'.$post->id)){
+                mkdir('storage/img/anonymous/'.$post->id, 0777, true);
             }
 
             $name = array_diff(scandir(public_path($post->image_url)), array('.', '..'));
 
             foreach ($request->file('image') as $image){
                 $imageName = $image->getClientOriginalName();
-                $image->storeAs('public/img/free/'.$post->id, $imageName);
-                if(Image::make(storage_path('app/public/img/free/'.$post->id.'/'.$imageName))->width() > 900){
-                    Image::make(storage_path('app/public/img/free/'.$post->id.'/'.$imageName))->resize(800, null)
-                        ->save(storage_path('app/public/img/free/'.$post->id.'/'.$imageName));
+                $image->storeAs('public/img/anonymous/'.$post->id, $imageName);
+                if(Image::make(storage_path('app/public/img/anonymous/'.$post->id.'/'.$imageName))->width() > 900){
+                    Image::make(storage_path('app/public/img/anonymous/'.$post->id.'/'.$imageName))->resize(800, null)
+                        ->save(storage_path('app/public/img/anonymous/'.$post->id.'/'.$imageName));
                 }
                 $name[] = $imageName;
             }
@@ -135,7 +135,7 @@ class AnonymousController extends Controller
     public function destroy($id)
     {
         $post = Anonymous::where('id', $id)->first();
-        File::deleteDirectory(storage_path('app/public/img/free/'.$post->id));
+        File::deleteDirectory(storage_path('app/public/img/anonymous/'.$post->id));
         $post->delete();
 
         return redirect()->route('anonymous.index');

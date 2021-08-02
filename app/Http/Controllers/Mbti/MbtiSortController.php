@@ -122,23 +122,23 @@ class MbtiSortController extends Controller
 
         if($request->input('deleteImgName')){
             foreach ($request->input('deleteImgName') as $deleteImg){
-                File::delete(storage_path('app/public/img/free/'.$mbti->id.'/'.$deleteImg));
+                File::delete(storage_path('app/public/img/mbti/'.$mbti->id.'/'.$deleteImg));
             }
         }
 
         if($request->hasFile('image')){
-            if(!is_dir('storage/img/free/'.$mbti->id)){
-                mkdir('storage/img/free/'.$mbti->id, 0777, true);
+            if(!is_dir('storage/img/mbti/'.$mbti->id)){
+                mkdir('storage/img/mbti/'.$mbti->id, 0777, true);
             }
 
             $name = array_diff(scandir(public_path($mbti->image_url)), array('.', '..'));
 
             foreach ($request->file('image') as $image){
                 $imageName = $image->getClientOriginalName();
-                $image->storeAs('public/img/free/'.$mbti->id, $imageName);
-                if(Image::make(storage_path('app/public/img/free/'.$mbti->id.'/'.$imageName))->width() > 900){
-                    Image::make(storage_path('app/public/img/free/'.$mbti->id.'/'.$imageName))->resize(800, null)
-                        ->save(storage_path('app/public/img/free/'.$mbti->id.'/'.$imageName));
+                $image->storeAs('public/img/mbti/'.$mbti->id, $imageName);
+                if(Image::make(storage_path('app/public/img/mbti/'.$mbti->id.'/'.$imageName))->width() > 900){
+                    Image::make(storage_path('app/public/img/mbti/'.$mbti->id.'/'.$imageName))->resize(800, null)
+                        ->save(storage_path('app/public/img/mbti/'.$mbti->id.'/'.$imageName));
                 }
                 $name[] = $imageName;
             }
@@ -163,7 +163,7 @@ class MbtiSortController extends Controller
     {
         $mbtiName = $this->mbtisName();
         $mbti = Mbti::where('id', $id)->first();
-        File::deleteDirectory(storage_path('app/public/img/free/'.$mbti->id));
+        File::deleteDirectory(storage_path('app/public/img/mbti/'.$mbti->id));
         $mbti -> delete();
 
         return redirect()->route($mbtiName.'.index');

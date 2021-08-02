@@ -72,10 +72,13 @@ class SuggestController extends Controller
     public function show($id)
     {
         $sug = Suggest::where('id', $id)->first();
+
         if($sug === null) {
             return view('recycles.deleted-post');
         }
+
         $cmts = SuggestComment::where('board_id', $id)->paginate(20);
+
         return view('suggests.show', compact(['sug', 'cmts']));
     }
 
@@ -96,23 +99,23 @@ class SuggestController extends Controller
 
         if($request->input('deleteImgName')){
             foreach ($request->input('deleteImgName') as $deleteImg){
-                File::delete(storage_path('app/public/img/free/'.$sug->id.'/'.$deleteImg));
+                File::delete(storage_path('app/public/img/sug/'.$sug->id.'/'.$deleteImg));
             }
         }
 
         if($request->hasFile('image')){
-            if(!is_dir('storage/img/free/'.$sug->id)){
-                mkdir('storage/img/free/'.$sug->id, 0777, true);
+            if(!is_dir('storage/img/sug/'.$sug->id)){
+                mkdir('storage/img/sug/'.$sug->id, 0777, true);
             }
 
             $name = array_diff(scandir(public_path($sug->image_url)), array('.', '..'));
 
             foreach ($request->file('image') as $image){
                 $imageName = $image->getClientOriginalName();
-                $image->storeAs('public/img/free/'.$sug->id, $imageName);
-                if(Image::make(storage_path('app/public/img/free/'.$sug->id.'/'.$imageName))->width() > 900){
-                    Image::make(storage_path('app/public/img/free/'.$sug->id.'/'.$imageName))->resize(800, null)
-                        ->save(storage_path('app/public/img/free/'.$sug->id.'/'.$imageName));
+                $image->storeAs('public/img/sug/'.$sug->id, $imageName);
+                if(Image::make(storage_path('app/public/img/sug/'.$sug->id.'/'.$imageName))->width() > 900){
+                    Image::make(storage_path('app/public/img/sug/'.$sug->id.'/'.$imageName))->resize(800, null)
+                        ->save(storage_path('app/public/img/sug/'.$sug->id.'/'.$imageName));
                 }
                 $name[] = $imageName;
             }
@@ -128,7 +131,7 @@ class SuggestController extends Controller
     public function destroy($id)
     {
         $sug = Suggest::where('id', $id)->first();
-        File::deleteDirectory(storage_path('app/public/img/free/'.$post->id));
+        File::deleteDirectory(storage_path('app/public/img/sug/'.$sug->id));
         $sug->delete();
         return redirect()->route('suggests.index');
     }
