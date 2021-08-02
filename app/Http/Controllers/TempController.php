@@ -24,6 +24,15 @@ class TempController extends Controller
     public function show($id)
     {
         $temp = Temp::where('id', $id)->first();
+
+        if($temp->moved == 'move'){
+            return view('recycles.deleted-post');
+        }
+
+        if($temp->moved == 'move'){
+            return view('temp.show-temp-message');
+        }
+
         return view('temp.show', compact('temp'));
     }
 

@@ -37,7 +37,6 @@ Route::get('/login/google', [LoginController::class, 'redirectToProvider'])->nam
 Route::get('/login/google/callback', [LoginController::class, 'handleProviderCallback']);
 
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('verified');
-Route::get('/deleted', [HomeController::class, 'destroy'])->name('deleted');
 
 Route::prefix('/admin')->group(function () {
     Route::get('/user', [AdminUserController::class, 'getUser'])->name('admin.getUser');

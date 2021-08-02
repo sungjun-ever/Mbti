@@ -73,7 +73,7 @@ class MbtiSortController extends Controller
         $mbti = Mbti::where('id', $id)->first();
 
         if($mbti === null) {
-            return redirect()->route('deleted');
+            return view('recycles.deleted-post');
         }
 
         if($mbti->moved == 'move') {
