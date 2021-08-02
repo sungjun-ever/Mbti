@@ -77,6 +77,10 @@ class SuggestController extends Controller
             return view('recycles.deleted-post');
         }
 
+        if($sug->moved == 'move'){
+            return view('temp.show-temp-message');
+        }
+
         $cmts = SuggestComment::where('board_id', $id)->paginate(20);
 
         return view('suggests.show', compact(['sug', 'cmts']));

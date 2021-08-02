@@ -76,10 +76,9 @@ class MbtiSortController extends Controller
             return view('recycles.deleted-post');
         }
 
-        if($mbti->moved == 'move') {
-            return redirect()->route('temp.message');
+        if($mbti->moved == 'move'){
+            return view('temp.show-temp-message');
         }
-
         $cmts = MbtiComment::where('board_id', $id)
             ->orderByDesc('comment_id')
             ->orderBy('class')

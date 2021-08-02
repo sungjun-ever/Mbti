@@ -77,8 +77,13 @@ class AnonymousController extends Controller
     public function show($id)
     {
         $post = Anonymous::where('id', $id)->first();
+
         if($post === null) {
             return view('recycles.deleted-post');
+        }
+
+        if($post->moved == 'move'){
+            return view('temp.show-temp-message');
         }
 
         return view('anonymous.show', compact('post'));

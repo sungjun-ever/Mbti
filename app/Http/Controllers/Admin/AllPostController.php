@@ -31,6 +31,7 @@ class AllPostController extends Controller
         $temp->board_name = $boardName;
         $temp->board_id = $id;
         $temp->user_id = request()->input('user_id');
+        $temp->user_name = request()->input('user_name');
         $temp->title = request()->input('title');
         $temp->story = request()->input('story');
         $temp->save();

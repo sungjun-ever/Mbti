@@ -69,8 +69,12 @@ class FreeController extends Controller
     {
         $free = Free::where('id', $id)->first();
 
-        if($free->moved == 'move'){
+        if($free === null) {
             return view('recycles.deleted-post');
+        }
+
+        if($free->moved == 'move'){
+            return view('temp.show-temp-message');
         }
 
         $cmts = FreeComment::where('board_id', $id)

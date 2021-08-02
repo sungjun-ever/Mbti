@@ -53,7 +53,6 @@ Route::prefix('/admin')->group(function () {
 
 Route::prefix('/temps')->group(function(){
     Route::get('/', [TempController::class, 'index'])->name('temp.index');
-    Route::get('/message', [TempController::class, 'showTempMessage'])->name('temp.message');
     Route::get('/{temp}', [TempController::class, 'show'])->name('temp.show');
 });
 
