@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\Anonymous\AnonymousCommentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Suggest\SuggestCommentController;
 use App\Http\Controllers\TempController;
-use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -386,5 +386,11 @@ Route::prefix('/anonymous')->group(function (){
     Route::put('/{id}', [AnonymousController::class, 'update'])->name('anonymous.update');
     Route::delete('/{id}',  [AnonymousController::class, 'destroy'])->name('anonymous.destroy');
     Route::get('/search', [AnonymousController::class, 'search'])->name('anonymous.search');
+    Route::prefix('/{id}/comments')->group(function (){
+        Route::post('/', [AnonymousCommentController::class, 'store'])->name('anonymous.comments.store');
+        Route::put('/{comment}', [AnonymousCommentController::class, 'update'])->name('anonymous.comments.update');
+        Route::delete('/{comment}', [AnonymousCommentController::class, 'destroy'])->name('anonymous.comments.destroy');
+        Route::post('/{comment}/reply', [AnonymousCommentController::class, 'replyStore'])->name('anonymous.comments.reply.store');
+    });
 });
 

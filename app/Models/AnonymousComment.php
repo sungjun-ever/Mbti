@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Anonymous extends Model
+class AnonymousComment extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'story'];
+    protected $fillable = ['story'];
 
-    public function user()
-    {
+    public function user(){
         return $this->belongsTo('App\Models\User');
     }
 
-    public function comments()
+    public function anonymous()
     {
-        return $this->hasMany('App\Models\AnonymousComment');
+        return $this->belongsTo('App\Models\Anonymous');
     }
 }
