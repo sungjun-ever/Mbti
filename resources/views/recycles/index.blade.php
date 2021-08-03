@@ -1,8 +1,12 @@
 <div class="w-11/12 pt-12 mx-auto">
     <div class="pt-8">
         <span class="xl:text-2xl text-xl border-b-2 border-black">
-            @if($boardName == 'frees')
+             @if($boardName == 'frees')
                 자유게시판
+            @elseif($boardName== 'suggests')
+                건의게시판
+            @elseif($boardName == 'temps')
+                임시게시판
             @elseif($boardName == 'anonymous')
                 익명게시판
             @else

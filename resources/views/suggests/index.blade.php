@@ -3,7 +3,7 @@
 @section('container')
     <div class="w-11/12 pt-12 mx-auto">
         <div class="pt-8">
-            <span class="xl:text-2xl text-xl border-b-2 border-blue-300">건의게시판</span>
+            <span class="xl:text-2xl text-xl border-b-2 border-black">건의게시판</span>
         </div>
         <div class="text-right pt-8">
             <a href="{{route($boardName.'.create')}}">

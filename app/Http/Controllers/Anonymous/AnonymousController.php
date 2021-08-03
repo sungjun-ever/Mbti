@@ -154,4 +154,14 @@ class AnonymousController extends Controller
 
         return redirect()->route('anonymous.index');
     }
+
+    public function search(Request $request)
+    {
+        $content = $request->input('content');
+        $search = $request->input('search');
+
+        $posts = Anonymous::where($content, 'LIKE', "%{$search}%")->paginate(5);
+
+        return view('anonymous.search', compact(['posts', 'content', 'search']));
+    }
 }

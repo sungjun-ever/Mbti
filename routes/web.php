@@ -379,13 +379,13 @@ Route::prefix('/suggests')->group(function () {
 
 Route::prefix('/anonymous')->group(function (){
     Route::get('', [AnonymousController::class, 'index'])->name('anonymous.index');
+    Route::get('/search', [AnonymousController::class, 'search'])->name('anonymous.search');
     Route::get('/create', [AnonymousController::class, 'create'])->name('anonymous.create');
     Route::post('/', [AnonymousController::class, 'store'])->name('anonymous.store');
     Route::get('/{id}', [AnonymousController::class, 'show'])->name('anonymous.show');
     Route::get('/{id}/edit', [AnonymousController::class, 'edit'])->name('anonymous.edit');
     Route::put('/{id}', [AnonymousController::class, 'update'])->name('anonymous.update');
     Route::delete('/{id}',  [AnonymousController::class, 'destroy'])->name('anonymous.destroy');
-    Route::get('/search', [AnonymousController::class, 'search'])->name('anonymous.search');
     Route::prefix('/{id}/comments')->group(function (){
         Route::post('/', [AnonymousCommentController::class, 'store'])->name('anonymous.comments.store');
         Route::put('/{comment}', [AnonymousCommentController::class, 'update'])->name('anonymous.comments.update');
