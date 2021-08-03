@@ -26,6 +26,7 @@ class MbtiCommentController extends Controller
 
         $cmt = new MbtiComment();
         $cmt->user_id = auth()->user()->id;
+        $cmt->user_name = auth()->user()->name;
         $cmt->board_id = $id;
         $cmt->board_name = $mbtiName;
         $cmt->story = $validation['story'];
@@ -44,7 +45,7 @@ class MbtiCommentController extends Controller
         $cmt->story = $validation['story'];
         $cmt->save();
 
-        return redirect()->route($cmt->mbti->mbtiSort.'.show', $cmt->mbti->id);
+        return redirect()->route($cmt->mbti->mbtiSort.'.show', $id);
     }
 
     public function destroy($id, $cmtId)
@@ -56,7 +57,7 @@ class MbtiCommentController extends Controller
         return redirect()->route($mbtiName.'.show', $id);
     }
 
-    public function replyStore(Request $request, $id, $cmtId)
+    public function replyStore(Request $request, $id)
     {
         $mbtiName = $this->mbtisName();
 
@@ -64,13 +65,12 @@ class MbtiCommentController extends Controller
             'story' => 'required'
         ]);
 
-        $parent = MbtiComment::select('comment_id', 'class')->where('id', $cmtId)->first();
-
         $cmt = new MbtiComment();
         $cmt->user_id = auth()->user()->id;
+        $cmt->user_name = auth()->user()->name;
         $cmt->board_id = $id;
         $cmt->board_name = $mbtiName;
-        $cmt->comment_id = $parent->comment_id;
+        $cmt->comment_id = request()->input('comment_id');
         $cmt->class = 1;
         $cmt->story = $validation['story'];
         $cmt->save();

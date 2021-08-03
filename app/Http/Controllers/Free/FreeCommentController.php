@@ -16,6 +16,7 @@ class FreeCommentController extends Controller
 
         $cmt = new FreeComment();
         $cmt->user_id = auth()->user()->id;
+        $cmt->user_name = auth()->user()->name;
         $cmt->board_id = $id;
         $cmt->story = $validation['story'];
         $cmt->save();
@@ -47,7 +48,7 @@ class FreeCommentController extends Controller
         return redirect()->route('frees.show', $id);
     }
 
-    public function replyStore($id, $cmtId)
+    public function replyStore($id)
     {
         $validation = request()->validate([
            'story' => 'required'
@@ -55,6 +56,7 @@ class FreeCommentController extends Controller
 
         $cmt = new FreeComment();
         $cmt->user_id = auth()->user()->id;
+        $cmt->user_name = auth()->user()->name;
         $cmt->board_id = $id;
         $cmt->comment_id = request()->input('comment_id');
         $cmt->class = 1;

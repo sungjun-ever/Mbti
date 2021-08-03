@@ -4,7 +4,7 @@
         @foreach($cmts as $cmt)
                 <div class="mt-4 shadow-md @if($cmt->class != 0) w-10/12 ml-auto @endif" style="min-height: 80px;">
                     <div id="{{$cmt->id}}cmtBox">
-                        <div class="bg-green-my text-md text-white py-1 pl-2 rounded-sm">{{$cmt->user->name}}</div>
+                        <div class="bg-green-my text-md text-white py-1 pl-2 rounded-sm">{{$cmt->user_name}}</div>
                             <div class="pt-2 pl-2 " style="min-height: 80px;">
                                 @if($cmt->status == 'delete')
                                     <div class="text-base rounded-sm text-gray-400 font-semibold" style="min-height: 50px;">[삭제된 댓글입니다.]</div>
@@ -14,15 +14,18 @@
                             </div>
                         @auth()
                         <div class="py-1 text-right text-base">
+                            @if($cmt->class == 0)
                             <div class="pr-2 inline-block">
                                 <button id="{{$cmt->id}}" class="hover:text-green-600" onclick="commentReply(this)" value="hidden">답글</button>
                             </div>
+                            @endif
                             @if($cmt->user_id == auth()->user()->id)
                                 <div class="pr-2 inline-block">
                                     <button id="{{$cmt->id}}" class="hover:text-green-600 pr-2" onclick="editComment(this)" value="hidden">수정</button>
                                     <form action="{{route($post->board_name.'.comments.destroy', [$post->id, $cmt->id])}}" method="post" class="inline-block">
                                         @csrf
-                                        <button type="submit" class="hover:text-green-600">삭제</button>
+                                        @method('DELETE')
+                                        <button type="submit" class="hover:text-green-600" onclick="if(!confirm('삭제하시겠습니까?')) return false">삭제</button>
                                     </form>
                                 </div>
                             @endif

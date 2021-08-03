@@ -16,6 +16,7 @@ class SuggestCommentController extends Controller
 
         $cmt = new SuggestComment();
         $cmt->user_id = auth()->user()->id;
+        $cmt->user_name = auth()->user()->name;
         $cmt->board_id = $id;
         $cmt->story = $validation['story'];
         $cmt->save();
@@ -45,7 +46,7 @@ class SuggestCommentController extends Controller
         return redirect()->route('suggests.show', $id);
     }
 
-    public function replyStore($id, $cmtId)
+    public function replyStore($id)
     {
         $validation = request()->validate([
             'story' => 'required'
@@ -53,6 +54,7 @@ class SuggestCommentController extends Controller
 
         $cmt = new SuggestComment();
         $cmt->user_id = auth()->user()->id;
+        $cmt->user_name = auth()->user()->name;
         $cmt->board_id = $id;
         $cmt->story = $validation['story'];
         $cmt->save();
