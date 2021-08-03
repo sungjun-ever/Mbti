@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class SuggestCommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function store(Request $request, $id)
     {
         $validation = $request->validate([

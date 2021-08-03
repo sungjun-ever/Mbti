@@ -79,10 +79,10 @@ Route::prefix('/enfj')->group(function () {
     Route::put('/{enfj}', [MbtiSortController::class, 'update'])->name('enfj.update')->middleware('auth');
     Route::delete('/{enfj}', [MbtiSortController::class, 'destroy'])->name('enfj.destroy')->middleware('auth');
     Route::prefix('/{enfj}/comments')->group(function () {
-        Route::post('/', [MbtiCommentController::class, 'store'])->name('enfj.comments.store')->middleware('auth');
-        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('enfj.comments.update')->middleware('auth');
-        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('enfj.comments.destroy')->middleware('auth');
-        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('enfj.comments.reply.store')->middleware('auth');
+        Route::post('/', [MbtiCommentController::class, 'store'])->name('enfj.comments.store');
+        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('enfj.comments.update');
+        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('enfj.comments.destroy');
+        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('enfj.comments.reply.store');
     });
 });
 
@@ -96,10 +96,10 @@ Route::prefix('/enfp')->group(function () {
     Route::put('/{enfp}', [MbtiSortController::class, 'update'])->name('enfp.update')->middleware('auth');
     Route::delete('/{enfp}', [MbtiSortController::class, 'destroy'])->name('enfp.destroy')->middleware('auth');
     Route::prefix('/{enfp}/comments')->group(function () {
-        Route::post('/', [MbtiCommentController::class, 'store'])->name('enfp.comments.store')->middleware('auth');
-        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('enfp.comments.update')->middleware('auth');
-        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('enfp.comments.destroy')->middleware('auth');
-        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('enfp.comments.reply.store')->middleware('auth');
+        Route::post('/', [MbtiCommentController::class, 'store'])->name('enfp.comments.store');
+        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('enfp.comments.update');
+        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('enfp.comments.destroy');
+        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('enfp.comments.reply.store');
     });
 });
 
@@ -113,10 +113,10 @@ Route::prefix('/entj')->group(function () {
     Route::put('/{entj}', [MbtiSortController::class, 'update'])->name('entj.update')->middleware('auth');
     Route::delete('/{entj}', [MbtiSortController::class, 'destroy'])->name('entj.destroy')->middleware('auth');
     Route::prefix('/{entj}/comments')->group(function () {
-        Route::post('/', [MbtiCommentController::class, 'store'])->name('entj.comments.store')->middleware('auth');
-        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('entj.comments.update')->middleware('auth');
-        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('entj.comments.destroy')->middleware('auth');
-        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('entj.comments.reply.store')->middleware('auth');
+        Route::post('/', [MbtiCommentController::class, 'store'])->name('entj.comments.store');
+        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('entj.comments.update');
+        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('entj.comments.destroy');
+        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('entj.comments.reply.store');
     });
 });
 
@@ -130,10 +130,10 @@ Route::prefix('/entp')->group(function () {
     Route::put('/{entp}', [MbtiSortController::class, 'update'])->name('entp.update')->middleware('auth');
     Route::delete('/{entp}', [MbtiSortController::class, 'destroy'])->name('entp.destroy')->middleware('auth');
     Route::prefix('/{entp}/comments')->group(function () {
-        Route::post('/', [MbtiCommentController::class, 'store'])->name('entp.comments.store')->middleware('auth');
-        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('entp.comments.update')->middleware('auth');
-        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('entp.comments.destroy')->middleware('auth');
-        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('entp.comments.reply.store')->middleware('auth');
+        Route::post('/', [MbtiCommentController::class, 'store'])->name('entp.comments.store');
+        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('entp.comments.update');
+        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('entp.comments.destroy');
+        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('entp.comments.reply.store');
     });
 });
 
@@ -147,10 +147,10 @@ Route::prefix('/esfj')->group(function () {
     Route::put('/{esfj}', [MbtiSortController::class, 'update'])->name('esfj.update')->middleware('auth');
     Route::delete('/{esfj}', [MbtiSortController::class, 'destroy'])->name('esfj.destroy')->middleware('auth');
     Route::prefix('/{esfj}/comments')->group(function () {
-        Route::post('/', [MbtiCommentController::class, 'store'])->name('esfj.comments.store')->middleware('auth');
-        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('esfj.comments.update')->middleware('auth');
-        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('esfj.comments.destroy')->middleware('auth');
-        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('esfj.comments.reply.store')->middleware('auth');
+        Route::post('/', [MbtiCommentController::class, 'store'])->name('esfj.comments.store');
+        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('esfj.comments.update');
+        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('esfj.comments.destroy');
+        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('esfj.comments.reply.store');
     });
 });
 
@@ -164,10 +164,10 @@ Route::prefix('/esfp')->group(function () {
     Route::put('/{esfp}', [MbtiSortController::class, 'update'])->name('esfp.update')->middleware('auth');
     Route::delete('/{esfp}', [MbtiSortController::class, 'destroy'])->name('esfp.destroy')->middleware('auth');
     Route::prefix('/{esfp}/comments')->group(function () {
-        Route::post('/', [MbtiCommentController::class, 'store'])->name('esfp.comments.store')->middleware('auth');
-        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('esfp.comments.update')->middleware('auth');
-        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('esfp.comments.destroy')->middleware('auth');
-        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('esfp.comments.reply.store')->middleware('auth');
+        Route::post('/', [MbtiCommentController::class, 'store'])->name('esfp.comments.store');
+        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('esfp.comments.update');
+        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('esfp.comments.destroy');
+        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('esfp.comments.reply.store');
     });
 });
 
@@ -181,10 +181,10 @@ Route::prefix('/estj')->group(function () {
     Route::put('/{estj}', [MbtiSortController::class, 'update'])->name('estj.update')->middleware('auth');
     Route::delete('/{estj}', [MbtiSortController::class, 'destroy'])->name('estj.destroy')->middleware('auth');
     Route::prefix('/{estj}/comments')->group(function () {
-        Route::post('/', [MbtiCommentController::class, 'store'])->name('estj.comments.store')->middleware('auth');
-        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('estj.comments.update')->middleware('auth');
-        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('estj.comments.destroy')->middleware('auth');
-        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('estj.comments.reply.store')->middleware('auth');
+        Route::post('/', [MbtiCommentController::class, 'store'])->name('estj.comments.store');
+        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('estj.comments.update');
+        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('estj.comments.destroy');
+        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('estj.comments.reply.store');
     });
 });
 
@@ -198,10 +198,10 @@ Route::prefix('/estp')->group(function () {
     Route::put('/{estp}', [MbtiSortController::class, 'update'])->name('estp.update')->middleware('auth');
     Route::delete('/{estp}', [MbtiSortController::class, 'destroy'])->name('estp.destroy')->middleware('auth');
     Route::prefix('/{estp}/comments')->group(function () {
-        Route::post('/', [MbtiCommentController::class, 'store'])->name('estp.comments.store')->middleware('auth');
-        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('estp.comments.update')->middleware('auth');
-        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('estp.comments.destroy')->middleware('auth');
-        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('estp.comments.reply.store')->middleware('auth');
+        Route::post('/', [MbtiCommentController::class, 'store'])->name('estp.comments.store');
+        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('estp.comments.update');
+        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('estp.comments.destroy');
+        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('estp.comments.reply.store');
     });
 });
 
@@ -215,10 +215,10 @@ Route::prefix('/infj')->group(function () {
     Route::put('/{infj}', [MbtiSortController::class, 'update'])->name('infj.update')->middleware('auth');
     Route::delete('/{infj}', [MbtiSortController::class, 'destroy'])->name('infj.destroy')->middleware('auth');
     Route::prefix('/{infj}/comments')->group(function () {
-        Route::post('/', [MbtiCommentController::class, 'store'])->name('infj.comments.store')->middleware('auth');
-        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('infj.comments.update')->middleware('auth');
-        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('infj.comments.destroy')->middleware('auth');
-        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('infj.comments.reply.store')->middleware('auth');
+        Route::post('/', [MbtiCommentController::class, 'store'])->name('infj.comments.store');
+        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('infj.comments.update');
+        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('infj.comments.destroy');
+        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('infj.comments.reply.store');
     });
 });
 
@@ -232,10 +232,10 @@ Route::prefix('/infp')->group(function () {
     Route::put('/{infp}', [MbtiSortController::class, 'update'])->name('infp.update')->middleware('auth');
     Route::delete('/{infp}', [MbtiSortController::class, 'destroy'])->name('infp.destroy')->middleware('auth');
     Route::prefix('/{infp}/comments')->group(function () {
-        Route::post('/', [MbtiCommentController::class, 'store'])->name('infp.comments.store')->middleware('auth');
-        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('infp.comments.update')->middleware('auth');
-        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('infp.comments.destroy')->middleware('auth');
-        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('infp.comments.reply.store')->middleware('auth');
+        Route::post('/', [MbtiCommentController::class, 'store'])->name('infp.comments.store');
+        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('infp.comments.update');
+        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('infp.comments.destroy');
+        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('infp.comments.reply.store');
     });
 });
 
@@ -249,10 +249,10 @@ Route::prefix('/intj')->group(function () {
     Route::put('/{intj}', [MbtiSortController::class, 'update'])->name('intj.update')->middleware('auth');
     Route::delete('/{intj}', [MbtiSortController::class, 'destroy'])->name('intj.destroy')->middleware('auth');
     Route::prefix('/{intj}/comments')->group(function () {
-        Route::post('/', [MbtiCommentController::class, 'store'])->name('intj.comments.store')->middleware('auth');
-        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('intj.comments.update')->middleware('auth');
-        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('intj.comments.destroy')->middleware('auth');
-        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('intj.comments.reply.store')->middleware('auth');
+        Route::post('/', [MbtiCommentController::class, 'store'])->name('intj.comments.store');
+        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('intj.comments.update');
+        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('intj.comments.destroy');
+        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('intj.comments.reply.store');
     });
 });
 
@@ -266,10 +266,10 @@ Route::prefix('/intp')->group(function () {
     Route::put('/{intp}', [MbtiSortController::class, 'update'])->name('intp.update')->middleware('auth');
     Route::delete('/{intp}', [MbtiSortController::class, 'destroy'])->name('intp.destroy')->middleware('auth');
     Route::prefix('/{intp}/comments')->group(function () {
-        Route::post('/', [MbtiCommentController::class, 'store'])->name('intp.comments.store')->middleware('auth');
-        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('intp.comments.update')->middleware('auth');
-        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('intp.comments.destroy')->middleware('auth');
-        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('intp.comments.reply.store')->middleware('auth');
+        Route::post('/', [MbtiCommentController::class, 'store'])->name('intp.comments.store');
+        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('intp.comments.update');
+        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('intp.comments.destroy');
+        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('intp.comments.reply.store');
     });
 });
 
@@ -283,10 +283,10 @@ Route::prefix('/isfj')->group(function () {
     Route::put('/{isfj}', [MbtiSortController::class, 'update'])->name('isfj.update')->middleware('auth');
     Route::delete('/{isfj}', [MbtiSortController::class, 'destroy'])->name('isfj.destroy')->middleware('auth');
     Route::prefix('/{isfj}/comments')->group(function () {
-        Route::post('/', [MbtiCommentController::class, 'store'])->name('isfj.comments.store')->middleware('auth');
-        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('isfj.comments.update')->middleware('auth');
-        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('isfj.comments.destroy')->middleware('auth');
-        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('isfj.comments.reply.store')->middleware('auth');
+        Route::post('/', [MbtiCommentController::class, 'store'])->name('isfj.comments.store');
+        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('isfj.comments.update');
+        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('isfj.comments.destroy');
+        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('isfj.comments.reply.store');
     });
 });
 
@@ -300,10 +300,10 @@ Route::prefix('/isfp')->group(function () {
     Route::put('/{isfp}', [MbtiSortController::class, 'update'])->name('isfp.update')->middleware('auth');
     Route::delete('/{isfp}', [MbtiSortController::class, 'destroy'])->name('isfp.destroy')->middleware('auth');
     Route::prefix('/{isfp}/comments')->group(function () {
-        Route::post('/', [MbtiCommentController::class, 'store'])->name('isfp.comments.store')->middleware('auth');
-        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('isfp.comments.update')->middleware('auth');
-        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('isfp.comments.destroy')->middleware('auth');
-        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('isfp.comments.reply.store')->middleware('auth');
+        Route::post('/', [MbtiCommentController::class, 'store'])->name('isfp.comments.store');
+        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('isfp.comments.update');
+        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('isfp.comments.destroy');
+        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('isfp.comments.reply.store');
     });
 });
 
@@ -317,10 +317,10 @@ Route::prefix('/istj')->group(function () {
     Route::put('/{istj}', [MbtiSortController::class, 'update'])->name('istj.update')->middleware('auth');
     Route::delete('/{istj}', [MbtiSortController::class, 'destroy'])->name('istj.destroy')->middleware('auth');
     Route::prefix('/{istj}/comments')->group(function () {
-        Route::post('/', [MbtiCommentController::class, 'store'])->name('istj.comments.store')->middleware('auth');
-        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('istj.comments.update')->middleware('auth');
-        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('istj.comments.destroy')->middleware('auth');
-        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('istj.comments.reply.store')->middleware('auth');
+        Route::post('/', [MbtiCommentController::class, 'store'])->name('istj.comments.store');
+        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('istj.comments.update');
+        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('istj.comments.destroy');
+        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('istj.comments.reply.store');
     });
 });
 
@@ -334,10 +334,10 @@ Route::prefix('/istp')->group(function () {
     Route::put('/{istp}', [MbtiSortController::class, 'update'])->name('istp.update')->middleware('auth');
     Route::delete('/{istp}', [MbtiSortController::class, 'destroy'])->name('istp.destroy')->middleware('auth');
     Route::prefix('/{istp}/comments')->group(function () {
-        Route::post('/', [MbtiCommentController::class, 'store'])->name('istp.comments.store')->middleware('auth');
-        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('istp.comments.update')->middleware('auth');
-        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('istp.comments.destroy')->middleware('auth');
-        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('istp.comments.reply.store')->middleware('auth');
+        Route::post('/', [MbtiCommentController::class, 'store'])->name('istp.comments.store');
+        Route::put('/{comment}', [MbtiCommentController::class, 'update'])->name('istp.comments.update');
+        Route::post('/{comment}', [MbtiCommentController::class, 'destroy'])->name('istp.comments.destroy');
+        Route::post('/{comment}/reply', [MbtiCommentController::class, 'replyStore'])->name('istp.comments.reply.store');
     });
 });
 
@@ -352,10 +352,10 @@ Route::prefix('/frees')->group(function () {
     Route::put('/{free}', [FreeController::class, 'update'])->name('frees.update')->middleware('auth');
     Route::delete('/{free}', [FreeController::class, 'destroy'])->name('frees.destroy')->middleware('auth');
     Route::prefix('/{free}/comments')->group(function () {
-        Route::post('/', [FreeCommentController::class, 'store'])->name('frees.comments.store')->middleware('auth');
-        Route::put('/{comment}', [FreeCommentController::class, 'update'])->name('frees.comments.update')->middleware('auth');
-        Route::delete('/{comment}', [FreeCommentController::class, 'destroy'])->name('frees.comments.destroy')->middleware('auth');
-        Route::post('/{comment}/reply', [FreeCommentController::class, 'replyStore'])->name('frees.comments.reply.store')->middleware('auth');
+        Route::post('/', [FreeCommentController::class, 'store'])->name('frees.comments.store');
+        Route::put('/{comment}', [FreeCommentController::class, 'update'])->name('frees.comments.update');
+        Route::delete('/{comment}', [FreeCommentController::class, 'destroy'])->name('frees.comments.destroy');
+        Route::post('/{comment}/reply', [FreeCommentController::class, 'replyStore'])->name('frees.comments.reply.store');
     });
 });
 
@@ -370,10 +370,10 @@ Route::prefix('/suggests')->group(function () {
     Route::get('password/confirm', [ConfirmPasswordController::class, 'confirmPage'])->name('suggests.confirm');
     Route::post('password/confirm', [ConfirmPasswordController::class, 'confirm']);
     Route::prefix('/{suggest}/comments')->group(function () {
-        Route::post('/', [SuggestCommentController::class, 'store'])->name('suggests.comments.store')->middleware('auth');
-        Route::put('/{comment}', [SuggestCommentController::class, 'update'])->name('suggests.comments.update')->middleware('auth');
-        Route::delete('/{comment}', [SuggestCommentController::class, 'destroy'])->name('suggests.comments.destroy')->middleware('auth');
-        Route::post('/{comment}/reply', [SuggestCommentController::class, 'replyStore'])->name('suggests.comments.reply.store')->middleware('auth');
+        Route::post('/', [SuggestCommentController::class, 'store'])->name('suggests.comments.store');
+        Route::put('/{comment}', [SuggestCommentController::class, 'update'])->name('suggests.comments.update');
+        Route::delete('/{comment}', [SuggestCommentController::class, 'destroy'])->name('suggests.comments.destroy');
+        Route::post('/{comment}/reply', [SuggestCommentController::class, 'replyStore'])->name('suggests.comments.reply.store');
     });
 });
 

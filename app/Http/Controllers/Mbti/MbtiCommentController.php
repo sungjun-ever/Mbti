@@ -8,6 +8,11 @@ use App\Http\Controllers\Controller;
 
 class MbtiCommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function mbtisName()
     {
         $mbtiSort = explode('/', $_SERVER['REQUEST_URI']);
