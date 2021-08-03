@@ -3,6 +3,12 @@
         <span class="xl:text-2xl text-xl text-black font-bold">
             @if($post->board_name == 'frees')
                 자유게시판
+            @elseif($post->board_name == 'suggests')
+                건의게시판
+            @elseif($post->board_name == 'temps')
+                임시게시판
+            @elseif($post->board_name == 'anonymous')
+                익명게시판
             @else
                 {{strtoupper($post->board_name)}}
             @endif

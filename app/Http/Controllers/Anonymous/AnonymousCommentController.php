@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Anonymous;
 
 use App\Models\AnonymousComment;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class AnonymousCommentController extends Controller
 {
@@ -18,6 +21,14 @@ class AnonymousCommentController extends Controller
         $validation = $request->validate([
             'story' => 'required'
         ]);
+
+        $user = User::where('id', auth()->user()->id)->first();
+
+        if($user->anony_name === null || $user->anony_created != Carbon::now()->day){
+            $user->anony_created = Carbon::now()->day;
+            $user->anony_name = Str::random(8);
+            $user->save();
+        }
 
         $cmt = new AnonymousComment();
         $cmt->user_id = auth()->user()->id;
@@ -58,6 +69,14 @@ class AnonymousCommentController extends Controller
         $validation = request()->validate([
             'story' => 'required'
         ]);
+
+        $user = User::where('id', auth()->user()->id)->first();
+
+        if($user->anony_name === null || $user->anony_created != Carbon::now()->day){
+            $user->anony_created = Carbon::now()->day;
+            $user->anony_name = Str::random(8);
+            $user->save();
+        }
 
         $cmt = new AnonymousComment();
         $cmt->user_id = auth()->user()->id;

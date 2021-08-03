@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Anonymous;
 
 use App\Http\Controllers\Controller;
 use App\Models\Anonymous;
+use App\Models\AnonymousComment;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -86,7 +87,15 @@ class AnonymousController extends Controller
             return view('temp.show-temp-message');
         }
 
-        return view('anonymous.show', compact('post'));
+        $cmts = AnonymousComment::where('board_id', $id)
+            ->orderBy('comment_id')
+            ->orderBy('class')
+            ->orderBy('created_at')
+            ->paginate(20);
+
+        $posts = Anonymous::where('board_name', $post->board_name)->orderBy('id', 'desc')->paginate(20);
+
+        return view('anonymous.show', compact(['post', 'cmts', 'posts']));
     }
 
     public function edit($id)
