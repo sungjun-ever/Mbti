@@ -49,6 +49,7 @@ Route::prefix('/admin')->group(function () {
     Route::post('/{post}/{id}/move', [AllPostController::class, 'moveToTemp'])->name('admin.post.move');
     Route::put('{post}/{id}/restore', [AllPostController::class, 'restore'])->name('admin.post.restore');
     Route::get('/comments', [AllCommentController::class, 'index'])->name('admin.get.comment');
+    Route::get('/comments/search', [AllCommentController::class, 'search'])->name('admin.comment.search');
 });
 
 Route::prefix('/temps')->group(function(){

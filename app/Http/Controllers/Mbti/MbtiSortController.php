@@ -45,6 +45,7 @@ class MbtiSortController extends Controller
         $mbti = new Mbti();
         $mbti->board_name = $request->mid;
         $mbti->user_id = auth()->user()->id;
+        $mbti->user_name = auth()->user()->name;
         $mbti->title = $validation['title'];
         $mbti->story = $validation['story'];
         $mbti->save();
@@ -60,10 +61,10 @@ class MbtiSortController extends Controller
                 }
                 $name[] = $imageName;
             }
+            $mbti->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
+            $mbti->image_url = 'storage/img/mbti/'.$mbti->id;
+            $mbti->save();
         }
-        $mbti->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
-        $mbti->image_url = 'storage/img/mbti/'.$mbti->id;
-        $mbti->save();
 
         return redirect()->route($request->mid.'.show', $mbti->id);
     }
