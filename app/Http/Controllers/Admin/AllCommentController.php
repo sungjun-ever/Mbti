@@ -20,4 +20,15 @@ class AllCommentController extends Controller
 
         return view('admin.all-comment', compact(['all']));
     }
+
+    public function search(Request $request)
+    {
+        $content = $request->input('content');
+        $search = $request->input('search');
+
+        $mbtis = MbtiComment::where($content, 'LIKE', "%{$search}%");
+        $all = FreeComment::where($content, 'LIKE', "%{$search}%")->unionAll($mbtis)->orderByDesc('created_at')->paginate(20);
+
+        return view('admin.comment-search', compact(['all', 'content', 'search']));
+    }
 }
