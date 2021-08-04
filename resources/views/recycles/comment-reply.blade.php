@@ -1,3 +1,4 @@
+{{-- 대댓글 박스 --}}
 <div id="{{$id}}replyBox" class="pt-3 w-10/12 ml-auto hidden">
     <form action="{{route($cmt->board_name.'.comments.reply.store', [$cmt->board_id, $id])}}" method="post">
         @csrf

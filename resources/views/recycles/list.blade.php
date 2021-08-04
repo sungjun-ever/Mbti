@@ -1,3 +1,4 @@
+{{-- 게시물 목록  --}}
 <div class="w-10/12 mx-auto pt-8">
     <div class="pb-4">
         <span class="xl:text-2xl text-xl text-black font-bold">

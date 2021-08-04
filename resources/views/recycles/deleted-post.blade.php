@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('container')
+    {{-- 존재하지 않는 게시물 화면 --}}
     <div class="container pt-16">
         <div class="row justify-content-center">
             <div class="col-md-8">
