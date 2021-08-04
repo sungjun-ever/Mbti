@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('container')
+    {{--  이메일 인증 페이지  --}}
 <div class="pt-16">
     <div class="row justify-content-center">
         <div class="col-md-8">

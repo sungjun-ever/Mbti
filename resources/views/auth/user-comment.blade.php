@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('container')
+    {{--  사용자 작성 댓글  --}}
     <div class="flex pt-8 mx-auto min-h-full">
         <div class="w-full">
             @include('recycles.user-navi')

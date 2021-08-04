@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('container')
+    {{--  계정 삭제 페이지  --}}
     <div class="pt-16">
         <form action="{{route('destroy', auth()->user()->id)}}" method="post" class="w-1/2 mx-auto pt-24">
             @csrf
