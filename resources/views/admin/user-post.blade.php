@@ -2,6 +2,7 @@
 
 @section('container')
     <div class="pt-6">
+        {{--  유저 게시물 목록 --}}
         <table class="w-full table-fixed">
             <tr class="border-b-2 border-t-2 text-center">
                 <td class="w-1/12">번호</td>

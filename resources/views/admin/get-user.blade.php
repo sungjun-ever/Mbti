@@ -4,6 +4,7 @@
     <div class="pt-6">
         <div class="flex pb-6 pl-2 items-center space-x-4">
             <div class="text-lg">사용자 정보</div>
+            {{--  검색창 --}}
             <form action="{{route('admin.user.search')}}" method="get" class="inline-block">
                 @csrf
                 <select name="content" class="border-2 border-green-my focus:outline-none">
@@ -14,6 +15,7 @@
                 <button><i class="xi-search text-lg hover:text-green-800"></i></button>
             </form>
         </div>
+        {{--  목록 --}}
         <table class="w-full">
             <tr class="border-b-2 border-t-2 text-center">
                 <td class="w-2/12">이름</td>
