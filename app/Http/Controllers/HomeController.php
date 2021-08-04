@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anonymous;
 use App\Models\Free;
 use App\Models\Mbti;
 use App\Models\Suggest;
@@ -13,7 +14,8 @@ class HomeController extends Controller
     {
         $mbtis = Mbti::orderBy('id', 'desc')->where('moved', '!=', 'move')->paginate(5);
         $frees = Free::orderBy('id', 'desc')->where('moved', '!=', 'move')->paginate(5);
-        return view('home', compact(['mbtis', 'frees']));
+        $anonys = Anonymous::orderBy('id', 'desc')->where('moved', '!=', 'move')->paginate(5);
+        return view('home', compact(['mbtis', 'frees', 'anonys']));
     }
 
     public function destroy(){
