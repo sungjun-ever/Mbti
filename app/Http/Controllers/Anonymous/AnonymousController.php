@@ -67,10 +67,10 @@ class AnonymousController extends Controller
                 }
                 $name[] = $imageName;
             }
+            $post->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
+            $post->image_url = 'storage/img/anonymous/'.$post->id;
+            $post->save();
         }
-        $post->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
-        $post->image_url = 'storage/img/anonymous/'.$post->id;
-        $post->save();
 
         return redirect()->route('anonymous.show');
     }
