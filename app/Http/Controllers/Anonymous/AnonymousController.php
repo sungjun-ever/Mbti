@@ -50,7 +50,7 @@ class AnonymousController extends Controller
         }
 
         $post = new Anonymous();
-        $post->user_id = auth()->user()->id;
+        $post->user_id = $user->id;
         $post->anony_name = $user->anony_name;
         $post->title = $validation['title'];
         $post->story = $validation['story'];

@@ -31,8 +31,8 @@ class AnonymousCommentController extends Controller
         }
 
         $cmt = new AnonymousComment();
-        $cmt->user_id = auth()->user()->id;
-        $cmt->user_name = auth()->user()->anony_name;
+        $cmt->user_id = $user->id;
+        $cmt->user_name = $user->anony_name;
         $cmt->board_id = $id;
         $cmt->story = $validation['story'];
         $cmt->save();
@@ -79,8 +79,8 @@ class AnonymousCommentController extends Controller
         }
 
         $cmt = new AnonymousComment();
-        $cmt->user_id = auth()->user()->id;
-        $cmt->user_name = auth()->user()->anony_name;
+        $cmt->user_id = $user->id;
+        $cmt->user_name = $user->anony_name;
         $cmt->board_id = $id;
         $cmt->comment_id = request()->input('comment_id');
         $cmt->class = 1;
