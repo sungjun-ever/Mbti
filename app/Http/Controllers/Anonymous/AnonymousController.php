@@ -72,7 +72,7 @@ class AnonymousController extends Controller
             $post->save();
         }
 
-        return redirect()->route('anonymous.show');
+        return redirect()->route('anonymous.show', $post->id);
     }
 
     public function show($id)
@@ -136,6 +136,7 @@ class AnonymousController extends Controller
                 }
                 $name[] = $imageName;
             }
+            $post->image_url = 'storage/img/anonymous/'.$post->id;
             $post->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
         }
 
@@ -143,7 +144,7 @@ class AnonymousController extends Controller
         $post->story = $validation['story'];
         $post->save();
 
-        return redirect()->route('anonymous.show');
+        return redirect()->route('anonymous.show', $post->id);
     }
 
     public function destroy($id)

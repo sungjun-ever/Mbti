@@ -73,7 +73,9 @@
             {{--  이미지 첨부 --}}
             <input id="uploadFiles" type="file" multiple="multiple" name="image[]" class="mt-4">
             <div class="mt-2">형식: jpeg, jpg, bmp, png | 크기: 20MB 이하</div>
+
             {{--  이미지 미리보기 --}}
+            <div class="pt-4 text-lg border-b-2">첨부 사진</div>
             <div id="preview" class="mt-2 grid grid-cols-4"></div>
 
             {{-- 비밀번호 입력 --}}
