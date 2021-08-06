@@ -142,6 +142,7 @@ class MbtiSortController extends Controller
                 }
                 $name[] = $imageName;
             }
+            $mbti->image_url = 'storage/img/mbti/'.$mbti->id;
             $mbti->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
         }
 
