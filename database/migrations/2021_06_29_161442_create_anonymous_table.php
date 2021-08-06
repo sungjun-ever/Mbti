@@ -13,7 +13,7 @@ class CreateAnonymousTable extends Migration
      */
     public function up()
     {
-        Schema::create('anonymous', function (Blueprint $table) {
+        Schema::create('anonymouses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->string('board_name')->default('anonymous');
