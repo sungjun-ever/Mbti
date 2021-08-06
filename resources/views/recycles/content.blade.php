@@ -9,7 +9,7 @@
         <p class="text-lg">
             @if($post->image_url)
                 @foreach($files = array_diff(scandir(public_path($post->image_url)), array('.', '..')) as $file)
-                    <img class="mt-2" src="{{asset($post->image_url).'/'.$file}}" title="{{$file}}" alt="{{$file}}">
+                    <img class="my-3" src="{{asset($post->image_url).'/'.$file}}" title="{{$file}}" alt="{{$file}}">
                 @endforeach
             @endif
             {!! $post->story !!}
