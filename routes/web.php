@@ -43,7 +43,7 @@ Route::prefix('/admin')->group(function () {
     Route::get('/user/search', [AdminUserController::class, 'search'])->name('admin.user.search');
     Route::get('/user/{id}/posts', [AdminUserController::class, 'userPost'])->name('admin.user.post');
     Route::post('/user/block', [AdminUserController::class, 'block'])->name('admin.user.block');
-    Route::put('/user/remove/block', [AdminUserController::class, 'removeBlock'])->name('admin.user.remove.block');
+    Route::put('/user/release', [AdminUserController::class, 'removeBlock'])->name('admin.user.release');
     Route::get('/posts', [AllPostController::class, 'index'])->name('admin.get.post');
     Route::get('/posts/search', [AllPostController::class, 'search'])->name('admin.post.search');
     Route::post('/{post}/{id}/move', [AllPostController::class, 'moveToTemp'])->name('admin.post.move');

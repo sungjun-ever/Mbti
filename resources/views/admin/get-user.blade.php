@@ -54,7 +54,7 @@
                     </td>
                     <td>
                         @if($user->banned_at > \Carbon\Carbon::now())
-                            <form action="{{route('admin.user.remove.block')}}" method="post">
+                            <form action="{{route('admin.user.release')}}" method="post">
                                 @csrf
                                 @method('PUT')
                                 <input type="hidden" name="email" value="{{$user->email}}">
