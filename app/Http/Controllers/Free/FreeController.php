@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Free;
 
 use App\Http\Controllers\StoreImageController;
+use App\Http\Controllers\GetBoardNameController;
 use App\Models\Free;
 use App\Models\FreeComment;
 use Illuminate\Http\Request;
@@ -13,22 +14,16 @@ use Intervention\Image\Facades\Image;
 
 class FreeController extends Controller
 {
-    public function getBoardName()
-    {
-        $getBoard= explode('/', $_SERVER['REQUEST_URI']);
-        return preg_replace('/\?[a-z=&A-Z0-9]*/', '', $getBoard[1]);
-    }
-
     public function index()
     {
-        $boardName = $this->getBoardName();
+        $boardName = GetBoardNameController::getBoardName($_SERVER['REQUEST_URI']);;
         $frees = Free::orderBy('id', 'desc')->where('moved', '!=', 'move')->paginate(5);
         return view('frees.index', compact(['frees', 'boardName']));
     }
 
     public function create()
     {
-        $boardName = $this->getBoardName();
+        $boardName = GetBoardNameController::getBoardName($_SERVER['REQUEST_URI']);;
         return view('frees.create', compact('boardName'));
     }
 

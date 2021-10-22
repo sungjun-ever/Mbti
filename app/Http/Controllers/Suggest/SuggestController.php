@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Suggest;
 
+use App\Http\Controllers\GetBoardNameController;
 use App\Http\Controllers\StoreImageController;
 use App\Models\Suggest;
 use App\Models\SuggestComment;
@@ -14,23 +15,16 @@ use Intervention\Image\Facades\Image;
 
 class SuggestController extends Controller
 {
-    public function getBoardName()
-    {
-        $getBoard= explode('/', $_SERVER['REQUEST_URI']);
-        $name = preg_replace('/\?[a-z=&A-Z0-9]*/', '', $getBoard[1]);
-        return $name;
-    }
-
     public function index()
     {
-        $boardName = $this->getBoardName();
+        $boardName = GetBoardNameController::getBoardName($_SERVER['REQUEST_URI']);;
         $sugs = Suggest::orderBy('id', 'desc')->paginate(5);
         return view('suggests.index', compact(['boardName', 'sugs']));
     }
 
     public function create()
     {
-        $boardName = $this->getBoardName();
+        $boardName = GetBoardNameController::getBoardName($_SERVER['REQUEST_URI']);
         return view('suggests.create', compact('boardName'));
     }
 

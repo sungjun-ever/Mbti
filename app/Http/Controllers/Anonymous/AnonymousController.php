@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Anonymous;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\GetBoardNameController;
 use App\Http\Controllers\StoreImageController;
 use App\Models\Anonymous;
 use App\Models\AnonymousComment;
@@ -16,20 +17,14 @@ use Intervention\Image\Facades\Image;
 
 class AnonymousController extends Controller
 {
-    public function getBoardName()
-    {
-        $getBoard= explode('/', $_SERVER['REQUEST_URI']);
-        return preg_replace('/\?[a-z=&A-Z0-9]*/', '', $getBoard[1]);
-    }
-
     public function index(){
         $posts = Anonymous::orderByDesc('id')->paginate(5);
-        $boardName = $this->getBoardName();
+        $boardName = GetBoardNameController::getBoardName($_SERVER['REQUEST_URI']);;
         return view('anonymous.index', compact(['posts', 'boardName']));
     }
 
     public function create(){
-        $boardName = $this->getBoardName();
+        $boardName = GetBoardNameController::getBoardName($_SERVER['REQUEST_URI']);;
 
         return view('anonymous.create', compact('boardName'));
     }

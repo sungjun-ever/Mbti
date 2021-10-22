@@ -9,19 +9,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use App\Http\Controllers\StoreImageController;
+use App\Http\Controllers\GetBoardNameController;
 
 class MbtiSortController extends Controller
 {
-    public function mbtisName()
-    {
-        $mbtiSort = explode('/', $_SERVER['REQUEST_URI']);
-        $name = preg_replace('/\?[a-z=&A-Z0-9]*/', '', $mbtiSort[1]);
-        return $name;
-    }
-
     public function index()
     {
-        $mbtiName = $this->mbtisName();
+        $mbtiName = GetBoardNameController::getBoardName($_SERVER['REQUEST_URI']);
         $mbtis = Mbti::where('board_name', $mbtiName)->where('moved', '!=', 'move')->orderBy('id', 'desc')->paginate(5);
         foreach($mbtis as $mbti){
             $mbti->user->name;
@@ -31,7 +25,7 @@ class MbtiSortController extends Controller
 
     public function create()
     {
-        $mbtiName = $this->mbtisName();
+        $mbtiName = GetBoardNameController::getBoardName($_SERVER['REQUEST_URI']);
         return view('mbtis.'.$mbtiName.'.create', compact('mbtiName'));
     }
 
@@ -146,7 +140,7 @@ class MbtiSortController extends Controller
      */
     public function destroy($id)
     {
-        $mbtiName = $this->mbtisName();
+        $mbtiName = GetBoardNameController::getBoardName($_SERVER['REQUEST_URI']);
         $mbti = Mbti::where('id', $id)->first();
         File::deleteDirectory(storage_path('app/public/img/mbti/'.$mbti->id));
         $mbti -> delete();
@@ -156,7 +150,7 @@ class MbtiSortController extends Controller
 
     public function search(Request $request)
     {
-        $mbtiName = $this->mbtisName();
+        $mbtiName = GetBoardNameController::getBoardName($_SERVER['REQUEST_URI']);
 
         $content = $request->input('content');
         $search = $request->input('search');
