@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
+use App\Http\Controllers\StoreImageController;
 
 class MbtiSortController extends Controller
 {
@@ -15,21 +16,6 @@ class MbtiSortController extends Controller
     {
         $mbtiSort = explode('/', $_SERVER['REQUEST_URI']);
         $name = preg_replace('/\?[a-z=&A-Z0-9]*/', '', $mbtiSort[1]);
-        return $name;
-    }
-
-    public function storeImage(Request $request, string $dir, $model) : array
-    {
-        foreach ($request->file('image') as $image){
-            $imageName = $image->getClientOriginalName();
-            $image->storeAs($dir.$model->id, $imageName);
-            if(Image::make(storage_path('app/'.$dir.$model->id.'/'.$imageName))->width() > 900){
-                Image::make(storage_path('app/'.$dir.$model->id.'/'.$imageName))->resize(800, null)
-                    ->save(storage_path('app/'.$dir.$model->id.'/'.$imageName));
-            }
-            $name[] = $imageName;
-        }
-
         return $name;
     }
 
@@ -67,7 +53,7 @@ class MbtiSortController extends Controller
 
         if($request->hasFile('image')){
             mkdir('storage/img/mbti/'.$mbti->id, 0777, true);
-            $name = $this->storeImage($request, 'public/img/mbti/', $mbti);
+            $name = StoreImageController::uploadImage($request, 'public/img/mbti/', $mbti);
             $mbti->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
             $mbti->image_url = 'storage/img/mbti/'.$mbti->id;
             $mbti->save();
@@ -133,7 +119,7 @@ class MbtiSortController extends Controller
             }
 
             $name = array_diff(scandir(public_path($mbti->image_url)), array('.', '..'));
-            $this->storeImage($request, 'public/img/mbti/', $mbti);
+            StoreImageController::uploadImage($request, 'public/img/mbti/', $mbti);
             $mbti->image_url = 'storage/img/mbti/'.$mbti->id;
             $mbti->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
         }

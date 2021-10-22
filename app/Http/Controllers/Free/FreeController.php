@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Free;
 
+use App\Http\Controllers\StoreImageController;
 use App\Models\Free;
 use App\Models\FreeComment;
 use Illuminate\Http\Request;
@@ -48,15 +49,7 @@ class FreeController extends Controller
 
         if($request->hasFile('image')){
             mkdir('storage/img/free/'.$free->id, 0777, true);
-            foreach ($request->file('image') as $image){
-                $imageName = $image->getClientOriginalName();
-                $image->storeAs('public/img/free/'.$free->id, $imageName);
-                if(Image::make(storage_path('app/public/img/free/'.$free->id.'/'.$imageName))->width() > 900){
-                    Image::make(storage_path('app/public/img/free/'.$free->id.'/'.$imageName))->resize(800, null)
-                        ->save(storage_path('app/public/img/free/'.$free->id.'/'.$imageName));
-                }
-                $name[] = $imageName;
-            }
+            $name = StoreImageController::uploadImage($request, 'public/img/free/', $free);
             $free->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
             $free->image_url = 'storage/img/free/'.$free->id;
             $free->save();
@@ -117,16 +110,7 @@ class FreeController extends Controller
             }
 
             $name = array_diff(scandir(public_path($free->image_url)), array('.', '..'));
-
-            foreach ($request->file('image') as $image){
-                $imageName = $image->getClientOriginalName();
-                $image->storeAs('public/img/free/'.$free->id, $imageName);
-                if(Image::make(storage_path('app/public/img/free/'.$free->id.'/'.$imageName))->width() > 900){
-                    Image::make(storage_path('app/public/img/free/'.$free->id.'/'.$imageName))->resize(800, null)
-                        ->save(storage_path('app/public/img/free/'.$free->id.'/'.$imageName));
-                }
-                $name[] = $imageName;
-            }
+            StoreImageController::uploadImage($request, 'public/img/free/', $free);
             $free->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
         }
 

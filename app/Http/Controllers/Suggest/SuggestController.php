@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Suggest;
 
+use App\Http\Controllers\StoreImageController;
 use App\Models\Suggest;
 use App\Models\SuggestComment;
 use App\Rules\IsValidPassword;
@@ -52,15 +53,7 @@ class SuggestController extends Controller
 
         if($request->hasFile('image')){
             mkdir('storage/img/suggest/'.$sug->id, 0777, true);
-            foreach ($request->file('image') as $image){
-                $imageName = $image->getClientOriginalName();
-                $image->storeAs('public/img/suggest/'.$sug->id, $imageName);
-                if(Image::make(storage_path('app/public/img/suggest/'.$sug->id.'/'.$imageName))->width() > 900){
-                    Image::make(storage_path('app/public/img/suggest/'.$sug->id.'/'.$imageName))->resize(800, null)
-                        ->save(storage_path('app/public/img/suggest/'.$sug->id.'/'.$imageName));
-                }
-                $name[] = $imageName;
-            }
+            $name = StoreImageController::uploadImage($request, 'public/img/suggest/', $sug);
         }
         $sug->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
         $sug->image_url = 'storage/img/suggest/'.$sug->id;
@@ -113,16 +106,7 @@ class SuggestController extends Controller
             }
 
             $name = array_diff(scandir(public_path($sug->image_url)), array('.', '..'));
-
-            foreach ($request->file('image') as $image){
-                $imageName = $image->getClientOriginalName();
-                $image->storeAs('public/img/sug/'.$sug->id, $imageName);
-                if(Image::make(storage_path('app/public/img/sug/'.$sug->id.'/'.$imageName))->width() > 900){
-                    Image::make(storage_path('app/public/img/sug/'.$sug->id.'/'.$imageName))->resize(800, null)
-                        ->save(storage_path('app/public/img/sug/'.$sug->id.'/'.$imageName));
-                }
-                $name[] = $imageName;
-            }
+            StoreImageController::uploadImage($request, 'public/img/suggest/', $sug);
             $sug->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
         }
 
