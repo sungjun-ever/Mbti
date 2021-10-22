@@ -18,6 +18,21 @@ class MbtiSortController extends Controller
         return $name;
     }
 
+    public function storeImage(Request $request, string $dir, $model) : array
+    {
+        foreach ($request->file('image') as $image){
+            $imageName = $image->getClientOriginalName();
+            $image->storeAs($dir.$model->id, $imageName);
+            if(Image::make(storage_path('app/'.$dir.$model->id.'/'.$imageName))->width() > 900){
+                Image::make(storage_path('app/'.$dir.$model->id.'/'.$imageName))->resize(800, null)
+                    ->save(storage_path('app/'.$dir.$model->id.'/'.$imageName));
+            }
+            $name[] = $imageName;
+        }
+
+        return $name;
+    }
+
     public function index()
     {
         $mbtiName = $this->mbtisName();
@@ -39,7 +54,7 @@ class MbtiSortController extends Controller
         $validation = $request->validate([
            'title' => 'required',
            'story' => 'required',
-            'image[]' => 'image',
+           'image[]' => 'image',
         ]);
 
         $mbti = new Mbti();
@@ -52,15 +67,7 @@ class MbtiSortController extends Controller
 
         if($request->hasFile('image')){
             mkdir('storage/img/mbti/'.$mbti->id, 0777, true);
-            foreach ($request->file('image') as $image){
-                $imageName = $image->getClientOriginalName();
-                $image->storeAs('public/img/mbti/'.$mbti->id, $imageName);
-                if(Image::make(storage_path('app/public/img/mbti/'.$mbti->id.'/'.$imageName))->width() > 900){
-                    Image::make(storage_path('app/public/img/mbti/'.$mbti->id.'/'.$imageName))->resize(800, null)
-                        ->save(storage_path('app/public/img/mbti/'.$mbti->id.'/'.$imageName));
-                }
-                $name[] = $imageName;
-            }
+            $name = $this->storeImage($request, 'public/img/mbti/', $mbti);
             $mbti->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
             $mbti->image_url = 'storage/img/mbti/'.$mbti->id;
             $mbti->save();
@@ -115,35 +122,26 @@ class MbtiSortController extends Controller
     {
         $validation = $request->validate([
            'title' => 'required',
-           'story' => 'required'
+           'story' => 'required',
         ]);
 
         $mbti = Mbti::where('id', $id)->first();
 
-        if($request->input('deleteImgName')){
-            foreach ($request->input('deleteImgName') as $deleteImg){
-                File::delete(storage_path('app/public/img/mbti/'.$mbti->id.'/'.$deleteImg));
-            }
-        }
-
         if($request->hasFile('image')){
-            if(!is_dir('storage/img/mbti/'.$mbti->id)){
-                mkdir('storage/img/mbti/'.$mbti->id, 0777, true);
+            if(!is_dir('storage/img/mbti/'.$id)){
+                mkdir('storage/img/mbti/'.$id, 0777, true);
             }
 
             $name = array_diff(scandir(public_path($mbti->image_url)), array('.', '..'));
-
-            foreach ($request->file('image') as $image){
-                $imageName = $image->getClientOriginalName();
-                $image->storeAs('public/img/mbti/'.$mbti->id, $imageName);
-                if(Image::make(storage_path('app/public/img/mbti/'.$mbti->id.'/'.$imageName))->width() > 900){
-                    Image::make(storage_path('app/public/img/mbti/'.$mbti->id.'/'.$imageName))->resize(800, null)
-                        ->save(storage_path('app/public/img/mbti/'.$mbti->id.'/'.$imageName));
-                }
-                $name[] = $imageName;
-            }
+            $this->storeImage($request, 'public/img/mbti/', $mbti);
             $mbti->image_url = 'storage/img/mbti/'.$mbti->id;
             $mbti->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
+        }
+
+        if($request->input('deleteImgName')){
+            foreach ($request->input('deleteImgName') as $deleteImg){
+                File::delete(storage_path('app/public/img/mbti/'.$id.'/'.$deleteImg));
+            }
         }
 
         $mbti->title = $validation['title'];

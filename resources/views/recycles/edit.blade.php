@@ -3,7 +3,6 @@
         $('#uploadFiles').change(function(){
             let fileList = $('#uploadFiles')[0].files;
             let arr = Array.prototype.slice.call(fileList);
-
             for(let i=0; i<fileList.length; i++){
                 if(!checkExtension(fileList[i].name,fileList[i].size)) { //확장자, 사이즈 체크
                     return false
@@ -48,7 +47,6 @@
                     let reader = new FileReader();
                     reader.onload = function (e) {
                         str += '<img src="'+e.target.result+'" title="'+f.name+'"/>';
-
                         str += '</div>';
                         $(str).appendTo('#preview');
                     }
