@@ -15,7 +15,7 @@ class MbtiSortController extends Controller
 {
     public function index()
     {
-        $mbtiName = GetBoardNameController::getBoardName($_SERVER['REQUEST_URI']);
+        $mbtiName = GetBoardNameController::getBoardName();
         $mbtis = Mbti::where('board_name', $mbtiName)->where('moved', '!=', 'move')->orderBy('id', 'desc')->paginate(5);
         foreach($mbtis as $mbti){
             $mbti->user->name;
@@ -25,7 +25,7 @@ class MbtiSortController extends Controller
 
     public function create()
     {
-        $mbtiName = GetBoardNameController::getBoardName($_SERVER['REQUEST_URI']);
+        $mbtiName = GetBoardNameController::getBoardName();
         return view('mbtis.'.$mbtiName.'.create', compact('mbtiName'));
     }
 
@@ -140,7 +140,7 @@ class MbtiSortController extends Controller
      */
     public function destroy($id)
     {
-        $mbtiName = GetBoardNameController::getBoardName($_SERVER['REQUEST_URI']);
+        $mbtiName = GetBoardNameController::getBoardName();
         $mbti = Mbti::where('id', $id)->first();
         File::deleteDirectory(storage_path('app/public/img/mbti/'.$mbti->id));
         $mbti -> delete();
@@ -150,7 +150,7 @@ class MbtiSortController extends Controller
 
     public function search(Request $request)
     {
-        $mbtiName = GetBoardNameController::getBoardName($_SERVER['REQUEST_URI']);
+        $mbtiName = GetBoardNameController::getBoardName();
 
         $content = $request->input('content');
         $search = $request->input('search');

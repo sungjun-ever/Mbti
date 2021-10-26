@@ -17,14 +17,14 @@ class SuggestController extends Controller
 {
     public function index()
     {
-        $boardName = GetBoardNameController::getBoardName($_SERVER['REQUEST_URI']);;
+        $boardName = GetBoardNameController::getBoardName();;
         $sugs = Suggest::orderBy('id', 'desc')->paginate(5);
         return view('suggests.index', compact(['boardName', 'sugs']));
     }
 
     public function create()
     {
-        $boardName = GetBoardNameController::getBoardName($_SERVER['REQUEST_URI']);
+        $boardName = GetBoardNameController::getBoardName();
         return view('suggests.create', compact('boardName'));
     }
 

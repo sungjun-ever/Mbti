@@ -16,14 +16,14 @@ class FreeController extends Controller
 {
     public function index()
     {
-        $boardName = GetBoardNameController::getBoardName($_SERVER['REQUEST_URI']);;
+        $boardName = GetBoardNameController::getBoardName();;
         $frees = Free::orderBy('id', 'desc')->where('moved', '!=', 'move')->paginate(5);
         return view('frees.index', compact(['frees', 'boardName']));
     }
 
     public function create()
     {
-        $boardName = GetBoardNameController::getBoardName($_SERVER['REQUEST_URI']);;
+        $boardName = GetBoardNameController::getBoardName();;
         return view('frees.create', compact('boardName'));
     }
 
