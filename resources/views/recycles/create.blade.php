@@ -61,7 +61,6 @@
     <div>
         <form id="uploadForm" action="{{route($boardName.'.store')}}" method="post" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="mid" value="{{$boardName}}">
             <label for="title"></label>
             <input id="title" type="text" name="title"
                    class="w-full py-2 pl-2 text-lg rounded-md outline-none border-2 focus:border-green-700

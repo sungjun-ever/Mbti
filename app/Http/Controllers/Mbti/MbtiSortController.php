@@ -31,6 +31,8 @@ class MbtiSortController extends Controller
 
     function store(Request $request)
     {
+        $mbtiName = GetBoardNameController::getBoardName();
+
         $validation = $request->validate([
            'title' => 'required',
            'story' => 'required',
@@ -38,7 +40,7 @@ class MbtiSortController extends Controller
         ]);
 
         $mbti = new Mbti();
-        $mbti->board_name = $request->mid;
+        $mbti->board_name = $mbtiName;
         $mbti->user_id = auth()->user()->id;
         $mbti->user_name = auth()->user()->name;
         $mbti->title = $validation['title'];
