@@ -1,5 +1,4 @@
 <h1>MBTI 홈페이지</h1>
-<hr>
 CRUD를 사용한 기본적인 게시판형 홈페이지입니다.
 <p>
 <img src="https://img.shields.io/badge/php-3766AB?style=flat-square&logo=php&logoColor=white"/>&nbsp
