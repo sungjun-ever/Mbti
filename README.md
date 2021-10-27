@@ -4,19 +4,20 @@ CRUD를 사용한 기본적인 게시판형 홈페이지입니다.
 <img src="https://img.shields.io/badge/php-3766AB?style=flat-square&logo=php&logoColor=white"/>&nbsp
 <img src="https://img.shields.io/badge/laravel-850000?style=flat-square&logo=laravel&logoColor=black"/>&nbsp
 </p>
-<hr/>
-<div>
-    중복되는 CRUD 파일은 라라벨 템플릿의 @include 기능을 사용했습니다.<br>
-    재사용되는 파일들은 recycles 폴더 안에 따로 관리했습니다.<br>
-    Link: <a href="https://github.com/sungjun-ever/Mbti/tree/master/resources/views/recycles">recycles 폴더</a>
-</div>
 <br>
 <h3>View</h3>
 <hr/>
 <div>
     게시판은 총 5가지의 게시판이 있습니다.<br>
     성격유형 게시판, 자유게시판, 익명게시판, 건의게시판, 임시게시판으로 구성되어있습니다.<br>
-    Link: <a href="https://github.com/sungjun-ever/Mbti/tree/master/resources/views/recycles/content.blade.php">recycles/show.blade.php</a>
+    Link: 
+<a href="https://github.com/sungjun-ever/Mbti/tree/master/resources/views/recycles/content.blade.
+php"> recycles/content.blade.php</a>
+    <div>
+    중복되는 CRUD 파일은 라라벨 템플릿의 @include 기능을 사용했습니다.<br>
+    재사용되는 파일들은 recycles 폴더 안에 따로 관리했습니다.<br>
+    Link: <a href="https://github.com/sungjun-ever/Mbti/tree/master/resources/views/recycles">recycles 폴더</a>
+</div>
 </div>
 <br>
 <h3>Controller</h3>
