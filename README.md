@@ -42,3 +42,8 @@ php"> recycles/content.blade.php</a> 각 게시판의 show.blade.php 파일입�
 또한, 라라벨 엘로퀀트에서 지원하는 관계 정의를 사용했습니다.<br>
 Link: <a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Models">Model 폴더</a>
 </div>
+<br>
+<h3>Login</h3>
+<hr/>
+<div>
+</div>
