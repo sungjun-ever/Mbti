@@ -9,7 +9,7 @@ CRUD를 사용한 기본적인 게시판형 홈페이지입니다.
 <div>
     중복되는 CRUD 파일은 라라벨 템플릿의 @include 기능을 사용했습니다.<br>
     재사용되는 파일들은 recycles 폴더 안에 따로 관리했습니다.<br>
-    Link: <a href="#">recycles 폴더</a>
+    Link: <a href="https://github.com/sungjun-ever/Mbti/tree/master/resources/views/recycles">recycles 폴더</a>
 </div>
 <br>
 <h3>View</h3>
