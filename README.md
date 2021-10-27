@@ -14,7 +14,7 @@ CRUD를 사용한 기본적인 게시판형 홈페이지입니다.&nbsp;&nbsp;
 <div>
     게시판은 총 5가지의 게시판이 있습니다.<br>
     성격유형 게시판, 자유게시판, 익명게시판, 건의게시판, 임시게시판으로 구성되어있습니다.<br>
-    Link: <a href="#">recycles/show.blade.php</a>
+    Link: <a href="https://github.com/sungjun-ever/Mbti/tree/master/resources/views/recycles/content.blade.php">recycles/show.blade.php</a>
 </div>
 <br>
 <h3>Controller</h3>
