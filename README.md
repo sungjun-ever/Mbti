@@ -49,10 +49,18 @@ Link: <a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Models">Mode
 Link: 
 <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/Auth/LoginController.php">LoginController</a>
 </div>
-<h3>유저페이지</h3>
+<br>
+<h3>유저 페이지</h3>
 <hr/>
 <div>
 유저페이지에서는 자신의 개인정보 및 비밀번호 변경이 가능합니다. 또한, 자신이 작성한 게시물 및 댓글 확인이 가능합니다.<br>
 Link: 
 <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/UserController.php">UserController</a>
+</div>
+<br>
+<h3>관리자 페이지</h3>
+<hr/>
+<div>
+관리자 페이지에서는 게시물, 댓글 확인이 가능하고 사용자 차단 기능을 제공합니다.<br>
+Link: <a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Admin">AdminController</a>
 </div>
