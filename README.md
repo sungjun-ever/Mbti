@@ -10,8 +10,6 @@ CRUD를 사용한 기본적인 게시판형 홈페이지입니다.
 <div>
     게시판은 총 5가지의 게시판이 있습니다.<br>
     성격유형 게시판, 자유게시판, 익명게시판, 건의게시판, 임시게시판으로 구성되어있습니다.<br>
-    Link:<a href="https://github.com/sungjun-ever/Mbti/tree/master/resources/views/recycles/content.blade.\t
-php"> recycles/content.blade.php</a> 각 게시판의 show.blade.php 파일입니다.
     <div>
     중복되는 CRUD 파일은 라라벨 템플릿의 @include 기능을 사용했습니다.<br>
     재사용되는 파일들은 recycles 폴더 안에 따로 관리했습니다.<br>
@@ -46,4 +44,8 @@ Link: <a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Models">Mode
 <h3>Login</h3>
 <hr/>
 <div>
+로그인 기능은 라라벨에서 지원하는 Auth 기능을 기본으로 사용했습니다.<br>
+추가적으로 구글 소셜 로그인 기능을 구현했습니다.
+Link: 
+<a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/Auth/LoginController.php">LoginController</a>
 </div>
