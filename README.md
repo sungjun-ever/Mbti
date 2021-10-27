@@ -25,13 +25,13 @@ CRUD를 사용한 기본적인 게시판형 홈페이지입니다.
 컨트롤러는 각 게시판마다 별도로 관리했습니다.<br>
 컨트롤러는 CRUD를 지원하는 메서드로 구성되어있고, 검색 기능을 지원하는 경우 search 메서드가 있습니다.
 댓글을 지원하는 게시판인경우 CommentController.php 파일이 있습니다.<br>
-이미지 저장을 지원하는 경우 <a href="">StoreImageController.php</a> 파일에 있는 static 메서드를 사용합니다.
+이미지 저장을 지원하는 경우 <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/StoreImageController.php">StoreImageController.php</a> 파일에 있는 static 메서드를 사용합니다.
 <p>
-    1. <a href="#">MBTI 컨트롤러</a><br>
-    2. <a href="#">자유게시판 컨트롤러</a><br>
-    3. <a href="#">익명게시판 컨트롤러</a><br>
-    4. <a href="#">건의게시판 컨트롤러</a><br>
-    5. <a href="#">임시게시판 컨트롤러</a><br>
+    1. <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/Mbti">MBTI 컨트롤러</a><br>
+    2. <a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Free">자유게시판 컨트롤러</a><br>
+    3. <a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Anonymous">익명게시판 컨트롤러</a><br>
+    4. <a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Suggest">건의게시판 컨트롤러</a><br>
+    5. <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/TempController.php">임시게시판 컨트롤러</a><br>
 </p>
 </div>
 <br>
