@@ -1,10 +1,7 @@
 <h1>MBTI 홈페이지</h1>
-CRUD를 사용한 기본적인 게시판형 홈페이지입니다.
-<br>
-<p>
+CRUD를 사용한 기본적인 게시판형 홈페이지입니다.&nbsp;&nbsp;
 <img src="https://img.shields.io/badge/php-3766AB?style=flat-square&logo=php&logoColor=white"/>&nbsp
 <img src="https://img.shields.io/badge/laravel-850000?style=flat-square&logo=laravel&logoColor=black"/>&nbsp
-</p>
 <hr/>
 <div>
     중복되는 CRUD 파일은 라라벨 템플릿의 @include 기능을 사용했습니다.<br>
