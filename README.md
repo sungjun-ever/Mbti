@@ -2,7 +2,7 @@
 CRUD를 사용한 기본적인 게시판형 홈페이지입니다.
 <p>
 <img src="https://img.shields.io/badge/php-3766AB?style=flat-square&logo=php&logoColor=white"/>&nbsp
-<img src="https://img.shields.io/badge/laravel-850000?style=flat-square&logo=laravel&logoColor=black"/>&nbsp
+<img src="https://img.shields.io/badge/laravel-850000?style=flat-square&logo=laravel&logoColor=white"/>&nbsp
 </p>
 <br>
 <h3>View</h3>
