@@ -41,11 +41,18 @@ CRUD를 사용한 기본적인 게시판형 홈페이지입니다.
 Link: <a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Models">Model 폴더</a>
 </div>
 <br>
-<h3>Login</h3>
+<h3>Auth</h3>
 <hr/>
 <div>
 로그인 기능은 라라벨에서 지원하는 Auth 기능을 기본으로 사용했습니다.<br>
-추가적으로 구글 소셜 로그인 기능을 구현했습니다.
+추가적으로 구글 소셜 로그인 기능을 구현했습니다.<br>
 Link: 
 <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/Auth/LoginController.php">LoginController</a>
+</div>
+<h3>유저페이지</h3>
+<hr/>
+<div>
+유저페이지에서는 자신의 개인정보 및 비밀번호 변경이 가능합니다. 또한, 자신이 작성한 게시물 및 댓글 확인이 가능합니다.<br>
+Link: 
+<a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/UserController.php">UserController</a>
 </div>
