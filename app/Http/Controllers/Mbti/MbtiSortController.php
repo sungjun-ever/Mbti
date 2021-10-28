@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Mbti;
 
+use App\Http\Trait\GetBoardName;
 use App\Models\MbtiComment;
 use App\Models\Mbti;
 use Illuminate\Http\Request;
@@ -9,13 +10,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use App\Http\Controllers\StoreImageController;
-use App\Http\Controllers\GetBoardNameController;
 
 class MbtiSortController extends Controller
 {
+    use GetBoardName;
+
     public function index()
     {
-        $mbtiName = GetBoardNameController::getBoardName();
+        $mbtiName = $this->boardName();
         $mbtis = Mbti::where('board_name', $mbtiName)->where('moved', '!=', 'move')->orderBy('id', 'desc')->paginate(5);
         foreach($mbtis as $mbti){
             $mbti->user->name;
@@ -25,13 +27,13 @@ class MbtiSortController extends Controller
 
     public function create()
     {
-        $mbtiName = GetBoardNameController::getBoardName();
+        $mbtiName = $this->boardName();
         return view('mbtis.'.$mbtiName.'.create', compact('mbtiName'));
     }
 
     function store(Request $request)
     {
-        $mbtiName = GetBoardNameController::getBoardName();
+        $mbtiName = $this->boardName();
 
         $validation = $request->validate([
            'title' => 'required',
@@ -142,7 +144,7 @@ class MbtiSortController extends Controller
      */
     public function destroy($id)
     {
-        $mbtiName = GetBoardNameController::getBoardName();
+        $mbtiName = $this->boardName();
         $mbti = Mbti::where('id', $id)->first();
         File::deleteDirectory(storage_path('app/public/img/mbti/'.$mbti->id));
         $mbti -> delete();
@@ -152,7 +154,7 @@ class MbtiSortController extends Controller
 
     public function search(Request $request)
     {
-        $mbtiName = GetBoardNameController::getBoardName();
+        $mbtiName = $this->boardName();
 
         $content = $request->input('content');
         $search = $request->input('search');

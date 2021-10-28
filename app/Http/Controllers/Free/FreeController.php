@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Free;
 
 use App\Http\Controllers\StoreImageController;
-use App\Http\Controllers\GetBoardNameController;
+use App\Http\Trait\GetBoardName;
 use App\Models\Free;
 use App\Models\FreeComment;
 use Illuminate\Http\Request;
@@ -14,16 +14,17 @@ use Intervention\Image\Facades\Image;
 
 class FreeController extends Controller
 {
+    use GetBoardName;
     public function index()
     {
-        $boardName = GetBoardNameController::getBoardName();;
+        $boardName = $this->boardName();
         $frees = Free::orderBy('id', 'desc')->where('moved', '!=', 'move')->paginate(5);
         return view('frees.index', compact(['frees', 'boardName']));
     }
 
     public function create()
     {
-        $boardName = GetBoardNameController::getBoardName();;
+        $boardName = $this->boardName();
         return view('frees.create', compact('boardName'));
     }
 

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Suggest;
 
-use App\Http\Controllers\GetBoardNameController;
 use App\Http\Controllers\StoreImageController;
+use App\Http\Trait\GetBoardName;
 use App\Models\Suggest;
 use App\Models\SuggestComment;
 use App\Rules\IsValidPassword;
@@ -15,16 +15,17 @@ use Intervention\Image\Facades\Image;
 
 class SuggestController extends Controller
 {
+    use GetBoardName;
     public function index()
     {
-        $boardName = GetBoardNameController::getBoardName();;
+        $boardName = $this->boardName();
         $sugs = Suggest::orderBy('id', 'desc')->paginate(5);
         return view('suggests.index', compact(['boardName', 'sugs']));
     }
 
     public function create()
     {
-        $boardName = GetBoardNameController::getBoardName();
+        $boardName = $this->boardName();;
         return view('suggests.create', compact('boardName'));
     }
 
