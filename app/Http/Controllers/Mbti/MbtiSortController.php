@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Mbti;
 
-use App\Http\Trait\GetBoardName;
+use App\Http\Func\GetBoardName;
 use App\Models\MbtiComment;
 use App\Models\Mbti;
 use Illuminate\Http\Request;

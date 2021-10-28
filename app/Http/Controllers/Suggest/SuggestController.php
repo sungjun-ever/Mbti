@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Suggest;
 
 use App\Http\Controllers\StoreImageController;
-use App\Http\Trait\GetBoardName;
+use App\Http\Func\GetBoardName;
 use App\Models\Suggest;
 use App\Models\SuggestComment;
 use App\Rules\IsValidPassword;

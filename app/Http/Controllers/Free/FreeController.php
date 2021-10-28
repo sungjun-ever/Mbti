@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Free;
 
 use App\Http\Controllers\StoreImageController;
-use App\Http\Trait\GetBoardName;
+use App\Http\Func\GetBoardName;
 use App\Models\Free;
 use App\Models\FreeComment;
 use Illuminate\Http\Request;
@@ -15,6 +15,7 @@ use Intervention\Image\Facades\Image;
 class FreeController extends Controller
 {
     use GetBoardName;
+
     public function index()
     {
         $boardName = $this->boardName();

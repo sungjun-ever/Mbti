@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Anonymous;
 
 use App\Http\Controllers\Controller;
-use App\Http\Trait\GetBoardName;
+use App\Http\Func\GetBoardName;
 use App\Http\Controllers\StoreImageController;
 use App\Models\Anonymous;
 use App\Models\AnonymousComment;
