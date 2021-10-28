@@ -20,7 +20,7 @@ CRUD를 사용한 기본적인 게시판형 홈페이지입니다.
 <hr/>
 <div>
 컨트롤러는 각 게시판마다 별도로 관리했습니다.<br>
-컨트롤러는 CRUD를 지원하는 메서드로 구성되어있고, 검색 기능을 지원하는 경우 search 메서드가 있습니다.
+컨트롤러는 CRUD를 지원하는 메서드로 구성되어있고, 검색 기능을 지원하는 경우 search 메서드가 있습니다.<br>
 댓글을 지원하는 게시판인경우 CommentController.php 파일이 있습니다.<br>
 이미지 저장을 지원하는 경우 <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/StoreImageController.php">StoreImageController.php</a> 파일에 있는 static 메서드를 사용합니다.
 <p>
@@ -61,5 +61,15 @@ Link:
 <hr/>
 <div>
 관리자 페이지에서는 게시물, 댓글 확인이 가능하고 사용자 차단 기능을 제공합니다.<br>
+또한, 게시물을 임시 게시판으로 이동시킬 수 있습니다.<br>
 Link: <a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Admin">AdminController</a>
+</div>
+<br>
+<h3>Trait</h3>
+<hr/>
+<div>
+게시판 이름을 가져오는 메서드는 trait를 상속해 사용하게 했습니다.<br>
+게시판 이름을 가져오는 메서드를 따로 만든 이유는, 중복되는 view 파일을 @include를 이용해 재활용하기 때문에 
+route()내에 변수로 넣어주기 위해서 입니다.<br>
+Link: <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Func/GetBoardName.php">GetBoardName.php</a>
 </div>
