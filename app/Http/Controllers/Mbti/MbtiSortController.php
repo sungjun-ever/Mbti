@@ -8,7 +8,6 @@ use App\Models\Mbti;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
-use Intervention\Image\Facades\Image;
 use App\Http\Controllers\StoreImageController;
 
 class MbtiSortController extends Controller

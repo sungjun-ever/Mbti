@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Func\GetBoardName;
 use App\Models\Temp;
-use Illuminate\Http\Request;
 
 class TempController extends Controller
 {

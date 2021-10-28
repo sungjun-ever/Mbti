@@ -6,12 +6,10 @@ use App\Http\Controllers\StoreImageController;
 use App\Http\Func\GetBoardName;
 use App\Models\Suggest;
 use App\Models\SuggestComment;
-use App\Rules\IsValidPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
-use Intervention\Image\Facades\Image;
 
 class SuggestController extends Controller
 {

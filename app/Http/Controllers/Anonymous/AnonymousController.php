@@ -12,7 +12,6 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use Intervention\Image\Facades\Image;
 
 
 class AnonymousController extends Controller
