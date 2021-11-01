@@ -78,7 +78,7 @@ Link: <a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Control
 게시판 이름을 가져오는 메서드는 trait를 상속해 사용하게 했습니다.<br>
 게시판 이름을 가져오는 메서드를 따로 만든 이유는, 중복되는 view 파일을 @include를 이용해 재활용하기 때문에 
 route()내에 변수로 넣어주기 위해서 입니다.<br>
-Link: <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Func/GetBoardName.php">GetBoardName.php</a>
+Link: <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Func/GetBoardName.php">GetBoardName.php</a><br>
 Link: <a href="https://github.com/sungjun-ever/Mbti/blob/master/resources/views/recycles/index.blade.php">@include 
 view 파일</a>
 </div>
