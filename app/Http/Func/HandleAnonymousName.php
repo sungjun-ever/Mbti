@@ -11,10 +11,9 @@ class HandleAnonymousName
 {
     public static function createAnonymousName($user)
     {
-        if($user->anony_name === null || $user->anony_created != strval(Carbon::now()->year).strval(Carbon::now()
-                ->month).strval(Carbon::now()->day)){
+        if($user->anony_name === null || $user->anony_created != Carbon::now()->format('Ymd')){
 
-            $user->anony_created = strval(Carbon::now()->year).strval(Carbon::now()->month).strval(Carbon::now()->day);
+            $user->anony_created = Carbon::now()->format('Ymd');
             $user->anony_name = Str::random(8);
             $user->save();
         }
