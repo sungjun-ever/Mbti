@@ -99,5 +99,5 @@ view 파일</a>
 <hr/>
 <div>
 이미지 리사이즈 기능 등을 위해 사용했습니다.<br>
-Link:<a href="http://image.intervention.io/getting_started/installation">Intervention Image</a>
+Link: <a href="http://image.intervention.io/getting_started/installation">Intervention Image</a>
 </div>
