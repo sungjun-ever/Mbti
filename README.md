@@ -28,6 +28,11 @@ CRUD 기능을 구현한 기본적인 게시판형 홈페이지입니다.
 <p>
 <ul>
 <li><a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/Mbti">MBTI 컨트롤러</a></li><br>
+    <p>
+        총 3개의 파일로 구성되어 있습니다. MbtiController.php 파일은 전체 mbti 게시판의 목록과 글을 제어합니다.<br>
+        MbtiSortController.php 파일은 각 성격 유형별 게시판의 CRUD 기능을 담당합니다.<br>
+        MbtiCommentController.php 파일은 각 게시글의 댓글 기능을 제어합니다.
+    </p>
 <li><a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Free">자유게시판 컨트롤러</a></li><br>
 <li><a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Anonymous">익명게시판 컨트롤러</a></li><br>
 <li><a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Suggest">건의게시판 컨트롤러</a></li><br>
