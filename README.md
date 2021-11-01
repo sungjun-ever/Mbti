@@ -37,7 +37,7 @@ CRUD 기능을 구현한 기본적인 게시판형 홈페이지입니다.
 <h3>Model</h3>
 <hr/>
 <div>
-각 게시판마다 하나의 모델 파일이 있으며 댓글을 지원하는 경우 별도의 파일이 있습니다.
+각 게시판마다 하나의 모델 파일이 있으며 댓글을 지원하는 경우 별도의 파일이 있습니다.<br>
 또한, 라라벨 엘로퀀트에서 지원하는 관계 정의를 사용했습니다.<br>
 Link: <a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Models">Model 폴더</a>
 </div>
@@ -54,7 +54,8 @@ Link:
 <h3>유저 페이지</h3>
 <hr/>
 <div>
-유저페이지에서는 자신의 개인정보 및 비밀번호 변경이 가능합니다. 또한, 자신이 작성한 게시물 및 댓글 확인이 가능합니다.<br>
+유저페이지에서는 자신의 개인정보 및 비밀번호 변경이 가능합니다.<br>
+또한, 자신이 작성한 게시물 및 댓글 확인이 가능합니다.<br>
 Link: 
 <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/UserController.php">UserController</a>
 </div>
