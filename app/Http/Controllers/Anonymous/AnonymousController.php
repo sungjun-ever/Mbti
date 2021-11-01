@@ -9,11 +9,8 @@ use App\Http\Func\HandleAnonymousName;
 use App\Models\Anonymous;
 use App\Models\AnonymousComment;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
-
 
 class AnonymousController extends Controller
 {
