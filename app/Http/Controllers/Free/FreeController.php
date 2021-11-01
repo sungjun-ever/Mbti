@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Free;
 
-use App\Http\Controllers\StoreImageController;
+use App\Http\Func\StoreImage;
 use App\Http\Func\GetBoardName;
 use App\Models\Free;
 use App\Models\FreeComment;
@@ -44,7 +44,7 @@ class FreeController extends Controller
 
         if($request->hasFile('image')){
             mkdir('storage/img/free/'.$free->id, 0777, true);
-            $name = StoreImageController::uploadImage($request, 'public/img/free/', $free);
+            $name = StoreImage::uploadImage($request, 'public/img/free/', $free);
             $free->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
             $free->image_url = 'storage/img/free/'.$free->id;
             $free->save();
@@ -105,7 +105,7 @@ class FreeController extends Controller
             }
 
             $name = array_diff(scandir(public_path($free->image_url)), array('.', '..'));
-            StoreImageController::uploadImage($request, 'public/img/free/', $free);
+            StoreImage::uploadImage($request, 'public/img/free/', $free);
             $free->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
         }
 

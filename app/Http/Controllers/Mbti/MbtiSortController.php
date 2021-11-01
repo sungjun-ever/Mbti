@@ -8,7 +8,7 @@ use App\Models\Mbti;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
-use App\Http\Controllers\StoreImageController;
+use App\Http\Func\StoreImage;
 
 class MbtiSortController extends Controller
 {
@@ -50,7 +50,7 @@ class MbtiSortController extends Controller
 
         if($request->hasFile('image')){
             mkdir('storage/img/mbti/'.$mbti->id, 0777, true);
-            $name = StoreImageController::uploadImage($request, 'public/img/mbti/', $mbti);
+            $name = StoreImage::uploadImage($request, 'public/img/mbti/', $mbti);
             $mbti->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
             $mbti->image_url = 'storage/img/mbti/'.$mbti->id;
             $mbti->save();
@@ -116,7 +116,7 @@ class MbtiSortController extends Controller
             }
 
             $name = array_diff(scandir(public_path($mbti->image_url)), array('.', '..'));
-            StoreImageController::uploadImage($request, 'public/img/mbti/', $mbti);
+            StoreImage::uploadImage($request, 'public/img/mbti/', $mbti);
             $mbti->image_url = 'storage/img/mbti/'.$mbti->id;
             $mbti->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
         }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Suggest;
 
-use App\Http\Controllers\StoreImageController;
+use App\Http\Func\StoreImage;
 use App\Http\Func\GetBoardName;
 use App\Models\Suggest;
 use App\Models\SuggestComment;
@@ -46,7 +46,7 @@ class SuggestController extends Controller
 
         if($request->hasFile('image')){
             mkdir('storage/img/suggest/'.$sug->id, 0777, true);
-            $name = StoreImageController::uploadImage($request, 'public/img/suggest/', $sug);
+            $name = StoreImage::uploadImage($request, 'public/img/suggest/', $sug);
         }
         $sug->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
         $sug->image_url = 'storage/img/suggest/'.$sug->id;
@@ -99,7 +99,7 @@ class SuggestController extends Controller
             }
 
             $name = array_diff(scandir(public_path($sug->image_url)), array('.', '..'));
-            StoreImageController::uploadImage($request, 'public/img/suggest/', $sug);
+            StoreImage::uploadImage($request, 'public/img/suggest/', $sug);
             $sug->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
         }
 

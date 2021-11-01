@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Func;
 
 use Intervention\Image\Facades\Image;
+use App\Http\Controllers\Controller;
 
-class StoreImageController extends Controller
+class StoreImage extends Controller
 {
     public static function uploadImage($request, $dir, $model) : array
     {

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Anonymous;
 
 use App\Http\Controllers\Controller;
 use App\Http\Func\GetBoardName;
-use App\Http\Controllers\StoreImageController;
+use App\Http\Func\StoreImage;
 use App\Http\Func\HandleAnonymousName;
 use App\Models\Anonymous;
 use App\Models\AnonymousComment;
@@ -51,7 +51,7 @@ class AnonymousController extends Controller
 
         if($request->hasFile('image')){
             mkdir('storage/img/anonymous/'.$post->id, 0777, true);
-            $name = StoreImageController::uploadImage($request, 'public/img/anonymous/', $post);
+            $name = StoreImage::uploadImage($request, 'public/img/anonymous/', $post);
             $post->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
             $post->image_url = 'storage/img/anonymous/'.$post->id;
             $post->save();
@@ -111,7 +111,7 @@ class AnonymousController extends Controller
             }
 
             $name = array_diff(scandir(public_path($post->image_url)), array('.', '..'));
-            StoreImageController::uploadImage($request, 'public/img/anonymous/', $post);
+            StoreImage::uploadImage($request, 'public/img/anonymous/', $post);
             $post->image_url = 'storage/img/anonymous/'.$post->id;
             $post->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
         }
