@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Anonymous;
 use App\Http\Controllers\Controller;
 use App\Http\Func\GetBoardName;
 use App\Http\Controllers\StoreImageController;
+use App\Http\Func\HandleAnonymousName;
 use App\Models\Anonymous;
 use App\Models\AnonymousComment;
 use App\Models\User;
@@ -39,11 +40,7 @@ class AnonymousController extends Controller
 
         $user = User::where('id', auth()->user()->id)->first();
 
-        if($user->anony_name === null || $user->anony_created != Carbon::now()->day){
-            $user->anony_created = Carbon::now()->day;
-            $user->anony_name = Str::random(8);
-            $user->save();
-        }
+        HandleAnonymousName::createAnonymousName($user);
 
         $post = new Anonymous();
         $post->user_id = $user->id;

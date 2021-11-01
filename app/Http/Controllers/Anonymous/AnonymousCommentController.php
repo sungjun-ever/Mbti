@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Anonymous;
 
+use App\Http\Func\HandleAnonymousName;
 use App\Models\AnonymousComment;
 use App\Models\User;
 use Carbon\Carbon;
@@ -24,11 +25,7 @@ class AnonymousCommentController extends Controller
 
         $user = User::where('id', auth()->user()->id)->first();
 
-        if($user->anony_name === null || $user->anony_created != Carbon::now()->day){
-            $user->anony_created = Carbon::now()->day;
-            $user->anony_name = Str::random(8);
-            $user->save();
-        }
+        HandleAnonymousName::createAnonymousName($user);
 
         $cmt = new AnonymousComment();
         $cmt->user_id = $user->id;
@@ -72,11 +69,7 @@ class AnonymousCommentController extends Controller
 
         $user = User::where('id', auth()->user()->id)->first();
 
-        if($user->anony_name === null || $user->anony_created != Carbon::now()->day){
-            $user->anony_created = Carbon::now()->day;
-            $user->anony_name = Str::random(8);
-            $user->save();
-        }
+        HandleAnonymousName::createAnonymousName($user);
 
         $cmt = new AnonymousComment();
         $cmt->user_id = $user->id;
