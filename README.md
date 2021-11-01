@@ -82,6 +82,6 @@ Link: <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Func/Ge
 <h3>Packages</h3>
 <hr/>
 <div>
-이미지 리사이즈 등 기능을 위해 사용했습니다.
+이미지 리사이즈 기능 등을 위해 사용했습니다.
 Link:<a href="http://image.intervention.io/getting_started/installation">Intervention Image</a>
 </div>
