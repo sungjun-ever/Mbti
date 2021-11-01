@@ -23,15 +23,15 @@ CRUD 기능을 구현한 기본적인 게시판형 홈페이지입니다.
 컨트롤러는 CRUD를 지원하는 메서드로 구성되어있고, 검색 기능을 지원하는 경우 search 메서드가 있습니다.<br>
 댓글을 지원하는 게시판인경우 CommentController.php 파일이 있습니다.<br>
 이미지 저장을 지원하는 경우 <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/StoreImageController.php">StoreImageController.php</a> 파일에 있는 static 메서드를 사용합니다.
-    <div>
-        <ul>
-            <li><a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/Mbti">MBTI 컨트롤러</a></li><br>
-            <li><a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Free">자유게시판 컨트롤러</a></li><br>
-            <li><a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Anonymous">익명게시판 컨트롤러</a></li><br>
-            <li><a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Suggest">건의게시판 컨트롤러</a></li><br>
-            <li><a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/TempController.php">임시게시판 컨트롤러</a></li><br>
-        </ul>
-    </div>
+<p>
+<ul>
+<li><a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/Mbti">MBTI 컨트롤러</a></li><br>
+<li><a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Free">자유게시판 컨트롤러</a></li><br>
+<li><a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Anonymous">익명게시판 컨트롤러</a></li><br>
+<li><a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Suggest">건의게시판 컨트롤러</a></li><br>
+<li><a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/TempController.php">임시게시판 컨트롤러</a></li><br>
+</ul>
+</p>
 </div>
 <br>
 <h3>Model</h3>
