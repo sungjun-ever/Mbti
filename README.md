@@ -1,7 +1,7 @@
 <h1>MBTI 홈페이지</h1>
 CRUD 기능을 구현한 기본적인 게시판형 홈페이지입니다.
 
-<img src="https://img.shields.io/packagist/php-v/php/7.4.5"/>&nbsp;
+<img src="https://img.shields.io/packagist/php-v/symfony/symfony"/>&nbsp;
 <img src="https://img.shields.io/badge/laravel-850000?style=flat-square&logo=laravel&logoColor=white"/>&nbsp;
 <br>
 <h3>View</h3>
