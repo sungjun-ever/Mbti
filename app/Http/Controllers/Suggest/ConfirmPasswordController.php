@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Suggest;
 
 use App\Http\Controllers\Controller;
 use App\Models\Suggest;
-use App\Rules\IsValidPassword;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 

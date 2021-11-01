@@ -81,7 +81,7 @@
             @if($boardName == 'suggests')
                 <div class="mt-4">
                     <label for="post_password" class="text-base">비밀번호</label>
-                    <input type="password" id="post_password" name="post_password" placeholder="비밀번호는 필수입니다."
+                    <input type="password" id="post_password" name="post_password" placeholder="비밀번호는 최소8 글자입니다."
                             class="border-2 border-blue-300 py-1 w-4/12 pl-1" required>
                 </div>
             @endif

@@ -47,10 +47,10 @@ class SuggestController extends Controller
         if($request->hasFile('image')){
             mkdir('storage/img/suggest/'.$sug->id, 0777, true);
             $name = StoreImage::uploadImage($request, 'public/img/suggest/', $sug);
+            $sug->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
+            $sug->image_url = 'storage/img/suggest/'.$sug->id;
+            $sug->save();
         }
-        $sug->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
-        $sug->image_url = 'storage/img/suggest/'.$sug->id;
-        $sug->save();
 
         return redirect()->route('suggests.show', $sug->id);
     }
