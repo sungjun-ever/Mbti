@@ -3,6 +3,7 @@ CRUD 기능을 구현한 기본적인 게시판형 홈페이지입니다.
 
 <img src="https://img.shields.io/packagist/php-v/laravel/laravel"/>&nbsp;
 <img src="https://img.shields.io/badge/laravel-red?style=flat-square&logo=laravel&logoColor=white"/>&nbsp;
+<img src="https://img.shields.io/badge/javascript-green?style=flat-square&logo=javascript&logoColor=white"/>&nbsp;
 <br>
 <h3>View</h3>
 <hr/>
