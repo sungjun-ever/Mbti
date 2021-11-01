@@ -18,7 +18,8 @@ class HomeController extends Controller
         return view('home', compact(['mbtis', 'frees', 'anonys']));
     }
 
-    public function destroy(){
+    public function destroy()
+    {
         return view('recycles.deleted-post');
     }
 }

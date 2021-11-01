@@ -18,11 +18,13 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
-    public function destroyPage(){
+    public function destroyPage()
+    {
         return view('auth.destroy-page');
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         $user = User::find($id);
         $user->delete();
 
@@ -31,7 +33,6 @@ class UserController extends Controller
 
     public function userInfo()
     {
-
         return view('auth.user-info');
     }
 

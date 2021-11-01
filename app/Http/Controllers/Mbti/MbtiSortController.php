@@ -30,7 +30,7 @@ class MbtiSortController extends Controller
         return view('mbtis.'.$mbtiName.'.create', compact('mbtiName'));
     }
 
-    function store(Request $request)
+    public function store(Request $request)
     {
         $mbtiName = $this->boardName();
 

@@ -15,13 +15,15 @@ use Illuminate\Support\Facades\File;
 class AnonymousController extends Controller
 {
     use GetBoardName;
-    public function index(){
+    public function index()
+    {
         $posts = Anonymous::orderByDesc('id')->paginate(5);
         $boardName = $this->boardName();
         return view('anonymous.index', compact(['posts', 'boardName']));
     }
 
-    public function create(){
+    public function create()
+    {
         $boardName = $this->boardName();
 
         return view('anonymous.create', compact('boardName'));
