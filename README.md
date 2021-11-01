@@ -78,3 +78,10 @@ Link: <a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Control
 route()내에 변수로 넣어주기 위해서 입니다.<br>
 Link: <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Func/GetBoardName.php">GetBoardName.php</a>
 </div>
+<br>
+<h3>Packages</h3>
+<hr/>
+<div>
+이미지 리사이즈 등 기능을 위해 사용했습니다.
+Link:<a href="http://image.intervention.io/getting_started/installation">Intervention Image</a>
+</div>
