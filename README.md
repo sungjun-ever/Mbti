@@ -24,7 +24,8 @@ CRUD 기능을 구현한 기본적인 게시판형 홈페이지입니다.
 컨트롤러는 각 게시판마다 별도로 관리했습니다.<br>
 컨트롤러는 CRUD를 지원하는 메서드로 구성되어있고, 검색 기능을 지원하는 경우 search 메서드가 있습니다.<br>
 댓글을 지원하는 게시판인 경우, 각 디렉토리에 게시판명+CommentController.php 파일이 있습니다.<br>
-이미지 저장을 지원하는 경우 <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/StoreImageController.php">StoreImageController.php</a> 파일에 있는 static 메서드를 사용합니다.
+이미지 저장, 수정, 삭제 지원하는 경우 <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Func/HandleImage.
+php">HandleImage.php</a>파일에 있는 static 메서드를 사용합니다.
 <ul>
 <li><a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/Mbti">MBTI 컨트롤러</a></li><br>
     <p>
