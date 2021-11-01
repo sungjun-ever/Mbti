@@ -86,7 +86,6 @@ view 파일</a>
 <h3>Packages</h3>
 <hr/>
 <div>
-이미지 리사이즈 기능 등을 위해 사용했습니다.
+이미지 리사이즈 기능 등을 위해 사용했습니다.<br>
 Link:<a href="http://image.intervention.io/getting_started/installation">Intervention Image</a>
-<br>
 </div>
