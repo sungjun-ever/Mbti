@@ -40,7 +40,8 @@ php">HandleImage.php</a>파일에 있는 static 메서드를 사용합니다.
     익명게시판 구성도 다른 게시판과 같습니다.<br>
     차이점은 사용자에게 익명 이름을 주기 위해서<br>
     <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Func/HandleAnonymousName.
-php">HandleAnonymousName.php</a> 파일에 있는 static 메서드를 사용합니다.
+    php">HandleAnonymousName.php</a> 파일에 있는 static 메서드를 사용합니다.<br>
+    user 테이블에서 유저가 익명 이름이 없거나, 날짜가 다른 경우 익명 이름을 줍니다.
 </p>
 <li><a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Suggest">건의게시판 컨트롤러</a></li><br>
 <li><a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/TempController.php">임시게시판 컨트롤러</a></li>
