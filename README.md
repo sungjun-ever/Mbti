@@ -27,7 +27,7 @@ CRUD 기능을 구현한 기본적인 게시판형 홈페이지입니다.
 이미지 저장, 수정, 삭제 지원하는 경우 <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Func/HandleImage.
 php">HandleImage.php</a>파일에 있는 static 메서드를 사용합니다.
 <ul>
-<li><a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/Mbti">MBTI 컨트롤러</a></li><br>
+<li><a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/Mbti">MBTI 컨트롤러</a></li>
     <p>
         3개의 파일로 구성되어 있습니다.<br> 
         MbtiController.php 파일은 전체 mbti 게시판의 목록과 글을 제어합니다.<br>
@@ -35,15 +35,18 @@ php">HandleImage.php</a>파일에 있는 static 메서드를 사용합니다.
         MbtiCommentController.php 파일은 각 게시글의 댓글 기능을 제어합니다.
     </p>
 <li><a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Free">자유게시판 컨트롤러</a></li><br>
-<li><a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Anonymous">익명게시판 컨트롤러</a></li><br>
+<li><a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Anonymous">익명게시판 컨트롤러</a></li>
 <p>
-    익명게시판은 구성도 다른 게시판과 같습니다.<br>
+    익명게시판 구성도 다른 게시판과 같습니다.<br>
     차이점은 사용자에게 익명 이름을 주기 위해서<br>
     <a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Func/HandleAnonymousName.
 php">HandleAnonymousName.php</a> 파일에 있는 static 메서드를 사용합니다.
 </p>
 <li><a href="https://github.com/sungjun-ever/Mbti/tree/master/app/Http/Controllers/Suggest">건의게시판 컨트롤러</a></li><br>
-<li><a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/TempController.php">임시게시판 컨트롤러</a></li><br>
+<li><a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/TempController.php">임시게시판 컨트롤러</a></li>
+<p>
+    임시게시판 게시물은 관리자 페이지에서 게시물을 임시게시판으로 옮겼을 때 생성됩니다.
+</p>
 </ul>
 </div>
 <h3>Model</h3>
