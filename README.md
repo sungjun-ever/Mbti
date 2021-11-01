@@ -38,7 +38,6 @@ CRUD 기능을 구현한 기본적인 게시판형 홈페이지입니다.
 <li><a href="https://github.com/sungjun-ever/Mbti/blob/master/app/Http/Controllers/TempController.php">임시게시판 컨트롤러</a></li><br>
 </ul>
 </div>
-<br>
 <h3>Model</h3>
 <hr/>
 <div>
