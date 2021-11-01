@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Suggest;
 
-use App\Http\Func\StoreImage;
+use App\Http\Func\HandleImage;
 use App\Http\Func\GetBoardName;
 use App\Models\Suggest;
 use App\Models\SuggestComment;
@@ -45,10 +45,10 @@ class SuggestController extends Controller
         $sug->save();
 
         if($request->hasFile('image')){
-            mkdir('storage/img/suggest/'.$sug->id, 0777, true);
-            $name = StoreImage::uploadImage($request, 'public/img/suggest/', $sug);
+            mkdir('storage/img/sug/'.$sug->id, 0777, true);
+            $name = HandleImage::uploadImage($request, 'public/img/sug/', $sug);
             $sug->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
-            $sug->image_url = 'storage/img/suggest/'.$sug->id;
+            $sug->image_url = 'storage/img/sug/'.$sug->id;
             $sug->save();
         }
 
@@ -87,21 +87,8 @@ class SuggestController extends Controller
 
         $sug = Suggest::where('id', $id)->first();
 
-        if($request->input('deleteImgName')){
-            foreach ($request->input('deleteImgName') as $deleteImg){
-                File::delete(storage_path('app/public/img/sug/'.$sug->id.'/'.$deleteImg));
-            }
-        }
-
-        if($request->hasFile('image')){
-            if(!is_dir('storage/img/sug/'.$sug->id)){
-                mkdir('storage/img/sug/'.$sug->id, 0777, true);
-            }
-
-            $name = array_diff(scandir(public_path($sug->image_url)), array('.', '..'));
-            StoreImage::uploadImage($request, 'public/img/suggest/', $sug);
-            $sug->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
-        }
+        HandleImage::updateImage($request, 'storage/img/sug/', 'public/img/sug/', $id, $sug);
+        HandleImage::deleteImage($request, 'app/public/img/sug/', $id);
 
         $sug->title = $validation['title'];
         $sug->story = $validation['story'];

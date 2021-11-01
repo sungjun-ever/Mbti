@@ -8,7 +8,7 @@ use App\Models\Mbti;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
-use App\Http\Func\StoreImage;
+use App\Http\Func\HandleImage;
 
 class MbtiSortController extends Controller
 {
@@ -50,7 +50,7 @@ class MbtiSortController extends Controller
 
         if($request->hasFile('image')){
             mkdir('storage/img/mbti/'.$mbti->id, 0777, true);
-            $name = StoreImage::uploadImage($request, 'public/img/mbti/', $mbti);
+            $name = HandleImage::uploadImage($request, 'public/img/mbti/', $mbti);
             $mbti->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
             $mbti->image_url = 'storage/img/mbti/'.$mbti->id;
             $mbti->save();
@@ -110,22 +110,8 @@ class MbtiSortController extends Controller
 
         $mbti = Mbti::where('id', $id)->first();
 
-        if($request->hasFile('image')){
-            if(!is_dir('storage/img/mbti/'.$id)){
-                mkdir('storage/img/mbti/'.$id, 0777, true);
-            }
-
-            $name = array_diff(scandir(public_path($mbti->image_url)), array('.', '..'));
-            StoreImage::uploadImage($request, 'public/img/mbti/', $mbti);
-            $mbti->image_url = 'storage/img/mbti/'.$mbti->id;
-            $mbti->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
-        }
-
-        if($request->input('deleteImgName')){
-            foreach ($request->input('deleteImgName') as $deleteImg){
-                File::delete(storage_path('app/public/img/mbti/'.$id.'/'.$deleteImg));
-            }
-        }
+        HandleImage::updateImage($request, 'storage/img/mbti/', 'public/img/mbti/', $id, $mbti);
+        HandleImage::deleteImage($request, 'app/public/img/mbti/', $id);
 
         $mbti->title = $validation['title'];
         $mbti->story = $validation['story'];

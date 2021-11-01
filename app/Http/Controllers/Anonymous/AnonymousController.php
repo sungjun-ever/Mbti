@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Anonymous;
 
 use App\Http\Controllers\Controller;
 use App\Http\Func\GetBoardName;
-use App\Http\Func\StoreImage;
+use App\Http\Func\HandleImage;
 use App\Http\Func\HandleAnonymousName;
 use App\Models\Anonymous;
 use App\Models\AnonymousComment;
@@ -50,7 +50,7 @@ class AnonymousController extends Controller
 
         if($request->hasFile('image')){
             mkdir('storage/img/anonymous/'.$post->id, 0777, true);
-            $name = StoreImage::uploadImage($request, 'public/img/anonymous/', $post);
+            $name = HandleImage::uploadImage($request, 'public/img/anonymous/', $post);
             $post->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
             $post->image_url = 'storage/img/anonymous/'.$post->id;
             $post->save();
@@ -98,22 +98,8 @@ class AnonymousController extends Controller
 
         $post = Anonymous::where('id', $id)->first();
 
-        if($request->input('deleteImgName')){
-            foreach ($request->input('deleteImgName') as $deleteImg){
-                File::delete(storage_path('app/public/img/anonymous/'.$post->id.'/'.$deleteImg));
-            }
-        }
-
-        if($request->hasFile('image')){
-            if(!is_dir('storage/img/anonymous/'.$post->id)){
-                mkdir('storage/img/anonymous/'.$post->id, 0777, true);
-            }
-
-            $name = array_diff(scandir(public_path($post->image_url)), array('.', '..'));
-            StoreImage::uploadImage($request, 'public/img/anonymous/', $post);
-            $post->image_url = 'storage/img/anonymous/'.$post->id;
-            $post->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
-        }
+        HandleImage::updateImage($request, 'storage/img/anonymous/', 'public/img/anonymous/', $id, $post);
+        HandleImage::deleteImage($request, 'app/public/img/anonymous/', $id);
 
         $post->title = $validation['title'];
         $post->story = $validation['story'];

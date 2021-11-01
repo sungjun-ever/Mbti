@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Free;
 
-use App\Http\Func\StoreImage;
+use App\Http\Func\HandleImage;
 use App\Http\Func\GetBoardName;
 use App\Models\Free;
 use App\Models\FreeComment;
@@ -44,7 +44,7 @@ class FreeController extends Controller
 
         if($request->hasFile('image')){
             mkdir('storage/img/free/'.$free->id, 0777, true);
-            $name = StoreImage::uploadImage($request, 'public/img/free/', $free);
+            $name = HandleImage::uploadImage($request, 'public/img/free/', $free);
             $free->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
             $free->image_url = 'storage/img/free/'.$free->id;
             $free->save();
@@ -93,21 +93,8 @@ class FreeController extends Controller
 
         $free = Free::where('id', $id)->first();
 
-        if($request->input('deleteImgName')){
-            foreach ($request->input('deleteImgName') as $deleteImg){
-                File::delete(storage_path('app/public/img/free/'.$free->id.'/'.$deleteImg));
-            }
-        }
-
-        if($request->hasFile('image')){
-            if(!is_dir('storage/img/free/'.$free->id)){
-                mkdir('storage/img/free/'.$free->id, 0777, true);
-            }
-
-            $name = array_diff(scandir(public_path($free->image_url)), array('.', '..'));
-            StoreImage::uploadImage($request, 'public/img/free/', $free);
-            $free->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
-        }
+        HandleImage::updateImage($request, 'storage/img/free/', 'public/img/free/', $id, $free);
+        HandleImage::deleteImage($request, 'app/public/img/free/', $id);
 
         $free->title = $validation['title'];
         $free->story = $validation['story'];
