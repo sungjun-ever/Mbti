@@ -10,7 +10,8 @@ class FreeComment extends Model
     use HasFactory;
     protected $fillable = ['story'];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\Models\User');
     }
 
