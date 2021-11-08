@@ -51,8 +51,11 @@ class UserController extends Controller
     public function userComment($id)
     {
         $mbtis = DB::table('mbti_comments')->select('user_id', 'board_id', 'board_name', 'story', 'created_at')->where('user_id', $id);
-        $cmts = DB::table('free_comments')->select('user_id', 'board_id', 'board_name', 'story', 'created_at')->where('user_id', $id)
-            ->unionAll($mbtis)->orderByDesc('created_at')->paginate(5);
+        $frees = DB::table('free_comments')->select('user_id', 'board_id', 'board_name', 'story', 'created_at')->where
+        ('user_id', $id)
+            ->unionAll($mbtis);
+        $cmts = DB::table('anonymous_comments')->select('user_id', 'board_id', 'board_name', 'story', 'created_at')
+            ->where('user_id', $id)->unionAll($frees)->orderByDesc('created_at')->paginate(5);
 
         return view('auth.user-comment', compact('cmts'));
     }
