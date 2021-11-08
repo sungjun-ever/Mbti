@@ -14,12 +14,6 @@ class ConfirmPasswordController extends Controller
         return view('suggests.confirm');
     }
 
-    /**
-     * Confirm the given user's password.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
-     */
     public function confirm(Request $request)
     {
         $id = $request->session()->get('post_id');
@@ -32,12 +26,6 @@ class ConfirmPasswordController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Reset the password confirmation timeout.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return void
-     */
     protected function resetPasswordConfirmationTimeout(Request $request)
     {
         $request->session()->put('suggest.password_confirmed_at', time());

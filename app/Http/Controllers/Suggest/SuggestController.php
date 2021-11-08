@@ -16,14 +16,14 @@ class SuggestController extends Controller
     use GetBoardName;
     public function index()
     {
-        $boardName = $this->boardName();
+        $boardName = GetBoardName::boardName();
         $sugs = Suggest::orderBy('id', 'desc')->paginate(5);
         return view('suggests.index', compact(['boardName', 'sugs']));
     }
 
     public function create()
     {
-        $boardName = $this->boardName();;
+        $boardName = GetBoardName::boardName();
         return view('suggests.create', compact('boardName'));
     }
 
