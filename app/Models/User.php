@@ -56,6 +56,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany('App\Models\Suggest');
     }
 
+    public function anonymouses()
+    {
+        return $this->hasMany('App\Models\Anonymous');
+    }
+
     public function mbtiComments()
     {
         return $this->hasMany('App\Models\MbtiComment');
@@ -64,6 +69,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function freeComments()
     {
         return $this->hasMany('App\Models\FreeComment');
+    }
+
+    public function anonymousComments()
+    {
+        return $this->hasMany('App\Models\AnonymousComment');
     }
 
     public function suggestComments()

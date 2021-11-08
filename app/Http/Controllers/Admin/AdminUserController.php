@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Anonymous;
+use App\Models\AnonymousComment;
 use App\Models\Free;
+use App\Models\FreeComment;
 use App\Models\Mbti;
+use App\Models\MbtiComment;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -99,6 +102,17 @@ class AdminUserController extends Controller
         where('user_id', $id)->unionAll($frees)->orderByDesc('created_at')->paginate(5);
 
         return view('admin.user-post', compact(['all', 'mbtiGroup']));
+    }
+
+    public function userComment($id)
+    {
+        $mbtis = MbtiComment::select('user_id', 'board_id', 'board_name', 'story', 'created_at')->where('user_id', $id);
+        $frees = FreeComment::select('user_id', 'board_id', 'board_name', 'story', 'created_at')
+            ->where('user_id', $id)->unionAll($mbtis);
+        $cmts = AnonymousComment::select('user_id', 'board_id', 'board_name', 'story', 'created_at')
+            ->where('user_id', $id)->unionAll($frees)->orderByDesc('created_at')->paginate(5);
+
+        return view('admin.user-comment', compact('cmts'));
     }
 
 }

@@ -31,8 +31,8 @@
                     <td>{{$user->email}}</td>
                     <td>{{$user->created_at->format('y-m-d')}}</td>
                     <td class=text-base">
-                        <a href="{{route('admin.user.post', $user->id)}}"><button type="submit"><i class="xi-bars"></i></button></a>
-                        <a href="#"><i class="xi-comment"></i></a>
+                        <a href="{{route('admin.user.posts', $user->id)}}"><i class="xi-bars"></i></a>
+                        <a href="{{route('admin.user.comments', $user->id)}}"><i class="xi-comment"></i></a>
                     </td>
                     <td>
                         <form action="{{route('admin.user.block')}}" method="post" class="inline-block">
