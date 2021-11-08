@@ -39,8 +39,12 @@ class UserController extends Controller
     public function userPost($id)
     {
         $mbtis = DB::table('mbtis')->select('id', 'user_id', 'board_name', 'title', 'created_at')->where('user_id', $id);
-        $posts = DB::table('frees')->select('id', 'user_id', 'board_name', 'title', 'created_at')->where('user_id', $id)
-                ->unionAll($mbtis)->orderByDesc('created_at')->paginate(5);
+        $frees = DB::table('frees')->select('id', 'user_id', 'board_name', 'title', 'created_at')->where('user_id', $id)
+                ->unionAll($mbtis);
+        $posts = DB::table('anonymouses')->select('id', 'user_id', 'board_name', 'title', 'created_at')->where('user_id',
+            $id)
+            ->unionAll($frees)->orderByDesc('created_at')->paginate(5);
+
         return view('auth.user-post', compact('posts'));
     }
 

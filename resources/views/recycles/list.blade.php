@@ -27,7 +27,11 @@
                     <a href="{{route($post->board_name.'.show', $post->id)}}"
                        class="text-lg hover:no-underline hover:text-green-600 hover:font-bold">{{$post->title}}</a>
                 </td>
-                <td class="text-center xl:text-base text-xs">{{$post->user->name}}</td>
+                @if($post->board_name == 'anonymous')
+                    <td class="text-center xl:text-base text-xs">{{$post->user->anony_name}}</td>
+                @else
+                    <td class="text-center xl:text-base text-xs">{{$post->user->name}}</td>
+                @endif
                 <td class="w-1/12 xl:table-cell hidden">{{$post->created_at->format('Y-m-d')}}</td>
             </tr>
         @endforeach
