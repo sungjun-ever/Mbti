@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Anonymous;
 use App\Models\Free;
 use App\Models\Mbti;
 use App\Models\User;
@@ -92,8 +93,10 @@ class AdminUserController extends Controller
         $mbtiGroup = ['enfj', 'enfp', 'entj', 'entp', 'estj', 'estp', 'esfj', 'esfp',
             'infj', 'infp', 'intj', 'intp', 'isfj', 'isfp', 'istj', 'istp'];
 
-        $mbtis = Mbti::where('user_id', $id);
-        $all = Free::where('user_id', $id)->unionAll($mbtis)->orderByDesc('created_at')->paginate(5);
+        $mbtis = Mbti::select('id', 'user_id', 'board_name', 'title', 'created_at')->where('user_id', $id);
+        $frees = Free::select('id', 'user_id', 'board_name', 'title', 'created_at')->where('user_id', $id)->unionAll($mbtis);
+        $all = Anonymous::select('id', 'user_id', 'board_name', 'title', 'created_at')->
+        where('user_id', $id)->unionAll($frees)->orderByDesc('created_at')->paginate(5);
 
         return view('admin.user-post', compact(['all', 'mbtiGroup']));
     }
