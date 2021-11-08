@@ -68,7 +68,6 @@ class FreeController extends Controller
         $cmts = FreeComment::where('board_id', $id)
             ->orderBy('comment_id')
             ->orderBy('class')
-            ->orderBy('created_at')
             ->paginate(20);
 
         $frees = Free::where('board_name', $free->board_name)->orderBy('id', 'desc')->paginate(20);

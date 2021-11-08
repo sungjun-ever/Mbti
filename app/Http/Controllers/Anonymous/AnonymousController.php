@@ -74,7 +74,6 @@ class AnonymousController extends Controller
         $cmts = AnonymousComment::where('board_id', $id)
             ->orderBy('comment_id')
             ->orderBy('class')
-            ->orderBy('created_at')
             ->paginate(20);
 
         $posts = Anonymous::where('board_name', $post->board_name)->orderBy('id', 'desc')->paginate(20);
