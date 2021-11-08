@@ -18,13 +18,13 @@ class AnonymousController extends Controller
     public function index()
     {
         $posts = Anonymous::orderByDesc('id')->paginate(5);
-        $boardName = $this->boardName();
+        $boardName = GetBoardName::boardName();
         return view('anonymous.index', compact(['posts', 'boardName']));
     }
 
     public function create()
     {
-        $boardName = $this->boardName();
+        $boardName = GetBoardName::boardName();
 
         return view('anonymous.create', compact('boardName'));
     }

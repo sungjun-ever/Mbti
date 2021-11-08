@@ -16,7 +16,7 @@ class MbtiSortController extends Controller
 
     public function index()
     {
-        $mbtiName = $this->boardName();
+        $mbtiName = GetBoardName::boardName();
         $mbtis = Mbti::where('board_name', $mbtiName)->where('moved', '!=', 'move')->orderBy('id', 'desc')->paginate(5);
         foreach($mbtis as $mbti){
             $mbti->user->name;
@@ -26,13 +26,13 @@ class MbtiSortController extends Controller
 
     public function create()
     {
-        $mbtiName = $this->boardName();
+        $mbtiName = GetBoardName::boardName();
         return view('mbtis.'.$mbtiName.'.create', compact('mbtiName'));
     }
 
     public function store(Request $request)
     {
-        $mbtiName = $this->boardName();
+        $mbtiName = GetBoardName::boardName();
 
         $validation = $request->validate([
            'title' => 'required',

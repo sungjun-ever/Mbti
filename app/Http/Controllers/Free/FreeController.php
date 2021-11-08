@@ -16,14 +16,14 @@ class FreeController extends Controller
 
     public function index()
     {
-        $boardName = $this->boardName();
+        $boardName = GetBoardName::boardName();
         $frees = Free::orderBy('id', 'desc')->where('moved', '!=', 'move')->paginate(5);
         return view('frees.index', compact(['frees', 'boardName']));
     }
 
     public function create()
     {
-        $boardName = $this->boardName();
+        $boardName = GetBoardName::boardName();
         return view('frees.create', compact('boardName'));
     }
 

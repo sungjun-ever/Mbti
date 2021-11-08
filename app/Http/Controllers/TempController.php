@@ -10,7 +10,7 @@ class TempController extends Controller
     use GetBoardName;
     public function index()
     {
-        $boardName = $this->boardName();
+        $boardName = GetBoardName::boardName();
         $temps = Temp::orderByDesc('id')->paginate(5);
         return view('temp.index', compact(['temps', 'boardName']));
     }
