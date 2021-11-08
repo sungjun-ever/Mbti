@@ -11,7 +11,8 @@
                     <div class="mt-4 p-2 xl:w-8/12 w-full">
                         @foreach($cmts as $cmt)
                             <div class="border-b border-gray-200 py-1">
-                                <a href="{{route($cmt->board_name.'.show', $cmt->board_id)}}">{{$cmt->story}}</a>
+                                <a class="pl-1" href="{{route($cmt->board_name.'.show', $cmt->board_id)
+                                }}">{{$cmt->story}}</a>
                             </div>
                         @endforeach
                     </div>
