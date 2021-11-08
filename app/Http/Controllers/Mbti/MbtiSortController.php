@@ -73,7 +73,6 @@ class MbtiSortController extends Controller
         $cmts = MbtiComment::where('board_id', $id)
             ->orderByDesc('comment_id')
             ->orderBy('class')
-            ->orderByDesc('created_at')
             ->paginate(20);
 
         $mbtis = Mbti::where('board_name', $mbti->board_name)->orderBy('id', 'desc')->paginate(20);
