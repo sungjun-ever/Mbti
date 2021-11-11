@@ -3,7 +3,7 @@
 @section('container')
     <div class="pt-12 min-h-30">
         <div class="mb-4">
-            <span class="text-xl pl-1">검색 내용 <span class="text-blue-500">"{{$search}}"</span></span>
+            <span class="text-xl pl-1">검색 내용 <em class="text-blue-500">"{{$search}}"</em></span>
         </div>
         <table class="w-full table-fixed">
             <tr>
