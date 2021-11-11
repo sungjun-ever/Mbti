@@ -113,6 +113,9 @@ class AnonymousController extends Controller
         File::deleteDirectory(storage_path('app/public/img/anonymous/'.$post->id));
         $post->delete();
 
+        $cmts = AnonymousComment::where('board_id', $id)->get();
+        $cmts -> delete();
+
         return redirect()->route('anonymous.index');
     }
 

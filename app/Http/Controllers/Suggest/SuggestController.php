@@ -101,6 +101,10 @@ class SuggestController extends Controller
         $sug = Suggest::where('id', $id)->first();
         File::deleteDirectory(storage_path('app/public/img/sug/'.$sug->id));
         $sug->delete();
+
+        $cmts = SuggestComment::where('board_id', $id)->get();
+        $cmts->delete();
+
         return redirect()->route('suggests.index');
     }
 }

@@ -128,10 +128,13 @@ class MbtiSortController extends Controller
      */
     public function destroy($id)
     {
-        $mbtiName = $this->boardName();
+        $mbtiName = GetBoardName::boardName();
         $mbti = Mbti::where('id', $id)->first();
         File::deleteDirectory(storage_path('app/public/img/mbti/'.$mbti->id));
         $mbti -> delete();
+
+        $cmts = MbtiComment::where('board_id', $id)->get();
+        $cmts -> delete();
 
         return redirect()->route($mbtiName.'.index');
     }

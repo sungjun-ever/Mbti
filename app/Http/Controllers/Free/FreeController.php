@@ -108,6 +108,9 @@ class FreeController extends Controller
         File::deleteDirectory(storage_path('app/public/img/free/'.$free->id));
         $free->delete();
 
+        $cmts = FreeComment::where('board_id', $id)->get();
+        $cmts->delete();
+
         return redirect()->route('frees.index');
     }
 
