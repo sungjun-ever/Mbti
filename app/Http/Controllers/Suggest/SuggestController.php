@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 
 class SuggestController extends Controller
 {
+    use HandleImage;
     public function index()
     {
         $boardName = GetBoardName::boardName();
@@ -45,7 +46,7 @@ class SuggestController extends Controller
 
         if($request->hasFile('image')){
             mkdir('storage/img/sug/'.$sug->id, 0777, true);
-            $name = HandleImage::uploadImage($request, 'public/img/sug/', $sug);
+            $name = $this->uploadImage($request, 'public/img/sug/', $sug);
             $sug->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
             $sug->image_url = 'storage/img/sug/'.$sug->id;
             $sug->save();
@@ -86,8 +87,8 @@ class SuggestController extends Controller
 
         $sug = Suggest::where('id', $id)->first();
 
-        HandleImage::updateImage($request, 'storage/img/sug/', 'public/img/sug/', $id, $sug);
-        HandleImage::deleteImage($request, 'app/public/img/sug/', $id);
+        $this->updateImage($request, 'storage/img/sug/', 'public/img/sug/', $id, $sug);
+        $this->deleteImage($request, 'app/public/img/sug/', $id);
 
         $sug->title = $validation['title'];
         $sug->story = $validation['story'];

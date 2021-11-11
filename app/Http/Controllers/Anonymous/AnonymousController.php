@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Anonymous;
 
 use App\Http\Controllers\Controller;
 use App\Http\Func\GetBoardName;
-use App\Http\Func\HandleImage;
 use App\Http\Func\HandleAnonymousName;
+use App\Http\Func\HandleImage;
 use App\Models\Anonymous;
 use App\Models\AnonymousComment;
 use App\Models\User;
@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\File;
 
 class AnonymousController extends Controller
 {
+    use HandleImage;
     public function index()
     {
         $posts = Anonymous::orderByDesc('id')->paginate(5);
@@ -49,7 +50,7 @@ class AnonymousController extends Controller
 
         if($request->hasFile('image')){
             mkdir('storage/img/anonymous/'.$post->id, 0777, true);
-            $name = HandleImage::uploadImage($request, 'public/img/anonymous/', $post);
+            $name = $this->uploadImage($request, 'public/img/anonymous/', $post);
             $post->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
             $post->image_url = 'storage/img/anonymous/'.$post->id;
             $post->save();
@@ -96,8 +97,8 @@ class AnonymousController extends Controller
 
         $post = Anonymous::where('id', $id)->first();
 
-        HandleImage::updateImage($request, 'storage/img/anonymous/', 'public/img/anonymous/', $id, $post);
-        HandleImage::deleteImage($request, 'app/public/img/anonymous/', $id);
+        $this->updateImage($request, 'storage/img/anonymous/', 'public/img/anonymous/', $id, $post);
+        $this->deleteImage($request, 'app/public/img/anonymous/', $id);
 
         $post->title = $validation['title'];
         $post->story = $validation['story'];

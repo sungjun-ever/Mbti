@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 
 
-class HandleImage
+trait HandleImage
 {
-    public static function uploadImage($request, $dir, $model) : array
+    public function uploadImage($request, $dir, $model) : array
     {
         foreach ($request->file('image') as $image){
             $imageName = $image->getClientOriginalName();
@@ -23,7 +23,7 @@ class HandleImage
         return $name;
     }
 
-    public static function updateImage($request, $dir1, $dir2, $id, $model)
+    public function updateImage($request, $dir1, $dir2, $id, $model)
     {
         if($request->hasFile('image')){
             if(!is_dir($dir1.$id)){
@@ -37,7 +37,7 @@ class HandleImage
         }
     }
 
-    public static function deleteImage($request, $dir, $id)
+    public function deleteImage($request, $dir, $id)
     {
         if($request->input('deleteImgName')){
             foreach ($request->input('deleteImgName') as $deleteImg){

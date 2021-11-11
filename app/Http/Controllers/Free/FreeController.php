@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\File;
 
 class FreeController extends Controller
 {
+    use HandleImage;
     public function index()
     {
         $boardName = GetBoardName::boardName();
@@ -42,7 +43,7 @@ class FreeController extends Controller
 
         if($request->hasFile('image')){
             mkdir('storage/img/free/'.$free->id, 0777, true);
-            $name = HandleImage::uploadImage($request, 'public/img/free/', $free);
+            $name = $this->uploadImage($request, 'public/img/free/', $free);
             $free->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
             $free->image_url = 'storage/img/free/'.$free->id;
             $free->save();
@@ -90,8 +91,8 @@ class FreeController extends Controller
 
         $free = Free::where('id', $id)->first();
 
-        HandleImage::updateImage($request, 'storage/img/free/', 'public/img/free/', $id, $free);
-        HandleImage::deleteImage($request, 'app/public/img/free/', $id);
+        $this->updateImage($request, 'storage/img/free/', 'public/img/free/', $id, $free);
+        $this->deleteImage($request, 'app/public/img/free/', $id);
 
         $free->title = $validation['title'];
         $free->story = $validation['story'];
