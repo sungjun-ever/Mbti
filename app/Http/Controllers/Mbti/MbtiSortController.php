@@ -56,7 +56,7 @@ class MbtiSortController extends Controller
             $mbti->save();
         }
 
-        return redirect()->route($request->mid.'.show', $mbti->id);
+        return redirect()->route($mbtiName.'.show', $mbti->id);
     }
 
     public function show($id)
