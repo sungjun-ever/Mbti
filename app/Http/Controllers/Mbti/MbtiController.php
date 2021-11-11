@@ -9,9 +9,9 @@ use App\Http\Controllers\Controller;
 
 class MbtiController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $mbtiName = GetBoardName::$mbtiBoard;
+        $mbtiName = GetBoardName::mbtiBoard();
 
         $enfjs = Mbti::where('board_name', 'enfj')->where('moved', '!=', 'move')->orderBy('id', 'desc')->paginate(5);
         $enfps = Mbti::where('board_name', 'enfp')->where('moved', '!=', 'move')->orderBy('id', 'desc')->paginate(5);

@@ -17,7 +17,7 @@ class AllPostController extends Controller
 {
     public function index()
     {
-        $mbtiGroup = GetBoardName::$mbtiBoard;
+        $mbtiGroup = GetBoardName::mbtiBoard();
         $mbtis = Mbti::whereNotNull('board_name');
         $all = Free::whereNotNull('board_name')->unionAll($mbtis)->orderByDesc('created_at')->paginate(20);
 
@@ -26,7 +26,7 @@ class AllPostController extends Controller
 
     public function moveToTemp($boardName, $id)
     {
-        $mbtiGroup = GetBoardName::$mbtiBoard;
+        $mbtiGroup = GetBoardName::mbtiBoard();
 
         $temp = new Temp();
         $temp->board_name = $boardName;
@@ -54,7 +54,7 @@ class AllPostController extends Controller
 
     public function restore($boardName, $id)
     {
-        $mbtiGroup = GetBoardName::$mbtiBoard;
+        $mbtiGroup = GetBoardName::mbtiBoard();
 
         $temp = Temp::where('board_name', $boardName)->where('board_id', $id)->first();
         $temp->delete();
@@ -88,7 +88,7 @@ class AllPostController extends Controller
 
     public function search(Request $request)
     {
-        $mbtiGroup = GetBoardName::$mbtiBoard;
+        $mbtiGroup = GetBoardName::mbtiBoard();
 
         $content = $request->input('content');
         $search = $request->input('search');

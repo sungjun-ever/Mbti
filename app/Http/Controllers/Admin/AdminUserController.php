@@ -93,7 +93,7 @@ class AdminUserController extends Controller
 
     public function userPost($id)
     {
-        $mbtiGroup = GetBoardName::$mbtiBoard;
+        $mbtiGroup = GetBoardName::mbtiBoard();
 
         $mbtis = Mbti::select('id', 'user_id', 'board_name', 'title', 'created_at')->where('user_id', $id);
         $frees = Free::select('id', 'user_id', 'board_name', 'title', 'created_at')->where('user_id', $id)->unionAll($mbtis);

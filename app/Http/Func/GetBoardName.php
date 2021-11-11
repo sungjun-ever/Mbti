@@ -4,8 +4,11 @@ namespace App\Http\Func;
 
 class GetBoardName
 {
-    public static $mbtiBoard = ['enfj', 'enfp', 'entj', 'entp', 'estj', 'estp', 'esfj', 'esfp',
-        'infj', 'infp', 'intj', 'intp', 'isfj', 'isfp', 'istj', 'istp'];
+    public static function mbtiBoard()
+    {
+        return ['enfj', 'enfp', 'entj', 'entp', 'estj', 'estp', 'esfj', 'esfp',
+            'infj', 'infp', 'intj', 'intp', 'isfj', 'isfp', 'istj', 'istp'];
+    }
 
     public static function boardName()
     {
