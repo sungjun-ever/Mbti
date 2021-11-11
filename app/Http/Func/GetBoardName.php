@@ -2,7 +2,7 @@
 
 namespace App\Http\Func;
 
-trait GetBoardName
+class GetBoardName
 {
     public static $mbtiBoard = ['enfj', 'enfp', 'entj', 'entp', 'estj', 'estp', 'esfj', 'esfp',
         'infj', 'infp', 'intj', 'intp', 'isfj', 'isfp', 'istj', 'istp'];

@@ -13,7 +13,6 @@ use App\Http\Controllers\Controller;
 
 class SuggestController extends Controller
 {
-    use GetBoardName;
     public function index()
     {
         $boardName = GetBoardName::boardName();

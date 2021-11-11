@@ -7,7 +7,6 @@ use App\Models\Temp;
 
 class TempController extends Controller
 {
-    use GetBoardName;
     public function index()
     {
         $boardName = GetBoardName::boardName();

@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\File;
 
 class FreeController extends Controller
 {
-    use GetBoardName;
-
     public function index()
     {
         $boardName = GetBoardName::boardName();

@@ -12,8 +12,6 @@ use App\Http\Func\HandleImage;
 
 class MbtiSortController extends Controller
 {
-    use GetBoardName;
-
     public function index()
     {
         $mbtiName = GetBoardName::boardName();

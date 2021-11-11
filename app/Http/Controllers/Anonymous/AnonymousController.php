@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\File;
 
 class AnonymousController extends Controller
 {
-    use GetBoardName;
     public function index()
     {
         $posts = Anonymous::orderByDesc('id')->paginate(5);
