@@ -139,7 +139,7 @@ class MbtiSortController extends Controller
 
     public function search(Request $request)
     {
-        $mbtiName = $this->boardName();
+        $mbtiName = GetBoardName::boardName();
 
         $content = $request->input('content');
         $search = $request->input('search');
