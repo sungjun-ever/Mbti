@@ -53,7 +53,7 @@ class LoginController extends Controller
             $user = Socialite::driver('google') -> user();
             $findUser = User::where('google_id', $user->id)->first();
             if($findUser){
-                Auth::login($findUser);
+                Auth::login($findUser, true);
                 return redirect() -> route('home');
             } else {
                 $newUser = new User();
@@ -61,7 +61,7 @@ class LoginController extends Controller
                 $newUser->email = $user['email'];
                 $newUser->google_id = $user['sub'];
                 $newUser->save();
-                Auth::login($newUser);
+                Auth::login($newUser, true);
                 return redirect() -> route('home');
             }
         } catch (\Exception $e){

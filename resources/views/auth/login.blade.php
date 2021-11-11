@@ -24,7 +24,7 @@
             </div>
             <div class="flex mt-4 items-center space-x-2">
                 <label for="remember"></label>
-                <input id="remember" type="checkbox" name="remember_me" class="w-5 h-5">
+                <input id="remember" type="checkbox" name="remember" class="w-5 h-5">
                 <span class="inline-block text-lg h-8">로그인 유지</span>
             </div>
             <div class="h-8 mt-2 text-right space-x-4">
