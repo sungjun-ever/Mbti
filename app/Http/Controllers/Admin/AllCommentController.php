@@ -17,7 +17,7 @@ class AllCommentController extends Controller
         $mbtis = MbtiComment::whereNotNull('board_name');
         $frees = FreeComment::whereNotNull('board_name')->unionAll($mbtis);
         $all = AnonymousComment::whereNotNull('board_name')->unionAll($frees)->orderByDesc('created_at')->paginate(20,
-            ['*'], 'posts');
+            ['*'], 'comments');
 
         return view('admin.all-comment', compact('all'));
     }
