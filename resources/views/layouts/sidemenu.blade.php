@@ -44,6 +44,13 @@
             </a>
         </div>
 
+        {{--  익명게시판  --}}
+        <div class="border-b border-gray-200 py-2 pl-3 text-black text-base">
+            <a href="{{route('anonymous.index')}}">
+                <button class="hover:text-green-my">익명게시판</button>
+            </a>
+        </div>
+
         {{--  건의게시판  --}}
         <div class="border-b border-gray-200 py-2 pl-3 text-black text-base">
             <a href="{{route('suggests.index')}}">
