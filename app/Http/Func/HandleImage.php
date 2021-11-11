@@ -4,9 +4,9 @@ namespace App\Http\Func;
 
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
-use App\Http\Controllers\Controller;
 
-class HandleImage extends Controller
+
+class HandleImage
 {
     public static function uploadImage($request, $dir, $model) : array
     {
