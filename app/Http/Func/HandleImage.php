@@ -30,8 +30,8 @@ class HandleImage extends Controller
                 mkdir($dir1.$id, 0777, true);
             }
 
-            $name = array_diff(scandir(public_path($model->image_url)), array('.', '..'));
             HandleImage::uploadImage($request, $dir2, $model);
+            $name = array_diff(scandir(public_path($model->image_url)), array('.', '..'));
             $model->image_url = $dir1.$model->id;
             $model->image_name = json_encode($name, JSON_UNESCAPED_UNICODE);
         }
