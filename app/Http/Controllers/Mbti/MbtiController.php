@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Mbti;
 
+use App\Http\Func\GetBoardName;
 use App\Models\Mbti;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -10,8 +11,7 @@ class MbtiController extends Controller
 {
     public function index(Request $request)
     {
-        $mbtiName = ['enfj', 'enfp', 'entj', 'entp', 'estj', 'estp', 'esfj', 'esfp',
-                     'infj', 'infp', 'intj', 'intp', 'isfj', 'isfp', 'istj', 'istp'];
+        $mbtiName = GetBoardName::$mbtiBoard;
 
         $enfjs = Mbti::where('board_name', 'enfj')->where('moved', '!=', 'move')->orderBy('id', 'desc')->paginate(5);
         $enfps = Mbti::where('board_name', 'enfp')->where('moved', '!=', 'move')->orderBy('id', 'desc')->paginate(5);

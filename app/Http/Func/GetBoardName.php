@@ -4,6 +4,9 @@ namespace App\Http\Func;
 
 trait GetBoardName
 {
+    public static $mbtiBoard = ['enfj', 'enfp', 'entj', 'entp', 'estj', 'estp', 'esfj', 'esfp',
+        'infj', 'infp', 'intj', 'intp', 'isfj', 'isfp', 'istj', 'istp'];
+
     public static function boardName()
     {
         $getBoard = explode('/', $_SERVER['REQUEST_URI']);

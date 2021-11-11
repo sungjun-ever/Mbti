@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Func\GetBoardName;
 use App\Models\Anonymous;
 use App\Models\AnonymousComment;
 use App\Models\Free;
@@ -93,8 +94,7 @@ class AdminUserController extends Controller
 
     public function userPost($id)
     {
-        $mbtiGroup = ['enfj', 'enfp', 'entj', 'entp', 'estj', 'estp', 'esfj', 'esfp',
-            'infj', 'infp', 'intj', 'intp', 'isfj', 'isfp', 'istj', 'istp'];
+        $mbtiGroup = GetBoardName::$mbtiBoard;
 
         $mbtis = Mbti::select('id', 'user_id', 'board_name', 'title', 'created_at')->where('user_id', $id);
         $frees = Free::select('id', 'user_id', 'board_name', 'title', 'created_at')->where('user_id', $id)->unionAll($mbtis);

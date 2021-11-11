@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Func\GetBoardName;
 use App\Models\Anonymous;
 use App\Models\Free;
 use App\Models\Mbti;
@@ -16,8 +17,7 @@ class AllPostController extends Controller
 {
     public function index()
     {
-        $mbtiGroup = ['enfj', 'enfp', 'entj', 'entp', 'estj', 'estp', 'esfj', 'esfp',
-            'infj', 'infp', 'intj', 'intp', 'isfj', 'isfp', 'istj', 'istp'];
+        $mbtiGroup = GetBoardName::$mbtiBoard;
         $mbtis = Mbti::whereNotNull('board_name');
         $all = Free::whereNotNull('board_name')->unionAll($mbtis)->orderByDesc('board_name')->paginate(20, ['*'], 'posts');
 
@@ -26,8 +26,7 @@ class AllPostController extends Controller
 
     public function moveToTemp($boardName, $id)
     {
-        $mbtiGroup = ['enfj', 'enfp', 'entj', 'entp', 'estj', 'estp', 'esfj', 'esfp',
-            'infj', 'infp', 'intj', 'intp', 'isfj', 'isfp', 'istj', 'istp'];
+        $mbtiGroup = GetBoardName::$mbtiBoard;
 
         $temp = new Temp();
         $temp->board_name = $boardName;
@@ -55,8 +54,7 @@ class AllPostController extends Controller
 
     public function restore($boardName, $id)
     {
-        $mbtiGroup = ['enfj', 'enfp', 'entj', 'entp', 'estj', 'estp', 'esfj', 'esfp',
-            'infj', 'infp', 'intj', 'intp', 'isfj', 'isfp', 'istj', 'istp'];
+        $mbtiGroup = GetBoardName::$mbtiBoard;
 
         $temp = Temp::where('board_name', $boardName)->where('board_id', $id)->first();
         $temp->delete();
@@ -90,8 +88,7 @@ class AllPostController extends Controller
 
     public function search(Request $request)
     {
-        $mbtiGroup = ['enfj', 'enfp', 'entj', 'entp', 'estj', 'estp', 'esfj', 'esfp',
-            'infj', 'infp', 'intj', 'intp', 'isfj', 'isfp', 'istj', 'istp'];
+        $mbtiGroup = GetBoardName::$mbtiBoard;
 
         $content = $request->input('content');
         $search = $request->input('search');
