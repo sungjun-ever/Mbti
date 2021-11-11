@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 
 class AnonymousCommentController extends Controller
 {
+    use HandleAnonymousName;
     public function __construct()
     {
         $this->middleware('auth');
@@ -23,7 +24,7 @@ class AnonymousCommentController extends Controller
 
         $user = User::where('id', auth()->user()->id)->first();
 
-        HandleAnonymousName::createAnonymousName($user);
+        $this->createAnonymousName($user);
 
         $cmt = new AnonymousComment();
         $cmt->user_id = $user->id;
@@ -67,7 +68,7 @@ class AnonymousCommentController extends Controller
 
         $user = User::where('id', auth()->user()->id)->first();
 
-        HandleAnonymousName::createAnonymousName($user);
+        $this->createAnonymousName($user);
 
         $cmt = new AnonymousComment();
         $cmt->user_id = $user->id;

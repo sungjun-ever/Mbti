@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\File;
 
 class AnonymousController extends Controller
 {
-    use HandleImage;
+    use HandleImage, HandleAnonymousName;
+
     public function index()
     {
         $posts = Anonymous::orderByDesc('id')->paginate(5);
@@ -39,7 +40,7 @@ class AnonymousController extends Controller
 
         $user = User::where('id', auth()->user()->id)->first();
 
-        HandleAnonymousName::createAnonymousName($user);
+        $this->createAnonymousName($user);
 
         $post = new Anonymous();
         $post->user_id = $user->id;
