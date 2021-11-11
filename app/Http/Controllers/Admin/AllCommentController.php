@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AnonymousComment;
 use App\Models\Free;
 use App\Models\FreeComment;
 use App\Models\Mbti;
@@ -14,9 +15,11 @@ class AllCommentController extends Controller
     public function index()
     {
         $mbtis = MbtiComment::whereNotNull('board_name');
-        $all = FreeComment::whereNotNull('board_name')->unionAll($mbtis)->orderByDesc('board_name')->paginate(20, ['*'], 'posts');
+        $frees = FreeComment::whereNotNull('board_name')->unionAll($mbtis);
+        $all = AnonymousComment::whereNotNull('board_name')->unionAll($frees)->orderByDesc('created_at')->paginate(20,
+            ['*'], 'posts');
 
-        return view('admin.all-comment', compact(['all']));
+        return view('admin.all-comment', compact('all'));
     }
 
     public function search(Request $request)

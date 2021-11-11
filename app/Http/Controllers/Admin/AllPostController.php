@@ -19,7 +19,7 @@ class AllPostController extends Controller
     {
         $mbtiGroup = GetBoardName::$mbtiBoard;
         $mbtis = Mbti::whereNotNull('board_name');
-        $all = Free::whereNotNull('board_name')->unionAll($mbtis)->orderByDesc('board_name')->paginate(20, ['*'], 'posts');
+        $all = Free::whereNotNull('board_name')->unionAll($mbtis)->orderByDesc('created_at')->paginate(20, ['*'], 'posts');
 
         return view('admin.all-post', compact(['all', 'mbtiGroup']));
     }
