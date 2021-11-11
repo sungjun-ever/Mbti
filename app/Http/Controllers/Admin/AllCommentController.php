@@ -16,8 +16,7 @@ class AllCommentController extends Controller
     {
         $mbtis = MbtiComment::whereNotNull('board_name');
         $frees = FreeComment::whereNotNull('board_name')->unionAll($mbtis);
-        $all = AnonymousComment::whereNotNull('board_name')->unionAll($frees)->orderByDesc('created_at')->paginate(20,
-            ['*'], 'comments');
+        $all = AnonymousComment::whereNotNull('board_name')->unionAll($frees)->orderByDesc('created_at')->paginate(3);
 
         return view('admin.all-comment', compact('all'));
     }
@@ -28,7 +27,9 @@ class AllCommentController extends Controller
         $search = $request->input('search');
 
         $mbtis = MbtiComment::where($content, 'LIKE', "%{$search}%");
-        $all = FreeComment::where($content, 'LIKE', "%{$search}%")->unionAll($mbtis)->orderByDesc('created_at')->paginate(20);
+        $frees = FreeComment::where($content, 'LIKE', "%{$search}%")->unionAll($mbtis);
+        $all = AnonymousComment::where($content, 'LIKE', "%{$search}%")->unionAll($frees)->orderByDesc('created_at')
+            ->paginate(20);
 
         return view('admin.comment-search', compact(['all', 'content', 'search']));
     }
